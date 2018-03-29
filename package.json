@@ -1,7 +1,7 @@
 {
-  "name": "y",
+  "name": "AsanSport_Front",
   "version": "1.0.0",
-  "description": "AsanSport Frontend with Vue.js",
+  "description": "AsanSport Frontend Using Vue.js",
   "author": "s3000 <s3000@yahoo.com>",
   "private": true,
   "scripts": {
@@ -10,6 +10,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },
