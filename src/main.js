@@ -12,10 +12,13 @@ import './assets/css/layout.css'
 import './assets/css/header-1.css'
 import './assets/css/layout-shop.css'
 import './assets/css/color_scheme/green.css'
+import './assets/css/layout-RTL.css'
+import './assets/plugins/bootstrap/RTL/bootstrap-flipped.min.css'
+import './assets/plugins/bootstrap/RTL/bootstrap-rtl.min.css'
 
 
 Vue.config.productionTip = false;
-
+Vue.use(require('vue-script2'));
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

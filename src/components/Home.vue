@@ -69,7 +69,9 @@
                 <li><a tabindex="-1" href="#"><i class="glyphicon glyphicon-off"></i> LOGOUT</a></li>
               </ul>
             </li>
-            <li class="hidden-xs"><router-link to="/login-register">LOGIN/REGISTER</router-link></li>
+            <li class="hidden-xs">
+              <router-link to="/login-register">LOGIN/REGISTER</router-link>
+            </li>
           </ul>
 
           <!-- left -->
@@ -159,7 +161,7 @@
 
               <!-- SEARCH -->
               <li class="search">
-                <a href="javascript:;">
+                <a href="javascript2:;">
                   <i class="fa fa-search"></i>
                 </a>
               </li>
@@ -360,7 +362,7 @@
                    data-endspeed="1000"
                    data-endeasing="Power4.easeIn"
                    style=" color: #333; max-width: 550px; white-space: normal; text-shadow:none;">
-                Fabulas definitiones ei pri per recteque hendrerit scriptorem in errem scribentur mel
+                Fabulas definitiones ei pri per recteque hendrerit script2orem in errem scribentur mel
                 fastidii propriae philosophia cu mea.
               </div>
 
@@ -387,7 +389,8 @@
             <li data-transition="random" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"
                 data-title="Slide">
 
-              <img src="/static/assets/images/1x1.png" data-lazyload="/static/assets/images/demo/1200x800/10-min.jpg" alt=""
+              <img src="/static/assets/images/1x1.png" data-lazyload="/static/assets/images/demo/1200x800/10-min.jpg"
+                   alt=""
                    data-bgfit="cover" data-bgposition="center top" data-bgrepeat="no-repeat"/>
 
               <div class="tp-dottedoverlay twoxtwo"><!-- dotted overlay --></div>
@@ -439,7 +442,7 @@
                    data-endspeed="1000"
                    data-endeasing="Power4.easeIn"
                    style="z-index: 10; width: 100%; max-width: 750px; white-space: normal; text-align:center;">
-                Fabulas definitiones ei pri per recteque hendrerit scriptorem in errem scribentur mel
+                Fabulas definitiones ei pri per recteque hendrerit script2orem in errem scribentur mel
                 fastidii propriae philosophia cu mea.
               </div>
 
@@ -530,8 +533,9 @@
                    data-endeasing="Power4.easeIn"
                    data-autoplay="false"
                    data-autoplayonlyfirsttime="false">
-                <iframe src="http://player.vimeo.com/video/58238439?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff"
-                        width="480" height="275" allowfullscreen></iframe>
+                <iframe
+                  src="http://player.vimeo.com/video/58238439?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff"
+                  width="480" height="275" allowfullscreen></iframe>
               </div>
             </li>
 
@@ -860,7 +864,8 @@
 
 
       <!-- PARALLAX -->
-      <section class="parallax parallax-2" style="background-image: url('/static/assets/images/demo/particles_bg.jpg');">
+      <section class="parallax parallax-2"
+               style="background-image: url('/static/assets/images/demo/particles_bg.jpg');">
         <div class="overlay dark-1"><!-- dark overlay [0 to 9 opacity] --></div>
 
         <div class="container">
@@ -1777,20 +1782,31 @@
 
     <!-- PRELOADER -->
     <!--<div id="preloader">-->
-      <!--<div class="inner">-->
-        <!--<span class="loader"></span>-->
-      <!--</div>-->
+    <!--<div class="inner">-->
+    <!--<span class="loader"></span>-->
+    <!--</div>-->
     <!--</div>&lt;!&ndash; /PRELOADER &ndash;&gt;-->
+    <script2 type="text/javascript">var plugin_path = '/static/assets/plugins/';</script2>
+    <script2 type="text/javascript" src="/static/assets/plugins/jquery/jquery-2.1.4.min.js"></script2>
+    <script2 type="text/javascript" src="/static/assets/js/scripts.js"></script2>
+    <!-- REVOLUTION SLIDER -->
 
+
+    <script2 type="text/javascript"
+             src="/static/assets/plugins/slider.revolution/js/jquery.themepunch.tools.min.js"></script2>
+    <script2 type="text/javascript"
+             src="/static/assets/plugins/slider.revolution/js/jquery.themepunch.revolution.min.js"></script2>
+    <script2 type="text/javascript" src="/static/assets/js/view/demo.revolution_slider.js"></script2>
+    <!-- PAGE LEVEL script2S -->
+    <script2 type="text/javascript" src="/static/assets/js/view/demo.shop.js"></script2>
   </div>
 
 </template>
 
 <script>
-
-    export default {
-        name: "home"
-    }
+  export default {
+    name: "home"
+  }
 </script>
 
 <style scoped>
