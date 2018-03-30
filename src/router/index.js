@@ -7,6 +7,7 @@ import Home from '@/components/Home'
 import Login from '@/components/LoginRegister'
 import SearchResults from '@/components/SearchResults'
 import Field from '@/components/FieldDetails'
+import FieldsList from '@/components/FieldsList'
 import CheckOut from '@/components/CheckOut'
 
 
@@ -16,8 +17,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'Home',
+      component: Home
     },
     {
       path: '/about',
@@ -52,6 +53,11 @@ export default new Router({
       path: '/check-out',
       name: 'CheckOut',
       component: CheckOut
+    },
+    {
+      path: '/fields-list',
+      name: 'FeildsList',
+      component: FieldsList
     }
   ]
 })

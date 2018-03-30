@@ -1,5 +1,5 @@
 <template>
-  <div class="smoothscroll enable-animation">
+  <div id="home" class="smoothscroll enable-animation">
     <div id="slidetop">
 
       <div class="container">
@@ -379,9 +379,9 @@
                    data-endelementdelay="0.1"
                    data-endspeed="1000"
                    data-endeasing="Power4.easeIn">
-                <a href="#" class="btn btn-primary btn-lg">
+                <router-link to="feilds-list" class="btn btn-primary btn-lg">
                   <span>start shopping</span>
-                </a>
+                </router-link>
               </div>
             </li>
 
@@ -459,9 +459,9 @@
                    data-endelementdelay="0.1"
                    data-endspeed="1000"
                    data-endeasing="Power4.easeIn" style="z-index: 10;">
-                <a href="#purchase" class="btn btn-default btn-lg">
+                <router-link to="feilds-list" class="btn btn-default btn-lg">
                   <span>start shopping &raquo;</span>
-                </a>
+                </router-link>
               </div>
 
             </li>
@@ -513,8 +513,9 @@
                    data-easing="Power4.easeOut"
                    data-endspeed="500"
                    data-endeasing="Power4.easeIn">
-                <a href="#readMore" class="scrollTo btn btn-default btn-md btn-lg">start shopping
-                  &raquo;</a>
+                  <router-link to="feilds-list" class="scrollTo btn btn-default btn-md btn-lg">
+                      <span>start shopping &raquo;</span>
+                  </router-link>
               </div>
 
 
@@ -1800,7 +1801,6 @@
     <!-- PAGE LEVEL script2S -->
     <script2 type="text/javascript" src="/static/assets/js/view/demo.shop.js"></script2>
   </div>
-
 </template>
 
 <script>
