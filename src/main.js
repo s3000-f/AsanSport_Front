@@ -17,12 +17,13 @@ import './assets/css/color_scheme/green.css'
 import './assets/css/layout-RTL.css'
 import './assets/plugins/bootstrap/RTL/bootstrap-flipped.min.css'
 import './assets/plugins/bootstrap/RTL/bootstrap-rtl.min.css'
-
+import {store} from "./store/store";
 
 Vue.config.productionTip = false;
 Vue.use(require('vue-script2'));
 /* eslint-disable no-new */
 new Vue({
+  store: store,
   el: '#app',
   router,
   template: '<App/>',
