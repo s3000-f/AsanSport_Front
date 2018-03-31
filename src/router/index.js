@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
 import About from  '@/components/About'
 import Coins from '@/components/Coins'
 import Home from '@/components/Home'
@@ -9,7 +8,7 @@ import SearchResults from '@/components/SearchResults'
 import Field from '@/components/FieldDetails'
 import FieldsList from '@/components/FieldsList'
 import CheckOut from '@/components/CheckOut'
-
+import Profile from '@/components/Profile'
 
 Vue.use(Router);
 
@@ -19,6 +18,11 @@ export default new Router({
       path: '/',
       name: 'Home',
       component: Home
+    },
+    {
+      path: '/profile',
+      name: 'Profile',
+      component: Profile
     },
     {
       path: '/about',

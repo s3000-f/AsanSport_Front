@@ -11,7 +11,15 @@ export const store = new Vuex.Store({
     isLoggedin: false,
     token: '',
     hasError: false,
-    errorMsg: ''
+    errorMsg: '',
+    user: {
+      id: '',
+      fname:'',
+      lname: '',
+      email: '',
+      mobile:'',
+      verified: false
+    }
   },
   plugins: [createPersistedState({
     storage: {
@@ -23,7 +31,8 @@ export const store = new Vuex.Store({
   getters: {
     getToken: state => {return state.token},
     isLogged: state => {return state.isLoggedin},
-    getErrors: state => {return state.errorMsg}
+    getErrors: state => {return state.errorMsg},
+    getUser: state => {return state.user}
   },
   mutations: {
     setLogin: (state, el1) => {
@@ -37,6 +46,24 @@ export const store = new Vuex.Store({
     resetError: state =>{
       state.hasError = false;
       state.errorMsg = '';
+    },
+    setUser: (state, dat) =>{
+      state.user.id = dat['id'];
+      state.user.fname = dat['given_name'];
+      state.user.lname = dat['last_name'];
+      state.user.email = dat['email'];
+      state.user.mobile = dat['mobile'];
+      state.user.verified = dat['is_verified'];
+    },
+    resetUser: (state) =>{
+      state.user = {
+        id: '',
+        fname:'',
+        lname: '',
+        email: '',
+        mobile:'',
+        verified: false
+      }
     }
   },
   actions: {
@@ -48,6 +75,9 @@ export const store = new Vuex.Store({
     },
     resetError: context =>{
       context.commit('resetError')
+    },
+    setUser(context, dat){
+      context.commit('setUser', dat);
     }
   }
 });

@@ -59,20 +59,16 @@
               <li class="text-welcome hidden-xs">Welcome to Smarty, <strong>John Doe</strong></li>
               <li>
                 <a class="dropdown-toggle no-text-underline" data-toggle="dropdown" href="#"><i
-                  class="fa fa-user hidden-xs"></i> MY ACCOUNT</a>
-                <ul class="dropdown-menu pull-right">
-                  <li><a tabindex="-1" href="#"><i class="fa fa-history"></i> ORDER HISTORY</a></li>
-                  <li class="divider"></li>
-                  <li><a tabindex="-1" href="#"><i class="fa fa-bookmark"></i> MY WISHLIST</a></li>
-                  <li><a tabindex="-1" href="#"><i class="fa fa-edit"></i> MY REVIEWS</a></li>
-                  <li><a tabindex="-1" href="#"><i class="fa fa-cog"></i> MY SETTINGS</a></li>
-                  <li class="divider"></li>
-                  <li><a tabindex="-1" href="#"><i class="glyphicon glyphicon-off"></i> LOGOUT</a></li>
-                </ul>
-              </li>
-              <li class="hidden-xs">
-                <router-link to="/login-register">LOGIN/REGISTER</router-link>
-              </li>
+                  class="fa fa-user hidden-xs"></i>
+                  <router-link to="/profile">Your Account</router-link>
+                </a>
+              <li class="divider"></li>
+              <li><a tabindex="-1" href="#"><i class="glyphicon glyphicon-off"></i> LOGOUT</a></li>
+            </ul>
+            </li>
+            <li class="hidden-xs">
+              <router-link to="/login-register">LOGIN/REGISTER</router-link>
+            </li>
             </ul>
 
             <!-- left -->
@@ -1790,7 +1786,6 @@
       <!--</div>&lt;!&ndash; /PRELOADER &ndash;&gt;-->
 
     </div>
-
 
 
   </div>
