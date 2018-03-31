@@ -694,10 +694,19 @@
         })
           .then(response => {
             this.title = response.status;
-            alert(this.title)
+            if (response.status < 300){
+              this.setLogin(response.data['access_token']);
+              this.resetError();
+              alert(this.getToken)
+            }
+            else{
+              this.setError(response.data['message']);
+              alert(this.getErrors)
+            }
           })
           .catch(e => {
-            alert(e)
+            this.setError(e);
+            alert(this.getErrors)
           })
       }
     }
