@@ -63,14 +63,13 @@
                   <router-link to="/profile">Your Account</router-link>
                 </a>
               <li class="divider"></li>
-              <li><a tabindex="-1" href="#"><i class="glyphicon glyphicon-off"></i> LOGOUT</a></li>
+              <li>
+                <router-link v-if="$store.state.isLoggedin" to="/"><i class="glyphicon glyphicon-off"></i> LOGOUT
+                </router-link>
+                <router-link v-else to="/login-register"><i class="glyphicon glyphicon-off"></i> LOGIN/REGISTER
+                </router-link>
+              </li>
             </ul>
-            </li>
-            <li class="hidden-xs">
-              <router-link to="/login-register">LOGIN/REGISTER</router-link>
-            </li>
-            </ul>
-
             <!-- left -->
 
           </div>
@@ -348,7 +347,7 @@
                      data-endelementdelay="0.1"
                      data-endspeed="1000"
                      data-endeasing="Power4.easeIn">
-                  <router-link to="fields" class="btn btn-primary btn-lg">
+                  <router-link v-bind:to="'/fields/' + slide.id.id1" class="btn btn-primary btn-lg">
                     <span>Reserve</span>
                   </router-link>
                 </div>
@@ -439,7 +438,7 @@
                      data-endelementdelay="0.1"
                      data-endspeed="1000"
                      data-endeasing="Power4.easeIn">
-                  <router-link to="fields" class="btn btn-primary btn-lg">
+                  <router-link v-bind:to="'/fields/' + slide.id.id2" class="btn btn-primary btn-lg">
                     <span>Reserve</span>
                   </router-link>
                 </div>
@@ -464,7 +463,8 @@
                      data-endelementdelay="0.1"
                      data-endspeed="1000"
                      data-endeasing="Power4.easeIn">
-                  <img v-bind:src="slide.image.src3" alt="Girl" class="img-rounded" style="max-height: 450px; margin-left: auto">
+                  <img v-bind:src="slide.image.src3" alt="Girl" class="img-rounded"
+                       style="max-height: 450px; margin-left: auto">
                 </div>
 
                 <div class="tp-caption customin ltl tp-resizeme text_white weight-300"
@@ -530,12 +530,11 @@
                      data-endelementdelay="0.1"
                      data-endspeed="1000"
                      data-endeasing="Power4.easeIn">
-                  <router-link to="fields" class="btn btn-primary btn-lg">
+                  <router-link v-bind:to="'/fields/' + slide.id.id3" class="btn btn-primary btn-lg">
                     <span>Reserve</span>
                   </router-link>
                 </div>
               </li>
-
 
 
             </ul>
@@ -585,275 +584,44 @@
                  data-plugin-options='{"loop":true,"singleItem": false, "items": "4", "stopOnHover":false, "autoPlay":4000, "autoHeight": false, "navigation": true, "pagination": false}'>
 
               <!-- item -->
-              <div class="shop-item nomargin">
+              <div class="shop-item nomargin" v-for="feature in featured">
 
                 <div class="thumbnail">
                   <!-- product image(s) -->
-                  <a class="shop-item-image" href="shop-single-left.html">
-                    <img class="img-responsive" src="/static/assets/images/demo/shop/products/300x450/p13.jpg"
-                         alt="shop first image"/>
-                    <img class="img-responsive" src="/static/assets/images/demo/shop/products/300x450/p14.jpg"
-                         alt="shop hover image"/>
-                  </a>
+                  <div class="owl-carousel owl-padding-0 nomargin"
+                       data-plugin-options='{"singleItem": true, "autoPlay": 3000, "navigation": false, "pagination": false, "transitionStyle":"fadeUp"}'>
+                    <img class="img-responsive" v-for="src in feature.srcs" v-bind:src="src"
+                         alt="">
+                  </div>
                   <!-- /product image(s) -->
 
                 </div>
 
                 <div class="shop-item-summary text-center">
-                  <h2>Cotton 100% - Pink Shirt</h2>
+                  <h2>{{feature.title}}</h2>
 
                   <!-- rating -->
                   <div class="shop-item-rating-line">
-                    <div class="rating rating-4 size-13"><!-- rating-0 ... rating-5 --></div>
+                    <div v-bind:class="'rating ' + feature.rating + ' size-13'"><!-- rating-0 ... rating-5 --></div>
                   </div>
                   <!-- /rating -->
 
                   <!-- price -->
                   <div class="shop-item-price">
-                    <span class="line-through">$98.00</span>
-                    $78.00
+                    <span class="line-through">${{feature.price}}</span>
+                    ${{Math.trunc(feature.price * 0.8)}}
                   </div>
                   <!-- /price -->
                 </div>
 
                 <!-- buttons -->
                 <div class="shop-item-buttons text-center">
-                  <a class="btn btn-default" href="shop-cart.html"><i class="fa fa-cart-plus"></i> Add to Cart</a>
+                  <router-link class="btn btn-default" v-bind:to="'/fields/'+feature.id"><i class="fa fa-cart-plus"></i> Reserve </router-link>
                 </div>
                 <!-- /buttons -->
               </div>
               <!-- /item -->
 
-              <!-- item -->
-              <div class="shop-item nomargin">
-
-                <div class="thumbnail">
-                  <!-- product image(s) -->
-                  <a class="shop-item-image" href="shop-single-left.html">
-                    <!-- CAROUSEL -->
-                    <div class="owl-carousel owl-padding-0 nomargin"
-                         data-plugin-options='{"singleItem": true, "autoPlay": 3000, "navigation": false, "pagination": false, "transitionStyle":"fadeUp"}'>
-                      <img class="img-responsive" src="/static/assets/images/demo/shop/products/300x450/p5.jpg"
-                           alt="">
-                      <img class="img-responsive" src="/static/assets/images/demo/shop/products/300x450/p1.jpg"
-                           alt="">
-                    </div>
-                    <!-- /CAROUSEL -->
-                  </a>
-                  <!-- /product image(s) -->
-                </div>
-
-                <div class="shop-item-summary text-center">
-                  <h2>Pink Dress 100% Cotton</h2>
-
-                  <!-- rating -->
-                  <div class="shop-item-rating-line">
-                    <div class="rating rating-4 size-13"><!-- rating-0 ... rating-5 --></div>
-                  </div>
-                  <!-- /rating -->
-
-                  <!-- price -->
-                  <div class="shop-item-price">
-                    $44.00
-                  </div>
-                  <!-- /price -->
-                </div>
-
-                <!-- buttons -->
-                <div class="shop-item-buttons text-center">
-                  <a class="btn btn-default" href="shop-cart.html"><i class="fa fa-cart-plus"></i> Add to Cart</a>
-                </div>
-                <!-- /buttons -->
-              </div>
-              <!-- /item -->
-
-              <!-- item -->
-              <div class="shop-item nomargin">
-
-                <div class="thumbnail">
-                  <!-- product image(s) -->
-                  <a class="shop-item-image" href="shop-single-left.html">
-                    <img class="img-responsive" src="/static/assets/images/demo/shop/products/300x450/p2.jpg"
-                         alt="shop first image"/>
-                    <img class="img-responsive" src="/static/assets/images/demo/shop/products/300x450/p12.jpg"
-                         alt="shop hover image"/>
-                  </a>
-                  <!-- /product image(s) -->
-
-                </div>
-
-                <div class="shop-item-summary text-center">
-                  <h2>Black Fashion Hat</h2>
-
-                  <!-- rating -->
-                  <div class="shop-item-rating-line">
-                    <div class="rating rating-4 size-13"><!-- rating-0 ... rating-5 --></div>
-                  </div>
-                  <!-- /rating -->
-
-                  <!-- price -->
-                  <div class="shop-item-price">
-                    <span class="line-through">$77.00</span>
-                    $65.00
-                  </div>
-                  <!-- /price -->
-                </div>
-
-                <!-- buttons -->
-                <div class="shop-item-buttons text-center">
-                  <a class="btn btn-default" href="shop-cart.html"><i class="fa fa-cart-plus"></i> Add to Cart</a>
-                </div>
-                <!-- /buttons -->
-              </div>
-              <!-- /item -->
-
-              <!-- item -->
-              <div class="shop-item nomargin">
-
-                <div class="thumbnail">
-                  <!-- product image(s) -->
-                  <a class="shop-item-image" href="shop-single-left.html">
-                    <img class="img-responsive" src="/static/assets/images/demo/shop/products/300x450/p8.jpg"
-                         alt="shop first image"/>
-                  </a>
-                  <!-- /product image(s) -->
-                </div>
-
-                <div class="shop-item-summary text-center">
-                  <h2>Beach Black Lady Suit</h2>
-
-                  <!-- rating -->
-                  <div class="shop-item-rating-line">
-                    <div class="rating rating-4 size-13"><!-- rating-0 ... rating-5 --></div>
-                  </div>
-                  <!-- /rating -->
-
-                  <!-- price -->
-                  <div class="shop-item-price">
-                    $56.00
-                  </div>
-                  <!-- /price -->
-                </div>
-
-                <!-- buttons -->
-                <div class="shop-item-buttons text-center">
-                  <a class="btn btn-default" href="shop-cart.html"><i class="fa fa-cart-plus"></i> Add to Cart</a>
-                </div>
-                <!-- /buttons -->
-              </div>
-              <!-- /item -->
-
-              <!-- item -->
-              <div class="shop-item nomargin">
-
-                <div class="thumbnail">
-                  <!-- product image(s) -->
-                  <a class="shop-item-image" href="shop-single-left.html">
-                    <img class="img-responsive" src="/static/assets/images/demo/shop/products/300x450/p7.jpg"
-                         alt="shop first image"/>
-                  </a>
-                  <!-- /product image(s) -->
-                </div>
-
-                <div class="shop-item-summary text-center">
-                  <h2>Town Dress - Black</h2>
-
-                  <!-- rating -->
-                  <div class="shop-item-rating-line">
-                    <div class="rating rating-4 size-13"><!-- rating-0 ... rating-5 --></div>
-                  </div>
-                  <!-- /rating -->
-
-                  <!-- price -->
-                  <div class="shop-item-price">
-                    $154.00
-                  </div>
-                  <!-- /price -->
-                </div>
-
-                <!-- buttons -->
-                <div class="shop-item-buttons text-center">
-                  <a class="btn btn-default" href="shop-cart.html"><i class="fa fa-cart-plus"></i> Add to Cart</a>
-                </div>
-                <!-- /buttons -->
-              </div>
-              <!-- /item -->
-
-              <!-- item -->
-              <div class="shop-item nomargin">
-
-                <div class="thumbnail">
-                  <!-- product image(s) -->
-                  <a class="shop-item-image" href="shop-single-left.html">
-                    <img class="img-responsive" src="/static/assets/images/demo/shop/products/300x450/p6.jpg"
-                         alt="shop first image"/>
-                    <img class="img-responsive" src="/static/assets/images/demo/shop/products/300x450/p14.jpg"
-                         alt="shop hover image"/>
-                  </a>
-                  <!-- /product image(s) -->
-                </div>
-
-                <div class="shop-item-summary text-center">
-                  <h2>Chick Lady Fashion</h2>
-
-                  <!-- rating -->
-                  <div class="shop-item-rating-line">
-                    <div class="rating rating-4 size-11"><!-- rating-0 ... rating-5 --></div>
-                  </div>
-                  <!-- /rating -->
-
-                  <!-- price -->
-                  <div class="shop-item-price">
-                    $167.00
-                  </div>
-                  <!-- /price -->
-                </div>
-
-                <!-- buttons -->
-                <div class="shop-item-buttons text-center">
-                  <a class="btn btn-default" href="shop-cart.html"><i class="fa fa-cart-plus"></i> Add to Cart</a>
-                </div>
-                <!-- /buttons -->
-              </div>
-              <!-- /item -->
-
-              <!-- item -->
-              <div class="shop-item nomargin">
-
-                <div class="thumbnail">
-                  <!-- product image(s) -->
-                  <a class="shop-item-image" href="shop-single-left.html">
-                    <img class="img-responsive" src="/static/assets/images/demo/shop/products/300x450/p11.jpg"
-                         alt="shop hover image"/>
-                    <img class="img-responsive" src="/static/assets/images/demo/shop/products/300x450/p3.jpg"
-                         alt="shop first image"/>
-                  </a>
-                  <!-- /product image(s) -->
-                </div>
-
-                <div class="shop-item-summary text-center">
-                  <h2>Black Long Lady Shirt</h2>
-
-                  <!-- rating -->
-                  <div class="shop-item-rating-line">
-                    <div class="rating rating-0 size-13"><!-- rating-0 ... rating-5 --></div>
-                  </div>
-                  <!-- /rating -->
-
-                  <!-- price -->
-                  <div class="shop-item-price">
-                    $128.00
-                  </div>
-                  <!-- /price -->
-                </div>
-
-                <!-- buttons -->
-                <div class="shop-item-buttons text-center">
-                  <a class="btn btn-default" href="shop-cart.html"><i class="fa fa-cart-plus"></i> Add to Cart</a>
-                </div>
-                <!-- /buttons -->
-              </div>
-              <!-- /item -->
 
             </div>
 
@@ -905,40 +673,32 @@
             <ul class="shop-item-list row list-inline nomargin">
 
               <!-- ITEM -->
-              <li class="col-lg-2 col-sm-4">
+              <li class="col-lg-2 col-sm-4" v-for="top in tops">
 
                 <div class="shop-item">
 
                   <div class="thumbnail noborder nopadding">
                     <!-- product image(s) -->
-                    <a class="shop-item-image" href="shop-single-left.html">
-                      <img class="img-responsive" src="/static/assets/images/demo/shop/home/products/small/5.jpg"
+                    <router-link class="shop-item-image" v-bind:to="'/fields/'+ top.id">
+                      <img class="img-responsive" v-bind:src="top.src"
                            alt=""/>
-                    </a>
+                    </router-link>
                     <!-- /product image(s) -->
-
-                    <!-- hover buttons -->
-                    <div class="shop-option-over">
-                      <a class="btn btn-default" href="shop-cart.html"><i
-                        class="fa fa-cart-plus size-18"></i></a>
-                    </div>
-                    <!-- /hover buttons -->
-
                   </div>
 
                   <div class="shop-item-summary text-center">
-                    <h2 class="size-14">Blue Dress</h2>
+                    <h2 class="size-14">{{top.title}}</h2>
 
                     <!-- rating -->
                     <div class="shop-item-rating-line">
-                      <div class="rating rating-4 size-11"><!-- rating-0 ... rating-5 --></div>
+                      <div v-bind:class="'rating '+ top.rating + ' size-11'"><!-- rating-0 ... rating-5 --></div>
                     </div>
                     <!-- /rating -->
 
                     <!-- price -->
                     <div class="shop-item-price">
-                      <span class="line-through">$98.00</span>
-                      $78.00
+                      <!--<span class="line-through">${{top.price}}</span>-->
+                      ${{top.price}}
                     </div>
                     <!-- /price -->
                   </div>
@@ -948,478 +708,6 @@
               </li>
               <!-- /ITEM -->
 
-              <!-- ITEM -->
-              <li class="col-lg-2 col-sm-4">
-
-                <div class="shop-item">
-
-                  <div class="thumbnail noborder nopadding">
-                    <!-- product image(s) -->
-                    <a class="shop-item-image" href="shop-single-left.html">
-                      <img class="img-responsive" src="/static/assets/images/demo/shop/home/products/small/6.jpg"
-                           alt=""/>
-                    </a>
-                    <!-- /product image(s) -->
-
-                    <!-- hover buttons -->
-                    <div class="shop-option-over">
-                      <a class="btn btn-default" href="shop-cart.html"><i
-                        class="fa fa-cart-plus size-18"></i></a>
-                    </div>
-                    <!-- /hover buttons -->
-
-                  </div>
-
-                  <div class="shop-item-summary text-center">
-                    <h2 class="size-14">Mobile Phone</h2>
-
-                    <!-- rating -->
-                    <div class="shop-item-rating-line">
-                      <div class="rating rating-4 size-11"><!-- rating-0 ... rating-5 --></div>
-                    </div>
-                    <!-- /rating -->
-
-                    <!-- price -->
-                    <div class="shop-item-price">
-                      $53.00
-                    </div>
-                    <!-- /price -->
-                  </div>
-
-                </div>
-
-              </li>
-              <!-- /ITEM -->
-
-              <!-- ITEM -->
-              <li class="col-lg-2 col-sm-4">
-
-                <div class="shop-item">
-
-                  <div class="thumbnail noborder nopadding">
-                    <!-- product image(s) -->
-                    <a class="shop-item-image" href="shop-single-left.html">
-                      <img class="img-responsive" src="/static/assets/images/demo/shop/home/products/small/7.jpg"
-                           alt=""/>
-                    </a>
-                    <!-- /product image(s) -->
-
-                    <!-- hover buttons -->
-                    <div class="shop-option-over">
-                      <a class="btn btn-default" href="shop-cart.html"><i
-                        class="fa fa-cart-plus size-18"></i></a>
-                    </div>
-                    <!-- /hover buttons -->
-
-                  </div>
-
-                  <div class="shop-item-summary text-center">
-                    <h2 class="size-14">Black Shirt</h2>
-
-                    <!-- rating -->
-                    <div class="shop-item-rating-line">
-                      <div class="rating rating-4 size-11"><!-- rating-0 ... rating-5 --></div>
-                    </div>
-                    <!-- /rating -->
-
-                    <!-- price -->
-                    <div class="shop-item-price">
-                      $68.00
-                    </div>
-                    <!-- /price -->
-                  </div>
-
-                </div>
-
-              </li>
-              <!-- /ITEM -->
-
-              <!-- ITEM -->
-              <li class="col-lg-2 col-sm-4">
-
-                <div class="shop-item">
-
-                  <div class="thumbnail noborder nopadding">
-                    <!-- product image(s) -->
-                    <a class="shop-item-image" href="shop-single-left.html">
-                      <img class="img-responsive" src="/static/assets/images/demo/shop/home/products/small/8.jpg"
-                           alt=""/>
-                    </a>
-                    <!-- /product image(s) -->
-
-                    <!-- hover buttons -->
-                    <div class="shop-option-over">
-                      <a class="btn btn-default" href="shop-cart.html"><i
-                        class="fa fa-cart-plus size-18"></i></a>
-                    </div>
-                    <!-- /hover buttons -->
-
-                  </div>
-
-                  <div class="shop-item-summary text-center">
-                    <h2 class="size-14">Backpack</h2>
-
-                    <!-- rating -->
-                    <div class="shop-item-rating-line">
-                      <div class="rating rating-4 size-11"><!-- rating-0 ... rating-5 --></div>
-                    </div>
-                    <!-- /rating -->
-
-                    <!-- price -->
-                    <div class="shop-item-price">
-                      $19.00
-                    </div>
-                    <!-- /price -->
-                  </div>
-
-                </div>
-
-              </li>
-              <!-- /ITEM -->
-
-              <!-- ITEM -->
-              <li class="col-lg-2 col-sm-4">
-
-                <div class="shop-item">
-
-                  <div class="thumbnail noborder nopadding">
-                    <!-- product image(s) -->
-                    <a class="shop-item-image" href="shop-single-left.html">
-                      <img class="img-responsive" src="/static/assets/images/demo/shop/home/products/small/9.jpg"
-                           alt=""/>
-                    </a>
-                    <!-- /product image(s) -->
-
-                    <!-- hover buttons -->
-                    <div class="shop-option-over">
-                      <a class="btn btn-default" href="shop-cart.html"><i
-                        class="fa fa-cart-plus size-18"></i></a>
-                    </div>
-                    <!-- /hover buttons -->
-
-                  </div>
-
-                  <div class="shop-item-summary text-center">
-                    <h2 class="size-14">Blue Shoes</h2>
-
-                    <!-- rating -->
-                    <div class="shop-item-rating-line">
-                      <div class="rating rating-4 size-11"><!-- rating-0 ... rating-5 --></div>
-                    </div>
-                    <!-- /rating -->
-
-                    <!-- price -->
-                    <div class="shop-item-price">
-                      $81.00
-                    </div>
-                    <!-- /price -->
-                  </div>
-
-                </div>
-
-              </li>
-              <!-- /ITEM -->
-
-              <!-- ITEM -->
-              <li class="col-lg-2 col-sm-4">
-
-                <div class="shop-item">
-
-                  <div class="thumbnail noborder nopadding">
-                    <!-- product image(s) -->
-                    <a class="shop-item-image" href="shop-single-left.html">
-                      <img class="img-responsive" src="/static/assets/images/demo/shop/home/products/small/1.jpg"
-                           alt=""/>
-                    </a>
-                    <!-- /product image(s) -->
-
-                    <!-- hover buttons -->
-                    <div class="shop-option-over">
-                      <a class="btn btn-default" href="shop-cart.html"><i
-                        class="fa fa-cart-plus size-18"></i></a>
-                    </div>
-                    <!-- /hover buttons -->
-
-                  </div>
-
-                  <div class="shop-item-summary text-center">
-                    <h2 class="size-14">Water Watch</h2>
-
-                    <!-- rating -->
-                    <div class="shop-item-rating-line">
-                      <div class="rating rating-4 size-11"><!-- rating-0 ... rating-5 --></div>
-                    </div>
-                    <!-- /rating -->
-
-                    <!-- price -->
-                    <div class="shop-item-price">
-                      $38.00
-                    </div>
-                    <!-- /price -->
-                  </div>
-
-                </div>
-
-              </li>
-              <!-- /ITEM -->
-
-              <!-- ITEM -->
-              <li class="col-lg-2 col-sm-4">
-
-                <div class="shop-item">
-
-                  <div class="thumbnail noborder nopadding">
-                    <!-- product image(s) -->
-                    <a class="shop-item-image" href="shop-single-left.html">
-                      <img class="img-responsive" src="/static/assets/images/demo/shop/home/products/small/2.jpg"
-                           alt=""/>
-                    </a>
-                    <!-- /product image(s) -->
-
-                    <!-- hover buttons -->
-                    <div class="shop-option-over">
-                      <a class="btn btn-default" href="shop-cart.html"><i
-                        class="fa fa-cart-plus size-18"></i></a>
-                    </div>
-                    <!-- /hover buttons -->
-
-                  </div>
-
-                  <div class="shop-item-summary text-center">
-                    <h2 class="size-14">Bag</h2>
-
-                    <!-- rating -->
-                    <div class="shop-item-rating-line">
-                      <div class="rating rating-4 size-11"><!-- rating-0 ... rating-5 --></div>
-                    </div>
-                    <!-- /rating -->
-
-                    <!-- price -->
-                    <div class="shop-item-price">
-                      $22.00
-                    </div>
-                    <!-- /price -->
-                  </div>
-
-                </div>
-
-              </li>
-              <!-- /ITEM -->
-
-              <!-- ITEM -->
-              <li class="col-lg-2 col-sm-4">
-
-                <div class="shop-item">
-
-                  <div class="thumbnail noborder nopadding">
-                    <!-- product image(s) -->
-                    <a class="shop-item-image" href="shop-single-left.html">
-                      <img class="img-responsive" src="/static/assets/images/demo/shop/home/products/small/3.jpg"
-                           alt=""/>
-                    </a>
-                    <!-- /product image(s) -->
-
-                    <!-- hover buttons -->
-                    <div class="shop-option-over">
-                      <a class="btn btn-default" href="shop-cart.html"><i
-                        class="fa fa-cart-plus size-18"></i></a>
-                    </div>
-                    <!-- /hover buttons -->
-
-                  </div>
-
-                  <div class="shop-item-summary text-center">
-                    <h2 class="size-14">Woman Bag</h2>
-
-                    <!-- rating -->
-                    <div class="shop-item-rating-line">
-                      <div class="rating rating-4 size-11"><!-- rating-0 ... rating-5 --></div>
-                    </div>
-                    <!-- /rating -->
-
-                    <!-- price -->
-                    <div class="shop-item-price">
-                      $15.00
-                    </div>
-                    <!-- /price -->
-                  </div>
-
-                </div>
-
-              </li>
-              <!-- /ITEM -->
-
-              <!-- ITEM -->
-              <li class="col-lg-2 col-sm-4">
-
-                <div class="shop-item">
-
-                  <div class="thumbnail noborder nopadding">
-                    <!-- product image(s) -->
-                    <a class="shop-item-image" href="shop-single-left.html">
-                      <img class="img-responsive" src="/static/assets/images/demo/shop/home/products/small/4.jpg"
-                           alt=""/>
-                    </a>
-                    <!-- /product image(s) -->
-
-                    <!-- hover buttons -->
-                    <div class="shop-option-over">
-                      <a class="btn btn-default" href="shop-cart.html"><i
-                        class="fa fa-cart-plus size-18"></i></a>
-                    </div>
-                    <!-- /hover buttons -->
-
-                  </div>
-
-                  <div class="shop-item-summary text-center">
-                    <h2 class="size-14">Woman Hat</h2>
-
-                    <!-- rating -->
-                    <div class="shop-item-rating-line">
-                      <div class="rating rating-4 size-11"><!-- rating-0 ... rating-5 --></div>
-                    </div>
-                    <!-- /rating -->
-
-                    <!-- price -->
-                    <div class="shop-item-price">
-                      $61.00
-                    </div>
-                    <!-- /price -->
-                  </div>
-
-                </div>
-
-              </li>
-              <!-- /ITEM -->
-
-              <!-- ITEM -->
-              <li class="col-lg-2 col-sm-4">
-
-                <div class="shop-item">
-
-                  <div class="thumbnail noborder nopadding">
-                    <!-- product image(s) -->
-                    <a class="shop-item-image" href="shop-single-left.html">
-                      <img class="img-responsive" src="/static/assets/images/demo/shop/home/products/small/5.jpg"
-                           alt=""/>
-                    </a>
-                    <!-- /product image(s) -->
-
-                    <!-- hover buttons -->
-                    <div class="shop-option-over">
-                      <a class="btn btn-default" href="shop-cart.html"><i
-                        class="fa fa-cart-plus size-18"></i></a>
-                    </div>
-                    <!-- /hover buttons -->
-
-                  </div>
-
-                  <div class="shop-item-summary text-center">
-                    <h2 class="size-14">Cotton Cap</h2>
-
-                    <!-- rating -->
-                    <div class="shop-item-rating-line">
-                      <div class="rating rating-4 size-11"><!-- rating-0 ... rating-5 --></div>
-                    </div>
-                    <!-- /rating -->
-
-                    <!-- price -->
-                    <div class="shop-item-price">
-                      $56.00
-                    </div>
-                    <!-- /price -->
-                  </div>
-
-                </div>
-
-              </li>
-              <!-- /ITEM -->
-
-              <!-- ITEM -->
-              <li class="col-lg-2 col-sm-4">
-
-                <div class="shop-item">
-
-                  <div class="thumbnail noborder nopadding">
-                    <!-- product image(s) -->
-                    <a class="shop-item-image" href="shop-single-left.html">
-                      <img class="img-responsive" src="/static/assets/images/demo/shop/home/products/small/6.jpg"
-                           alt=""/>
-                    </a>
-                    <!-- /product image(s) -->
-
-                    <!-- hover buttons -->
-                    <div class="shop-option-over">
-                      <a class="btn btn-default" href="shop-cart.html"><i
-                        class="fa fa-cart-plus size-18"></i></a>
-                    </div>
-                    <!-- /hover buttons -->
-
-                  </div>
-
-                  <div class="shop-item-summary text-center">
-                    <h2 class="size-14">Sun Glasses</h2>
-
-                    <!-- rating -->
-                    <div class="shop-item-rating-line">
-                      <div class="rating rating-4 size-11"><!-- rating-0 ... rating-5 --></div>
-                    </div>
-                    <!-- /rating -->
-
-                    <!-- price -->
-                    <div class="shop-item-price">
-                      $98.00
-                    </div>
-                    <!-- /price -->
-                  </div>
-
-                </div>
-
-              </li>
-              <!-- /ITEM -->
-
-              <!-- ITEM -->
-              <li class="col-lg-2 col-sm-4">
-
-                <div class="shop-item">
-
-                  <div class="thumbnail noborder nopadding">
-                    <!-- product image(s) -->
-                    <a class="shop-item-image" href="shop-single-left.html">
-                      <img class="img-responsive" src="/static/assets/images/demo/shop/home/products/small/7.jpg"
-                           alt=""/>
-                    </a>
-                    <!-- /product image(s) -->
-
-                    <!-- hover buttons -->
-                    <div class="shop-option-over">
-                      <a class="btn btn-default" href="shop-cart.html"><i
-                        class="fa fa-cart-plus size-18"></i></a>
-                    </div>
-                    <!-- /hover buttons -->
-
-                  </div>
-
-                  <div class="shop-item-summary text-center">
-                    <h2 class="size-14">Bag</h2>
-
-                    <!-- rating -->
-                    <div class="shop-item-rating-line">
-                      <div class="rating rating-4 size-11"><!-- rating-0 ... rating-5 --></div>
-                    </div>
-                    <!-- /rating -->
-
-                    <!-- price -->
-                    <div class="shop-item-price">
-                      $34.00
-                    </div>
-                    <!-- /price -->
-                  </div>
-
-                </div>
-
-              </li>
-              <!-- /ITEM -->
 
             </ul>
 
@@ -1718,61 +1006,6 @@
         <!-- /FOOTER -->
 
 
-        <!--
-            HOME SHOP - MODAL ON LOAD
-
-            data-autoload="true" 			- load modal on page load
-            data-autoload-delay="2000"		- load after 2000 ms (1000ms = 1s)
-        -->
-        <!--<div id="shopLoadModal" class="modal fade" data-autoload="true" data-autoload-delay="2000">-->
-        <!--<div class="modal-dialog modal-full">-->
-        <!--<div class="modal-content" style="background-image:url('/static/assets/images/misc/shop/shop_modal.jpg');">-->
-
-        <!--&lt;!&ndash; header modal &ndash;&gt;-->
-        <!--<div class="modal-header noborder">-->
-        <!--<button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>-->
-        <!--</div>-->
-
-        <!--&lt;!&ndash; body modal &ndash;&gt;-->
-        <!--<div class="modal-body">-->
-
-        <!--<div class="block-content">-->
-
-        <!--<img src="/static/assets/images/logo-footer-dark.png" alt="" />-->
-        <!--<p class="size-13 margin-bottom-20 margin-top-30">Subscribe to the Smarty newsletter to get all new products and all new discounts.</p>-->
-
-        <!--&lt;!&ndash; newsletter &ndash;&gt;-->
-        <!--<div class="inline-search clearfix margin-bottom-20">-->
-        <!--<form action="php/newsletter.php" method="post" class="validate nomargin" data-success="Subscribed! Thank you!" data-toastr-position="bottom-right" novalidate="novalidate">-->
-
-        <!--<input type="search" placeholder="Email Address" id="shop_email" name="shop_email" class="serch-input required">-->
-        <!--<button type="submit">-->
-        <!--<i class="fa fa-check"></i>-->
-        <!--</button>-->
-        <!--</form>-->
-        <!--</div>-->
-        <!--&lt;!&ndash; /newsletter &ndash;&gt;-->
-
-        <!--&lt;!&ndash; Don't show this popup again &ndash;&gt;-->
-        <!--<div class="size-11 text-left">-->
-        <!--<label class="checkbox pull-left">-->
-        <!--<input class="loadModalHide" type="checkbox" />-->
-        <!--<i></i> <span class="weight-300">Don't show this popup again</span>-->
-        <!--</label>-->
-
-        <!--</div>-->
-        <!--&lt;!&ndash; /Don't show this popup again &ndash;&gt;-->
-
-        <!--</div>-->
-
-        <!--</div>-->
-
-        <!--</div>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!-- /HOME SHOP - MODAL ON LOAD -->
-
-
       </div>
       <!-- /wrapper -->
 
@@ -1809,16 +1042,160 @@
             t3: 'Some Fucking Title 3'
           },
           subtitle: {
-            st1:'Some Subtitle Shit 1',
-            st2:'Some Subtitle Shit 2',
-            st3:'Some Subtitle Shit 3'
+            st1: 'Some Subtitle Shit 1',
+            st2: 'Some Subtitle Shit 2',
+            st3: 'Some Subtitle Shit 3'
           },
           description: {
             d1: 'Stupid ass description for the fucking field slider which is located on the fucking top of fucking home page of this stupid goddamn site 1',
             d2: 'Stupid ass description for the fucking field slider which is located on the fucking top of fucking home page of this stupid goddamn site 2',
             d3: 'Stupid ass description for the fucking field slider which is located on the fucking top of fucking home page of this stupid goddamn site 3'
+          },
+          id: {
+            id1: 'asdf',
+            id2: 'asdf2',
+            id3: 'asdf3'
           }
-        }
+        },
+        featured: {
+          f1: {
+            srcs: [
+              'https://images.bubbleroom.eu/data/product/676x980/brazilian-crochet-pantie.jpg',
+              'https://images.bubbleroom.eu/data/product/676x980/579557-0001x579553-0001_368.jpg'
+            ],
+            title: 'featured1',
+            rating: 'rating-4',
+            price: 224,
+            id: 'asdf'
+          },
+          f2: {
+            srcs: [
+              'https://images.bubbleroom.eu/data/product/676x980/599341-0001_083.jpg',
+              'https://images.bubbleroom.eu/data/product/676x980/579557-0001x579553-0001_368.jpg'
+            ],
+            title: 'featured2',
+            rating: 'rating-3',
+            price: 104,
+            id: 'asdf'
+          },
+          f3: {
+            srcs: [
+              'https://images.bubbleroom.eu/data/product/676x980/599341-0001_083.jpg',
+              'https://images.bubbleroom.eu/data/product/676x980/579557-0001x579553-0001_368.jpg'
+            ],
+            title: 'featured3',
+            rating: 'rating-5',
+            price: 321,
+            id: 'asdf'
+          },
+          f4: {
+            srcs: [
+              'https://images.bubbleroom.eu/data/product/676x980/599341-0001_083.jpg',
+              'https://images.bubbleroom.eu/data/product/676x980/579557-0001x579553-0001_368.jpg'
+            ],
+            title: 'featured4',
+            rating: 'rating-2',
+            price: 232,
+            id: 'asdf'
+          },
+          f5: {
+            srcs: [
+              'https://images.bubbleroom.eu/data/product/676x980/599341-0001_083.jpg',
+              'https://images.bubbleroom.eu/data/product/676x980/brazilian-crochet-pantie.jpg',
+            ],
+            title: 'featured5',
+            rating: 'rating-1',
+            price: 444,
+            id: 'asdf'
+          },
+
+        },
+        tops: {
+          t1: {
+            src: 'https://cdn.shopify.com/s/files/1/0954/5630/products/HTB1jVfMOXXXXXcxXFXXq6xXFXXXQ_600x@2x.png?v=1505883150',
+            title: 'Title1',
+            price: 15,
+            rating: 'rating-3',
+            id: 'asdf1'
+          },
+          t2: {
+            src: 'https://cdn.shopify.com/s/files/1/0954/5630/products/HTB19HzGOXXXXXayXVXXq6xXFXXXa_600x@2x.png?v=1505883150',
+            title: 'Title2',
+            price: 12,
+            rating: 'rating-5',
+            id: 'asdf2'
+          },
+          t3: {
+            src: 'https://cdn.shopify.com/s/files/1/0954/5630/products/HTB1mdfIOXXXXXasXVXXq6xXFXXXb_600x@2x.png?v=1505883150',
+            title: 'Title3',
+            price: 43,
+            rating: 'rating-3',
+            id: 'asdf3'
+          },
+          t4: {
+            src: 'https://ae01.alicdn.com/kf/HTB1wJhPMXXXXXaPXFXXq6xXFXXXd/2016-Hot-Sexy-Cross-Halter-Neck-Women-1-2-cup-Deep-U-Bra-One-Piece-Seamless.jpg',
+            title: 'Title4',
+            price: 19,
+            rating: 'rating-3',
+            id: 'asdf4'
+          },
+          t5: {
+            src: 'https://ae01.alicdn.com/kf/HTB1Xmt0MXXXXXcMXXXXq6xXFXXXl/2016-Hot-Sexy-Cross-Halter-Neck-Women-1-2-cup-Deep-U-Bra-One-Piece-Seamless.jpg',
+            title: 'Title5',
+            price: 57,
+            rating: 'rating-4',
+            id: 'asdf5'
+          },
+          t6: {
+            src: 'https://img2.momoshop.com.tw/goodsimg/0004/494/950/4494950_R.jpg?t=1519346881',
+            title: 'Title6',
+            price: 93,
+            rating: 'rating-1',
+            id: 'asdf6'
+          },
+          t7: {
+            src: 'https://cdn.shopify.com/s/files/1/0954/5630/products/HTB1jVfMOXXXXXcxXFXXq6xXFXXXQ_600x@2x.png?v=1505883150',
+            title: 'Title7',
+            price: 15,
+            rating: 'rating-3',
+            id: 'asdf7'
+          },
+          t8: {
+            src: 'https://cdn.shopify.com/s/files/1/0954/5630/products/HTB19HzGOXXXXXayXVXXq6xXFXXXa_600x@2x.png?v=1505883150',
+            title: 'Title8',
+            price: 12,
+            rating: 'rating-5',
+            id: 'asdf8'
+          },
+          t9: {
+            src: 'https://cdn.shopify.com/s/files/1/0954/5630/products/HTB1mdfIOXXXXXasXVXXq6xXFXXXb_600x@2x.png?v=1505883150',
+            title: 'Title9',
+            price: 43,
+            rating: 'rating-3',
+            id: 'asdf9'
+          },
+          t10: {
+            src: 'https://ae01.alicdn.com/kf/HTB1wJhPMXXXXXaPXFXXq6xXFXXXd/2016-Hot-Sexy-Cross-Halter-Neck-Women-1-2-cup-Deep-U-Bra-One-Piece-Seamless.jpg',
+            title: 'Title10',
+            price: 19,
+            rating: 'rating-3',
+            id: 'asdf10'
+          },
+          t11: {
+            src: 'https://ae01.alicdn.com/kf/HTB1Xmt0MXXXXXcMXXXXq6xXFXXXl/2016-Hot-Sexy-Cross-Halter-Neck-Women-1-2-cup-Deep-U-Bra-One-Piece-Seamless.jpg',
+            title: 'Title11',
+            price: 57,
+            rating: 'rating-4',
+            id: 'asdf11'
+          },
+          t12: {
+            src: 'https://img2.momoshop.com.tw/goodsimg/0004/494/950/4494950_R.jpg?t=1519346881',
+            title: 'Title12',
+            price: 93,
+            rating: 'rating-1',
+            id: 'asdf12'
+          }
+        },
       }
     }
   }
@@ -1827,157 +1204,3 @@
 <style scoped>
 
 </style>
-<!-- SLIDE  -->
-<!--<li data-transition="random" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"-->
-    <!--data-title="Slide">-->
-
-  <!--<img src="/static/assets/images/1x1.png" data-lazyload="/static/assets/images/demo/1200x800/10-min.jpg"-->
-       <!--alt=""-->
-       <!--data-bgfit="cover" data-bgposition="center top" data-bgrepeat="no-repeat"/>-->
-
-  <!--<div class="tp-dottedoverlay twoxtwo">&lt;!&ndash; dotted overlay &ndash;&gt;</div>-->
-  <!--<div class="overlay dark-3">&lt;!&ndash; dark overlay [1 to 9 opacity] &ndash;&gt;</div>-->
-
-  <!--<div class="tp-caption customin ltl tp-resizeme text_white"-->
-       <!--data-x="center"-->
-       <!--data-y="105"-->
-       <!--data-customin="x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"-->
-       <!--data-speed="800"-->
-       <!--data-start="1000"-->
-       <!--data-easing="easeOutQuad"-->
-       <!--data-splitin="none"-->
-       <!--data-splitout="none"-->
-       <!--data-elementdelay="0.01"-->
-       <!--data-endelementdelay="0.1"-->
-       <!--data-endspeed="1000"-->
-       <!--data-endeasing="Power4.easeIn" style="z-index: 10;">-->
-    <!--<span class="weight-300">DEVELOPMENT / MARKETING / DESIGN / PHOTO</span>-->
-  <!--</div>-->
-
-  <!--<div class="tp-caption customin ltl tp-resizeme large_bold_white"-->
-       <!--data-x="center"-->
-       <!--data-y="155"-->
-       <!--data-customin="x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"-->
-       <!--data-speed="800"-->
-       <!--data-start="1200"-->
-       <!--data-easing="easeOutQuad"-->
-       <!--data-splitin="none"-->
-       <!--data-splitout="none"-->
-       <!--data-elementdelay="0.01"-->
-       <!--data-endelementdelay="0.1"-->
-       <!--data-endspeed="1000"-->
-       <!--data-endeasing="Power4.easeIn" style="z-index: 10;">-->
-    <!--WELCOME TO SMARTY-->
-  <!--</div>-->
-
-  <!--<div class="tp-caption customin ltl tp-resizeme small_light_white font-lato size-20"-->
-       <!--data-x="center"-->
-       <!--data-y="245"-->
-       <!--data-customin="x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"-->
-       <!--data-speed="800"-->
-       <!--data-start="1400"-->
-       <!--data-easing="easeOutQuad"-->
-       <!--data-splitin="none"-->
-       <!--data-splitout="none"-->
-       <!--data-elementdelay="0.01"-->
-       <!--data-endelementdelay="0.1"-->
-       <!--data-endspeed="1000"-->
-       <!--data-endeasing="Power4.easeIn"-->
-       <!--style="z-index: 10; width: 100%; max-width: 750px; white-space: normal; text-align:center;">-->
-    <!--Fabulas definitiones ei pri per recteque hendrerit script2orem in errem scribentur mel-->
-    <!--fastidii propriae philosophia cu mea.-->
-  <!--</div>-->
-
-  <!--<div class="tp-caption customin ltl tp-resizeme"-->
-       <!--data-x="center"-->
-       <!--data-y="313"-->
-       <!--data-customin="x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"-->
-       <!--data-speed="800"-->
-       <!--data-start="1550"-->
-       <!--data-easing="easeOutQuad"-->
-       <!--data-splitin="none"-->
-       <!--data-splitout="none"-->
-       <!--data-elementdelay="0.01"-->
-       <!--data-endelementdelay="0.1"-->
-       <!--data-endspeed="1000"-->
-       <!--data-endeasing="Power4.easeIn" style="z-index: 10;">-->
-    <!--<router-link to="feilds-list" class="btn btn-default btn-lg">-->
-      <!--<span>start shopping &raquo;</span>-->
-    <!--</router-link>-->
-  <!--</div>-->
-
-<!--</li>-->
-
-<!--&lt;!&ndash; SLIDE &ndash;&gt;-->
-<!--<li data-transition="fade" data-slotamount="7" data-masterspeed="1000" data-title="Slide">-->
-
-  <!--<img src="/static/assets/images/demo/spotted.jpg" alt="video" data-bgposition="top center"-->
-       <!--data-bgfit="cover" data-bgrepeat="no-repeat">-->
-
-  <!--<div class="caption customin customout tp-resizeme"-->
-       <!--data-x="right"-->
-       <!--data-y="center"-->
-       <!--data-voffset="-70"-->
-       <!--data-customin="x:-50;y:-300;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.5;scaleY:0.5;skewX:0;skewY:0;opacity:0;transformPerspective:0;transformOrigin:50% 50%;"-->
-       <!--data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"-->
-       <!--data-speed="800"-->
-       <!--data-start="1000"-->
-       <!--data-startslide="1"-->
-       <!--data-easing="Power4.easeOut"-->
-       <!--data-endspeed="500"-->
-       <!--data-endeasing="Power4.easeIn">-->
-    <!--<h4>OVER 30% OFF</h4>-->
-  <!--</div>-->
-
-  <!--<div class="caption fade customout tp-resizeme"-->
-       <!--data-x="right"-->
-       <!--data-y="center"-->
-       <!--data-voffset="-110"-->
-       <!--data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"-->
-       <!--data-speed="800"-->
-       <!--data-start="1300"-->
-       <!--data-startslide="1"-->
-       <!--data-easing="Power4.easeOut"-->
-       <!--data-endspeed="500"-->
-       <!--data-endeasing="Power4.easeIn">-->
-    <!--<h2>FASHION <strong>HUGE SALES</strong></h2>-->
-  <!--</div>-->
-
-  <!--<div class="caption customin customout tp-resizeme large_bold_white"-->
-       <!--data-x="right"-->
-       <!--data-y="center"-->
-       <!--data-voffset="75"-->
-       <!--data-customin="x:-50;y:100;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.1;scaleY:0.1;skewX:0;skewY:0;opacity:0;transformPerspective:0;transformOrigin:50% 50%;"-->
-       <!--data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"-->
-       <!--data-speed="800"-->
-       <!--data-start="1500"-->
-       <!--data-startslide="1"-->
-       <!--data-easing="Power4.easeOut"-->
-       <!--data-endspeed="500"-->
-       <!--data-endeasing="Power4.easeIn">-->
-    <!--<router-link to="feilds-list" class="scrollTo btn btn-default btn-md btn-lg">-->
-      <!--<span>start shopping &raquo;</span>-->
-    <!--</router-link>-->
-  <!--</div>-->
-
-
-  <!--<div class="caption customin customout tp-resizeme"-->
-       <!--data-x="left"-->
-       <!--data-hoffset="0"-->
-       <!--data-y="center"-->
-       <!--data-voffset="0"-->
-       <!--data-customin="x:50;y:150;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.5;scaleY:0.5;skewX:0;skewY:0;opacity:0;transformPerspective:0;transformOrigin:50% 50%;"-->
-       <!--data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"-->
-       <!--data-speed="800"-->
-       <!--data-start="1800"-->
-       <!--data-startslide="1"-->
-       <!--data-easing="Power4.easeOut"-->
-       <!--data-endspeed="500"-->
-       <!--data-endeasing="Power4.easeIn"-->
-       <!--data-autoplay="false"-->
-       <!--data-autoplayonlyfirsttime="false">-->
-    <!--<iframe-->
-      <!--src="http://player.vimeo.com/video/58238439?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff"-->
-      <!--width="480" height="275" allowfullscreen></iframe>-->
-  <!--</div>-->
-<!--</li>-->
