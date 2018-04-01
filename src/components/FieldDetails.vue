@@ -1333,11 +1333,11 @@
 
 
   <!-- PRELOADER -->
-  <div id="preloader">
-    <div class="inner">
-      <span class="loader"></span>
-    </div>
-  </div><!-- /PRELOADER -->
+  <!--<div id="preloader">-->
+    <!--<div class="inner">-->
+      <!--<span class="loader"></span>-->
+    <!--</div>-->
+  <!--</div>&lt;!&ndash; /PRELOADER &ndash;&gt;-->
 
 
   <!-- JAVASCRIPT FILES -->
@@ -1357,8 +1357,35 @@
 </template>
 
 <script>
+  import axios from 'axios'
     export default {
-        name: "field-details"
+        name: "Field" ,
+      data(){
+          return {
+            fieldData: {}
+          }
+      },
+      created() {
+        this.fetchData()
+      },
+
+      watch: {
+        '$route': 'fetchData'
+      },
+
+      methods: {
+        fetchData() {
+          axios.get('http://api.shahbandegan.ir/v1/fields/'+this.$route.params.id+'/')
+            .then((resp) => {
+              this.fieldData = resp.data.data;
+
+              console.log(resp + "  ===========================")
+            })
+            .catch((err) => {
+              console.log(err + "  ===========================")
+            })
+        }
+      }
     }
 </script>
 

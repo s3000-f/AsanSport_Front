@@ -251,9 +251,9 @@
             </ul>
 
 
-            <div v-for="field in fields" class="mix-grid">
+            <div v-for="field in fields">
 
-              <template class="row mix design" ><!-- item -->
+              <div class="row mix design" ><!-- item -->
 
                 <div class="col-md-7"><!-- image -->
                   <div class="item-box">
@@ -338,7 +338,10 @@
 
                 </div><!-- /description -->
 
-              </template><!-- /item -->
+
+              </div><!-- /item -->
+
+              <div class="divider margin-top-10 margin-bottom-10"></div>
 
 
             </div>
