@@ -269,7 +269,7 @@
 													</a>
 
                           <!-- details -->
-													<router-link class="ico-rounded" v-bind:to="'/field-details/' + field.id"   >
+													<router-link class="ico-rounded" v-bind:to="'/fields/' + field.id"   >
 														<span class="glyphicon glyphicon-option-horizontal size-20"></span>
 													</router-link>
 
@@ -300,7 +300,7 @@
 
                 <div class="col-md-5"><!-- description -->
                   <h2>
-                    <router-link class="ico-rounded" v-bind:to="'/field-details/' + field.id"   >
+                    <router-link class="ico-rounded" v-bind:to="'/fields/' + field.id"   >
                       {{field.name}}
                     </router-link>
                   </h2>
@@ -330,9 +330,11 @@
                         <strong>Client:</strong> Lorem Company LLC
                       </li>
                     </ul>
-
-                    <a class="btn btn-lg btn-default btn-bordered size-15" href="portfolio-single-slider.html">PROJECT
-                      DETAIL</a>
+                    <router-link class="btn btn-lg btn-default btn-bordered size-15"  v-bind:to="'/fields/' + field.id"   >
+                      PROJECT DETAILS
+                    </router-link>
+                    <!--<a class="btn btn-lg btn-default btn-bordered size-15" href="portfolio-single-slider.html">PROJECT-->
+                      <!--DETAIL</a>-->
 
                   </div>
 

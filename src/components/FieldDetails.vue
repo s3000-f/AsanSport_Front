@@ -74,13 +74,13 @@
         <ul class="top-links list-inline">
           <li class="hidden-xs"><a href="page-faq-1.html">FAQ</a></li>
           <li>
-            <a class="dropdown-toggle no-text-underline" data-toggle="dropdown" href="#"><img class="flag-lang" src="assets/images/flags/us.png" width="16" height="11" alt="lang" /> ENGLISH</a>
+            <a class="dropdown-toggle no-text-underline" data-toggle="dropdown" href="#"><img class="flag-lang" src="/static/assets/images/flags/us.png" width="16" height="11" alt="lang" /> ENGLISH</a>
             <ul class="dropdown-langs dropdown-menu">
-              <li><a tabindex="-1" href="#"><img class="flag-lang" src="assets/images/flags/us.png" width="16" height="11" alt="lang" /> ENGLISH</a></li>
+              <li><a tabindex="-1" href="#"><img class="flag-lang" src="/static/assets/images/flags/us.png" width="16" height="11" alt="lang" /> ENGLISH</a></li>
               <li class="divider"></li>
-              <li><a tabindex="-1" href="#"><img class="flag-lang" src="assets/images/flags/de.png" width="16" height="11" alt="lang" /> GERMAN</a></li>
-              <li><a tabindex="-1" href="#"><img class="flag-lang" src="assets/images/flags/ru.png" width="16" height="11" alt="lang" /> RUSSIAN</a></li>
-              <li><a tabindex="-1" href="#"><img class="flag-lang" src="assets/images/flags/it.png" width="16" height="11" alt="lang" /> ITALIAN</a></li>
+              <li><a tabindex="-1" href="#"><img class="flag-lang" src="/static/assets/images/flags/de.png" width="16" height="11" alt="lang" /> GERMAN</a></li>
+              <li><a tabindex="-1" href="#"><img class="flag-lang" src="/static/assets/images/flags/ru.png" width="16" height="11" alt="lang" /> RUSSIAN</a></li>
+              <li><a tabindex="-1" href="#"><img class="flag-lang" src="/static/assets/images/flags/it.png" width="16" height="11" alt="lang" /> ITALIAN</a></li>
             </ul>
           </li>
           <li>
@@ -151,7 +151,7 @@
 
             <!-- SEARCH -->
             <li class="search">
-              <a href="javascript:;">
+              <a href="javascript:">
                 <i class="fa fa-search"></i>
               </a>
             </li>
@@ -170,13 +170,13 @@
                 <div class="quick-cart-wrapper">
 
                   <a href="#"><!-- cart item -->
-                    <img src="assets/images/demo/people/300x300/4-min.jpg" width="45" height="45" alt="" />
+                    <img src="/static/assets/images/demo/people/300x300/4-min.jpg" width="45" height="45" alt="" />
                     <h6><span>2x</span> RED BAG WITH HUGE POCKETS</h6>
                     <small>$37.21</small>
                   </a><!-- /cart item -->
 
                   <a href="#"><!-- cart item -->
-                    <img src="assets/images/demo/people/300x300/5-min.jpg" width="45" height="45" alt="" />
+                    <img src="/static/assets/images/demo/people/300x300/5-min.jpg" width="45" height="45" alt="" />
                     <h6><span>2x</span> THIS IS A VERY LONG TEXT AND WILL BE TRUNCATED</h6>
                     <small>$17.18</small>
                   </a><!-- /cart item -->
@@ -206,7 +206,7 @@
 
           <!-- Logo -->
           <a class="logo pull-left" href="index.html">
-            <img src="assets/images/logo_dark.png" alt="" />
+            <img src="/static/assets/images/logo_dark.png" alt="" />
           </a>
 
           <!--
@@ -318,40 +318,40 @@
                                                   .top-right
                                                   .top-left
                                           -->
-                    <a class="lightbox bottom-right" href="assets/images/demo/shop/products/1000x1500/p5.jpg" data-plugin-options='{"type":"image"}'><i class="glyphicon glyphicon-search"></i></a>
+                    <a class="lightbox bottom-right" href="/static/assets/images/demo/shop/products/1000x1500/p5.jpg" data-plugin-options='{"type":"image"}'><i class="glyphicon glyphicon-search"></i></a>
 
                     <!--
                                               image
 
                                               Extra: add .image-bw class to force black and white!
                                           -->
-                    <img class="img-responsive" src="assets/images/demo/shop/products/1000x1500/p5.jpg" width="1200" height="1500" alt="This is the product title" />
+                    <img class="img-responsive" src="/static/assets/images/demo/shop/products/1000x1500/p5.jpg" width="1200" height="1500" alt="This is the product title" />
                   </figure>
 
                 </div>
 
                 <!-- Thumbnails (required height:100px) -->
                 <div data-for="zoom-primary" class="zoom-more owl-carousel owl-padding-3 featured" data-plugin-options='{"singleItem": false, "autoPlay": false, "navigation": true, "pagination": false}'>
-                  <a class="thumbnail active" href="assets/images/demo/shop/products/1000x1500/p5.jpg">
-                    <img src="assets/images/demo/shop/products/100x100/p5.jpg" height="100" alt="" />
+                  <a class="thumbnail active" href="/static/assets/images/demo/shop/products/1000x1500/p5.jpg">
+                    <img src="/static/assets/images/demo/shop/products/100x100/p5.jpg" height="100" alt="" />
                   </a>
-                  <a class="thumbnail" href="assets/images/demo/shop/products/1000x1500/p6.jpg">
-                    <img src="assets/images/demo/shop/products/100x100/p6.jpg" height="100" alt="" />
+                  <a class="thumbnail" href="/static/assets/images/demo/shop/products/1000x1500/p6.jpg">
+                    <img src="/static/assets/images/demo/shop/products/100x100/p6.jpg" height="100" alt="" />
                   </a>
-                  <a class="thumbnail" href="assets/images/demo/shop/products/1000x1500/p7.jpg">
-                    <img src="assets/images/demo/shop/products/100x100/p7.jpg" height="100" alt="" />
+                  <a class="thumbnail" href="/static/assets/images/demo/shop/products/1000x1500/p7.jpg">
+                    <img src="/static/assets/images/demo/shop/products/100x100/p7.jpg" height="100" alt="" />
                   </a>
-                  <a class="thumbnail" href="assets/images/demo/shop/products/1000x1500/p8.jpg">
-                    <img src="assets/images/demo/shop/products/100x100/p8.jpg" height="100" alt="" />
+                  <a class="thumbnail" href="/static/assets/images/demo/shop/products/1000x1500/p8.jpg">
+                    <img src="/static/assets/images/demo/shop/products/100x100/p8.jpg" height="100" alt="" />
                   </a>
-                  <a class="thumbnail" href="assets/images/demo/shop/products/1000x1500/p9.jpg">
-                    <img src="assets/images/demo/shop/products/100x100/p9.jpg" height="100" alt="" />
+                  <a class="thumbnail" href="/static/assets/images/demo/shop/products/1000x1500/p9.jpg">
+                    <img src="/static/assets/images/demo/shop/products/100x100/p9.jpg" height="100" alt="" />
                   </a>
-                  <a class="thumbnail" href="assets/images/demo/shop/products/1000x1500/p10.jpg">
-                    <img src="assets/images/demo/shop/products/100x100/p10.jpg" height="100" alt="" />
+                  <a class="thumbnail" href="/static/assets/images/demo/shop/products/1000x1500/p10.jpg">
+                    <img src="/static/assets/images/demo/shop/products/100x100/p10.jpg" height="100" alt="" />
                   </a>
-                  <a class="thumbnail" href="assets/images/demo/shop/products/1000x1500/p11.jpg">
-                    <img src="assets/images/demo/shop/products/100x100/p11.jpg" height="100" alt="" />
+                  <a class="thumbnail" href="/static/assets/images/demo/shop/products/1000x1500/p11.jpg">
+                    <img src="/static/assets/images/demo/shop/products/100x100/p11.jpg" height="100" alt="" />
                   </a>
                 </div>
                 <!-- /Thumbnails -->
@@ -599,7 +599,7 @@
                 <div class="block margin-bottom-60">
 
 										<span class="user-avatar"><!-- user-avatar -->
-											<img class="pull-left media-object" src="assets/images/avatar2.jpg" width="64" height="64" alt="">
+											<img class="pull-left media-object" src="/static/assets/images/avatar2.jpg" width="64" height="64" alt="">
 										</span>
 
                   <div class="media-body">
@@ -628,7 +628,7 @@
                 <div class="block margin-bottom-60">
 
 										<span class="user-avatar"><!-- user-avatar -->
-											<img class="pull-left media-object" src="assets/images/avatar2.jpg" width="64" height="64" alt="">
+											<img class="pull-left media-object" src="/static/assets/images/avatar2.jpg" width="64" height="64" alt="">
 										</span>
 
                   <div class="media-body">
@@ -729,8 +729,8 @@
                 <div class="thumbnail">
                   <!-- product image(s) -->
                   <a class="shop-item-image" href="shop-single-left.html">
-                    <img class="img-responsive" src="assets/images/demo/shop/products/300x450/p13.jpg" alt="shop first image" />
-                    <img class="img-responsive" src="assets/images/demo/shop/products/300x450/p14.jpg" alt="shop hover image" />
+                    <img class="img-responsive" src="/static/assets/images/demo/shop/products/300x450/p13.jpg" alt="shop first image" />
+                    <img class="img-responsive" src="/static/assets/images/demo/shop/products/300x450/p14.jpg" alt="shop hover image" />
                   </a>
                   <!-- /product image(s) -->
 
@@ -775,8 +775,8 @@
                   <a class="shop-item-image" href="shop-single-left.html">
                     <!-- CAROUSEL -->
                     <div class="owl-carousel owl-padding-0 nomargin" data-plugin-options='{"singleItem": true, "autoPlay": 3000, "navigation": false, "pagination": false, "transitionStyle":"fadeUp"}'>
-                      <img class="img-responsive" src="assets/images/demo/shop/products/300x450/p5.jpg" alt="">
-                      <img class="img-responsive" src="assets/images/demo/shop/products/300x450/p1.jpg" alt="">
+                      <img class="img-responsive" src="/static/assets/images/demo/shop/products/300x450/p5.jpg" alt="">
+                      <img class="img-responsive" src="/static/assets/images/demo/shop/products/300x450/p1.jpg" alt="">
                     </div>
                     <!-- /CAROUSEL -->
                   </a>
@@ -813,8 +813,8 @@
                 <div class="thumbnail">
                   <!-- product image(s) -->
                   <a class="shop-item-image" href="shop-single-left.html">
-                    <img class="img-responsive" src="assets/images/demo/shop/products/300x450/p2.jpg" alt="shop first image" />
-                    <img class="img-responsive" src="assets/images/demo/shop/products/300x450/p12.jpg" alt="shop hover image" />
+                    <img class="img-responsive" src="/static/assets/images/demo/shop/products/300x450/p2.jpg" alt="shop first image" />
+                    <img class="img-responsive" src="/static/assets/images/demo/shop/products/300x450/p12.jpg" alt="shop hover image" />
                   </a>
                   <!-- /product image(s) -->
 
@@ -857,7 +857,7 @@
                 <div class="thumbnail">
                   <!-- product image(s) -->
                   <a class="shop-item-image" href="shop-single-left.html">
-                    <img class="img-responsive" src="assets/images/demo/shop/products/300x450/p8.jpg" alt="shop first image" />
+                    <img class="img-responsive" src="/static/assets/images/demo/shop/products/300x450/p8.jpg" alt="shop first image" />
                   </a>
                   <!-- /product image(s) -->
 
@@ -898,7 +898,7 @@
                 <div class="thumbnail">
                   <!-- product image(s) -->
                   <a class="shop-item-image" href="shop-single-left.html">
-                    <img class="img-responsive" src="assets/images/demo/shop/products/300x450/p7.jpg" alt="shop first image" />
+                    <img class="img-responsive" src="/static/assets/images/demo/shop/products/300x450/p7.jpg" alt="shop first image" />
                   </a>
                   <!-- /product image(s) -->
                 </div>
@@ -933,8 +933,8 @@
                 <div class="thumbnail">
                   <!-- product image(s) -->
                   <a class="shop-item-image" href="shop-single-left.html">
-                    <img class="img-responsive" src="assets/images/demo/shop/products/300x450/p6.jpg" alt="shop first image" />
-                    <img class="img-responsive" src="assets/images/demo/shop/products/300x450/p14.jpg" alt="shop hover image" />
+                    <img class="img-responsive" src="/static/assets/images/demo/shop/products/300x450/p6.jpg" alt="shop first image" />
+                    <img class="img-responsive" src="/static/assets/images/demo/shop/products/300x450/p14.jpg" alt="shop hover image" />
                   </a>
                   <!-- /product image(s) -->
                 </div>
@@ -969,8 +969,8 @@
                 <div class="thumbnail">
                   <!-- product image(s) -->
                   <a class="shop-item-image" href="shop-single-left.html">
-                    <img class="img-responsive" src="assets/images/demo/shop/products/300x450/p11.jpg" alt="shop hover image" />
-                    <img class="img-responsive" src="assets/images/demo/shop/products/300x450/p3.jpg" alt="shop first image" />
+                    <img class="img-responsive" src="/static/assets/images/demo/shop/products/300x450/p11.jpg" alt="shop hover image" />
+                    <img class="img-responsive" src="/static/assets/images/demo/shop/products/300x450/p3.jpg" alt="shop first image" />
                   </a>
                   <!-- /product image(s) -->
                 </div>
@@ -1063,10 +1063,10 @@
             <!-- BANNER ROTATOR -->
             <div class="owl-carousel buttons-autohide controlls-over margin-bottom-60 text-center" data-plugin-options='{"singleItem": true, "autoPlay": 4000, "navigation": true, "pagination": false, "transitionStyle":"fadeUp"}'>
               <a href="#">
-                <img class="img-responsive" src="assets/images/demo/shop/banners/off_1.png" width="270" height="350" alt="">
+                <img class="img-responsive" src="/static/assets/images/demo/shop/banners/off_1.png" width="270" height="350" alt="">
               </a>
               <a href="#">
-                <img class="img-responsive" src="assets/images/demo/shop/banners/off_2.png" width="270" height="350" alt="">
+                <img class="img-responsive" src="/static/assets/images/demo/shop/banners/off_2.png" width="270" height="350" alt="">
               </a>
             </div>
             <!-- /BANNER ROTATOR -->
@@ -1084,7 +1084,7 @@
                     <li class="clearfix"><!-- item -->
                       <div class="thumbnail featured clearfix pull-left">
                         <a href="#">
-                          <img src="assets/images/demo/shop/products/100x100/p10.jpg" width="80" height="80" alt="featured item">
+                          <img src="/static/assets/images/demo/shop/products/100x100/p10.jpg" width="80" height="80" alt="featured item">
                         </a>
                       </div>
 
@@ -1096,7 +1096,7 @@
                     <li class="clearfix"><!-- item -->
                       <div class="thumbnail featured clearfix pull-left">
                         <a href="#">
-                          <img src="assets/images/demo/shop/products/100x100/p2.jpg" width="80" height="80" alt="featured item">
+                          <img src="/static/assets/images/demo/shop/products/100x100/p2.jpg" width="80" height="80" alt="featured item">
                         </a>
                       </div>
 
@@ -1108,7 +1108,7 @@
                     <li class="clearfix"><!-- item -->
                       <div class="thumbnail featured clearfix pull-left">
                         <a href="#">
-                          <img src="assets/images/demo/shop/products/100x100/p13.jpg" width="80" height="80" alt="featured item">
+                          <img src="/static/assets/images/demo/shop/products/100x100/p13.jpg" width="80" height="80" alt="featured item">
                         </a>
                       </div>
 
@@ -1126,7 +1126,7 @@
                     <li class="clearfix"><!-- item -->
                       <div class="thumbnail featured clearfix pull-left">
                         <a href="#">
-                          <img src="assets/images/demo/shop/products/100x100/p12.jpg" width="80" height="80" alt="featured item">
+                          <img src="/static/assets/images/demo/shop/products/100x100/p12.jpg" width="80" height="80" alt="featured item">
                         </a>
                       </div>
 
@@ -1138,7 +1138,7 @@
                     <li class="clearfix"><!-- item -->
                       <div class="thumbnail featured clearfix pull-left">
                         <a href="#">
-                          <img src="assets/images/demo/shop/products/100x100/p6.jpg" width="80" height="80" alt="featured item">
+                          <img src="/static/assets/images/demo/shop/products/100x100/p6.jpg" width="80" height="80" alt="featured item">
                         </a>
                       </div>
 
@@ -1150,7 +1150,7 @@
                     <li class="clearfix"><!-- item -->
                       <div class="thumbnail featured clearfix pull-left">
                         <a href="#">
-                          <img src="assets/images/demo/shop/products/100x100/p14.jpg" width="80" height="80" alt="featured item">
+                          <img src="/static/assets/images/demo/shop/products/100x100/p14.jpg" width="80" height="80" alt="featured item">
                         </a>
                       </div>
 
@@ -1207,7 +1207,7 @@
           <div class="col-md-4 col-sm-4">
 
             <!-- Footer Logo -->
-            <img class="footer-logo" src="assets/images/logo-footer.png" alt="" />
+            <img class="footer-logo" src="/static/assets/images/logo-footer.png" alt="" />
 
             <p>
               Incredibly beautiful responsive Bootstrap Template for Corporate and Creative Professionals.
@@ -1293,10 +1293,10 @@
                 <h4 class="letter-spacing-1">SECURE PAYMENT</h4>
                 <p>Donec tellus massa, tristique sit amet condim vel, facilisis quis sapien. Praesent id enim sit amet.</p>
                 <p>	<!-- see assets/images/cc/ for more icons -->
-                  <img src="assets/images/cc/Visa.png" alt="" />
-                  <img src="assets/images/cc/Mastercard.png" alt="" />
-                  <img src="assets/images/cc/Maestro.png" alt="" />
-                  <img src="assets/images/cc/PayPal.png" alt="" />
+                  <img src="/static/assets/images/cc/Visa.png" alt="" />
+                  <img src="/static/assets/images/cc/Mastercard.png" alt="" />
+                  <img src="/static/assets/images/cc/Maestro.png" alt="" />
+                  <img src="/static/assets/images/cc/PayPal.png" alt="" />
                 </p>
               </div>
 
