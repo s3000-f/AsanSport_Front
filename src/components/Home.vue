@@ -72,34 +72,6 @@
             </ul>
 
             <!-- left -->
-            <ul class="top-links list-inline">
-              <li class="hidden-xs"><a href="page-faq-1.html">FAQ</a></li>
-              <li>
-                <a class="dropdown-toggle no-text-underline" data-toggle="dropdown" href="#"><img
-                  class="flag-lang" src="/static/assets/images/flags/us.png" width="16" height="11" alt="lang"/>
-                  ENGLISH</a>
-                <ul class="dropdown-langs dropdown-menu">
-                  <li><a tabindex="-1" href="#"><img class="flag-lang" src="/static/assets/images/flags/us.png"
-                                                     width="16" height="11" alt="lang"/> ENGLISH</a></li>
-                  <li class="divider"></li>
-                  <li><a tabindex="-1" href="#"><img class="flag-lang" src="/static/assets/images/flags/de.png"
-                                                     width="16" height="11" alt="lang"/> GERMAN</a></li>
-                  <li><a tabindex="-1" href="#"><img class="flag-lang" src="/static/assets/images/flags/ru.png"
-                                                     width="16" height="11" alt="lang"/> RUSSIAN</a></li>
-                  <li><a tabindex="-1" href="#"><img class="flag-lang" src="/static/assets/images/flags/it.png"
-                                                     width="16" height="11" alt="lang"/> ITALIAN</a></li>
-                </ul>
-              </li>
-              <li>
-                <a class="dropdown-toggle no-text-underline" data-toggle="dropdown" href="#">USD</a>
-                <ul class="dropdown-langs dropdown-menu">
-                  <li><a tabindex="-1" href="#">USD</a></li>
-                  <li class="divider"></li>
-                  <li><a tabindex="-1" href="#">EUR</a></li>
-                  <li><a tabindex="-1" href="#">GBP</a></li>
-                </ul>
-              </li>
-            </ul>
 
           </div>
         </div>
@@ -309,7 +281,7 @@
                      data-endelementdelay="0.1"
                      data-endspeed="1000"
                      data-endeasing="Power4.easeIn">
-                  <img src="/static/assets/images/demo/shop/home/rvslider_girl.png" alt="Girl">
+                  <img v-bind:src="slide.image.src1" alt="Girl" class="shop-item-image" style="max-height: 450px;">
                 </div>
 
                 <div class="tp-caption customin ltl tp-resizeme text_white weight-300"
@@ -325,7 +297,7 @@
                      data-endelementdelay="0.1"
                      data-endspeed="1000"
                      data-endeasing="Power4.easeIn" style=" color: #777;">
-                  PREPARE FOR THE IMPOSSIBLE
+                  {{slide.subtitle.st1}}
                 </div>
 
                 <div class="tp-caption customin ltl tp-resizeme large_bold_white"
@@ -342,7 +314,7 @@
                      data-endspeed="1000"
                      data-endeasing="Power4.easeIn"
                      style=" color: #333; max-width: 430px; white-space: normal; line-height: 1.15;">
-                  New Fashion Collections
+                  {{slide.title.t1}}
                 </div>
 
                 <div class="tp-caption customin ltl tp-resizeme small_light_white font-lato size-20"
@@ -359,8 +331,7 @@
                      data-endspeed="1000"
                      data-endeasing="Power4.easeIn"
                      style=" color: #333; max-width: 550px; white-space: normal; text-shadow:none;">
-                  Fabulas definitiones ei pri per recteque hendrerit script2orem in errem scribentur mel
-                  fastidii propriae philosophia cu mea.
+                  {{slide.description.d1}}
                 </div>
 
                 <div class="tp-caption customin ltl tp-resizeme"
@@ -377,27 +348,22 @@
                      data-endspeed="1000"
                      data-endeasing="Power4.easeIn">
                   <router-link to="feilds-list" class="btn btn-primary btn-lg">
-                    <span>start shopping</span>
+                    <span>Reserve</span>
                   </router-link>
                 </div>
               </li>
 
-              <!-- SLIDE  -->
-              <li data-transition="random" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"
-                  data-title="Slide">
+              <li data-transition="fade" data-slotamount="1" data-masterspeed="1500" data-delay="10000"
+                  data-saveperformance="off" data-title="Slide" style="background-color: #F6F6F6;">
 
-                <img src="/static/assets/images/1x1.png" data-lazyload="/static/assets/images/demo/1200x800/10-min.jpg"
-                     alt=""
-                     data-bgfit="cover" data-bgposition="center top" data-bgrepeat="no-repeat"/>
+                <img src="/static/assets/images/demo/wall2.jpg" alt="video" data-bgposition="top center"
+                     data-bgfit="cover" data-bgrepeat="no-repeat">
 
-                <div class="tp-dottedoverlay twoxtwo"><!-- dotted overlay --></div>
-                <div class="overlay dark-3"><!-- dark overlay [1 to 9 opacity] --></div>
-
-                <div class="tp-caption customin ltl tp-resizeme text_white"
-                     data-x="center"
-                     data-y="105"
-                     data-customin="x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
-                     data-speed="800"
+                <div class="tp-caption customin ltl tp-resizeme revo-slider-caps-text uppercase"
+                     data-x="left"
+                     data-y="50"
+                     data-customin="x:-200;y:0;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+                     data-speed="400"
                      data-start="1000"
                      data-easing="easeOutQuad"
                      data-splitin="none"
@@ -405,15 +371,31 @@
                      data-elementdelay="0.01"
                      data-endelementdelay="0.1"
                      data-endspeed="1000"
-                     data-endeasing="Power4.easeIn" style="z-index: 10;">
-                  <span class="weight-300">DEVELOPMENT / MARKETING / DESIGN / PHOTO</span>
+                     data-endeasing="Power4.easeIn">
+                  <img v-bind:src="slide.image.src2" alt="Girl" style="max-height: 450px;">
+                </div>
+
+                <div class="tp-caption customin ltl tp-resizeme text_white weight-300"
+                     data-x="643"
+                     data-y="75"
+                     data-customin="x:0;y:150;z:0;rotationZ:0;scaleX:1.3;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+                     data-speed="700"
+                     data-start="1000"
+                     data-easing="easeOutQuad"
+                     data-splitin="none"
+                     data-splitout="none"
+                     data-elementdelay="0.01"
+                     data-endelementdelay="0.1"
+                     data-endspeed="1000"
+                     data-endeasing="Power4.easeIn" style=" color: #777;">
+                  {{slide.subtitle.st2}}
                 </div>
 
                 <div class="tp-caption customin ltl tp-resizeme large_bold_white"
-                     data-x="center"
-                     data-y="155"
-                     data-customin="x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
-                     data-speed="800"
+                     data-x="650"
+                     data-y="105"
+                     data-customin="x:0;y:150;z:0;rotationZ:0;scaleX:1.3;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+                     data-speed="700"
                      data-start="1200"
                      data-easing="easeOutQuad"
                      data-splitin="none"
@@ -421,15 +403,16 @@
                      data-elementdelay="0.01"
                      data-endelementdelay="0.1"
                      data-endspeed="1000"
-                     data-endeasing="Power4.easeIn" style="z-index: 10;">
-                  WELCOME TO SMARTY
+                     data-endeasing="Power4.easeIn"
+                     style=" color: #333; max-width: 430px; white-space: normal; line-height: 1.15;">
+                  {{slide.title.t2}}
                 </div>
 
                 <div class="tp-caption customin ltl tp-resizeme small_light_white font-lato size-20"
-                     data-x="center"
-                     data-y="245"
-                     data-customin="x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
-                     data-speed="800"
+                     data-x="650"
+                     data-y="275"
+                     data-customin="x:0;y:150;z:0;rotationZ:0;scaleX:1.3;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+                     data-speed="700"
                      data-start="1400"
                      data-easing="easeOutQuad"
                      data-splitin="none"
@@ -438,16 +421,15 @@
                      data-endelementdelay="0.1"
                      data-endspeed="1000"
                      data-endeasing="Power4.easeIn"
-                     style="z-index: 10; width: 100%; max-width: 750px; white-space: normal; text-align:center;">
-                  Fabulas definitiones ei pri per recteque hendrerit script2orem in errem scribentur mel
-                  fastidii propriae philosophia cu mea.
+                     style=" color: #333; max-width: 550px; white-space: normal; text-shadow:none;">
+                  {{slide.description.d2}}
                 </div>
 
                 <div class="tp-caption customin ltl tp-resizeme"
-                     data-x="center"
-                     data-y="313"
-                     data-customin="x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
-                     data-speed="800"
+                     data-x="650"
+                     data-y="375"
+                     data-customin="x:0;y:150;z:0;rotationZ:0;scaleX:1.3;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+                     data-speed="700"
                      data-start="1550"
                      data-easing="easeOutQuad"
                      data-splitin="none"
@@ -455,87 +437,105 @@
                      data-elementdelay="0.01"
                      data-endelementdelay="0.1"
                      data-endspeed="1000"
-                     data-endeasing="Power4.easeIn" style="z-index: 10;">
-                  <router-link to="feilds-list" class="btn btn-default btn-lg">
-                    <span>start shopping &raquo;</span>
+                     data-endeasing="Power4.easeIn">
+                  <router-link to="feilds-list" class="btn btn-primary btn-lg">
+                    <span>Reserve</span>
                   </router-link>
                 </div>
-
               </li>
 
-              <!-- SLIDE -->
-              <li data-transition="fade" data-slotamount="7" data-masterspeed="1000" data-title="Slide">
+              <li data-transition="fade" data-slotamount="1" data-masterspeed="1500" data-delay="10000"
+                  data-saveperformance="off" data-title="Slide" style="background-color: #F6F6F6;">
 
-                <img src="/static/assets/images/demo/spotted.jpg" alt="video" data-bgposition="top center"
+                <img src="/static/assets/images/demo/wall2.jpg" alt="video" data-bgposition="top center"
                      data-bgfit="cover" data-bgrepeat="no-repeat">
 
-                <div class="caption customin customout tp-resizeme"
-                     data-x="right"
-                     data-y="center"
-                     data-voffset="-70"
-                     data-customin="x:-50;y:-300;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.5;scaleY:0.5;skewX:0;skewY:0;opacity:0;transformPerspective:0;transformOrigin:50% 50%;"
-                     data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                     data-speed="800"
+                <div class="tp-caption customin ltl tp-resizeme revo-slider-caps-text uppercase"
+                     data-x="left"
+                     data-y="50"
+                     data-customin="x:-200;y:0;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+                     data-speed="400"
                      data-start="1000"
-                     data-startslide="1"
-                     data-easing="Power4.easeOut"
-                     data-endspeed="500"
+                     data-easing="easeOutQuad"
+                     data-splitin="none"
+                     data-splitout="none"
+                     data-elementdelay="0.01"
+                     data-endelementdelay="0.1"
+                     data-endspeed="1000"
                      data-endeasing="Power4.easeIn">
-                  <h4>OVER 30% OFF</h4>
+                  <img v-bind:src="slide.image.src3" alt="Girl" class="img-rounded" style="max-height: 450px; margin-left: auto">
                 </div>
 
-                <div class="caption fade customout tp-resizeme"
-                     data-x="right"
-                     data-y="center"
-                     data-voffset="-110"
-                     data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                     data-speed="800"
-                     data-start="1300"
-                     data-startslide="1"
-                     data-easing="Power4.easeOut"
-                     data-endspeed="500"
-                     data-endeasing="Power4.easeIn">
-                  <h2>FASHION <strong>HUGE SALES</strong></h2>
+                <div class="tp-caption customin ltl tp-resizeme text_white weight-300"
+                     data-x="643"
+                     data-y="75"
+                     data-customin="x:0;y:150;z:0;rotationZ:0;scaleX:1.3;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+                     data-speed="700"
+                     data-start="1000"
+                     data-easing="easeOutQuad"
+                     data-splitin="none"
+                     data-splitout="none"
+                     data-elementdelay="0.01"
+                     data-endelementdelay="0.1"
+                     data-endspeed="1000"
+                     data-endeasing="Power4.easeIn" style=" color: #777;">
+                  {{slide.subtitle.st3}}
                 </div>
 
-                <div class="caption customin customout tp-resizeme large_bold_white"
-                     data-x="right"
-                     data-y="center"
-                     data-voffset="75"
-                     data-customin="x:-50;y:100;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.1;scaleY:0.1;skewX:0;skewY:0;opacity:0;transformPerspective:0;transformOrigin:50% 50%;"
-                     data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                     data-speed="800"
-                     data-start="1500"
-                     data-startslide="1"
-                     data-easing="Power4.easeOut"
-                     data-endspeed="500"
+                <div class="tp-caption customin ltl tp-resizeme large_bold_white"
+                     data-x="650"
+                     data-y="105"
+                     data-customin="x:0;y:150;z:0;rotationZ:0;scaleX:1.3;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+                     data-speed="700"
+                     data-start="1200"
+                     data-easing="easeOutQuad"
+                     data-splitin="none"
+                     data-splitout="none"
+                     data-elementdelay="0.01"
+                     data-endelementdelay="0.1"
+                     data-endspeed="1000"
+                     data-endeasing="Power4.easeIn"
+                     style=" color: #333; max-width: 430px; white-space: normal; line-height: 1.15;">
+                  {{slide.title.t3}}
+                </div>
+
+                <div class="tp-caption customin ltl tp-resizeme small_light_white font-lato size-20"
+                     data-x="650"
+                     data-y="275"
+                     data-customin="x:0;y:150;z:0;rotationZ:0;scaleX:1.3;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+                     data-speed="700"
+                     data-start="1400"
+                     data-easing="easeOutQuad"
+                     data-splitin="none"
+                     data-splitout="none"
+                     data-elementdelay="0.01"
+                     data-endelementdelay="0.1"
+                     data-endspeed="1000"
+                     data-endeasing="Power4.easeIn"
+                     style=" color: #333; max-width: 550px; white-space: normal; text-shadow:none;">
+                  {{slide.description.d3}}
+                </div>
+
+                <div class="tp-caption customin ltl tp-resizeme"
+                     data-x="650"
+                     data-y="375"
+                     data-customin="x:0;y:150;z:0;rotationZ:0;scaleX:1.3;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+                     data-speed="700"
+                     data-start="1550"
+                     data-easing="easeOutQuad"
+                     data-splitin="none"
+                     data-splitout="none"
+                     data-elementdelay="0.01"
+                     data-endelementdelay="0.1"
+                     data-endspeed="1000"
                      data-endeasing="Power4.easeIn">
-                  <router-link to="feilds-list" class="scrollTo btn btn-default btn-md btn-lg">
-                    <span>start shopping &raquo;</span>
+                  <router-link to="feilds-list" class="btn btn-primary btn-lg">
+                    <span>Reserve</span>
                   </router-link>
                 </div>
-
-
-                <div class="caption customin customout tp-resizeme"
-                     data-x="left"
-                     data-hoffset="0"
-                     data-y="center"
-                     data-voffset="0"
-                     data-customin="x:50;y:150;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.5;scaleY:0.5;skewX:0;skewY:0;opacity:0;transformPerspective:0;transformOrigin:50% 50%;"
-                     data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                     data-speed="800"
-                     data-start="1800"
-                     data-startslide="1"
-                     data-easing="Power4.easeOut"
-                     data-endspeed="500"
-                     data-endeasing="Power4.easeIn"
-                     data-autoplay="false"
-                     data-autoplayonlyfirsttime="false">
-                  <iframe
-                    src="http://player.vimeo.com/video/58238439?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff"
-                    width="480" height="275" allowfullscreen></iframe>
-                </div>
               </li>
+
+
 
             </ul>
             <div class="tp-bannertimer"></div>
@@ -1793,10 +1793,190 @@
 
 <script>
   export default {
-    name: "home"
+    name: "home",
+    data() {
+      return {
+        slide: {
+          image: {
+            src1: 'https://images.bubbleroom.eu/data/product/676x980/brazilian-crochet-pantie.jpg',
+            src2: 'https://images.bubbleroom.eu/data/product/676x980/579557-0001x579553-0001_368.jpg',
+            src3: 'https://images.bubbleroom.eu/data/product/676x980/599341-0001_083.jpg'
+          },
+          title: {
+            t1: 'Some Fucking Title 1',
+            t2: 'Some Fucking Title 2',
+            t3: 'Some Fucking Title 3'
+          },
+          subtitle: {
+            st1:'Some Subtitle Shit 1',
+            st2:'Some Subtitle Shit 2',
+            st3:'Some Subtitle Shit 3'
+          },
+          description: {
+            d1: 'Stupid ass description for the fucking field slider which is located on the fucking top of fucking home page of this stupid goddamn site 1',
+            d2: 'Stupid ass description for the fucking field slider which is located on the fucking top of fucking home page of this stupid goddamn site 2',
+            d3: 'Stupid ass description for the fucking field slider which is located on the fucking top of fucking home page of this stupid goddamn site 3'
+          }
+        }
+      }
+    }
   }
 </script>
 
 <style scoped>
 
 </style>
+<!-- SLIDE  -->
+<!--<li data-transition="random" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"-->
+    <!--data-title="Slide">-->
+
+  <!--<img src="/static/assets/images/1x1.png" data-lazyload="/static/assets/images/demo/1200x800/10-min.jpg"-->
+       <!--alt=""-->
+       <!--data-bgfit="cover" data-bgposition="center top" data-bgrepeat="no-repeat"/>-->
+
+  <!--<div class="tp-dottedoverlay twoxtwo">&lt;!&ndash; dotted overlay &ndash;&gt;</div>-->
+  <!--<div class="overlay dark-3">&lt;!&ndash; dark overlay [1 to 9 opacity] &ndash;&gt;</div>-->
+
+  <!--<div class="tp-caption customin ltl tp-resizeme text_white"-->
+       <!--data-x="center"-->
+       <!--data-y="105"-->
+       <!--data-customin="x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"-->
+       <!--data-speed="800"-->
+       <!--data-start="1000"-->
+       <!--data-easing="easeOutQuad"-->
+       <!--data-splitin="none"-->
+       <!--data-splitout="none"-->
+       <!--data-elementdelay="0.01"-->
+       <!--data-endelementdelay="0.1"-->
+       <!--data-endspeed="1000"-->
+       <!--data-endeasing="Power4.easeIn" style="z-index: 10;">-->
+    <!--<span class="weight-300">DEVELOPMENT / MARKETING / DESIGN / PHOTO</span>-->
+  <!--</div>-->
+
+  <!--<div class="tp-caption customin ltl tp-resizeme large_bold_white"-->
+       <!--data-x="center"-->
+       <!--data-y="155"-->
+       <!--data-customin="x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"-->
+       <!--data-speed="800"-->
+       <!--data-start="1200"-->
+       <!--data-easing="easeOutQuad"-->
+       <!--data-splitin="none"-->
+       <!--data-splitout="none"-->
+       <!--data-elementdelay="0.01"-->
+       <!--data-endelementdelay="0.1"-->
+       <!--data-endspeed="1000"-->
+       <!--data-endeasing="Power4.easeIn" style="z-index: 10;">-->
+    <!--WELCOME TO SMARTY-->
+  <!--</div>-->
+
+  <!--<div class="tp-caption customin ltl tp-resizeme small_light_white font-lato size-20"-->
+       <!--data-x="center"-->
+       <!--data-y="245"-->
+       <!--data-customin="x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"-->
+       <!--data-speed="800"-->
+       <!--data-start="1400"-->
+       <!--data-easing="easeOutQuad"-->
+       <!--data-splitin="none"-->
+       <!--data-splitout="none"-->
+       <!--data-elementdelay="0.01"-->
+       <!--data-endelementdelay="0.1"-->
+       <!--data-endspeed="1000"-->
+       <!--data-endeasing="Power4.easeIn"-->
+       <!--style="z-index: 10; width: 100%; max-width: 750px; white-space: normal; text-align:center;">-->
+    <!--Fabulas definitiones ei pri per recteque hendrerit script2orem in errem scribentur mel-->
+    <!--fastidii propriae philosophia cu mea.-->
+  <!--</div>-->
+
+  <!--<div class="tp-caption customin ltl tp-resizeme"-->
+       <!--data-x="center"-->
+       <!--data-y="313"-->
+       <!--data-customin="x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"-->
+       <!--data-speed="800"-->
+       <!--data-start="1550"-->
+       <!--data-easing="easeOutQuad"-->
+       <!--data-splitin="none"-->
+       <!--data-splitout="none"-->
+       <!--data-elementdelay="0.01"-->
+       <!--data-endelementdelay="0.1"-->
+       <!--data-endspeed="1000"-->
+       <!--data-endeasing="Power4.easeIn" style="z-index: 10;">-->
+    <!--<router-link to="feilds-list" class="btn btn-default btn-lg">-->
+      <!--<span>start shopping &raquo;</span>-->
+    <!--</router-link>-->
+  <!--</div>-->
+
+<!--</li>-->
+
+<!--&lt;!&ndash; SLIDE &ndash;&gt;-->
+<!--<li data-transition="fade" data-slotamount="7" data-masterspeed="1000" data-title="Slide">-->
+
+  <!--<img src="/static/assets/images/demo/spotted.jpg" alt="video" data-bgposition="top center"-->
+       <!--data-bgfit="cover" data-bgrepeat="no-repeat">-->
+
+  <!--<div class="caption customin customout tp-resizeme"-->
+       <!--data-x="right"-->
+       <!--data-y="center"-->
+       <!--data-voffset="-70"-->
+       <!--data-customin="x:-50;y:-300;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.5;scaleY:0.5;skewX:0;skewY:0;opacity:0;transformPerspective:0;transformOrigin:50% 50%;"-->
+       <!--data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"-->
+       <!--data-speed="800"-->
+       <!--data-start="1000"-->
+       <!--data-startslide="1"-->
+       <!--data-easing="Power4.easeOut"-->
+       <!--data-endspeed="500"-->
+       <!--data-endeasing="Power4.easeIn">-->
+    <!--<h4>OVER 30% OFF</h4>-->
+  <!--</div>-->
+
+  <!--<div class="caption fade customout tp-resizeme"-->
+       <!--data-x="right"-->
+       <!--data-y="center"-->
+       <!--data-voffset="-110"-->
+       <!--data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"-->
+       <!--data-speed="800"-->
+       <!--data-start="1300"-->
+       <!--data-startslide="1"-->
+       <!--data-easing="Power4.easeOut"-->
+       <!--data-endspeed="500"-->
+       <!--data-endeasing="Power4.easeIn">-->
+    <!--<h2>FASHION <strong>HUGE SALES</strong></h2>-->
+  <!--</div>-->
+
+  <!--<div class="caption customin customout tp-resizeme large_bold_white"-->
+       <!--data-x="right"-->
+       <!--data-y="center"-->
+       <!--data-voffset="75"-->
+       <!--data-customin="x:-50;y:100;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.1;scaleY:0.1;skewX:0;skewY:0;opacity:0;transformPerspective:0;transformOrigin:50% 50%;"-->
+       <!--data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"-->
+       <!--data-speed="800"-->
+       <!--data-start="1500"-->
+       <!--data-startslide="1"-->
+       <!--data-easing="Power4.easeOut"-->
+       <!--data-endspeed="500"-->
+       <!--data-endeasing="Power4.easeIn">-->
+    <!--<router-link to="feilds-list" class="scrollTo btn btn-default btn-md btn-lg">-->
+      <!--<span>start shopping &raquo;</span>-->
+    <!--</router-link>-->
+  <!--</div>-->
+
+
+  <!--<div class="caption customin customout tp-resizeme"-->
+       <!--data-x="left"-->
+       <!--data-hoffset="0"-->
+       <!--data-y="center"-->
+       <!--data-voffset="0"-->
+       <!--data-customin="x:50;y:150;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.5;scaleY:0.5;skewX:0;skewY:0;opacity:0;transformPerspective:0;transformOrigin:50% 50%;"-->
+       <!--data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"-->
+       <!--data-speed="800"-->
+       <!--data-start="1800"-->
+       <!--data-startslide="1"-->
+       <!--data-easing="Power4.easeOut"-->
+       <!--data-endspeed="500"-->
+       <!--data-endeasing="Power4.easeIn"-->
+       <!--data-autoplay="false"-->
+       <!--data-autoplayonlyfirsttime="false">-->
+    <!--<iframe-->
+      <!--src="http://player.vimeo.com/video/58238439?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff"-->
+      <!--width="480" height="275" allowfullscreen></iframe>-->
+  <!--</div>-->
+<!--</li>-->

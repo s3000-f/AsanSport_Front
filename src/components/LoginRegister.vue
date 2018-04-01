@@ -657,7 +657,8 @@
       ...mapActions({
         setLogin: 'setLogin',
         setError: 'setError',
-        resetError: 'resetError'
+        resetError: 'resetError',
+        setUser: 'setUser'
       }),
       login() {
         alert(this.username);

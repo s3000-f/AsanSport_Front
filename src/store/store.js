@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import createPersistedState from 'vuex-persistedstate'
 import * as Cookies from 'js-cookie'
+import axios from 'axios'
 
 Vue.use(Vuex);
 
@@ -76,7 +77,27 @@ export const store = new Vuex.Store({
     resetError: context =>{
       context.commit('resetError')
     },
-    setUser(context, dat){
+    setUser(context){
+      var dat;
+      axios.post("http://api.shahbandegan.ir/v1/profile", {
+        params: {
+          token: context.getToken
+        }
+      })
+        .then(response => {
+          if (response.status < 300){
+            dat = response.data['data'];
+            this.resetError();
+            alert(this.getToken);
+          }
+          else{
+            console.log(response.data['message'])
+          }
+        })
+        .catch(e => {
+            console.log(e)
+          }
+        );
       context.commit('setUser', dat);
     }
   }
