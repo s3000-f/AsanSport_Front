@@ -253,7 +253,7 @@
 
             <div>
 
-              <div class="row mix design"><!-- item -->
+              <div class="row mix design" v-for="field in fields"><!-- item -->
 
                 <div class="col-md-7"><!-- image -->
                   <div class="item-box">
@@ -269,9 +269,9 @@
 													</a>
 
                           <!-- details -->
-													<a class="ico-rounded" href="portfolio-single-slider.html">
+													<router-link class="ico-rounded" to="/field-details/" + {{field.name}} >
 														<span class="glyphicon glyphicon-option-horizontal size-20"></span>
-													</a>
+													</router-link>
 
 												</span>
 											</span>
@@ -300,7 +300,7 @@
 
                 <div class="col-md-5"><!-- description -->
                   <h2>
-                    <a href="portfolio-single-slider.html">Nature Photography</a>
+                    <a href="portfolio-single-slider.html">{{field.name}}</a>
                   </h2>
                   <ul class="list-inline categories nomargin">
                     <li><a href="#">Development</a></li>
@@ -530,21 +530,26 @@
     data: function () {
       return {
         name: 'FieldsList',
-        fields: {
+        field: {
           id: '',
           name: '',
           address: ''
         },
+        fields:{}
       }
+    },
+    watch: {
+      '$route': 'getFields'
     },
     methods: {
       getFields() {
         axios.get("http://api.shahbandegan.ir/v1/fields")
           .then(response => {
 
-            this.fields.id = response.data["id"];
-            this.fields.name = response.data["name"];
-            this.fields.address = response.data["address"];
+            this.field.id = response.data["id"];
+            this.field.name = response.data["name"];
+            this.field.address = response.data["address"];
+            this.fields.push(field);
           })
 
       }
