@@ -251,9 +251,9 @@
             </ul>
 
 
-            <div>
+            <div v-for="field in fields" class="mix-grid">
 
-              <div class="row mix design" v-for="field in fields"><!-- item -->
+              <template class="row mix design" ><!-- item -->
 
                 <div class="col-md-7"><!-- image -->
                   <div class="item-box">
@@ -269,7 +269,7 @@
 													</a>
 
                           <!-- details -->
-													<router-link class="ico-rounded" to="/field-details/" + {{field.name}} >
+													<router-link class="ico-rounded" v-bind:to="'/field-details/' + field.id"   >
 														<span class="glyphicon glyphicon-option-horizontal size-20"></span>
 													</router-link>
 
@@ -300,7 +300,9 @@
 
                 <div class="col-md-5"><!-- description -->
                   <h2>
-                    <a href="portfolio-single-slider.html">{{field.name}}</a>
+                    <router-link class="ico-rounded" v-bind:to="'/field-details/' + field.id"   >
+                      {{field.name}}
+                    </router-link>
                   </h2>
                   <ul class="list-inline categories nomargin">
                     <li><a href="#">Development</a></li>
@@ -336,7 +338,7 @@
 
                 </div><!-- /description -->
 
-              </div><!-- /item -->
+              </template><!-- /item -->
 
 
             </div>
@@ -530,13 +532,17 @@
     data: function () {
       return {
         name: 'FieldsList',
-        field: {
-          id: '',
-          name: '',
-          address: ''
-        },
-        fields:{}
+        fields: [],
+        shit:[]
+      // {
+      //   id: '',
+      //     name: '',
+      //   address: ''
+      // }
       }
+    },
+    created() {
+      this.getFields()
     },
     watch: {
       '$route': 'getFields'
@@ -545,11 +551,11 @@
       getFields() {
         axios.get("http://api.shahbandegan.ir/v1/fields")
           .then(response => {
-
-            this.field.id = response.data["id"];
-            this.field.name = response.data["name"];
-            this.field.address = response.data["address"];
-            this.fields.push(field);
+            console.log(response.data.data);
+            this.shit = response.data.value;
+            this.fields = response.data.data;
+            // this.fields.push(response.data["id"] , response.data["name"] ,  response.data["address"]);
+            console.log(this.fields[0] + "============")
           })
 
       }
