@@ -348,7 +348,7 @@
                      data-endelementdelay="0.1"
                      data-endspeed="1000"
                      data-endeasing="Power4.easeIn">
-                  <router-link to="feilds-list" class="btn btn-primary btn-lg">
+                  <router-link to="fields" class="btn btn-primary btn-lg">
                     <span>Reserve</span>
                   </router-link>
                 </div>
@@ -439,7 +439,7 @@
                      data-endelementdelay="0.1"
                      data-endspeed="1000"
                      data-endeasing="Power4.easeIn">
-                  <router-link to="feilds-list" class="btn btn-primary btn-lg">
+                  <router-link to="fields" class="btn btn-primary btn-lg">
                     <span>Reserve</span>
                   </router-link>
                 </div>
@@ -530,7 +530,7 @@
                      data-endelementdelay="0.1"
                      data-endspeed="1000"
                      data-endeasing="Power4.easeIn">
-                  <router-link to="feilds-list" class="btn btn-primary btn-lg">
+                  <router-link to="fields" class="btn btn-primary btn-lg">
                     <span>Reserve</span>
                   </router-link>
                 </div>

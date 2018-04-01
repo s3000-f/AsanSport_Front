@@ -59,8 +59,8 @@ export default new Router({
       component: CheckOut
     },
     {
-      path: '/fields-list',
-      name: 'FeildsList',
+      path: '/fields',
+      name: 'FieldsList',
       component: FieldsList
     }
   ]
