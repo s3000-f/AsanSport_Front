@@ -46,7 +46,6 @@
       </div>
       <!-- /SLIDE TOP -->
 
-
       <!-- wrapper -->
       <div id="wrapper">
 
@@ -64,8 +63,8 @@
                 </a>
               <li class="divider"></li>
               <li>
-                <router-link v-if="$store.state.isLoggedin" to="/"><i class="glyphicon glyphicon-off"></i> LOGOUT
-                </router-link>
+                <a v-if="$store.state.isLoggedin" href="#" v-on:click="logout()"><i class="glyphicon glyphicon-off"></i> LOGOUT
+                </a>
                 <router-link v-else to="/login-register"><i class="glyphicon glyphicon-off"></i> LOGIN/REGISTER
                 </router-link>
               </li>
@@ -76,33 +75,6 @@
         </div>
         <!-- /Top Bar -->
 
-
-        <!--
-            AVAILABLE HEADER CLASSES
-
-            Default nav height: 96px
-            .header-md 		= 70px nav height
-            .header-sm 		= 60px nav height
-
-            .noborder 		= remove bottom border (only with transparent use)
-            .transparent	= transparent header
-            .translucent	= translucent header
-            .sticky			= sticky header
-            .static			= static header
-            .dark			= dark header
-            .bottom			= header on bottom
-
-            shadow-before-1 = shadow 1 header top
-            shadow-after-1 	= shadow 1 header bottom
-            shadow-before-2 = shadow 2 header top
-            shadow-after-2 	= shadow 2 header bottom
-            shadow-before-3 = shadow 3 header top
-            shadow-after-3 	= shadow 3 header bottom
-
-            .clearfix		= required for mobile menu, do not remove!
-
-            Example Usage:  class="clearfix sticky header-sm transparent noborder"
-        -->
         <div id="header" class="sticky clearfix">
 
           <!-- SEARCH HEADER -->
@@ -136,59 +108,13 @@
                 </li>
                 <!-- /SEARCH -->
 
-
-                <!-- QUICK SHOP CART -->
-                <li class="quick-cart">
-                  <a href="#">
-                    <span class="badge badge-aqua btn-xs badge-corner">2</span>
-                    <i class="fa fa-shopping-cart"></i>
-                  </a>
-                  <div class="quick-cart-box">
-                    <h4>Shop Cart</h4>
-
-                    <div class="quick-cart-wrapper">
-
-                      <a href="#"><!-- cart item -->
-                        <img src="/static/assets/images/demo/people/300x300/4-min.jpg" width="45" height="45"
-                             alt=""/>
-                        <h6><span>2x</span> RED BAG WITH HUGE POCKETS</h6>
-                        <small>$37.21</small>
-                      </a><!-- /cart item -->
-
-                      <a href="#"><!-- cart item -->
-                        <img src="/static/assets/images/demo/people/300x300/5-min.jpg" width="45" height="45"
-                             alt=""/>
-                        <h6><span>2x</span> THIS IS A VERY LONG TEXT AND WILL BE TRUNCATED</h6>
-                        <small>$17.18</small>
-                      </a><!-- /cart item -->
-
-                      <!-- cart no items example -->
-                      <!--
-                      <a class="text-center" href="#">
-                          <h6>0 ITEMS ON YOUR CART</h6>
-                      </a>
-                      -->
-
-                    </div>
-
-                    <!-- quick cart footer -->
-                    <div class="quick-cart-footer clearfix">
-                      <a href="shop-cart.html" class="btn btn-primary btn-xs pull-right">VIEW CART</a>
-                      <span class="pull-left"><strong>TOTAL:</strong> $54.39</span>
-                    </div>
-                    <!-- /quick cart footer -->
-
-                  </div>
-                </li>
-                <!-- /QUICK SHOP CART -->
-
               </ul>
               <!-- /BUTTONS -->
 
               <!-- Logo -->
-              <a class="logo pull-left" href="index.html">
-                <img src="/static/assets/images/logo_dark.png" alt=""/>
-              </a>
+              <router-link class="logo pull-left" to="/">
+                <img src="http://new.asansport.com/img/logo.png" alt=""/>
+              </router-link>
 
               <!--
                   Top Nav
@@ -227,7 +153,6 @@
 
         </div>
 
-
         <!-- REVOLUTION SLIDER -->
         <section id="slider" class="slider fullwidthbanner-container roundedcorners">
           <!--
@@ -262,49 +187,19 @@
             <ul class="hide">
 
               <!-- SLIDE  -->
-              <li data-transition="fade" data-slotamount="1" data-masterspeed="1500" data-delay="10000"
-                  data-saveperformance="off" data-title="Slide" style="background-color: #F6F6F6;">
+              <li data-transition="random" data-slotamount="1" data-masterspeed="1500" data-delay="5000" data-saveperformance="off"  data-title="Slide" v-for="slide in slides">
 
-                <img src="/static/assets/images/demo/wall2.jpg" alt="video" data-bgposition="top center"
-                     data-bgfit="cover" data-bgrepeat="no-repeat">
+                <img src="assets/images/1x1.png" v-bind:data-lazyload="slide.image" alt="" data-bgfit="cover" data-bgposition="center top" data-bgrepeat="no-repeat" />
 
-                <div class="tp-caption customin ltl tp-resizeme revo-slider-caps-text uppercase"
-                     data-x="left"
-                     data-y="50"
-                     data-customin="x:-200;y:0;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
-                     data-speed="400"
-                     data-start="1000"
-                     data-easing="easeOutQuad"
-                     data-splitin="none"
-                     data-splitout="none"
-                     data-elementdelay="0.01"
-                     data-endelementdelay="0.1"
-                     data-endspeed="1000"
-                     data-endeasing="Power4.easeIn">
-                  <img v-bind:src="slide.image.src1" alt="Girl" class="shop-item-image" style="max-height: 450px;">
-                </div>
+                <div class="tp-dottedoverlay twoxtwo"><!-- dotted overlay --></div>
+                <div class="overlay dark-3"><!-- dark overlay [1 to 9 opacity] --></div>
 
-                <div class="tp-caption customin ltl tp-resizeme text_white weight-300"
-                     data-x="643"
-                     data-y="75"
-                     data-customin="x:0;y:150;z:0;rotationZ:0;scaleX:1.3;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
-                     data-speed="700"
-                     data-start="1000"
-                     data-easing="easeOutQuad"
-                     data-splitin="none"
-                     data-splitout="none"
-                     data-elementdelay="0.01"
-                     data-endelementdelay="0.1"
-                     data-endspeed="1000"
-                     data-endeasing="Power4.easeIn" style=" color: #777;">
-                  {{slide.subtitle.st1}}
-                </div>
 
                 <div class="tp-caption customin ltl tp-resizeme large_bold_white"
-                     data-x="650"
-                     data-y="105"
-                     data-customin="x:0;y:150;z:0;rotationZ:0;scaleX:1.3;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
-                     data-speed="700"
+                     data-x="center"
+                     data-y="155"
+                     data-customin="x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+                     data-speed="800"
                      data-start="1200"
                      data-easing="easeOutQuad"
                      data-splitin="none"
@@ -312,16 +207,15 @@
                      data-elementdelay="0.01"
                      data-endelementdelay="0.1"
                      data-endspeed="1000"
-                     data-endeasing="Power4.easeIn"
-                     style=" color: #333; max-width: 430px; white-space: normal; line-height: 1.15;">
-                  {{slide.title.t1}}
+                     data-endeasing="Power4.easeIn" style="z-index: 10;">
+                  {{slide.title}}
                 </div>
 
                 <div class="tp-caption customin ltl tp-resizeme small_light_white font-lato size-20"
-                     data-x="650"
-                     data-y="275"
-                     data-customin="x:0;y:150;z:0;rotationZ:0;scaleX:1.3;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
-                     data-speed="700"
+                     data-x="center"
+                     data-y="245"
+                     data-customin="x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+                     data-speed="800"
                      data-start="1400"
                      data-easing="easeOutQuad"
                      data-splitin="none"
@@ -329,16 +223,15 @@
                      data-elementdelay="0.01"
                      data-endelementdelay="0.1"
                      data-endspeed="1000"
-                     data-endeasing="Power4.easeIn"
-                     style=" color: #333; max-width: 550px; white-space: normal; text-shadow:none;">
-                  {{slide.description.d1}}
+                     data-endeasing="Power4.easeIn" style="z-index: 10; width: 100%; max-width: 750px; white-space: normal; text-align:center;">
+                  {{slide.subtitle}}
                 </div>
 
                 <div class="tp-caption customin ltl tp-resizeme"
-                     data-x="650"
-                     data-y="375"
-                     data-customin="x:0;y:150;z:0;rotationZ:0;scaleX:1.3;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
-                     data-speed="700"
+                     data-x="center"
+                     data-y="413"
+                     data-customin="x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+                     data-speed="800"
                      data-start="1550"
                      data-easing="easeOutQuad"
                      data-splitin="none"
@@ -346,203 +239,19 @@
                      data-elementdelay="0.01"
                      data-endelementdelay="0.1"
                      data-endspeed="1000"
-                     data-endeasing="Power4.easeIn">
-                  <router-link v-bind:to="'/fields/' + slide.id.id1" class="btn btn-primary btn-lg">
-                    <span>Reserve</span>
-                  </router-link>
+                     data-endeasing="Power4.easeIn" style="z-index: 10;">
+                  <a v-bind:href="slide.action" class="btn btn-default btn-lg">
+                    <span>Go</span>
+                  </a>
                 </div>
+
               </li>
-
-              <li data-transition="fade" data-slotamount="1" data-masterspeed="1500" data-delay="10000"
-                  data-saveperformance="off" data-title="Slide" style="background-color: #F6F6F6;">
-
-                <img src="/static/assets/images/demo/wall2.jpg" alt="video" data-bgposition="top center"
-                     data-bgfit="cover" data-bgrepeat="no-repeat">
-
-                <div class="tp-caption customin ltl tp-resizeme revo-slider-caps-text uppercase"
-                     data-x="left"
-                     data-y="50"
-                     data-customin="x:-200;y:0;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
-                     data-speed="400"
-                     data-start="1000"
-                     data-easing="easeOutQuad"
-                     data-splitin="none"
-                     data-splitout="none"
-                     data-elementdelay="0.01"
-                     data-endelementdelay="0.1"
-                     data-endspeed="1000"
-                     data-endeasing="Power4.easeIn">
-                  <img v-bind:src="slide.image.src2" alt="Girl" style="max-height: 450px;">
-                </div>
-
-                <div class="tp-caption customin ltl tp-resizeme text_white weight-300"
-                     data-x="643"
-                     data-y="75"
-                     data-customin="x:0;y:150;z:0;rotationZ:0;scaleX:1.3;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
-                     data-speed="700"
-                     data-start="1000"
-                     data-easing="easeOutQuad"
-                     data-splitin="none"
-                     data-splitout="none"
-                     data-elementdelay="0.01"
-                     data-endelementdelay="0.1"
-                     data-endspeed="1000"
-                     data-endeasing="Power4.easeIn" style=" color: #777;">
-                  {{slide.subtitle.st2}}
-                </div>
-
-                <div class="tp-caption customin ltl tp-resizeme large_bold_white"
-                     data-x="650"
-                     data-y="105"
-                     data-customin="x:0;y:150;z:0;rotationZ:0;scaleX:1.3;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
-                     data-speed="700"
-                     data-start="1200"
-                     data-easing="easeOutQuad"
-                     data-splitin="none"
-                     data-splitout="none"
-                     data-elementdelay="0.01"
-                     data-endelementdelay="0.1"
-                     data-endspeed="1000"
-                     data-endeasing="Power4.easeIn"
-                     style=" color: #333; max-width: 430px; white-space: normal; line-height: 1.15;">
-                  {{slide.title.t2}}
-                </div>
-
-                <div class="tp-caption customin ltl tp-resizeme small_light_white font-lato size-20"
-                     data-x="650"
-                     data-y="275"
-                     data-customin="x:0;y:150;z:0;rotationZ:0;scaleX:1.3;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
-                     data-speed="700"
-                     data-start="1400"
-                     data-easing="easeOutQuad"
-                     data-splitin="none"
-                     data-splitout="none"
-                     data-elementdelay="0.01"
-                     data-endelementdelay="0.1"
-                     data-endspeed="1000"
-                     data-endeasing="Power4.easeIn"
-                     style=" color: #333; max-width: 550px; white-space: normal; text-shadow:none;">
-                  {{slide.description.d2}}
-                </div>
-
-                <div class="tp-caption customin ltl tp-resizeme"
-                     data-x="650"
-                     data-y="375"
-                     data-customin="x:0;y:150;z:0;rotationZ:0;scaleX:1.3;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
-                     data-speed="700"
-                     data-start="1550"
-                     data-easing="easeOutQuad"
-                     data-splitin="none"
-                     data-splitout="none"
-                     data-elementdelay="0.01"
-                     data-endelementdelay="0.1"
-                     data-endspeed="1000"
-                     data-endeasing="Power4.easeIn">
-                  <router-link v-bind:to="'/fields/' + slide.id.id2" class="btn btn-primary btn-lg">
-                    <span>Reserve</span>
-                  </router-link>
-                </div>
-              </li>
-
-              <li data-transition="fade" data-slotamount="1" data-masterspeed="1500" data-delay="10000"
-                  data-saveperformance="off" data-title="Slide" style="background-color: #F6F6F6;">
-
-                <img src="/static/assets/images/demo/wall2.jpg" alt="video" data-bgposition="top center"
-                     data-bgfit="cover" data-bgrepeat="no-repeat">
-
-                <div class="tp-caption customin ltl tp-resizeme revo-slider-caps-text uppercase"
-                     data-x="left"
-                     data-y="50"
-                     data-customin="x:-200;y:0;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
-                     data-speed="400"
-                     data-start="1000"
-                     data-easing="easeOutQuad"
-                     data-splitin="none"
-                     data-splitout="none"
-                     data-elementdelay="0.01"
-                     data-endelementdelay="0.1"
-                     data-endspeed="1000"
-                     data-endeasing="Power4.easeIn">
-                  <img v-bind:src="slide.image.src3" alt="Girl" class="img-rounded"
-                       style="max-height: 450px; margin-left: auto">
-                </div>
-
-                <div class="tp-caption customin ltl tp-resizeme text_white weight-300"
-                     data-x="643"
-                     data-y="75"
-                     data-customin="x:0;y:150;z:0;rotationZ:0;scaleX:1.3;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
-                     data-speed="700"
-                     data-start="1000"
-                     data-easing="easeOutQuad"
-                     data-splitin="none"
-                     data-splitout="none"
-                     data-elementdelay="0.01"
-                     data-endelementdelay="0.1"
-                     data-endspeed="1000"
-                     data-endeasing="Power4.easeIn" style=" color: #777;">
-                  {{slide.subtitle.st3}}
-                </div>
-
-                <div class="tp-caption customin ltl tp-resizeme large_bold_white"
-                     data-x="650"
-                     data-y="105"
-                     data-customin="x:0;y:150;z:0;rotationZ:0;scaleX:1.3;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
-                     data-speed="700"
-                     data-start="1200"
-                     data-easing="easeOutQuad"
-                     data-splitin="none"
-                     data-splitout="none"
-                     data-elementdelay="0.01"
-                     data-endelementdelay="0.1"
-                     data-endspeed="1000"
-                     data-endeasing="Power4.easeIn"
-                     style=" color: #333; max-width: 430px; white-space: normal; line-height: 1.15;">
-                  {{slide.title.t3}}
-                </div>
-
-                <div class="tp-caption customin ltl tp-resizeme small_light_white font-lato size-20"
-                     data-x="650"
-                     data-y="275"
-                     data-customin="x:0;y:150;z:0;rotationZ:0;scaleX:1.3;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
-                     data-speed="700"
-                     data-start="1400"
-                     data-easing="easeOutQuad"
-                     data-splitin="none"
-                     data-splitout="none"
-                     data-elementdelay="0.01"
-                     data-endelementdelay="0.1"
-                     data-endspeed="1000"
-                     data-endeasing="Power4.easeIn"
-                     style=" color: #333; max-width: 550px; white-space: normal; text-shadow:none;">
-                  {{slide.description.d3}}
-                </div>
-
-                <div class="tp-caption customin ltl tp-resizeme"
-                     data-x="650"
-                     data-y="375"
-                     data-customin="x:0;y:150;z:0;rotationZ:0;scaleX:1.3;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
-                     data-speed="700"
-                     data-start="1550"
-                     data-easing="easeOutQuad"
-                     data-splitin="none"
-                     data-splitout="none"
-                     data-elementdelay="0.01"
-                     data-endelementdelay="0.1"
-                     data-endspeed="1000"
-                     data-endeasing="Power4.easeIn">
-                  <router-link v-bind:to="'/fields/' + slide.id.id3" class="btn btn-primary btn-lg">
-                    <span>Reserve</span>
-                  </router-link>
-                </div>
-              </li>
-
 
             </ul>
             <div class="tp-bannertimer"></div>
           </div>
         </section>
         <!-- /REVOLUTION SLIDER -->
-
 
         <!-- INFO BAR -->
         <section class="info-bar info-bar-dark">
@@ -573,7 +282,6 @@
           </div>
         </section>
         <!-- /INFO BAR -->
-
 
         <!-- FEATURED -->
         <section>
@@ -616,7 +324,9 @@
 
                 <!-- buttons -->
                 <div class="shop-item-buttons text-center">
-                  <router-link class="btn btn-default" v-bind:to="'/fields/'+feature.id"><i class="fa fa-cart-plus"></i> Reserve </router-link>
+                  <router-link class="btn btn-default" v-bind:to="'/fields/'+feature.id"><i class="fa fa-cart-plus"></i>
+                    Reserve
+                  </router-link>
                 </div>
                 <!-- /buttons -->
               </div>
@@ -628,7 +338,6 @@
           </div>
         </section>
         <!-- /FEATURED -->
-
 
         <!-- PARALLAX -->
         <section class="parallax parallax-2"
@@ -660,7 +369,6 @@
 
         </section>
         <!-- /PARALLAX -->
-
 
         <!-- NEW PRODUCTS -->
         <section>
@@ -714,7 +422,6 @@
           </div>
         </section>
         <!-- NEW PRODUCTS -->
-
 
         <!-- NEW PRODUCTS -->
         <section>
@@ -822,21 +529,10 @@
         </section>
         <!-- NEW PRODUCTS -->
 
-
         <!-- BRANDS -->
         <section class="padding-xxs">
           <div class="container">
 
-            <!--
-                controlls-over		= navigation buttons over the image
-                buttons-autohide 	= navigation buttons visible on mouse hover only
-
-                data-plugin-options:
-                    "singleItem": true
-                    "autoPlay": true (or ms. eg: 4000)
-                    "navigation": true
-                    "pagination": true
-            -->
             <div class="text-center">
               <div class="owl-carousel nomargin" data-plugin-options='{"singleItem": false, "autoPlay": 3000}'>
                 <div>
@@ -869,7 +565,6 @@
           </div>
         </section>
         <!-- BRANDS -->
-
 
         <!-- FOOTER -->
         <footer id="footer">
@@ -1005,19 +700,18 @@
         </footer>
         <!-- /FOOTER -->
 
-
       </div>
       <!-- /wrapper -->
 
       <!-- SCROLL TO TOP -->
       <a href="#" id="toTop"></a>
 
-      <!-- PRELOADER -->
-      <!--<div id="preloader">-->
-      <!--<div class="inner">-->
-      <!--<span class="loader"></span>-->
-      <!--</div>-->
-      <!--</div>&lt;!&ndash; /PRELOADER &ndash;&gt;-->
+
+      <div id="preloader">
+      <div class="inner">
+      <span class="loader"></span>
+      </div>
+      </div><!-- /PRELOADER -->
 
     </div>
 
@@ -1026,39 +720,35 @@
 </template>
 
 <script>
+  import axios from 'axios'
+  import {mapActions} from 'vuex';
+
   export default {
     name: "home",
     data() {
       return {
-        slide: {
-          image: {
-            src1: 'https://images.bubbleroom.eu/data/product/676x980/brazilian-crochet-pantie.jpg',
-            src2: 'https://images.bubbleroom.eu/data/product/676x980/579557-0001x579553-0001_368.jpg',
-            src3: 'https://images.bubbleroom.eu/data/product/676x980/599341-0001_083.jpg'
+        slides: [
+          {
+            image: 'https://images.bubbleroom.eu/data/product/676x980/brazilian-crochet-pantie.jpg',
+            title: 'Some Fucking Title 1',
+            subtitle: 'Some Subtitle Shit 1',
+            action: 'asdf'
           },
-          title: {
-            t1: 'Some Fucking Title 1',
-            t2: 'Some Fucking Title 2',
-            t3: 'Some Fucking Title 3'
+          {
+            image: 'https://images.bubbleroom.eu/data/product/676x980/579557-0001x579553-0001_368.jpg',
+            title: 'Some Fucking Title 2',
+            subtitle: 'Some Subtitle Shit 2',
+            action: 'asdf2'
           },
-          subtitle: {
-            st1: 'Some Subtitle Shit 1',
-            st2: 'Some Subtitle Shit 2',
-            st3: 'Some Subtitle Shit 3'
-          },
-          description: {
-            d1: 'Stupid ass description for the fucking field slider which is located on the fucking top of fucking home page of this stupid goddamn site 1',
-            d2: 'Stupid ass description for the fucking field slider which is located on the fucking top of fucking home page of this stupid goddamn site 2',
-            d3: 'Stupid ass description for the fucking field slider which is located on the fucking top of fucking home page of this stupid goddamn site 3'
-          },
-          id: {
-            id1: 'asdf',
-            id2: 'asdf2',
-            id3: 'asdf3'
+          {
+            image: 'https://images.bubbleroom.eu/data/product/676x980/599341-0001_083.jpg',
+            title: 'Some Fucking Title 3',
+            subtitle: 'Some Subtitle Shit 3',
+            action: 'asdf3',
           }
-        },
-        featured: {
-          f1: {
+        ],
+        featured: [
+          {
             srcs: [
               'https://images.bubbleroom.eu/data/product/676x980/brazilian-crochet-pantie.jpg',
               'https://images.bubbleroom.eu/data/product/676x980/579557-0001x579553-0001_368.jpg'
@@ -1068,7 +758,7 @@
             price: 224,
             id: 'asdf'
           },
-          f2: {
+          {
             srcs: [
               'https://images.bubbleroom.eu/data/product/676x980/599341-0001_083.jpg',
               'https://images.bubbleroom.eu/data/product/676x980/579557-0001x579553-0001_368.jpg'
@@ -1078,7 +768,7 @@
             price: 104,
             id: 'asdf'
           },
-          f3: {
+          {
             srcs: [
               'https://images.bubbleroom.eu/data/product/676x980/599341-0001_083.jpg',
               'https://images.bubbleroom.eu/data/product/676x980/579557-0001x579553-0001_368.jpg'
@@ -1088,7 +778,7 @@
             price: 321,
             id: 'asdf'
           },
-          f4: {
+          {
             srcs: [
               'https://images.bubbleroom.eu/data/product/676x980/599341-0001_083.jpg',
               'https://images.bubbleroom.eu/data/product/676x980/579557-0001x579553-0001_368.jpg'
@@ -1098,7 +788,7 @@
             price: 232,
             id: 'asdf'
           },
-          f5: {
+          {
             srcs: [
               'https://images.bubbleroom.eu/data/product/676x980/599341-0001_083.jpg',
               'https://images.bubbleroom.eu/data/product/676x980/brazilian-crochet-pantie.jpg',
@@ -1107,9 +797,8 @@
             rating: 'rating-1',
             price: 444,
             id: 'asdf'
-          },
-
-        },
+          }
+        ],
         tops: {
           t1: {
             src: 'https://cdn.shopify.com/s/files/1/0954/5630/products/HTB1jVfMOXXXXXcxXFXXq6xXFXXXQ_600x@2x.png?v=1505883150',
@@ -1197,6 +886,25 @@
           }
         },
       }
+    },
+    methods: {
+      getSlides() {
+        axios.get('http://api.shahbandegan.ir/v1/slides')
+          .then(response => {
+            this.slides = response.data['data']
+          })
+          .catch(e => {
+            console.log(e);
+          })
+
+      },
+      ...mapActions({
+        logout: 'logout',
+      }),
+    },
+    created() {
+      this.getSlides();
+      $('#preloader').hide();
     }
   }
 </script>

@@ -19,6 +19,7 @@ export const store = new Vuex.Store({
       lname: '',
       email: '',
       mobile:'',
+      sheba: '',
       verified: false
     }
   },
@@ -49,11 +50,13 @@ export const store = new Vuex.Store({
       state.errorMsg = '';
     },
     setUser: (state, dat) =>{
+      console.log(dat);
       state.user.id = dat['id'];
       state.user.fname = dat['given_name'];
       state.user.lname = dat['last_name'];
       state.user.email = dat['email'];
       state.user.mobile = dat['mobile'];
+      state.user.sheba = dat['sheba'];
       state.user.verified = dat['is_verified'];
     },
     resetUser: (state) =>{
@@ -63,8 +66,13 @@ export const store = new Vuex.Store({
         lname: '',
         email: '',
         mobile:'',
+        sheba: '',
         verified: false
       }
+    },
+    logout: state =>{
+      state.token = '';
+      state.isLoggedin = false;
     }
   },
   actions: {
@@ -77,28 +85,26 @@ export const store = new Vuex.Store({
     resetError: context =>{
       context.commit('resetError')
     },
-    setUser(context){
-      var dat;
-      axios.post("http://api.shahbandegan.ir/v1/profile", {
-        params: {
-          token: context.getToken
+    setUser: ({commit , state}) => {
+      axios.get('http://api.shahbandegan.ir/v1/profile',{
+        headers: {
+          'Authorization': 'Bearer '+ state.token
         }
+      }).then(response =>{
+        if (response.status < 300){
+          commit('resetError');
+          commit('setUser', response.data['data']);
+        }
+        else{
+          console.log(response.data['message'])
+        }
+      }).catch(e =>{
+        console.log(e)
       })
-        .then(response => {
-          if (response.status < 300){
-            dat = response.data['data'];
-            this.resetError();
-            alert(this.getToken);
-          }
-          else{
-            console.log(response.data['message'])
-          }
-        })
-        .catch(e => {
-            console.log(e)
-          }
-        );
-      context.commit('setUser', dat);
+    },
+    logout: context => {
+      context.commit('logout');
+      context.commit('resetUser');
     }
   }
 });

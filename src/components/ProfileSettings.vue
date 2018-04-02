@@ -3,125 +3,63 @@
 
     <ul class="nav nav-tabs nav-top-border">
       <li class="active"><a href="#info" data-toggle="tab">Personal Info</a></li>
-      <li><a href="#avatar" data-toggle="tab">Avatar</a></li>
       <li><a href="#password" data-toggle="tab">Password</a></li>
-      <li><a href="#privacy" data-toggle="tab">Privacy</a></li>
     </ul>
 
     <div class="tab-content margin-top-20">
 
       <!-- PERSONAL INFO TAB -->
       <div class="tab-pane fade in active" id="info">
-        <form role="form" action="#" method="post">
+        <form role="form" id="personalForm" @submit.prevent="updateUser">
           <div class="form-group">
             <label class="control-label">First Name</label>
-            <input type="text" placeholder="Felicia" class="form-control">
+            <input type="text" v-bind:placeholder="user.fname" class="form-control" v-model="userfinal.given_name">
           </div>
           <div class="form-group">
             <label class="control-label">Last Name</label>
-            <input type="text" placeholder="Doe" class="form-control">
+            <input type="text" v-bind:placeholder="user.lname" class="form-control" v-model="userfinal.last_name">
           </div>
           <div class="form-group">
             <label class="control-label">Mobile Number</label>
-            <input type="text" placeholder="+1800-1234-657" class="form-control">
+            <input type="text" v-bind:placeholder="user.mobile" class="form-control" v-model="userfinal.mobile">
           </div>
           <div class="form-group">
-            <label class="control-label">Interests</label>
-            <input type="text" placeholder="Development, C++, etc." class="form-control">
+            <label class="control-label">Email</label>
+            <input type="text" v-bind:placeholder="user.email" class="form-control" v-model="userfinal.email">
           </div>
           <div class="form-group">
-            <label class="control-label">Occupation</label>
-            <input type="text" placeholder="Webdeveloper" class="form-control">
-          </div>
-          <div class="form-group">
-            <label class="control-label">About</label>
-            <textarea class="form-control" rows="3" placeholder="About Me..."></textarea>
-          </div>
-          <div class="form-group">
-            <label class="control-label">Website Url</label>
-            <input type="text" placeholder="http://www.yourwebsite.com" class="form-control">
+            <label class="control-label">Sheba</label>
+            <input type="text" v-bind:placeholder="user.sheba" class="form-control" v-model="userfinal.sheba">
           </div>
           <div class="margiv-top10">
-            <a href="#" class="btn btn-primary"><i class="fa fa-check"></i> Save Changes </a>
-            <a href="#" class="btn btn-default">Cancel </a>
+            <button class="btn btn-primary" ><i class="fa fa-check"></i> Save Changes </button>
+            <button class="btn btn-default" v-on:click="isCancel = true">Cancel </button>
           </div>
         </form>
       </div>
       <!-- /PERSONAL INFO TAB -->
 
-      <!-- AVATAR TAB -->
-      <div class="tab-pane fade" id="avatar">
-
-        <form class="clearfix" action="#" method="post" enctype="multipart/form-data">
-          <div class="form-group">
-
-            <div class="row">
-
-              <div class="col-md-3 col-sm-4">
-
-                <div class="thumbnail">
-                  <img class="img-responsive" src="assets/images/demo/people/460x700/8-min.jpg" alt="" />
-                </div>
-
-              </div>
-
-              <div class="col-md-9 col-sm-8">
-
-                <div class="sky-form nomargin">
-                  <label class="label">Select File</label>
-                  <label for="file" class="input input-file">
-                    <div class="button">
-                      <input type="file" id="file" onchange="this.parentNode.nextSibling.value = this.value">Browse
-                    </div><input type="text" readonly>
-                  </label>
-                </div>
-
-                <a href="#" class="btn btn-danger btn-xs noradius"><i class="fa fa-times"></i> Remove Avatar</a>
-
-                <div class="clearfix margin-top-20">
-                  <span class="label label-warning">NOTE! </span>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt laoreet!
-                  </p>
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
-
-          <div class="margiv-top10">
-            <a href="#" class="btn btn-primary">Save Changes </a>
-            <a href="#" class="btn btn-default">Cancel </a>
-          </div>
-
-        </form>
-
-      </div>
-      <!-- /AVATAR TAB -->
-
       <!-- PASSWORD TAB -->
       <div class="tab-pane fade" id="password">
 
-        <form action="#" method="post">
+        <form id="passForm" @submit.prevent="updatePassword">
 
           <div class="form-group">
             <label class="control-label">Current Password</label>
-            <input type="password" class="form-control">
+            <input type="password" class="form-control" v-model="password.current">
           </div>
           <div class="form-group">
             <label class="control-label">New Password</label>
-            <input type="password" class="form-control">
+            <input type="password" class="form-control" v-model="password.newP">
           </div>
           <div class="form-group">
             <label class="control-label">Re-type New Password</label>
-            <input type="password" class="form-control">
+            <input type="password" class="form-control" v-model="password.again">
           </div>
 
           <div class="margiv-top10">
-            <a href="#" class="btn btn-primary"><i class="fa fa-check"></i> Change Password</a>
-            <a href="#" class="btn btn-default">Cancel </a>
+            <button class="btn btn-primary"><i class="fa fa-check"></i> Change Password</button>
+            <button class="btn btn-default" v-on:click="isCancel = true">Cancel</button>
           </div>
 
         </form>
@@ -129,76 +67,101 @@
       </div>
       <!-- /PASSWORD TAB -->
 
-      <!-- PRIVACY TAB -->
-      <div class="tab-pane fade" id="privacy">
-
-        <form action="#" method="post">
-          <div class="sky-form">
-
-            <table class="table table-bordered table-striped">
-              <tbody>
-              <tr>
-                <td>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam.</td>
-                <td>
-                  <div class="inline-group">
-                    <label class="radio nomargin-top nomargin-bottom">
-                      <input type="radio" name="radioOption" checked=""><i></i> Yes
-                    </label>
-
-                    <label class="radio nomargin-top nomargin-bottom">
-                      <input type="radio" name="radioOption" checked=""><i></i> No
-                    </label>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam.</td>
-                <td>
-                  <label class="checkbox nomargin">
-                    <input type="checkbox" name="checkbox" checked=""><i></i> Yes
-                  </label>
-                </td>
-              </tr>
-              <tr>
-                <td>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam.</td>
-                <td>
-                  <label class="checkbox nomargin">
-                    <input type="checkbox" name="checkbox" checked=""><i></i> Yes
-                  </label>
-                </td>
-              </tr>
-              <tr>
-                <td>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam.</td>
-                <td>
-                  <label class="checkbox nomargin">
-                    <input type="checkbox" name="checkbox" checked=""><i></i> Yes
-                  </label>
-                </td>
-              </tr>
-              </tbody>
-            </table>
-
-          </div>
-
-          <div class="margin-top-10">
-            <a href="#" class="btn btn-primary"><i class="fa fa-check"></i> Save Changes </a>
-            <a href="#" class="btn btn-default">Cancel </a>
-          </div>
-
-        </form>
-
-      </div>
-      <!-- /PRIVACY TAB -->
-
     </div>
 
   </div>
 </template>
 
 <script>
-    export default {
-        name: "ProfileSettings"
+  import {mapActions} from 'vuex';
+  import {mapGetters} from 'vuex';
+  import axios from 'axios'
+
+  export default {
+    name: "ProfileSettings",
+    data() {
+      return {
+        userfinal: {
+          given_name: '',
+          last_name: '',
+          mobile: '',
+          email: '',
+          sheba: ''
+        },
+        password: {
+          current: '',
+          newP: '',
+          again: ''
+        },
+        isCancel: false
+      }
+    },
+    computed: {
+      ...mapGetters({
+        isLogged: 'isLogged',
+        getToken: 'getToken',
+        getErrors: 'getErrors',
+        user: 'getUser'
+      })
+    },
+    methods: {
+      ...mapActions({
+        setLogin: 'setLogin',
+        setError: 'setError',
+        resetError: 'resetError',
+        setUser: 'setUser'
+      }),
+      updateUser(event) {
+        if(this.isCancel){
+          this.personalFormReset(event);
+          return;
+        }
+        var dat = {
+          'given_name': (this.userfinal.given_name ? this.userfinal.given_name : this.user.given_name),
+          'last_name': (this.userfinal.last_name ? this.userfinal.last_name : this.user.last_name),
+          'mobile': (this.userfinal.mobile ? this.userfinal.mobile : this.user.mobile),
+          'email': (this.userfinal.email ? this.userfinal.email : this.user.email),
+          'sheba': (this.userfinal.sheba ? this.userfinal.sheba : this.user.sheba)
+        };
+        axios.post('http://api.shahbandegan.ir/v1/profile', {
+          data: dat,
+          headers: {'Authorization': 'Bearer ' + this.getToken}
+        }).then(response => {
+          if (response.status < 300) {
+            this.setUser();
+          }
+        }).catch(e => {
+          console.log(e)
+        })
+      },
+      updatePassword(event) {
+        if (this.isCancel) {
+          this.passFormReset(event);
+          return;
+        }
+      },
+      passFormReset(event) {
+        this.password = {
+          current: '',
+          newP: '',
+          again: ''
+        };
+        this.isCancel = false;
+        event.target.reset();
+      },
+      personalFormReset(event) {
+        this.userfinal = {
+          given_name: '',
+          last_name: '',
+          mobile: '',
+          email: '',
+          sheba: ''
+        };
+        this.isCancel = false;
+        event.target.reset();
+      }
     }
+  }
 </script>
 
 <style scoped>
