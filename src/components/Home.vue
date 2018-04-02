@@ -59,7 +59,7 @@
               <li>
                 <a class="dropdown-toggle no-text-underline" data-toggle="dropdown" href="#"><i
                   class="fa fa-user hidden-xs"></i>
-                  <router-link to="/profile">Your Account</router-link>
+                  <router-link v-if="$store.state.isLoggedin" to="/profile">Your Account</router-link>
                 </a>
               <li class="divider"></li>
               <li>
