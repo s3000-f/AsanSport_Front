@@ -108,56 +108,13 @@
               </li>
               <!-- /SEARCH -->
 
-              <!-- QUICK SHOP CART -->
-              <li class="quick-cart">
-                <a href="#">
-                  <span class="badge badge-aqua btn-xs badge-corner">2</span>
-                  <i class="fa fa-shopping-cart"></i>
-                </a>
-                <div class="quick-cart-box">
-                  <h4>Shop Cart</h4>
-
-                  <div class="quick-cart-wrapper">
-
-                    <a href="#"><!-- cart item -->
-                      <img src="assets/images/demo/people/300x300/4-min.jpg" width="45" height="45" alt=""/>
-                      <h6><span>2x</span> RED BAG WITH HUGE POCKETS</h6>
-                      <small>$37.21</small>
-                    </a><!-- /cart item -->
-
-                    <a href="#"><!-- cart item -->
-                      <img src="assets/images/demo/people/300x300/5-min.jpg" width="45" height="45" alt=""/>
-                      <h6><span>2x</span> THIS IS A VERY LONG TEXT AND WILL BE TRUNCATED</h6>
-                      <small>$17.18</small>
-                    </a><!-- /cart item -->
-
-                    <!-- cart no items example -->
-                    <!--
-                                        <a class="text-center" href="#">
-                                            <h6>0 ITEMS ON YOUR CART</h6>
-                                        </a>
-                                        -->
-
-                  </div>
-
-                  <!-- quick cart footer -->
-                  <div class="quick-cart-footer clearfix">
-                    <a href="shop-cart.html" class="btn btn-primary btn-xs pull-right">VIEW CART</a>
-                    <span class="pull-left"><strong>TOTAL:</strong> $54.39</span>
-                  </div>
-                  <!-- /quick cart footer -->
-
-                </div>
-              </li>
-              <!-- /QUICK SHOP CART -->
-
             </ul>
             <!-- /BUTTONS -->
 
             <!-- Logo -->
-            <a class="logo pull-left" href="index.html">
-              <img src="assets/images/logo_dark.png" alt=""/>
-            </a>
+            <router-link class="logo pull-left" to="/">
+              <img src="http://new.asansport.com/img/logo.png" alt=""/>
+            </router-link>
 
             <!--
                             Top Nav
@@ -225,24 +182,15 @@
 
             <div class="thumbnail text-center">
               <img src="assets/images/demo/people/460x700/8-min.jpg" alt=""/>
-              <h2 class="size-18 margin-top-10 margin-bottom-0">Felica Doe</h2>
-              <h3 class="size-11 margin-top-0 margin-bottom-10 text-muted">DEVELOPER</h3>
+              <h2 class="size-18 margin-top-10 margin-bottom-0">{{user.fname + ' ' + user.lname}}</h2>
+              <h3 class="size-11 margin-top-0 margin-bottom-10 text-muted">{{user.email}}</h3>
             </div>
 
-            <!-- completed -->
-            <div class="margin-bottom-30">
-              <label>88% completed profile</label>
-              <div class="progress progress-xxs">
-                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="88" aria-valuemin="0"
-                     aria-valuemax="100" style="width: 88%; min-width: 2em;"></div>
-              </div>
-            </div>
-            <!-- /completed -->
 
             <!-- SIDE NAV -->
             <ul class="side-nav list-group margin-bottom-60" id="sidebar-nav">
 
-                <li class="list-group-item padding-3" v-on:click="selected = false"><i class="fa fa-tasks"></i>Reservations
+                <li class="list-group-item padding-3" v-on:click="selected = false"><i class="fa fa-tasks"></i>RESERVATIONS
                 </li>
                 <li class="list-group-item padding-3" v-on:click="selected = true"><i class="fa fa-gears"></i> SETTINGS
                 </li>
@@ -288,15 +236,12 @@
 
           </div>
 
-
           <!-- RIGHT -->
           <transition name="fade">
           <settings v-if="selected"></settings>
           <reservations v-else></reservations>
           </transition>
 
-
-          <!--TODO add components here-->
         </div>
       </section>
       <!-- / -->
@@ -461,17 +406,26 @@
 <script>
   import ProfileSettings from './ProfileSettings'
   import ProfileReservations from './ProfileReservations'
+  import {mapGetters} from 'vuex';
 
   export default {
     name: "Profile",
     data() {
       return {
-        selected: false
+        selected: false,
       }
     },
     components: {
       'settings': ProfileSettings,
       'reservations': ProfileReservations
+    },
+    computed: {
+      ...mapGetters({
+        isLogged: 'isLogged',
+        getToken: 'getToken',
+        getErrors: 'getErrors',
+        user: 'getUser'
+      })
     }
   }
 </script>
