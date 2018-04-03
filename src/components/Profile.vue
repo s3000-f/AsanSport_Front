@@ -181,7 +181,7 @@
           <div class="col-lg-3 col-md-3 col-sm-4">
 
             <div class="thumbnail text-center">
-              <img src="assets/images/demo/people/460x700/8-min.jpg" alt=""/>
+              <img src="/static/assets/images/demo/people/460x700/8-min.jpg" alt=""/>
               <h2 class="size-18 margin-top-10 margin-bottom-0">{{user.fname + ' ' + user.lname}}</h2>
               <h3 class="size-11 margin-top-0 margin-bottom-10 text-muted">{{user.email}}</h3>
             </div>
