@@ -97,6 +97,9 @@ export const store = new Vuex.Store({
     resetGUser: state => {
       state.googleUser = {};
       state.isGoogle = false;
+    },
+    verifyUser: state => {
+      state.user.verified = true;
     }
   },
   actions: {
@@ -110,11 +113,14 @@ export const store = new Vuex.Store({
       context.commit('resetError')
     },
     setUser: ({commit, state}) => {
-      axios.get('http://api.shahbandegan.ir/v1/profile', {
+      const config = {
         headers: {
-          'Authorization': 'Bearer ' + state.token
+          Authorization: 'Bearer ' + state.token,
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
         }
-      }).then(response => {
+      };
+      axios.get('http://api.shahbandegan.ir/v1/profile', config).then(response => {
         if (response.status < 300) {
           commit('resetError');
           commit('setUser', response.data['data']);
@@ -126,14 +132,38 @@ export const store = new Vuex.Store({
         console.log(e)
       })
     },
-    logout: context => {
-      context.commit('logout');
-      context.commit('resetUser');
-      context.commit('reserGUser');
+    logout: ({commit,state}) => {
+      commit('logout');
+      commit('resetUser');
+      commit('resetGUser');
+      const config = {
+        headers: {
+          Authorization: 'Bearer ' + state.token,
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
+      };
+      axios.post('http://api.shahbandegan.ir/v1/logout', {}, config).then(response => {
+        console.log(response)
+      }).catch(e => {
+        console.log(e)
+      })
+      // axios.post('http://api.shahbandegan.ir/v1/logout', {
+      //   data: ''
+      // }).then(response => {
+      //   console.log(response)
+      // }).catch(e => {
+      //   console.log(e)
+      // })
     },
     setGUser: (context, user) => {
-      context.commit('setGUser',user)
+      context.commit('setGUser', user)
     },
-    resetGUser: context => { context.commit('resetGUser'); },
+    resetGUser: context => {
+      context.commit('resetGUser');
+    },
+    verifyUser: context => {
+      context.commit('verifyUser');
+    }
   }
 });

@@ -20,6 +20,7 @@ import './assets/plugins/bootstrap/RTL/bootstrap-rtl.min.css'
 import {store} from "./store/store";
 import GoogleAuth from 'vue-google-auth'
 
+// Vue.use(require('cors'));
 Vue.use(GoogleAuth, { client_id: '879091685695-57n6m7vs45lgnvb0rgsofv95i3844e7v.apps.googleusercontent.com' });
 Vue.googleAuth().load();
 Vue.config.productionTip = false;

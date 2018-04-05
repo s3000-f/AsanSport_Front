@@ -182,17 +182,35 @@
 
             <div class="thumbnail text-center">
               <h2 class="size-18 margin-top-10 margin-bottom-0">{{user.fname + ' ' + user.lname}}</h2>
-              <h3 class="size-11 margin-top-0 margin-bottom-10 text-muted">{{user.email}}</h3>
+              <h3 class="size-11 margin-top-0 margin-bottom-6 text-muted">{{user.email}}</h3>
+            </div>
+            <div class="margin-bottom-30 text-center" v-if="!user.verified">
+              <div class="sky-form clearfix" v-if="verification">
+                <div class="form-group text-right">
+                  <label>Verification Code</label>
+                  <label class="input margin-bottom-10 ">
+                    <input required="" type="text" v-model="verification_code">
+                    <i class="ico-append fa fa-phone"></i>
+                  </label>
+                </div>
+                <button class="btn btn-success" v-on:click="verify">Verify</button>
+              </div>
+              <div v-else>
+                <div class="text-warning text-center margin-bottom-3">Your Account is Not Verified</div>
+                <button class="btn btn-warning" v-on:click="sendVerify">
+                  <li class="fa fa-check">&nbsp;</li>
+                  تایید حساب <span></span></button>
+              </div>
             </div>
 
 
             <!-- SIDE NAV -->
             <ul class="side-nav-head list-group-item-success margin-bottom-60" id="sidebar-nav">
 
-                <li class="list-group-item padding-3" v-on:click="selected = false"><i class="fa fa-tasks"></i>RESERVATIONS
-                </li>
-                <li class="list-group-item padding-3" v-on:click="selected = true"><i class="fa fa-gears"></i> SETTINGS
-                </li>
+              <li class="list-group-item padding-3" v-on:click="selected = false"><i class="fa fa-tasks"></i>RESERVATIONS
+              </li>
+              <li class="list-group-item padding-3" v-on:click="selected = true"><i class="fa fa-gears"></i> SETTINGS
+              </li>
             </ul>
             <!-- /SIDE NAV -->
 
@@ -218,8 +236,8 @@
 
           <!-- RIGHT -->
           <transition name="fade">
-          <settings v-if="selected"></settings>
-          <reservations v-else></reservations>
+            <settings v-if="selected"></settings>
+            <reservations v-else></reservations>
           </transition>
 
 
@@ -388,6 +406,8 @@
   import ProfileSettings from './ProfileSettings'
   import ProfileReservations from './ProfileReservations'
   import {mapGetters} from 'vuex';
+  import {mapActions} from 'vuex';
+  import axios from 'axios';
 
   export default {
     name: "Profile",
@@ -396,7 +416,8 @@
         selected: false,
         upcoming_count: 12,
         previous_count: 34,
-        in_progress: 8
+        verification: false,
+        verification_code: ''
       }
     },
     components: {
@@ -410,6 +431,38 @@
         getErrors: 'getErrors',
         user: 'getUser'
       })
+    },
+    methods: {
+      ...mapActions({
+        verifyUser: 'verifyUser'
+      }),
+      verify() {
+        axios.post('http://api.shahbandegan.ir/v1/verify', {
+          data: {
+            'mobile': this.user.mobile,
+            'verification_code': this.verification_code
+          }
+        }).then(response => {
+          if (response.status < 300) {
+            this.verifyUser();
+          }
+        }).catch(e => {
+          console.log(e)
+        });
+      },
+      sendVerify() {
+        axios.post('http://api.shahbandegan.ir/v1/verify/resend', {
+          data: {
+            'mobile': this.user.mobile
+          }
+        }).then(response => {
+          if (response.status < 300) {
+            this.verification = true;
+          }
+        }).catch(e => {
+          console.log(e)
+        });
+      }
     }
   }
 </script>
@@ -418,7 +471,9 @@
   .fade-enter-active, .fade-leave-active {
     transition: opacity .5s;
   }
-  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */
+  {
     opacity: 0;
   }
 </style>

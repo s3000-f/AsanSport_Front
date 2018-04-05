@@ -29,11 +29,11 @@
             </div>
 
             <div class="col-md-4">
-              <h6><i class="icon-envelope"></i> CONTACT INFO</h6>
+              <h6><i class="icon-envelope"></i> اطلاعات تماس</h6>
               <ul class="list-unstyled">
-                <li><b>Address:</b> PO Box 21132, Here Weare St, <br/> Melbourne, Vivas 2355 Australia</li>
-                <li><b>Phone:</b> 1-800-565-2390</li>
-                <li><b>Email:</b> <a href="mailto:support@yourname.com">support@yourname.com</a></li>
+                <li><b>آدرس:</b> تهران- کوی فردوس شرق - مالکی جنوبی - پلاک ۳</li>
+                <li><b>شماره همراه:</b> ۰۹۱۲۵۲۱۴۵۰۴</li>
+                <li><b>ایمیل :</b> <a href="mailto:info@asansport.com">info@asansport.com</a></li>
               </ul>
             </div>
 
@@ -707,11 +707,11 @@
       <a href="#" id="toTop"></a>
 
 
-      <div id="preloader">
-      <div class="inner">
-      <span class="loader"></span>
-      </div>
-      </div><!-- /PRELOADER -->
+      <!--<div id="preloader">-->
+      <!--<div class="inner">-->
+      <!--<span class="loader"></span>-->
+      <!--</div>-->
+      <!--</div>&lt;!&ndash; /PRELOADER &ndash;&gt;-->
 
     </div>
 
@@ -891,7 +891,8 @@
       getSlides() {
         axios.get('http://api.shahbandegan.ir/v1/slides')
           .then(response => {
-            this.slides = response.data['data']
+            this.slides = response.data['data'];
+            console.log(this.slides);
           })
           .catch(e => {
             console.log(e);
@@ -904,7 +905,7 @@
     },
     created() {
       this.getSlides();
-      $('#preloader').hide();
+      // ('#preloader').hide();
     }
   }
 </script>
