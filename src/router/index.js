@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import About from  '@/components/About'
-import Coins from '@/components/Coins'
 import Home from '@/components/Home'
 import Login from '@/components/LoginRegister'
 import SearchResults from '@/components/SearchResults'
@@ -29,11 +28,6 @@ export default new Router({
       path: '/about',
       name: 'About',
       component: About
-    },
-    {
-      path: '/coins/:id',
-      name: 'Coins',
-      component: Coins
     },
     {
       path: '/home',

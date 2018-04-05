@@ -32,8 +32,8 @@
             <input type="text" v-bind:placeholder="user.sheba" class="form-control" v-model="userfinal.sheba">
           </div>
           <div class="margiv-top10">
-            <button class="btn btn-primary" ><i class="fa fa-check"></i> Save Changes </button>
-            <button class="btn btn-default" v-on:click="isCancel = true">Cancel </button>
+            <button class="btn btn-primary"><i class="fa fa-check"></i> Save Changes</button>
+            <button class="btn btn-default" v-on:click="isCancel = true">Cancel</button>
           </div>
         </form>
       </div>
@@ -81,6 +81,7 @@
     name: "ProfileSettings",
     data() {
       return {
+        host: 'http://api.shahbandegan.ir/v1/profile',
         userfinal: {
           given_name: '',
           last_name: '',
@@ -112,7 +113,7 @@
         setUser: 'setUser'
       }),
       updateUser(event) {
-        if(this.isCancel){
+        if (this.isCancel) {
           this.personalFormReset(event);
           return;
         }
@@ -123,16 +124,37 @@
           'email': (this.userfinal.email ? this.userfinal.email : this.user.email),
           'sheba': (this.userfinal.sheba ? this.userfinal.sheba : this.user.sheba)
         };
-        axios.post('http://api.shahbandegan.ir/v1/profile', {
-          data: dat,
-          headers: {'Authorization': 'Bearer ' + this.getToken}
-        }).then(response => {
-          if (response.status < 300) {
-            this.setUser();
+        let tok = this.getToken;
+        // axios.defaults.headers.common['Authorization'] = `Bearer ${tok}`;
+        const config = {
+          headers: {
+            Authorization: 'Bearer ' + this.getToken,
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
           }
+        };
+        axios.put(this.host, dat, config).then(response => {
+          console.log(response)
         }).catch(e => {
           console.log(e)
         })
+        // axios.put('http://api.shahbandegan.ir/v1/profile', {
+        //   data: dat,
+        //   auth:{
+        //     Authorization: 'Bearer '+ this.getToken
+        //   }
+        // }).then(response => {
+        //   if (response.status < 300) {
+        //     this.setUser();
+        //   }
+        // }).catch(e => {
+        //   console.log(e)
+        // })
+        // this.$http.put('/profile', {dat}, {headers: {'Authorization': 'Bearer ' + this.getToken}}).then(response => {
+        //   console.log(response)
+        // }, e => {
+        //   console.log(e)
+        // })
       },
       updatePassword(event) {
         if (this.isCancel) {

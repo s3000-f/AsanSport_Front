@@ -243,7 +243,7 @@
           <div class="row">
             <div class="col-md-6 col-md-offset-3">
 
-              <div class="toggle toggle-transparent toggle-accordion toggle-noicon">
+              <div class="toggle toggle-transparent toggle-accordion toggle-noicon" v-if="!passreset">
 
                 <div class="toggle active">
                   <label class="size-20"><i class="fa fa-leaf"></i> &nbsp;
@@ -256,22 +256,26 @@
                       <strong>Oh snap!</strong> Login Incorrect!
                     </div><!-- /ALERT -->
 
-
+                    <a class="btn btn-block btn-social btn-google margin-bottom-30" v-on:click="gSignIn">
+                      <span class="fa fa-google"></span>
+                      Sign in with Google
+                    </a>
+                    <li class="break"></li>
                     <div class="sky-form">
                       <div class="clearfix">
 
                         <!-- Email -->
-                        <div class="form-group">
-                          <label>Email</label>
+                        <div class="form-group text-right">
+                          <label>Phone</label>
                           <label class="input margin-bottom-10">
-                            <i class="ico-append fa fa-envelope"></i>
+                            <i class="ico-append fa fa-phone"></i>
                             <input required="" type="text" v-model="username">
                             <b class="tooltip tooltip-bottom-right">Needed to verify your account</b>
                           </label>
                         </div>
 
                         <!-- Password -->
-                        <div class="form-group">
+                        <div class="form-group text-right">
                           <label>Password</label>
                           <label class="input margin-bottom-10">
                             <i class="ico-append fa fa-lock"></i>
@@ -289,7 +293,7 @@
                           <!-- Inform Tip -->
                           <div class="form-tip pt-20">
                             <a class="no-text-decoration size-13 margin-top-10 block bold"
-                               href="#">Forgot Password?</a>
+                               v-on:click="passreset = true">Forgot Password?</a>
                           </div>
 
                         </div>
@@ -325,7 +329,7 @@
                       <fieldset>
 
                         <div class="row">
-                          <div class="form-group">
+                          <div class="form-group text-right">
 
                             <div class="col-md-6 col-sm-6">
                               <label>First Name *</label>
@@ -401,9 +405,11 @@
                         <hr/>
 
                         <label class="checkbox nomargin"><input class="checked-agree"
-                                                                type="checkbox" name="checkbox"><i></i>I agree to the <a
-                          href="#" data-toggle="modal" data-target="#termsModal">Terms of Service</a></label>
-                        <label class="checkbox nomargin"><input type="checkbox" name="checkbox"><i></i>I want to receive
+                                                                type="checkbox" name="checkbox"><i></i>I agree to
+                          the <a
+                            href="#" data-toggle="modal" data-target="#termsModal">Terms of Service</a></label>
+                        <label class="checkbox nomargin"><input type="checkbox" name="checkbox"><i></i>I want to
+                          receive
                           news and special offers</label>
 
                       </fieldset>
@@ -423,6 +429,58 @@
                   </div>
                 </div>
 
+              </div>
+              <div class="toggle toggle-transparent toggle-accordion toggle-noicon" v-else>
+                <div class="toggle active ">
+                  <label class="size-20"><i class="fa fa-leaf"></i> &nbsp;
+                    Reset Password</label>
+                  <div class="toggle-content">
+                    <div class="sky-form">
+                      <div class="clearfix">
+
+                        <!-- Email -->
+                        <div class="form-group text-right">
+                          <label>Phone</label>
+                          <label class="input margin-bottom-10 ">
+                            <input required="" type="text" v-model="password_reset">
+                            <i class="ico-append fa fa-phone"></i>
+
+                          </label>
+
+                        </div>
+                        <div class="form-group text-right">
+                          <span>&nbsp;</span>
+
+                          <label>Send By</label>
+                          <!--<label for="email_reset">Email</label>-->
+                          <input type="radio" name="choice" id="email_reset" value="email" v-model="reset_sms"/>
+                          SMS
+                          <!--<label for="sms_reset">SMS</label>-->
+                          <input type="radio" name="choice" id="sms_reset" value="sms" v-model="reset_sms"/>
+                          <span>&nbsp;</span>
+                          <span>&nbsp;</span>
+                          Email
+                        </div>
+
+                        <div class="col-md-6 col-sm-6 col-xs-6 text-left">
+                          <!-- Inform Tip -->
+                          <button class="btn btn-default" v-on:click="passreset = false">
+                            Cancel
+                          </button>
+                        </div>
+
+                        <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                          <button class="btn btn-primary" v-on:click="resetPass"><i
+                            class="fa fa-check"></i> Reset
+                          </button>
+                        </div>
+
+                      </div>
+
+
+                    </div>
+                  </div>
+                </div>
               </div>
 
             </div>
@@ -627,6 +685,7 @@
 
 <script>
   import axios from 'axios'
+  import Vue from 'vue'
   import {mapActions} from 'vuex';
   import {mapGetters} from 'vuex';
 
@@ -644,13 +703,18 @@
         pass: '',
         newPass: '',
         phone: '',
+        passreset: false,
+        password_reset: '',
+        reset_sms: 'email'
       }
     },
     computed: {
       ...mapGetters({
         isLogged: 'isLogged',
         getToken: 'getToken',
-        getErrors: 'getErrors'
+        getErrors: 'getErrors',
+        isGoogle: 'isGoogle',
+        googleUser: 'getGoogleUser'
       })
     },
     methods: {
@@ -658,7 +722,9 @@
         setLogin: 'setLogin',
         setError: 'setError',
         resetError: 'resetError',
-        setUser: 'setUser'
+        setUser: 'setUser',
+        setGUser: 'setGUser',
+        resetGUser: 'resetGUser'
       }),
       login() {
         axios.post("http://api.shahbandegan.ir/v1/login", {
@@ -666,20 +732,21 @@
           password: this.password
         })
           .then(response => {
-            if (response.status < 300){
+            if (response.status < 300) {
               this.title = response.data;
               this.setLogin(response.data['access_token']);
               this.resetError();
               this.setUser();
+              this.$router.go(-1);
             }
-            else{
+            else {
               this.setError(response.data['message']);
             }
 
           })
           .catch(e => {
-            this.setError(e);
-            alert(this.getErrors)
+              this.setError(e);
+              alert(this.getErrors)
             }
           )
       },
@@ -693,13 +760,13 @@
         })
           .then(response => {
             this.title = response.status;
-            if (response.status < 300){
+            if (response.status < 300) {
               this.setLogin(response.data['access_token']);
               this.resetError();
               this.userSetup();
               alert(this.getToken)
             }
-            else{
+            else {
               this.setError(response.data['message']);
               alert(this.getErrors)
             }
@@ -709,7 +776,53 @@
             alert(this.getErrors)
           })
       },
-    }
+      gSignIn() {
+        // Just add in this line
+        Vue.googleAuth().directAccess();
+        var data;
+        Vue.googleAuth().signIn(this.gs, function (error) {
+          this.setError(error);
+        });
+
+      },
+      gs(googleUser) {
+        this.setGUser(googleUser['Zi']);
+        if (this.isGoogle) {
+          axios.post("http://api.shahbandegan.ir/v1/login/google", {
+            id_token: this.googleUser['id_token'],
+          })
+            .then(response => {
+              if (response.status < 300) {
+                this.title = response.data;
+                this.setLogin(response.data['access_token']);
+                this.resetError();
+                this.setUser();
+                this.$router.go(-1);
+              }
+              else {
+                this.setError(response.data['message']);
+              }
+
+            })
+            .catch(e => {
+                this.setError(e);
+                alert(this.getErrors)
+              }
+            )
+        }
+      },
+      resetPass(){
+        if(this.reset_sms === 'sms'){
+          axios.post('http://api.shahbandegan.ir/v1/password/sms',{
+            mobile: this.password_reset
+          }).then(response => {
+            alert(response.data['message']);
+            this.passreset = false;
+          }).catch(e => {console.log(e)})
+        }
+      }
+    },
+
   };
 </script>
 

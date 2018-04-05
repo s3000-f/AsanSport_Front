@@ -181,55 +181,53 @@
           <div class="col-lg-3 col-md-3 col-sm-4">
 
             <div class="thumbnail text-center">
-              <img src="/static/assets/images/demo/people/460x700/8-min.jpg" alt=""/>
               <h2 class="size-18 margin-top-10 margin-bottom-0">{{user.fname + ' ' + user.lname}}</h2>
-              <h3 class="size-11 margin-top-0 margin-bottom-10 text-muted">{{user.email}}</h3>
+              <h3 class="size-11 margin-top-0 margin-bottom-6 text-muted">{{user.email}}</h3>
+            </div>
+            <div class="margin-bottom-30 text-center" v-if="!user.verified">
+              <div class="sky-form clearfix" v-if="verification">
+                <div class="form-group text-right">
+                  <label>Verification Code</label>
+                  <label class="input margin-bottom-10 ">
+                    <input required="" type="text" v-model="verification_code">
+                    <i class="ico-append fa fa-phone"></i>
+                  </label>
+                </div>
+                <button class="btn btn-success" v-on:click="verify">Verify</button>
+              </div>
+              <div v-else>
+                <div class="text-warning text-center margin-bottom-3">Your Account is Not Verified</div>
+                <button class="btn btn-warning" v-on:click="sendVerify">
+                  <li class="fa fa-check">&nbsp;</li>
+                  تایید حساب <span></span></button>
+              </div>
             </div>
 
 
             <!-- SIDE NAV -->
-            <ul class="side-nav list-group margin-bottom-60" id="sidebar-nav">
+            <ul class="side-nav-head list-group-item-success margin-bottom-60" id="sidebar-nav">
 
-                <li class="list-group-item padding-3" v-on:click="selected = false"><i class="fa fa-tasks"></i>RESERVATIONS
-                </li>
-                <li class="list-group-item padding-3" v-on:click="selected = true"><i class="fa fa-gears"></i> SETTINGS
-                </li>
+              <li class="list-group-item padding-3" v-on:click="selected = false"><i class="fa fa-tasks"></i>RESERVATIONS
+              </li>
+              <li class="list-group-item padding-3" v-on:click="selected = true"><i class="fa fa-gears"></i> SETTINGS
+              </li>
             </ul>
             <!-- /SIDE NAV -->
 
 
             <!-- info -->
-            <div class="box-light margin-bottom-30"><!-- .box-light OR .box-light -->
+            <div class="box-dark  margin-bottom-30"><!-- .box-light OR .box-light -->
+              <div class="text-muted text-center"><h4> Reservation Information </h4></div>
               <div class="row margin-bottom-20">
-                <div class="col-md-4 col-sm-4 col-xs-4 text-center bold">
-                  <h2 class="size-30 margin-top-10 margin-bottom-0 font-raleway">12</h2>
-                  <h3 class="size-11 margin-top-0 margin-bottom-10 text-info">PROJECTS</h3>
+                <div class="col-md-6 col-sm-6 col-xs-6 text-center bold">
+                  <h2 class="size-30 margin-top-10 margin-bottom-0 font-raleway">{{previous_count}}</h2>
+                  <h3 class="size-11 margin-top-0 margin-bottom-10 text-info">Previous</h3>
                 </div>
 
-                <div class="col-md-4 col-sm-4 col-xs-4 text-center bold">
-                  <h2 class="size-30 margin-top-10 margin-bottom-0 font-raleway">34</h2>
-                  <h3 class="size-11 margin-top-0 margin-bottom-10 text-info">TASKS</h3>
+                <div class="col-md-6 col-sm-6 col-xs-6 text-center bold">
+                  <h2 class="size-30 margin-top-10 margin-bottom-0 font-raleway">{{upcoming_count}}</h2>
+                  <h3 class="size-11 margin-top-0 margin-bottom-10 text-info">Upcoming</h3>
                 </div>
-
-                <div class="col-md-4 col-sm-4 col-xs-4 text-center bold">
-                  <h2 class="size-30 margin-top-10 margin-bottom-0 font-raleway">32</h2>
-                  <h3 class="size-11 margin-top-0 margin-bottom-10 text-info">UPLOADS</h3>
-                </div>
-              </div>
-              <!-- /info -->
-
-              <div class="text-muted">
-                <h2 class="size-18 text-muted margin-bottom-6"><b>About</b> Felicia Doe</h2>
-                <p>Lorem ipsum dolor sit amet diam nonummy nibh dolore.</p>
-
-                <ul class="list-unstyled nomargin">
-                  <li class="margin-bottom-10"><i class="fa fa-globe width-20 hidden-xs hidden-sm"></i> <a
-                    href="http://www.stepofweb.com">www.stepofweb.com</a></li>
-                  <li class="margin-bottom-10"><i class="fa fa-facebook width-20 hidden-xs hidden-sm"></i> <a
-                    href="http://www.facebook.com/stepofweb">stepofweb</a></li>
-                  <li class="margin-bottom-10"><i class="fa fa-twitter width-20 hidden-xs hidden-sm"></i> <a
-                    href="http://www.twitter.com/stepofweb">@stepofweb</a></li>
-                </ul>
               </div>
 
             </div>
@@ -238,9 +236,10 @@
 
           <!-- RIGHT -->
           <transition name="fade">
-          <settings v-if="selected"></settings>
-          <reservations v-else></reservations>
+            <settings v-if="selected"></settings>
+            <reservations v-else></reservations>
           </transition>
+
 
         </div>
       </section>
@@ -407,17 +406,19 @@
   import ProfileSettings from './ProfileSettings'
   import ProfileReservations from './ProfileReservations'
   import {mapGetters} from 'vuex';
-  import {store as state} from "../store/store";
+  import {mapActions} from 'vuex';
+  import axios from 'axios';
 
   export default {
     name: "Profile",
     data() {
       return {
         selected: false,
+        upcoming_count: 12,
+        previous_count: 34,
+        verification: false,
+        verification_code: ''
       }
-    },
-    created(){
-      console.log(state.token);
     },
     components: {
       'settings': ProfileSettings,
@@ -430,6 +431,38 @@
         getErrors: 'getErrors',
         user: 'getUser'
       })
+    },
+    methods: {
+      ...mapActions({
+        verifyUser: 'verifyUser'
+      }),
+      verify() {
+        axios.post('http://api.shahbandegan.ir/v1/verify', {
+          data: {
+            'mobile': this.user.mobile,
+            'verification_code': this.verification_code
+          }
+        }).then(response => {
+          if (response.status < 300) {
+            this.verifyUser();
+          }
+        }).catch(e => {
+          console.log(e)
+        });
+      },
+      sendVerify() {
+        axios.post('http://api.shahbandegan.ir/v1/verify/resend', {
+          data: {
+            'mobile': this.user.mobile
+          }
+        }).then(response => {
+          if (response.status < 300) {
+            this.verification = true;
+          }
+        }).catch(e => {
+          console.log(e)
+        });
+      }
     }
   }
 </script>
@@ -438,7 +471,9 @@
   .fade-enter-active, .fade-leave-active {
     transition: opacity .5s;
   }
-  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */
+  {
     opacity: 0;
   }
 </style>

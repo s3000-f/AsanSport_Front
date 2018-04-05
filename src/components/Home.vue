@@ -29,11 +29,11 @@
             </div>
 
             <div class="col-md-4">
-              <h6><i class="icon-envelope"></i> CONTACT INFO</h6>
+              <h6><i class="icon-envelope"></i> اطلاعات تماس</h6>
               <ul class="list-unstyled">
-                <li><b>Address:</b> PO Box 21132, Here Weare St, <br/> Melbourne, Vivas 2355 Australia</li>
-                <li><b>Phone:</b> 1-800-565-2390</li>
-                <li><b>Email:</b> <a href="mailto:support@yourname.com">support@yourname.com</a></li>
+                <li><b>آدرس:</b> تهران- کوی فردوس شرق - مالکی جنوبی - پلاک ۳</li>
+                <li><b>شماره همراه:</b> ۰۹۱۲۵۲۱۴۵۰۴</li>
+                <li><b>ایمیل :</b> <a href="mailto:info@asansport.com">info@asansport.com</a></li>
               </ul>
             </div>
 
@@ -59,7 +59,7 @@
               <li>
                 <a class="dropdown-toggle no-text-underline" data-toggle="dropdown" href="#"><i
                   class="fa fa-user hidden-xs"></i>
-                  <router-link to="/profile">Your Account</router-link>
+                  <router-link v-if="$store.state.isLoggedin" to="/profile">Your Account</router-link>
                 </a>
               <li class="divider"></li>
               <li>
@@ -725,16 +725,6 @@
 
   export default {
     name: "home",
-      // head: {
-      //   // Include external js files
-      //   script: [
-      //     { type: 'text/javascript', src: '/static/assets/plugins/jquery/jquery-2.1.4.min.js' },
-      //     { type: 'text/javascript', src: '/static/assets/plugins/slider.revolution/js/jquery.themepunch.tools.min.js' },
-      //     { type: 'text/javascript', src: '/static/assets/js/scripts.js' },
-      //     { type: 'text/javascript', src: '/static/assets/js/view/demo.revolution_slider.js' },
-      //   ]
-      // },
-
     data() {
       return {
         slides: [
@@ -901,7 +891,8 @@
       getSlides() {
         axios.get('http://api.shahbandegan.ir/v1/slides')
           .then(response => {
-            this.slides = response.data['data']
+            this.slides = response.data['data'];
+            console.log(this.slides);
           })
           .catch(e => {
             console.log(e);
@@ -914,18 +905,7 @@
     },
     created() {
       this.getSlides();
-      $('#preloader').hide();
-
-    },
-    mounted(){
-      // let jquery = document.createElement('script');    jquery.setAttribute('src',"/static/assets/plugins/jquery/jquery-2.1.4.min.js");
-      // document.head.appendChild(jquery);
-      // let scripts = document.createElement('script');    scripts.setAttribute('src',"/static/assets/js/scripts.js");
-      // document.head.appendChild(scripts);
-      // let jqueryThemePunchs  = document.createElement('script');    jqueryThemePunchs.setAttribute('src',"/static/assets/plugins/slider.revolution/js/jquery.themepunch.tools.min.js");
-      // document.head.appendChild(jqueryThemePunchs);
-      // let slider = document.createElement('script');    slider.setAttribute('src',"/static/assets/js/view/demo.revolution_slider.js");
-      // document.head.appendChild(slider);
+      // ('#preloader').hide();
     }
   }
 </script>

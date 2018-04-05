@@ -15,26 +15,42 @@ export const store = new Vuex.Store({
     errorMsg: '',
     user: {
       id: '',
-      fname:'',
+      fname: '',
       lname: '',
       email: '',
-      mobile:'',
+      mobile: '',
       sheba: '',
       verified: false
-    }
+    },
+    googleUser: {},
+    isGoogle: false
   },
   plugins: [createPersistedState({
     storage: {
       getItem: key => Cookies.get(key),
-      setItem: (key, value) => Cookies.set(key, value, { expires: 3, secure: false }),
+      setItem: (key, value) => Cookies.set(key, value, {expires: 3, secure: false}),
       removeItem: key => Cookies.remove(key)
     }
   })],
   getters: {
-    getToken: state => {return state.token},
-    isLogged: state => {return state.isLoggedin},
-    getErrors: state => {return state.errorMsg},
-    getUser: state => {return state.user}
+    getToken: state => {
+      return state.token
+    },
+    isLogged: state => {
+      return state.isLoggedin
+    },
+    getErrors: state => {
+      return state.errorMsg
+    },
+    getUser: state => {
+      return state.user
+    },
+    getGoogleUser: state => {
+      return state.googleUser
+    },
+    isGoogle: state => {
+      return state.isGoogle
+    }
   },
   mutations: {
     setLogin: (state, el1) => {
@@ -45,11 +61,11 @@ export const store = new Vuex.Store({
       state.hasError = true;
       state.errorMsg = err;
     },
-    resetError: state =>{
+    resetError: state => {
       state.hasError = false;
       state.errorMsg = '';
     },
-    setUser: (state, dat) =>{
+    setUser: (state, dat) => {
       console.log(dat);
       state.user.id = dat['id'];
       state.user.fname = dat['given_name'];
@@ -59,64 +75,95 @@ export const store = new Vuex.Store({
       state.user.sheba = dat['sheba'];
       state.user.verified = dat['is_verified'];
     },
-    resetUser: (state) =>{
+    resetUser: (state) => {
       state.user = {
         id: '',
-        fname:'',
+        fname: '',
         lname: '',
         email: '',
-        mobile:'',
+        mobile: '',
         sheba: '',
         verified: false
       }
     },
-    logout: state =>{
+    logout: state => {
       state.token = '';
       state.isLoggedin = false;
+    },
+    setGUser: (state, user) => {
+      state.googleUser = user;
+      state.isGoogle = true;
+    },
+    resetGUser: state => {
+      state.googleUser = {};
+      state.isGoogle = false;
+    },
+    verifyUser: state => {
+      state.user.verified = true;
     }
   },
   actions: {
     setLogin: (context, p1) => {
-      context.commit('setLogin',p1)
+      context.commit('setLogin', p1)
     },
-    setError: (context, err) =>{
+    setError: (context, err) => {
       context.commit('setError', err)
     },
-    resetError: context =>{
+    resetError: context => {
       context.commit('resetError')
     },
-    setUser: ({commit , state}) => {
-      axios.get('http://api.shahbandegan.ir/v1/profile',{
+    setUser: ({commit, state}) => {
+      const config = {
         headers: {
-          'Authorization': 'Bearer '+ state.token
+          Authorization: 'Bearer ' + state.token,
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
         }
-      }).then(response =>{
-        if (response.status < 300){
+      };
+      axios.get('http://api.shahbandegan.ir/v1/profile', config).then(response => {
+        if (response.status < 300) {
           commit('resetError');
           commit('setUser', response.data['data']);
         }
-        else{
+        else {
           console.log(response.data['message'])
         }
-      }).catch(e =>{
+      }).catch(e => {
         console.log(e)
       })
     },
     logout: ({commit,state}) => {
-      // commit('logout');
-      // commit('resetUser');
+      commit('logout');
+      commit('resetUser');
+      commit('resetGUser');
       const config = {
-
+        headers: {
+          Authorization: 'Bearer ' + state.token,
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
       };
-      console.log(state.token);
-      axios.post('http://api.shahbandegan.ir/v1/logout', { headers: {
-        'Authorization': 'Bearer {' + state.token+'}'
-
-      }}).then(response => {
+      axios.post('http://api.shahbandegan.ir/v1/logout', {}, config).then(response => {
         console.log(response)
       }).catch(e => {
         console.log(e)
       })
+      // axios.post('http://api.shahbandegan.ir/v1/logout', {
+      //   data: ''
+      // }).then(response => {
+      //   console.log(response)
+      // }).catch(e => {
+      //   console.log(e)
+      // })
+    },
+    setGUser: (context, user) => {
+      context.commit('setGUser', user)
+    },
+    resetGUser: context => {
+      context.commit('resetGUser');
+    },
+    verifyUser: context => {
+      context.commit('verifyUser');
     }
   }
 });

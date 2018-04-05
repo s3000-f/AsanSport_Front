@@ -18,10 +18,11 @@ import './assets/css/layout-RTL.css'
 import './assets/plugins/bootstrap/RTL/bootstrap-flipped.min.css'
 import './assets/plugins/bootstrap/RTL/bootstrap-rtl.min.css'
 import {store} from "./store/store";
+import GoogleAuth from 'vue-google-auth'
 
-// let a = require('/static/assets/plugins/jquery/jquery-2.1.4.min.js');
-// let b = require('/static/assets/js/scripts.js');
-// let c = require('/static/assets/plugins/slider.revolution/js/jquery.themepunch.tools.min.js');
+// Vue.use(require('cors'));
+Vue.use(GoogleAuth, { client_id: '879091685695-57n6m7vs45lgnvb0rgsofv95i3844e7v.apps.googleusercontent.com' });
+Vue.googleAuth().load();
 Vue.config.productionTip = false;
 Vue.use(require('vue-script2'));
 /* eslint-disable no-new */
