@@ -102,9 +102,21 @@ export const store = new Vuex.Store({
         console.log(e)
       })
     },
-    logout: context => {
-      context.commit('logout');
-      context.commit('resetUser');
+    logout: ({commit,state}) => {
+      // commit('logout');
+      // commit('resetUser');
+      const config = {
+
+      };
+      console.log(state.token);
+      axios.post('http://api.shahbandegan.ir/v1/logout', { headers: {
+        'Authorization': 'Bearer {' + state.token+'}'
+
+      }}).then(response => {
+        console.log(response)
+      }).catch(e => {
+        console.log(e)
+      })
     }
   }
 });

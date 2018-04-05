@@ -300,7 +300,7 @@
           <div class="row">
 
             <!-- IMAGE -->
-            <div class="col-lg-4 col-sm-4">
+            <div class="col-lg-6 col-sm-4">
 
               <div class="thumbnail relative margin-bottom-3">
 
@@ -327,7 +327,7 @@
 
                                         Extra: add .image-bw class to force black and white!
                                     -->
-                  <img class="img-responsive" src="/static/assets/images/demo/shop/products/1000x1500/p5.jpg"
+                  <img class="img-responsive" src="/static/assets/images/demo/1200x800/3-min.jpg"
                        width="1200" height="1500" alt="This is the product title"/>
                 </figure>
 
@@ -442,19 +442,19 @@
             <!-- INFO -->
             <div class="col-sm-4 col-md-3">
 
-                <h5  v-if="fieldData.facilities.parking" >parking : yes</h5><h5 v-else >parking : no</h5>
-                <h5  v-if="fieldData.facilities.buffet" >buffet : yes</h5><h5 v-else >buffet : no</h5>
-                <h5  v-if="fieldData.facilities.wc" >wc : yes</h5><h5 v-else >wc : no</h5>
-                <h5  v-if="fieldData.facilities.changing-room" >parking : yes</h5><h5 v-else >parking : no</h5>
-                <h5  v-if="fieldData.facilities.spectator" >parking : yes</h5><h5 v-else >parking : no</h5>
-                <h5  v-if="fieldData.facilities.shop" >parking : yes</h5><h5 v-else >parking : no</h5>
-                <h5  v-if="fieldData.facilities.ball-rent" >parking : yes</h5><h5 v-else >parking : no</h5>
-                <h5  v-if="fieldData.facilities.shower" >parking : yes</h5><h5 v-else >parking : no</h5>
-                <h5  v-if="fieldData.facilities.air_conditioning" >parking : yes</h5><h5 v-else >parking : no</h5>
-                <h5  v-if="fieldData.facilities.garden" >parking : yes</h5><h5 v-else >parking : no</h5>
-                <h5  v-if="fieldData.facilities.locker" >parking : yes</h5><h5 v-else >parking : no</h5>
-                <h5  v-if="fieldData.facilities.massage" >parking : yes</h5><h5 v-else >parking : no</h5>
-                <h5  v-if="fieldData.facilities.trainer" >parking : yes</h5><h5 v-else >parking : no</h5>
+                <!--<h5  v-if="fieldData.facilities.parking" >parking : yes</h5><h5 v-else >parking : no</h5>-->
+                <!--<h5  v-if="fieldData.facilities.buffet" >buffet : yes</h5><h5 v-else >buffet : no</h5>-->
+                <!--<h5  v-if="fieldData.facilities.wc" >wc : yes</h5><h5 v-else >wc : no</h5>-->
+                <!--<h5  v-if="fieldData.facilities.changing-room" >parking : yes</h5><h5 v-else >parking : no</h5>-->
+                <!--<h5  v-if="fieldData.facilities.spectator" >parking : yes</h5><h5 v-else >parking : no</h5>-->
+                <!--<h5  v-if="fieldData.facilities.shop" >parking : yes</h5><h5 v-else >parking : no</h5>-->
+                <!--<h5  v-if="fieldData.facilities.ball_rent" >parking : yes</h5><h5 v-else >parking : no</h5>-->
+                <!--<h5  v-if="fieldData.facilities.shower" >parking : yes</h5><h5 v-else >parking : no</h5>-->
+                <!--<h5  v-if="fieldData.facilities.air_conditioning" >parking : yes</h5><h5 v-else >parking : no</h5>-->
+                <!--<h5  v-if="fieldData.facilities.garden" >parking : yes</h5><h5 v-else >parking : no</h5>-->
+                <!--<h5  v-if="fieldData.facilities.locker" >parking : yes</h5><h5 v-else >parking : no</h5>-->
+                <!--<h5  v-if="fieldData.facilities.massage" >parking : yes</h5><h5 v-else >parking : no</h5>-->
+                <!--<h5  v-if="fieldData.facilities.trainer" >parking : yes</h5><h5 v-else >parking : no</h5>-->
             </div>
             <!-- /INFO -->
 
@@ -705,247 +705,6 @@
             </div>
             <!-- /item -->
 
-            <!-- item -->
-            <div class="shop-item nomargin">
-
-              <div class="thumbnail">
-                <!-- product image(s) -->
-                <a class="shop-item-image" href="shop-single-left.html">
-                  <!-- CAROUSEL -->
-                  <div class="owl-carousel owl-padding-0 nomargin"
-                       data-plugin-options='{"singleItem": true, "autoPlay": 3000, "navigation": false, "pagination": false, "transitionStyle":"fadeUp"}'>
-                    <img class="img-responsive" src="/static/assets/images/demo/shop/products/300x450/p5.jpg" alt="">
-                    <img class="img-responsive" src="/static/assets/images/demo/shop/products/300x450/p1.jpg" alt="">
-                  </div>
-                  <!-- /CAROUSEL -->
-                </a>
-                <!-- /product image(s) -->
-              </div>
-
-              <div class="shop-item-summary text-center">
-                <h2>Pink Dress 100% Cotton</h2>
-
-                <!-- rating -->
-                <div class="shop-item-rating-line">
-                  <div class="rating rating-4 size-13"><!-- rating-0 ... rating-5 --></div>
-                </div>
-                <!-- /rating -->
-
-                <!-- price -->
-                <div class="shop-item-price">
-                  $44.00
-                </div>
-                <!-- /price -->
-              </div>
-
-              <!-- buttons -->
-              <div class="shop-item-buttons text-center">
-                <a class="btn btn-default" href="shop-cart.html"><i class="fa fa-cart-plus"></i> Add to Cart</a>
-              </div>
-              <!-- /buttons -->
-            </div>
-            <!-- /item -->
-
-            <!-- item -->
-            <div class="shop-item nomargin">
-
-              <div class="thumbnail">
-                <!-- product image(s) -->
-                <a class="shop-item-image" href="shop-single-left.html">
-                  <img class="img-responsive" src="/static/assets/images/demo/shop/products/300x450/p2.jpg"
-                       alt="shop first image"/>
-                  <img class="img-responsive" src="/static/assets/images/demo/shop/products/300x450/p12.jpg"
-                       alt="shop hover image"/>
-                </a>
-                <!-- /product image(s) -->
-
-                <!-- product more info -->
-                <div class="shop-item-info">
-                  <span class="label label-success">NEW</span>
-                  <span class="label label-danger">SALE</span>
-                </div>
-                <!-- /product more info -->
-              </div>
-
-              <div class="shop-item-summary text-center">
-                <h2>Black Fashion Hat</h2>
-
-                <!-- rating -->
-                <div class="shop-item-rating-line">
-                  <div class="rating rating-4 size-13"><!-- rating-0 ... rating-5 --></div>
-                </div>
-                <!-- /rating -->
-
-                <!-- price -->
-                <div class="shop-item-price">
-                  <span class="line-through">$77.00</span>
-                  $65.00
-                </div>
-                <!-- /price -->
-              </div>
-
-              <!-- buttons -->
-              <div class="shop-item-buttons text-center">
-                <a class="btn btn-default" href="shop-cart.html"><i class="fa fa-cart-plus"></i> Add to Cart</a>
-              </div>
-              <!-- /buttons -->
-            </div>
-            <!-- /item -->
-
-            <!-- item -->
-            <div class="shop-item nomargin">
-
-              <div class="thumbnail">
-                <!-- product image(s) -->
-                <a class="shop-item-image" href="shop-single-left.html">
-                  <img class="img-responsive" src="/static/assets/images/demo/shop/products/300x450/p8.jpg"
-                       alt="shop first image"/>
-                </a>
-                <!-- /product image(s) -->
-
-                <!-- countdown -->
-                <div class="shop-item-counter">
-                  <div class="countdown" data-from="December 31, 2017 08:22:01"
-                       data-labels="years,months,weeks,days,hour,min,sec">
-                    <!-- Example Date From: December 31, 2018 15:03:26 --></div>
-                </div>
-                <!-- /countdown -->
-              </div>
-
-              <div class="shop-item-summary text-center">
-                <h2>Beach Black Lady Suit</h2>
-
-                <!-- rating -->
-                <div class="shop-item-rating-line">
-                  <div class="rating rating-4 size-13"><!-- rating-0 ... rating-5 --></div>
-                </div>
-                <!-- /rating -->
-
-                <!-- price -->
-                <div class="shop-item-price">
-                  $56.00
-                </div>
-                <!-- /price -->
-              </div>
-
-              <!-- buttons -->
-              <div class="shop-item-buttons text-center">
-                <a class="btn btn-default" href="shop-cart.html"><i class="fa fa-cart-plus"></i> Add to Cart</a>
-              </div>
-              <!-- /buttons -->
-            </div>
-            <!-- /item -->
-
-            <!-- item -->
-            <div class="shop-item nomargin">
-
-              <div class="thumbnail">
-                <!-- product image(s) -->
-                <a class="shop-item-image" href="shop-single-left.html">
-                  <img class="img-responsive" src="/static/assets/images/demo/shop/products/300x450/p7.jpg"
-                       alt="shop first image"/>
-                </a>
-                <!-- /product image(s) -->
-              </div>
-
-              <div class="shop-item-summary text-center">
-                <h2>Town Dress - Black</h2>
-
-                <!-- rating -->
-                <div class="shop-item-rating-line">
-                  <div class="rating rating-4 size-13"><!-- rating-0 ... rating-5 --></div>
-                </div>
-                <!-- /rating -->
-
-                <!-- price -->
-                <div class="shop-item-price">
-                  $154.00
-                </div>
-                <!-- /price -->
-              </div>
-
-              <!-- buttons -->
-              <div class="shop-item-buttons text-center">
-                <a class="btn btn-default" href="shop-cart.html"><i class="fa fa-cart-plus"></i> Add to Cart</a>
-              </div>
-              <!-- /buttons -->
-            </div>
-            <!-- /item -->
-
-            <!-- item -->
-            <div class="shop-item nomargin">
-
-              <div class="thumbnail">
-                <!-- product image(s) -->
-                <a class="shop-item-image" href="shop-single-left.html">
-                  <img class="img-responsive" src="/static/assets/images/demo/shop/products/300x450/p6.jpg"
-                       alt="shop first image"/>
-                  <img class="img-responsive" src="/static/assets/images/demo/shop/products/300x450/p14.jpg"
-                       alt="shop hover image"/>
-                </a>
-                <!-- /product image(s) -->
-              </div>
-
-              <div class="shop-item-summary text-center">
-                <h2>Chick Lady Fashion</h2>
-
-                <!-- rating -->
-                <div class="shop-item-rating-line">
-                  <div class="rating rating-4 size-13"><!-- rating-0 ... rating-5 --></div>
-                </div>
-                <!-- /rating -->
-
-                <!-- price -->
-                <div class="shop-item-price">
-                  $167.00
-                </div>
-                <!-- /price -->
-              </div>
-
-              <!-- buttons -->
-              <div class="shop-item-buttons text-center">
-                <a class="btn btn-default" href="shop-cart.html"><i class="fa fa-cart-plus"></i> Add to Cart</a>
-              </div>
-              <!-- /buttons -->
-            </div>
-            <!-- /item -->
-
-            <!-- item -->
-            <div class="shop-item nomargin">
-
-              <div class="thumbnail">
-                <!-- product image(s) -->
-                <a class="shop-item-image" href="shop-single-left.html">
-                  <img class="img-responsive" src="/static/assets/images/demo/shop/products/300x450/p11.jpg"
-                       alt="shop hover image"/>
-                  <img class="img-responsive" src="/static/assets/images/demo/shop/products/300x450/p3.jpg"
-                       alt="shop first image"/>
-                </a>
-                <!-- /product image(s) -->
-              </div>
-
-              <div class="shop-item-summary text-center">
-                <h2>Black Long Lady Shirt</h2>
-
-                <!-- rating -->
-                <div class="shop-item-rating-line">
-                  <div class="rating rating-0 size-13"><!-- rating-0 ... rating-5 --></div>
-                </div>
-                <!-- /rating -->
-
-                <!-- price -->
-                <div class="shop-item-price">
-                  $128.00
-                </div>
-                <!-- /price -->
-              </div>
-
-              <!-- buttons -->
-              <div class="shop-item-buttons text-center">
-                <a class="btn btn-default" href="shop-cart.html"><i class="fa fa-cart-plus"></i> Add to Cart</a>
-              </div>
-              <!-- /buttons -->
-            </div>
             <!-- /item -->
 
           </div>

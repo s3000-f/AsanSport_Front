@@ -19,6 +19,9 @@ import './assets/plugins/bootstrap/RTL/bootstrap-flipped.min.css'
 import './assets/plugins/bootstrap/RTL/bootstrap-rtl.min.css'
 import {store} from "./store/store";
 
+// let a = require('/static/assets/plugins/jquery/jquery-2.1.4.min.js');
+// let b = require('/static/assets/js/scripts.js');
+// let c = require('/static/assets/plugins/slider.revolution/js/jquery.themepunch.tools.min.js');
 Vue.config.productionTip = false;
 Vue.use(require('vue-script2'));
 /* eslint-disable no-new */

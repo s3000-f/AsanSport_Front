@@ -707,11 +707,11 @@
       <a href="#" id="toTop"></a>
 
 
-      <div id="preloader">
-      <div class="inner">
-      <span class="loader"></span>
-      </div>
-      </div><!-- /PRELOADER -->
+      <!--<div id="preloader">-->
+      <!--<div class="inner">-->
+      <!--<span class="loader"></span>-->
+      <!--</div>-->
+      <!--</div>&lt;!&ndash; /PRELOADER &ndash;&gt;-->
 
     </div>
 
@@ -725,6 +725,16 @@
 
   export default {
     name: "home",
+      // head: {
+      //   // Include external js files
+      //   script: [
+      //     { type: 'text/javascript', src: '/static/assets/plugins/jquery/jquery-2.1.4.min.js' },
+      //     { type: 'text/javascript', src: '/static/assets/plugins/slider.revolution/js/jquery.themepunch.tools.min.js' },
+      //     { type: 'text/javascript', src: '/static/assets/js/scripts.js' },
+      //     { type: 'text/javascript', src: '/static/assets/js/view/demo.revolution_slider.js' },
+      //   ]
+      // },
+
     data() {
       return {
         slides: [
@@ -905,6 +915,17 @@
     created() {
       this.getSlides();
       $('#preloader').hide();
+
+    },
+    mounted(){
+      // let jquery = document.createElement('script');    jquery.setAttribute('src',"/static/assets/plugins/jquery/jquery-2.1.4.min.js");
+      // document.head.appendChild(jquery);
+      // let scripts = document.createElement('script');    scripts.setAttribute('src',"/static/assets/js/scripts.js");
+      // document.head.appendChild(scripts);
+      // let jqueryThemePunchs  = document.createElement('script');    jqueryThemePunchs.setAttribute('src',"/static/assets/plugins/slider.revolution/js/jquery.themepunch.tools.min.js");
+      // document.head.appendChild(jqueryThemePunchs);
+      // let slider = document.createElement('script');    slider.setAttribute('src',"/static/assets/js/view/demo.revolution_slider.js");
+      // document.head.appendChild(slider);
     }
   }
 </script>

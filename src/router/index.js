@@ -45,7 +45,7 @@ export default new Router({
       name: 'LoginRegister',
       component: Login
     },{
-      path: '/fields/:id',
+      path: '/fields/:id/:kir',
       name: 'Field',
       component: Field
     },

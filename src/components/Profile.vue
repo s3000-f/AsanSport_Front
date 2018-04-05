@@ -407,6 +407,7 @@
   import ProfileSettings from './ProfileSettings'
   import ProfileReservations from './ProfileReservations'
   import {mapGetters} from 'vuex';
+  import {store as state} from "../store/store";
 
   export default {
     name: "Profile",
@@ -414,6 +415,9 @@
       return {
         selected: false,
       }
+    },
+    created(){
+      console.log(state.token);
     },
     components: {
       'settings': ProfileSettings,
