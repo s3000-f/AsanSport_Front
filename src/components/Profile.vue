@@ -2,49 +2,7 @@
   <div class="smoothscroll enable-animation">
 
     <!-- SLIDE TOP -->
-    <div id="slidetop">
-
-      <div class="container">
-
-        <div class="row">
-
-          <div class="col-md-4">
-            <h6><i class="icon-heart"></i> WHY SMARTY?</h6>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas metus nulla, commodo a sodales sed,
-              dignissim pretium nunc. Nam et lacus neque. Ut enim massa, sodales tempor convallis et, iaculis ac
-              massa. </p>
-          </div>
-
-          <div class="col-md-4">
-            <h6><i class="icon-attachment"></i> RECENTLY VISITED</h6>
-            <ul class="list-unstyled">
-              <li><a href="#"><i class="fa fa-angle-right"></i> Consectetur adipiscing elit amet</a></li>
-              <li><a href="#"><i class="fa fa-angle-right"></i> This is a very long text, very very very very very very
-                very very very very very very </a></li>
-              <li><a href="#"><i class="fa fa-angle-right"></i> Lorem ipsum dolor sit amet</a></li>
-              <li><a href="#"><i class="fa fa-angle-right"></i> Dolor sit amet,consectetur adipiscing elit amet</a></li>
-              <li><a href="#"><i class="fa fa-angle-right"></i> Consectetur adipiscing elit amet,consectetur adipiscing
-                elit</a></li>
-            </ul>
-          </div>
-
-          <div class="col-md-4">
-            <h6><i class="icon-envelope"></i> CONTACT INFO</h6>
-            <ul class="list-unstyled">
-              <li><b>Address:</b> PO Box 21132, Here Weare St, <br/> Melbourne, Vivas 2355 Australia</li>
-              <li><b>Phone:</b> 1-800-565-2390</li>
-              <li><b>Email:</b> <a href="mailto:support@yourname.com">support@yourname.com</a></li>
-            </ul>
-          </div>
-
-        </div>
-
-      </div>
-
-      <a class="slidetop-toggle" href="#"><!-- toggle button --></a>
-
-    </div>
-    <!-- /SLIDE TOP -->
+    <slide-top></slide-top>    <!-- /SLIDE TOP -->
 
 
     <!-- wrapper -->
@@ -76,82 +34,7 @@
 
                 Example Usage:  class="clearfix sticky header-sm transparent noborder"
             -->
-      <div id="header" class="sticky clearfix">
-
-        <!-- TOP NAV -->
-        <header id="topNav">
-          <div class="container">
-
-            <!-- Mobile Menu Button -->
-            <button class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse">
-              <i class="fa fa-bars"></i>
-            </button>
-
-            <!-- BUTTONS -->
-            <ul class="pull-right nav nav-pills nav-second-main">
-
-              <!-- SEARCH -->
-              <li class="search">
-                <a href="javascript:;">
-                  <i class="fa fa-search"></i>
-                </a>
-                <div class="search-box">
-                  <form action="page-search-result-1.html" method="get">
-                    <div class="input-group">
-                      <input type="text" name="src" placeholder="Search" class="form-control"/>
-                      <span class="input-group-btn">
-												<button class="btn btn-primary" type="submit">Search</button>
-											</span>
-                    </div>
-                  </form>
-                </div>
-              </li>
-              <!-- /SEARCH -->
-
-            </ul>
-            <!-- /BUTTONS -->
-
-            <!-- Logo -->
-            <router-link class="logo pull-left" to="/">
-              <img src="http://new.asansport.com/img/logo.png" alt=""/>
-            </router-link>
-            <!--
-                            Top Nav
-
-                            AVAILABLE CLASSES:
-                            submenu-dark = dark sub menu
-                        -->
-            <div class="navbar-collapse pull-right nav-main-collapse collapse">
-              <nav class="nav-main">
-
-                <!--
-                                    NOTE
-
-                                    For a regular link, remove "dropdown" class from LI tag and "dropdown-toggle" class from the href.
-                                    Direct Link Example:
-
-                                    <li>
-                                        <a href="#">HOME</a>
-                                    </li>
-                                -->
-                <ul id="topMain" class="nav nav-pills nav-main">
-                  <li class="dropdown active"><!-- HOME -->
-                    <router-link to="/home">Home</router-link>
-                  </li>
-                  <li class="dropdown"><!-- BLOG -->
-                    <router-link to="/about">About</router-link>
-                  </li>
-                </ul>
-
-              </nav>
-            </div>
-
-          </div>
-        </header>
-        <!-- /Top Nav -->
-
-      </div>
-
+      <header1></header1>
 
       <!--
                 PAGE HEADER
@@ -246,149 +129,7 @@
 
 
       <!-- FOOTER -->
-      <footer id="footer">
-        <div class="container">
-
-          <div class="row">
-
-            <div class="col-md-3">
-              <!-- Footer Logo -->
-              <img class="footer-logo" src="assets/images/logo-footer.png" alt=""/>
-
-              <!-- Small Description -->
-              <p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
-
-              <!-- Contact Address -->
-              <address>
-                <ul class="list-unstyled">
-                  <li class="footer-sprite address">
-                    PO Box 21132<br>
-                    Here Weare St, Melbourne<br>
-                    Vivas 2355 Australia<br>
-                  </li>
-                  <li class="footer-sprite phone">
-                    Phone: 1-800-565-2390
-                  </li>
-                  <li class="footer-sprite email">
-                    <a href="mailto:support@yourname.com">support@yourname.com</a>
-                  </li>
-                </ul>
-              </address>
-              <!-- /Contact Address -->
-
-            </div>
-
-            <div class="col-md-3">
-
-              <!-- Latest Blog Post -->
-              <h4 class="letter-spacing-1">LATEST NEWS</h4>
-              <ul class="footer-posts list-unstyled">
-                <li>
-                  <a href="#">Donec sed odio dui. Nulla vitae elit libero, a pharetra augue</a>
-                  <small>29 June 2015</small>
-                </li>
-                <li>
-                  <a href="#">Nullam id dolor id nibh ultricies</a>
-                  <small>29 June 2015</small>
-                </li>
-                <li>
-                  <a href="#">Duis mollis, est non commodo luctus</a>
-                  <small>29 June 2015</small>
-                </li>
-              </ul>
-              <!-- /Latest Blog Post -->
-
-            </div>
-
-            <div class="col-md-2">
-
-              <!-- Links -->
-              <h4 class="letter-spacing-1">EXPLORE SMARTY</h4>
-              <ul class="footer-links list-unstyled">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Our Services</a></li>
-                <li><a href="#">Our Clients</a></li>
-                <li><a href="#">Our Pricing</a></li>
-                <li><a href="#">Smarty Tour</a></li>
-                <li><a href="#">Contact Us</a></li>
-              </ul>
-              <!-- /Links -->
-
-            </div>
-
-            <div class="col-md-4">
-
-              <!-- Newsletter Form -->
-              <h4 class="letter-spacing-1">KEEP IN TOUCH</h4>
-              <p>Subscribe to Our Newsletter to get Important News &amp; Offers</p>
-
-              <form class="validate" action="php/newsletter.php" method="post" data-success="Subscribed! Thank you!"
-                    data-toastr-position="bottom-right">
-                <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                  <input type="email" id="email" name="email" class="form-control required"
-                         placeholder="Enter your Email">
-                  <span class="input-group-btn">
-										<button class="btn btn-success" type="submit">Subscribe</button>
-									</span>
-                </div>
-              </form>
-              <!-- /Newsletter Form -->
-
-              <!-- Social Icons -->
-              <div class="margin-top-20">
-                <a href="#" class="social-icon social-icon-border social-facebook pull-left" data-toggle="tooltip"
-                   data-placement="top" title="Facebook">
-
-                  <i class="icon-facebook"></i>
-                  <i class="icon-facebook"></i>
-                </a>
-
-                <a href="#" class="social-icon social-icon-border social-twitter pull-left" data-toggle="tooltip"
-                   data-placement="top" title="Twitter">
-                  <i class="icon-twitter"></i>
-                  <i class="icon-twitter"></i>
-                </a>
-
-                <a href="#" class="social-icon social-icon-border social-gplus pull-left" data-toggle="tooltip"
-                   data-placement="top" title="Google plus">
-                  <i class="icon-gplus"></i>
-                  <i class="icon-gplus"></i>
-                </a>
-
-                <a href="#" class="social-icon social-icon-border social-linkedin pull-left" data-toggle="tooltip"
-                   data-placement="top" title="Linkedin">
-                  <i class="icon-linkedin"></i>
-                  <i class="icon-linkedin"></i>
-                </a>
-
-                <a href="#" class="social-icon social-icon-border social-rss pull-left" data-toggle="tooltip"
-                   data-placement="top" title="Rss">
-                  <i class="icon-rss"></i>
-                  <i class="icon-rss"></i>
-                </a>
-
-              </div>
-              <!-- /Social Icons -->
-
-            </div>
-
-          </div>
-
-        </div>
-
-        <div class="copyright">
-          <div class="container">
-            <ul class="pull-right nomargin list-inline mobile-block">
-              <li><a href="#">Terms &amp; Conditions</a></li>
-              <li>&bull;</li>
-              <li><a href="#">Privacy</a></li>
-            </ul>
-            &copy; All Rights Reserved, Company LTD
-          </div>
-        </div>
-      </footer>
+      <footers></footers>
       <!-- /FOOTER -->
 
     </div>
@@ -406,7 +147,11 @@
   import {mapGetters} from 'vuex';
   import {mapActions} from 'vuex';
   import axios from 'axios';
+  import Header from './header'
+  import SlideTop from './slideTop'
+  import Footer from './Footer'
   // import qs from 'qs';
+
 
   export default {
     name: "Profile",
@@ -420,8 +165,12 @@
       }
     },
     components: {
+      SlideTop,
       'settings': ProfileSettings,
-      'reservations': ProfileReservations
+      'reservations': ProfileReservations,
+      'header1': Header,
+      'footers': Footer,
+      'slide-top': SlideTop
     },
     computed: {
       ...mapGetters({
@@ -451,7 +200,7 @@
             this.verifyUser();
             this.notif('نتیجه', 'حساب شما با موفقیت تایید شد', 'success')
           }
-          else{
+          else {
             this.notif('خطا', 'اطلاعات خود را بررسی کنید', 'warn');
           }
         }).catch(e => {
@@ -474,7 +223,7 @@
             this.notif('نتیجه', 'کد تایید برای شما ارسال شد', 'success');
 
           }
-          else{
+          else {
             this.notif('خطا', 'اطلاعات خود را بررسی کنید', 'warn');
           }
         }).catch(e => {
@@ -482,7 +231,7 @@
           console.log(e)
         });
       },
-      notif(title, text, type){
+      notif(title, text, type) {
         this.$notify({
           text: text,
           type: type,

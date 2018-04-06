@@ -85,22 +85,22 @@
         ],
         prevs: [
           {
-            title:'Previous Reservation 1',
+            title: 'Previous Reservation 1',
             description: 'some other long shit for this fuck as a description 1',
             date: '12th Dec 1812',
           },
           {
-            title:'Previous Reservation 2',
+            title: 'Previous Reservation 2',
             description: 'some other long shit for this fuck as a description 2',
             date: '12th Dec 1813',
           },
           {
-            title:'Previous Reservation 3',
+            title: 'Previous Reservation 3',
             description: 'some other long shit for this fuck as a description 3',
             date: '12th Dec 1814',
           },
           {
-            title:'Previous Reservation 4',
+            title: 'Previous Reservation 4',
             description: 'some other long shit for this fuck as a description 4',
             date: '12th Dec 1815',
           }

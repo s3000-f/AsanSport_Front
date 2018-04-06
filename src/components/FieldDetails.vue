@@ -3,261 +3,14 @@
   <div class="smoothscroll enable-animation">
 
     <!-- SLIDE TOP -->
-    <div id="slidetop">
-
-      <div class="container">
-
-        <div class="row">
-
-          <div class="col-md-4">
-            <h6><i class="icon-heart"></i> WHY SMARTY?</h6>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas metus nulla, commodo a sodales sed,
-              dignissim pretium nunc. Nam et lacus neque. Ut enim massa, sodales tempor convallis et, iaculis ac
-              massa. </p>
-          </div>
-
-          <div class="col-md-4">
-            <h6><i class="icon-attachment"></i> RECENTLY VISITED</h6>
-            <ul class="list-unstyled">
-              <li><a href="#"><i class="fa fa-angle-right"></i> Consectetur adipiscing elit amet</a></li>
-              <li><a href="#"><i class="fa fa-angle-right"></i> This is a very long text, very very very very very very
-                very very very very very very </a></li>
-              <li><a href="#"><i class="fa fa-angle-right"></i> Lorem ipsum dolor sit amet</a></li>
-              <li><a href="#"><i class="fa fa-angle-right"></i> Dolor sit amet,consectetur adipiscing elit amet</a></li>
-              <li><a href="#"><i class="fa fa-angle-right"></i> Consectetur adipiscing elit amet,consectetur adipiscing
-                elit</a></li>
-            </ul>
-          </div>
-
-          <div class="col-md-4">
-            <h6><i class="icon-envelope"></i> CONTACT INFO</h6>
-            <ul class="list-unstyled">
-              <li><b>Address:</b> PO Box 21132, Here Weare St, <br/> Melbourne, Vivas 2355 Australia</li>
-              <li><b>Phone:</b> 1-800-565-2390</li>
-              <li><b>Email:</b> <a href="mailto:support@yourname.com">support@yourname.com</a></li>
-            </ul>
-          </div>
-
-        </div>
-
-      </div>
-
-      <a class="slidetop-toggle" href="#"><!-- toggle button --></a>
-
-    </div>
-    <!-- /SLIDE TOP -->
+    <slide-top></slide-top>    <!-- /SLIDE TOP -->
 
 
     <!-- wrapper -->
     <div id="wrapper">
 
       <!-- Top Bar -->
-      <div id="topBar">
-        <div class="container">
-
-          <!-- right -->
-          <ul class="top-links list-inline pull-right">
-            <li class="text-welcome hidden-xs">Welcome to Smarty, <strong>John Doe</strong></li>
-            <li>
-              <a class="dropdown-toggle no-text-underline" data-toggle="dropdown" href="#"><i
-                class="fa fa-user hidden-xs"></i> MY ACCOUNT</a>
-              <ul class="dropdown-menu pull-right">
-                <li><a tabindex="-1" href="#"><i class="fa fa-history"></i> ORDER HISTORY</a></li>
-                <li class="divider"></li>
-                <li><a tabindex="-1" href="#"><i class="fa fa-bookmark"></i> MY WISHLIST</a></li>
-                <li><a tabindex="-1" href="#"><i class="fa fa-edit"></i> MY REVIEWS</a></li>
-                <li><a tabindex="-1" href="#"><i class="fa fa-cog"></i> MY SETTINGS</a></li>
-                <li class="divider"></li>
-                <li><a tabindex="-1" href="#"><i class="glyphicon glyphicon-off"></i> LOGOUT</a></li>
-              </ul>
-            </li>
-            <li class="hidden-xs"><a href="page-login-1.html">LOGIN</a></li>
-            <li class="hidden-xs"><a href="page-register-1.html">REGISTER</a></li>
-          </ul>
-
-          <!-- left -->
-          <ul class="top-links list-inline">
-            <li class="hidden-xs"><a href="page-faq-1.html">FAQ</a></li>
-            <li>
-              <a class="dropdown-toggle no-text-underline" data-toggle="dropdown" href="#"><img class="flag-lang"
-                                                                                                src="/static/assets/images/flags/us.png"
-                                                                                                width="16" height="11"
-                                                                                                alt="lang"/> ENGLISH</a>
-              <ul class="dropdown-langs dropdown-menu">
-                <li><a tabindex="-1" href="#"><img class="flag-lang" src="/static/assets/images/flags/us.png" width="16"
-                                                   height="11" alt="lang"/> ENGLISH</a></li>
-                <li class="divider"></li>
-                <li><a tabindex="-1" href="#"><img class="flag-lang" src="/static/assets/images/flags/de.png" width="16"
-                                                   height="11" alt="lang"/> GERMAN</a></li>
-                <li><a tabindex="-1" href="#"><img class="flag-lang" src="/static/assets/images/flags/ru.png" width="16"
-                                                   height="11" alt="lang"/> RUSSIAN</a></li>
-                <li><a tabindex="-1" href="#"><img class="flag-lang" src="/static/assets/images/flags/it.png" width="16"
-                                                   height="11" alt="lang"/> ITALIAN</a></li>
-              </ul>
-            </li>
-            <li>
-              <a class="dropdown-toggle no-text-underline" data-toggle="dropdown" href="#">USD</a>
-              <ul class="dropdown-langs dropdown-menu">
-                <li><a tabindex="-1" href="#">USD</a></li>
-                <li class="divider"></li>
-                <li><a tabindex="-1" href="#">EUR</a></li>
-                <li><a tabindex="-1" href="#">GBP</a></li>
-              </ul>
-            </li>
-          </ul>
-
-        </div>
-      </div>
-      <!-- /Top Bar -->
-
-      <!--
-                AVAILABLE HEADER CLASSES
-
-                Default nav height: 96px
-                .header-md 		= 70px nav height
-                .header-sm 		= 60px nav height
-
-                .noborder 		= remove bottom border (only with transparent use)
-                .transparent	= transparent header
-                .translucent	= translucent header
-                .sticky			= sticky header
-                .static			= static header
-                .dark			= dark header
-                .bottom			= header on bottom
-
-                shadow-before-1 = shadow 1 header top
-                shadow-after-1 	= shadow 1 header bottom
-                shadow-before-2 = shadow 2 header top
-                shadow-after-2 	= shadow 2 header bottom
-                shadow-before-3 = shadow 3 header top
-                shadow-after-3 	= shadow 3 header bottom
-
-                .clearfix		= required for mobile menu, do not remove!
-
-                Example Usage:  class="clearfix sticky header-sm transparent noborder"
-            -->
-      <div id="header" class="sticky clearfix">
-
-        <!-- SEARCH HEADER -->
-        <div class="search-box over-header">
-          <a id="closeSearch" href="#" class="glyphicon glyphicon-remove"></a>
-
-          <form action="page-search-result-1.html" method="get">
-            <input type="text" class="form-control" placeholder="SEARCH"/>
-          </form>
-        </div>
-        <!-- /SEARCH HEADER -->
-
-
-        <!-- TOP NAV -->
-        <header id="topNav">
-          <div class="container">
-
-            <!-- Mobile Menu Button -->
-            <button class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse">
-              <i class="fa fa-bars"></i>
-            </button>
-
-            <!-- BUTTONS -->
-            <ul class="pull-right nav nav-pills nav-second-main">
-
-              <!-- SEARCH -->
-              <li class="search">
-                <a href="javascript:;">
-                  <i class="fa fa-search"></i>
-                </a>
-              </li>
-              <!-- /SEARCH -->
-
-
-              <!-- QUICK SHOP CART -->
-              <li class="quick-cart">
-                <a href="#">
-                  <span class="badge badge-aqua btn-xs badge-corner">2</span>
-                  <i class="fa fa-shopping-cart"></i>
-                </a>
-                <div class="quick-cart-box">
-                  <h4>Shop Cart</h4>
-
-                  <div class="quick-cart-wrapper">
-
-                    <a href="#"><!-- cart item -->
-                      <img src="/static/assets/images/demo/people/300x300/4-min.jpg" width="45" height="45" alt=""/>
-                      <h6><span>2x</span> RED BAG WITH HUGE POCKETS</h6>
-                      <small>$37.21</small>
-                    </a><!-- /cart item -->
-
-                    <a href="#"><!-- cart item -->
-                      <img src="/static/assets/images/demo/people/300x300/5-min.jpg" width="45" height="45" alt=""/>
-                      <h6><span>2x</span> THIS IS A VERY LONG TEXT AND WILL BE TRUNCATED</h6>
-                      <small>$17.18</small>
-                    </a><!-- /cart item -->
-
-                    <!-- cart no items example -->
-                    <!--
-                                        <a class="text-center" href="#">
-                                            <h6>0 ITEMS ON YOUR CART</h6>
-                                        </a>
-                                        -->
-
-                  </div>
-
-                  <!-- quick cart footer -->
-                  <div class="quick-cart-footer clearfix">
-                    <a href="shop-cart.html" class="btn btn-primary btn-xs pull-right">VIEW CART</a>
-                    <span class="pull-left"><strong>TOTAL:</strong> $54.39</span>
-                  </div>
-                  <!-- /quick cart footer -->
-
-                </div>
-              </li>
-              <!-- /QUICK SHOP CART -->
-
-            </ul>
-            <!-- /BUTTONS -->
-
-            <!-- Logo -->
-            <a class="logo pull-left" href="index.html">
-              <img src="/static/assets/images/logo_dark.png" alt=""/>
-            </a>
-
-            <!--
-                            Top Nav
-
-                            AVAILABLE CLASSES:
-                            submenu-dark = dark sub menu
-                        -->
-            <div class="navbar-collapse pull-right nav-main-collapse collapse submenu-dark">
-              <nav class="nav-main">
-
-                <!--
-                    NOTE
-
-                    For a regular link, remove "dropdown" class from LI tag and "dropdown-toggle" class from the href.
-                    Direct Link Example:
-
-                    <li>
-                        <a href="#">HOME</a>
-                    </li>
-                -->
-                <ul id="topMain" class="nav nav-pills nav-main">
-                  <li class="dropdown active"><!-- HOME -->
-                    <router-link to="/home">Home</router-link>
-                  </li>
-                  <li class="dropdown"><!-- BLOG -->
-                    <router-link to="/about">About</router-link>
-                  </li>
-                </ul>
-
-              </nav>
-            </div>
-
-          </div>
-        </header>
-        <!-- /Top Nav -->
-
-      </div>
-
+      <header1></header1>
 
       <!--
                 PAGE HEADER
@@ -399,7 +152,7 @@
 
 
               <hr/>
-                <button class="btn btn-primary pull-left product-add-cart noradius">ADD TO CART</button>
+              <button class="btn btn-primary pull-left product-add-cart noradius">ADD TO CART</button>
               <hr/>
               <!-- Share -->
               <div class="pull-right">
@@ -442,19 +195,19 @@
             <!-- INFO -->
             <div class="col-sm-4 col-md-3">
 
-                <!--<h5  v-if="fieldData.facilities.parking" >parking : yes</h5><h5 v-else >parking : no</h5>-->
-                <!--<h5  v-if="fieldData.facilities.buffet" >buffet : yes</h5><h5 v-else >buffet : no</h5>-->
-                <!--<h5  v-if="fieldData.facilities.wc" >wc : yes</h5><h5 v-else >wc : no</h5>-->
-                <!--<h5  v-if="fieldData.facilities.changing-room" >parking : yes</h5><h5 v-else >parking : no</h5>-->
-                <!--<h5  v-if="fieldData.facilities.spectator" >parking : yes</h5><h5 v-else >parking : no</h5>-->
-                <!--<h5  v-if="fieldData.facilities.shop" >parking : yes</h5><h5 v-else >parking : no</h5>-->
-                <!--<h5  v-if="fieldData.facilities.ball_rent" >parking : yes</h5><h5 v-else >parking : no</h5>-->
-                <!--<h5  v-if="fieldData.facilities.shower" >parking : yes</h5><h5 v-else >parking : no</h5>-->
-                <!--<h5  v-if="fieldData.facilities.air_conditioning" >parking : yes</h5><h5 v-else >parking : no</h5>-->
-                <!--<h5  v-if="fieldData.facilities.garden" >parking : yes</h5><h5 v-else >parking : no</h5>-->
-                <!--<h5  v-if="fieldData.facilities.locker" >parking : yes</h5><h5 v-else >parking : no</h5>-->
-                <!--<h5  v-if="fieldData.facilities.massage" >parking : yes</h5><h5 v-else >parking : no</h5>-->
-                <!--<h5  v-if="fieldData.facilities.trainer" >parking : yes</h5><h5 v-else >parking : no</h5>-->
+              <!--<h5  v-if="fieldData.facilities.parking" >parking : yes</h5><h5 v-else >parking : no</h5>-->
+              <!--<h5  v-if="fieldData.facilities.buffet" >buffet : yes</h5><h5 v-else >buffet : no</h5>-->
+              <!--<h5  v-if="fieldData.facilities.wc" >wc : yes</h5><h5 v-else >wc : no</h5>-->
+              <!--<h5  v-if="fieldData.facilities.changing-room" >parking : yes</h5><h5 v-else >parking : no</h5>-->
+              <!--<h5  v-if="fieldData.facilities.spectator" >parking : yes</h5><h5 v-else >parking : no</h5>-->
+              <!--<h5  v-if="fieldData.facilities.shop" >parking : yes</h5><h5 v-else >parking : no</h5>-->
+              <!--<h5  v-if="fieldData.facilities.ball_rent" >parking : yes</h5><h5 v-else >parking : no</h5>-->
+              <!--<h5  v-if="fieldData.facilities.shower" >parking : yes</h5><h5 v-else >parking : no</h5>-->
+              <!--<h5  v-if="fieldData.facilities.air_conditioning" >parking : yes</h5><h5 v-else >parking : no</h5>-->
+              <!--<h5  v-if="fieldData.facilities.garden" >parking : yes</h5><h5 v-else >parking : no</h5>-->
+              <!--<h5  v-if="fieldData.facilities.locker" >parking : yes</h5><h5 v-else >parking : no</h5>-->
+              <!--<h5  v-if="fieldData.facilities.massage" >parking : yes</h5><h5 v-else >parking : no</h5>-->
+              <!--<h5  v-if="fieldData.facilities.trainer" >parking : yes</h5><h5 v-else >parking : no</h5>-->
             </div>
             <!-- /INFO -->
 
@@ -716,136 +469,7 @@
 
 
       <!-- FOOTER -->
-      <footer id="footer">
-        <div class="container">
-
-          <div class="row margin-top-60 margin-bottom-40 size-13">
-
-            <!-- col #1 -->
-            <div class="col-md-4 col-sm-4">
-
-              <!-- Footer Logo -->
-              <img class="footer-logo" src="/static/assets/images/logo-footer.png" alt=""/>
-
-              <p>
-                Incredibly beautiful responsive Bootstrap Template for Corporate and Creative Professionals.
-              </p>
-
-              <h2>(800) 123-4567</h2>
-
-              <!-- Social Icons -->
-              <div class="clearfix">
-
-                <a href="#" class="social-icon social-icon-sm social-icon-border social-facebook pull-left"
-                   data-toggle="tooltip" data-placement="top" title="Facebook">
-                  <i class="icon-facebook"></i>
-                  <i class="icon-facebook"></i>
-                </a>
-
-                <a href="#" class="social-icon social-icon-sm social-icon-border social-twitter pull-left"
-                   data-toggle="tooltip" data-placement="top" title="Twitter">
-                  <i class="icon-twitter"></i>
-                  <i class="icon-twitter"></i>
-                </a>
-
-                <a href="#" class="social-icon social-icon-sm social-icon-border social-gplus pull-left"
-                   data-toggle="tooltip" data-placement="top" title="Google plus">
-                  <i class="icon-gplus"></i>
-                  <i class="icon-gplus"></i>
-                </a>
-
-                <a href="#" class="social-icon social-icon-sm social-icon-border social-linkedin pull-left"
-                   data-toggle="tooltip" data-placement="top" title="Linkedin">
-                  <i class="icon-linkedin"></i>
-                  <i class="icon-linkedin"></i>
-                </a>
-
-                <a href="#" class="social-icon social-icon-sm social-icon-border social-rss pull-left"
-                   data-toggle="tooltip" data-placement="top" title="Rss">
-                  <i class="icon-rss"></i>
-                  <i class="icon-rss"></i>
-                </a>
-
-              </div>
-              <!-- /Social Icons -->
-
-            </div>
-            <!-- /col #1 -->
-
-            <!-- col #2 -->
-            <div class="col-md-8 col-sm-8">
-
-              <div class="row">
-
-                <div class="col-md-5 hidden-sm hidden-xs">
-                  <h4 class="letter-spacing-1">RECENT NEWS</h4>
-                  <ul class="list-unstyled footer-list half-paddings">
-                    <li>
-                      <a class="block" href="#">New CSS3 Transitions this Year</a>
-                      <small>June 29, 2015</small>
-                    </li>
-                    <li>
-                      <a class="block" href="#">Inteligent Transitions In UX Design</a>
-                      <small>June 29, 2015</small>
-                    </li>
-                    <li>
-                      <a class="block" href="#">Lorem Ipsum Dolor</a>
-                      <small>June 29, 2015</small>
-                    </li>
-                    <li>
-                      <a class="block" href="#">New CSS3 Transitions this Year</a>
-                      <small>June 29, 2015</small>
-                    </li>
-                  </ul>
-                </div>
-
-                <div class="col-md-3 hidden-sm hidden-xs">
-                  <h4 class="letter-spacing-1">EXPLORE US</h4>
-                  <ul class="list-unstyled footer-list half-paddings noborder">
-                    <li><a class="block" href="#"><i class="fa fa-angle-right"></i> About Us</a></li>
-                    <li><a class="block" href="#"><i class="fa fa-angle-right"></i> About Me</a></li>
-                    <li><a class="block" href="#"><i class="fa fa-angle-right"></i> About Our Team</a></li>
-                    <li><a class="block" href="#"><i class="fa fa-angle-right"></i> Services</a></li>
-                    <li><a class="block" href="#"><i class="fa fa-angle-right"></i> Careers</a></li>
-                    <li><a class="block" href="#"><i class="fa fa-angle-right"></i> Gallery</a></li>
-                    <li><a class="block" href="#"><i class="fa fa-angle-right"></i> FAQ</a></li>
-                  </ul>
-                </div>
-
-                <div class="col-md-4">
-                  <h4 class="letter-spacing-1">SECURE PAYMENT</h4>
-                  <p>Donec tellus massa, tristique sit amet condim vel, facilisis quis sapien. Praesent id enim sit
-                    amet.</p>
-                  <p>  <!-- see /static/assets/images/cc/ for more icons -->
-                    <img src="/static/assets/images/cc/Visa.png" alt=""/>
-                    <img src="/static/assets/images/cc/Mastercard.png" alt=""/>
-                    <img src="/static/assets/images/cc/Maestro.png" alt=""/>
-                    <img src="/static/assets/images/cc/PayPal.png" alt=""/>
-                  </p>
-                </div>
-
-              </div>
-
-            </div>
-            <!-- /col #2 -->
-
-          </div>
-
-        </div>
-
-        <div class="copyright">
-          <div class="container">
-            <ul class="pull-right nomargin list-inline mobile-block">
-              <li><a href="#">Terms &amp; Conditions</a></li>
-              <li>&bull;</li>
-              <li><a href="#">Privacy</a></li>
-            </ul>
-
-            &copy; All Rights Reserved, Company LTD
-          </div>
-        </div>
-
-      </footer>
+      <footers></footers>
       <!-- /FOOTER -->
 
     </div>
@@ -858,9 +482,9 @@
 
     <!--&lt;!&ndash; PRELOADER &ndash;&gt;-->
     <!--<div id="preloader">-->
-      <!--<div class="inner">-->
-        <!--<span class="loader"></span>-->
-      <!--</div>-->
+    <!--<div class="inner">-->
+    <!--<span class="loader"></span>-->
+    <!--</div>-->
     <!--</div>&lt;!&ndash; /PRELOADER &ndash;&gt;-->
 
 
@@ -882,6 +506,9 @@
 
 <script>
   import axios from 'axios'
+  import Header from './header'
+  import SlideTop from './slideTop'
+  import Footer from './Footer'
 
   export default {
     name: "Field",
@@ -895,6 +522,12 @@
     },
     watch: {
       '$route': 'fetchData'
+    },
+    components: {
+      SlideTop,
+      'header1': Header,
+      'footers': Footer,
+      'slide-top': SlideTop
     },
 
     methods: {

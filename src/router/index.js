@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import About from  '@/components/About'
+import About from '@/components/About'
 import Home from '@/components/Home'
 import Login from '@/components/LoginRegister'
 import SearchResults from '@/components/SearchResults'
@@ -38,8 +38,14 @@ export default new Router({
       path: '/login-register',
       name: 'LoginRegister',
       component: Login
-    },{
-      path: '/fields/:id/:kir',
+    },
+    {
+      path: '/fields',
+      name: 'FieldsList',
+      component: FieldsList
+    },
+    {
+      path: '/fields/:id/:name',
       name: 'Field',
       component: Field
     },
@@ -52,11 +58,6 @@ export default new Router({
       path: '/check-out',
       name: 'CheckOut',
       component: CheckOut
-    },
-    {
-      path: '/fields',
-      name: 'FieldsList',
-      component: FieldsList
     }
   ]
 })

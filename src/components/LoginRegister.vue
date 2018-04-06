@@ -3,52 +3,7 @@
   <div class="smoothscroll enable-animation">
 
     <!-- SLIDE TOP -->
-    <div id="slidetop">
-
-      <div class="container">
-
-        <div class="row">
-
-          <div class="col-md-4">
-            <h6><i class="icon-heart"></i> WHY SMARTY?</h6>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas metus nulla, commodo a sodales sed,
-              dignissim pretium nunc. Nam et lacus neque. Ut enim massa, sodales tempor convallis et, iaculis ac
-              massa. </p>
-          </div>
-
-          <div class="col-md-4">
-            <h6><i class="icon-attachment"></i> RECENTLY VISITED</h6>
-            <ul class="list-unstyled">
-              <li><a href="#"><i class="fa fa-angle-right"></i> Consectetur adipiscing elit amet</a></li>
-              <li><a href="#"><i class="fa fa-angle-right"></i>
-                This is a very long text, very very very very very very very very very very very very </a>
-              </li>
-              <li><a href="#"><i class="fa fa-angle-right"></i> Lorem ipsum dolor sit amet</a></li>
-              <li><a href="#"><i class="fa fa-angle-right"></i>
-                Dolor sit amet,consectetur adipiscing elit amet</a></li>
-              <li><a href="#"><i class="fa fa-angle-right"></i>
-                Consectetur adipiscing elit amet,consectetur adipiscing elit</a></li>
-            </ul>
-          </div>
-
-          <div class="col-md-4">
-            <h6><i class="icon-envelope"></i> CONTACT INFO</h6>
-            <ul class="list-unstyled">
-              <li><b>Address:</b> PO Box 21132, Here Weare St, <br/> Melbourne, Vivas 2355 Australia</li>
-              <li><b>Phone:</b> 1-800-565-2390</li>
-              <li><b>Email:</b> <a href="mailto:support@yourname.com">support@yourname.com</a></li>
-            </ul>
-          </div>
-
-        </div>
-
-      </div>
-
-      <a class="slidetop-toggle" href="#"><!-- toggle button --></a>
-
-    </div>
-    <!-- /SLIDE TOP -->
+<slide-top></slide-top>    <!-- /SLIDE TOP -->
 
 
     <!-- wrapper -->
@@ -83,130 +38,7 @@
 
                 Example Usage:  class="clearfix sticky header-sm transparent noborder"
             -->
-      <div id="header" class="sticky clearfix">
-
-        <!-- TOP NAV -->
-        <header id="topNav">
-          <div class="container">
-
-            <!-- Mobile Menu Button -->
-            <button class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse">
-              <i class="fa fa-bars"></i>
-            </button>
-
-            <!-- BUTTONS -->
-            <ul class="pull-right nav nav-pills nav-second-main">
-
-              <!-- SEARCH -->
-              <li class="search">
-                <a href="javascript:;">
-                  <i class="fa fa-search"></i>
-                </a>
-                <div class="search-box">
-                  <form action="page-search-result-1.html" method="get">
-                    <div class="input-group">
-                      <input type="text" name="src" placeholder="Search" class="form-control"/>
-                      <span class="input-group-btn">
-												<button class="btn btn-primary" type="submit">Search</button>
-											</span>
-                    </div>
-                  </form>
-                </div>
-              </li>
-              <!-- /SEARCH -->
-
-              <!-- QUICK SHOP CART -->
-              <li class="quick-cart">
-                <a href="#">
-                  <span class="badge badge-aqua btn-xs badge-corner">2</span>
-                  <i class="fa fa-shopping-cart"></i>
-                </a>
-                <div class="quick-cart-box">
-                  <h4>Shop Cart</h4>
-
-                  <div class="quick-cart-wrapper">
-
-                    <a href="#"><!-- cart item -->
-                      <img src="assets/images/demo/people/300x300/4-min.jpg" width="45"
-                           height="45" alt=""/>
-                      <h6><span>2x</span> RED BAG WITH HUGE POCKETS</h6>
-                      <small>$37.21</small>
-                    </a><!-- /cart item -->
-
-                    <a href="#"><!-- cart item -->
-                      <img src="assets/images/demo/people/300x300/5-min.jpg" width="45"
-                           height="45" alt=""/>
-                      <h6><span>2x</span> THIS IS A VERY LONG TEXT AND WILL BE TRUNCATED</h6>
-                      <small>$17.18</small>
-                    </a><!-- /cart item -->
-
-                    <!-- cart no items example -->
-                    <!--
-                                        <a class="text-center" href="#">
-                                            <h6>0 ITEMS ON YOUR CART</h6>
-                                        </a>
-                                        -->
-
-                  </div>
-
-                  <!-- quick cart footer -->
-                  <div class="quick-cart-footer clearfix">
-                    <a href="shop-cart.html" class="btn btn-primary btn-xs pull-right">VIEW CART</a>
-                    <span class="pull-left"><strong>TOTAL:</strong> $54.39</span>
-                  </div>
-                  <!-- /quick cart footer -->
-
-                </div>
-              </li>
-              <!-- /QUICK SHOP CART -->
-
-            </ul>
-            <!-- /BUTTONS -->
-
-            <!-- Logo -->
-            <a class="logo pull-left" href="index.html">
-              <img src="assets/images/logo_dark.png" alt=""/>
-            </a>
-
-            <!--
-                            Top Nav
-
-                            AVAILABLE CLASSES:
-                            submenu-dark = dark sub menu
-                        -->
-            <div class="navbar-collapse pull-right nav-main-collapse collapse">
-              <nav class="nav-main">
-
-                <!--
-                                    NOTE
-
-                                    For a regular link, remove "dropdown" class from LI tag and "dropdown-toggle" class from the href.
-                                    Direct Link Example:
-
-                                    <li>
-                                        <a href="#">HOME</a>
-                                    </li>
-                                -->
-                <ul id="topMain" class="nav nav-pills nav-main">
-                  <li class="dropdown active"><!-- HOME -->
-                    <router-link to="/home">HOME</router-link>
-
-                  </li>
-                  <li class="dropdown"><!-- BLOG -->
-                    <a href="#">
-                      BLOG
-                    </a>
-                  </li>
-                </ul>
-
-              </nav>
-            </div>
-
-          </div>
-        </header>
-        <!-- /Top Nav -->
-
-      </div>
+      <header1></header1>
 
 
       <!--
@@ -648,7 +480,9 @@
   import Vue from 'vue'
   import {mapActions} from 'vuex';
   import {mapGetters} from 'vuex';
-
+  import Header from './header'
+  import SlideTop from './slideTop'
+  import Footer from './Footer'
 
   export default {
     name: "LoginRegister",
@@ -677,6 +511,12 @@
         isGoogle: 'isGoogle',
         googleUser: 'getGoogleUser'
       })
+    },
+    components: {
+      SlideTop,
+      'header1': Header,
+      'footers': Footer,
+      'slide-top': SlideTop
     },
     methods: {
       ...mapActions({
