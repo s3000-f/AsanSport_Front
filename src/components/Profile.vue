@@ -115,7 +115,6 @@
             <router-link class="logo pull-left" to="/">
               <img src="http://new.asansport.com/img/logo.png" alt=""/>
             </router-link>
-
             <!--
                             Top Nav
 
@@ -187,16 +186,16 @@
             <div class="margin-bottom-30 text-center" v-if="!user.verified">
               <div class="sky-form clearfix" v-if="verification">
                 <div class="form-group text-right">
-                  <label>Verification Code</label>
+                  <label class="size-13">کد تایید</label>
                   <label class="input margin-bottom-10 ">
                     <input required="" type="text" v-model="verification_code">
                     <i class="ico-append fa fa-phone"></i>
                   </label>
                 </div>
-                <button class="btn btn-success" v-on:click="verify">Verify</button>
+                <button class="btn btn-success" v-on:click="verify">تایید</button>
               </div>
               <div v-else>
-                <div class="text-warning text-center margin-bottom-3">Your Account is Not Verified</div>
+                <div class="text-warning text-center margin-bottom-3 size-18">حساب شما تایید نشده است</div>
                 <button class="btn btn-warning" v-on:click="sendVerify">
                   <li class="fa fa-check">&nbsp;</li>
                   تایید حساب <span></span></button>
@@ -207,9 +206,9 @@
             <!-- SIDE NAV -->
             <ul class="side-nav-head list-group-item-success margin-bottom-60" id="sidebar-nav">
 
-              <li class="list-group-item padding-3" v-on:click="selected = false"><i class="fa fa-tasks"></i>RESERVATIONS
+              <li class="list-group-item padding-3" v-on:click="selected = false"><i class="fa fa-tasks"></i>رزرو ها
               </li>
-              <li class="list-group-item padding-3" v-on:click="selected = true"><i class="fa fa-gears"></i> SETTINGS
+              <li class="list-group-item padding-3" v-on:click="selected = true"><i class="fa fa-gears"></i> تنظیمات
               </li>
             </ul>
             <!-- /SIDE NAV -->
@@ -217,16 +216,16 @@
 
             <!-- info -->
             <div class="box-dark  margin-bottom-30"><!-- .box-light OR .box-light -->
-              <div class="text-muted text-center"><h4> Reservation Information </h4></div>
+              <div class="text-muted text-center"><h4> آمار رزرو ها </h4></div>
               <div class="row margin-bottom-20">
                 <div class="col-md-6 col-sm-6 col-xs-6 text-center bold">
                   <h2 class="size-30 margin-top-10 margin-bottom-0 font-raleway">{{previous_count}}</h2>
-                  <h3 class="size-11 margin-top-0 margin-bottom-10 text-info">Previous</h3>
+                  <h3 class="size-13 margin-top-0 margin-bottom-10 text-info">گذشته</h3>
                 </div>
 
                 <div class="col-md-6 col-sm-6 col-xs-6 text-center bold">
                   <h2 class="size-30 margin-top-10 margin-bottom-0 font-raleway">{{upcoming_count}}</h2>
-                  <h3 class="size-11 margin-top-0 margin-bottom-10 text-info">Upcoming</h3>
+                  <h3 class="size-13 margin-top-0 margin-bottom-10 text-info">پیش رو</h3>
                 </div>
               </div>
 
@@ -398,7 +397,6 @@
 
     <!-- SCROLL TO TOP -->
     <a href="#" id="toTop"></a>
-
   </div>
 </template>
 
@@ -408,6 +406,7 @@
   import {mapGetters} from 'vuex';
   import {mapActions} from 'vuex';
   import axios from 'axios';
+  // import qs from 'qs';
 
   export default {
     name: "Profile",
@@ -417,7 +416,7 @@
         upcoming_count: 12,
         previous_count: 34,
         verification: false,
-        verification_code: ''
+        verification_code: '',
       }
     },
     components: {
@@ -437,31 +436,58 @@
         verifyUser: 'verifyUser'
       }),
       verify() {
-        axios.post('http://api.shahbandegan.ir/v1/verify', {
-          data: {
-            'mobile': this.user.mobile,
-            'verification_code': this.verification_code
+        let dat = {
+          'mobile': this.user.mobile,
+          'verification_code': this.verification_code
+        };
+        const config = {
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
           }
-        }).then(response => {
+        };
+        axios.post('http://api.shahbandegan.ir/v1/verify', dat, config).then(response => {
           if (response.status < 300) {
             this.verifyUser();
+            this.notif('نتیجه', 'حساب شما با موفقیت تایید شد', 'success')
+          }
+          else{
+            this.notif('خطا', 'اطلاعات خود را بررسی کنید', 'warn');
           }
         }).catch(e => {
+          this.notif('خطا', e, 'error');
           console.log(e)
         });
       },
       sendVerify() {
-        axios.post('http://api.shahbandegan.ir/v1/verify/resend', {
-          data: {
-            'mobile': this.user.mobile
+        console.log('mobile --> ' + this.user.mobile);
+        let dat = {'mobile': this.user.mobile};
+        const config = {
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
           }
-        }).then(response => {
+        };
+        axios.post('http://api.shahbandegan.ir/v1/verify/resend', dat, config).then(response => {
           if (response.status < 300) {
             this.verification = true;
+            this.notif('نتیجه', 'کد تایید برای شما ارسال شد', 'success');
+
+          }
+          else{
+            this.notif('خطا', 'اطلاعات خود را بررسی کنید', 'warn');
           }
         }).catch(e => {
+          this.notif('خطا', e, 'error');
           console.log(e)
         });
+      },
+      notif(title, text, type){
+        this.$notify({
+          text: text,
+          type: type,
+          title: title
+        })
       }
     }
   }

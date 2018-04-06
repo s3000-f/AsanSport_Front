@@ -2,8 +2,8 @@
   <div class="col-lg-9 col-md-9 col-sm-8">
 
     <ul class="nav nav-tabs nav-top-border">
-      <li class="active"><a href="#info" data-toggle="tab">Personal Info</a></li>
-      <li><a href="#password" data-toggle="tab">Password</a></li>
+      <li class="active"><a href="#info" data-toggle="tab">اطلاعات شخصی</a></li>
+      <li><a href="#password" data-toggle="tab">رمز عبور</a></li>
     </ul>
 
     <div class="tab-content margin-top-20">
@@ -12,28 +12,28 @@
       <div class="tab-pane fade in active" id="info">
         <form role="form" id="personalForm" @submit.prevent="updateUser">
           <div class="form-group">
-            <label class="control-label">First Name</label>
+            <label class="control-label size-16">نام</label>
             <input type="text" v-bind:placeholder="user.fname" class="form-control" v-model="userfinal.given_name">
           </div>
           <div class="form-group">
-            <label class="control-label">Last Name</label>
+            <label class="control-label size-16">نام خانوادگی</label>
             <input type="text" v-bind:placeholder="user.lname" class="form-control" v-model="userfinal.last_name">
           </div>
           <div class="form-group">
-            <label class="control-label">Mobile Number</label>
+            <label class="control-label size-16">تلفن همراه</label>
             <input type="text" v-bind:placeholder="user.mobile" class="form-control" v-model="userfinal.mobile">
           </div>
           <div class="form-group">
-            <label class="control-label">Email</label>
+            <label class="control-label size-16">ایمیل</label>
             <input type="text" v-bind:placeholder="user.email" class="form-control" v-model="userfinal.email">
           </div>
           <div class="form-group">
-            <label class="control-label">Sheba</label>
+            <label class="control-label size-16">کد شبا</label>
             <input type="text" v-bind:placeholder="user.sheba" class="form-control" v-model="userfinal.sheba">
           </div>
           <div class="margiv-top10">
-            <button class="btn btn-primary"><i class="fa fa-check"></i> Save Changes</button>
-            <button class="btn btn-default" v-on:click="isCancel = true">Cancel</button>
+            <button class="btn btn-primary"><i class="fa fa-check"></i> ثبت تغییرات</button>
+            <button class="btn btn-default" v-on:click="isCancel = true">لغو</button>
           </div>
         </form>
       </div>
@@ -45,21 +45,21 @@
         <form id="passForm" @submit.prevent="updatePassword">
 
           <div class="form-group">
-            <label class="control-label">Current Password</label>
+            <label class="control-label size-16">رمز فعلی</label>
             <input type="password" class="form-control" v-model="password.current">
           </div>
           <div class="form-group">
-            <label class="control-label">New Password</label>
+            <label class="control-label size-16">رمز جدید</label>
             <input type="password" class="form-control" v-model="password.newP">
           </div>
           <div class="form-group">
-            <label class="control-label">Re-type New Password</label>
+            <label class="control-label size-16">تکرار رمز جدید</label>
             <input type="password" class="form-control" v-model="password.again">
           </div>
 
           <div class="margiv-top10">
-            <button class="btn btn-primary"><i class="fa fa-check"></i> Change Password</button>
-            <button class="btn btn-default" v-on:click="isCancel = true">Cancel</button>
+            <button class="btn btn-primary"><i class="fa fa-check"></i> ثبت تغییرات</button>
+            <button class="btn btn-default" v-on:click="isCancel = true">لغو</button>
           </div>
 
         </form>
@@ -134,27 +134,16 @@
           }
         };
         axios.put(this.host, dat, config).then(response => {
-          console.log(response)
+          console.log(response);
+          if (response.status < 300){
+            this.notif('نتیجه', 'اطلاعات با موفقیت ثبت شد', 'success');
+          }else{
+            this.notif('خطا', 'اطلاعات خود را بررسی کنید', 'warn');
+          }
         }).catch(e => {
+          this.notif('خطا', e, 'error');
           console.log(e)
         })
-        // axios.put('http://api.shahbandegan.ir/v1/profile', {
-        //   data: dat,
-        //   auth:{
-        //     Authorization: 'Bearer '+ this.getToken
-        //   }
-        // }).then(response => {
-        //   if (response.status < 300) {
-        //     this.setUser();
-        //   }
-        // }).catch(e => {
-        //   console.log(e)
-        // })
-        // this.$http.put('/profile', {dat}, {headers: {'Authorization': 'Bearer ' + this.getToken}}).then(response => {
-        //   console.log(response)
-        // }, e => {
-        //   console.log(e)
-        // })
       },
       updatePassword(event) {
         if (this.isCancel) {
