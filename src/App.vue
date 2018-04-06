@@ -22,6 +22,7 @@
     <script2 type="text/javascript" src="/static/assets/js/view/demo.revolution_slider.js"></script2>
     <!-- PAGE LEVEL script2S -->
     <script2 type="text/javascript" src="/static/assets/js/view/demo.shop.js"></script2>
+    <notifications position="bottom right"/>
   </div>
 </template>
 

@@ -19,12 +19,15 @@ import './assets/plugins/bootstrap/RTL/bootstrap-flipped.min.css'
 import './assets/plugins/bootstrap/RTL/bootstrap-rtl.min.css'
 import {store} from "./store/store";
 import GoogleAuth from 'vue-google-auth'
+import Notifications from 'vue-notification'
+
 
 // Vue.use(require('cors'));
 Vue.use(GoogleAuth, { client_id: '879091685695-57n6m7vs45lgnvb0rgsofv95i3844e7v.apps.googleusercontent.com' });
 Vue.googleAuth().load();
 Vue.config.productionTip = false;
 Vue.use(require('vue-script2'));
+Vue.use(Notifications);
 /* eslint-disable no-new */
 new Vue({
   store: store,

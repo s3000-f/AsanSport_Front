@@ -229,7 +229,7 @@
       <section class="page-header">
         <div class="container">
 
-          <h1>LOGIN</h1>
+          <h1>ورود / ثبت نام</h1>
 
         </div>
       </section>
@@ -246,41 +246,41 @@
               <div class="toggle toggle-transparent toggle-accordion toggle-noicon" v-if="!passreset">
 
                 <div class="toggle active">
-                  <label class="size-20"><i class="fa fa-leaf"></i> &nbsp;
-                    I'm a returning customer</label>
+                  <label class="size-25"><i class="fa fa-leaf"></i> &nbsp;
+                    عضو هستم</label>
                   <div class="toggle-content">
 
 
                     <!-- ALERT -->
-                    <div class="alert alert-mini alert-danger margin-bottom-30">
-                      <strong>Oh snap!</strong> Login Incorrect!
-                    </div><!-- /ALERT -->
+                    <!--<div class="alert alert-mini alert-danger margin-bottom-30">-->
+                    <!--<strong>Oh snap!</strong> Login Incorrect!-->
+                    <!--</div>&lt;!&ndash; /ALERT &ndash;&gt;-->
 
-                    <a class="btn btn-block btn-social btn-google margin-bottom-30" v-on:click="gSignIn">
-                      <span class="fa fa-google"></span>
-                      Sign in with Google
+                    <a class="btn btn-danger btn-featured btn-inverse margin-bottom-30" v-on:click="gSignIn">
+                      <span>ورود با گوگل</span>
+                      <i class="fa fa-google"></i>
                     </a>
-                    <li class="break"></li>
+                    <i class="break"></i>
                     <div class="sky-form">
                       <div class="clearfix">
 
                         <!-- Email -->
                         <div class="form-group text-right">
-                          <label>Phone</label>
+                          <label>تلفن همراه</label>
                           <label class="input margin-bottom-10">
                             <i class="ico-append fa fa-phone"></i>
                             <input required="" type="text" v-model="username">
-                            <b class="tooltip tooltip-bottom-right">Needed to verify your account</b>
+                            <!--<b class="tooltip tooltip-bottom-right">Needed to verify your account</b>-->
                           </label>
                         </div>
 
                         <!-- Password -->
                         <div class="form-group text-right">
-                          <label>Password</label>
+                          <label>رمز عبور</label>
                           <label class="input margin-bottom-10">
                             <i class="ico-append fa fa-lock"></i>
                             <input required="" type="password" v-model="password">
-                            <b class="tooltip tooltip-bottom-right">Type your account password</b>
+                            <!--<b class="tooltip tooltip-bottom-right">Type your account password</b>-->
                           </label>
                         </div>
 
@@ -293,7 +293,7 @@
                           <!-- Inform Tip -->
                           <div class="form-tip pt-20">
                             <a class="no-text-decoration size-13 margin-top-10 block bold"
-                               v-on:click="passreset = true">Forgot Password?</a>
+                               v-on:click="passreset = true">رمز عبور را فراموش کرده اید؟</a>
                           </div>
 
                         </div>
@@ -301,7 +301,7 @@
                         <div class="col-md-6 col-sm-6 col-xs-6 text-right">
 
                           <button class="btn btn-primary" v-on:click="login"><i
-                            class="fa fa-check"></i> LOGIN
+                            class="fa fa-check"></i> ورود
                           </button>
 
                         </div>
@@ -315,14 +315,14 @@
                 </div>
 
                 <div class="toggle">
-                  <label class="size-20"><i class="glyphicon glyphicon-user"></i> &nbsp;
-                    Don't have an account yet?</label>
+                  <label class="size-25"><i class="glyphicon glyphicon-user"></i> &nbsp;
+                    هنوز عضو نشده ام</label>
                   <div class="toggle-content">
 
-                    <!-- ALERT -->
-                    <div class="alert alert-mini alert-danger margin-bottom-30">
-                      <strong>Oh snap!</strong> Password do not match!
-                    </div><!-- /ALERT -->
+                    <!--&lt;!&ndash; ALERT &ndash;&gt;-->
+                    <!--<div class="alert alert-mini alert-danger margin-bottom-30">-->
+                    <!--<strong>Oh snap!</strong> Password do not match!-->
+                    <!--</div>&lt;!&ndash; /ALERT &ndash;&gt;-->
 
                     <form class="nomargin sky-form" action="#" method="post"
                           enctype="multipart/form-data">
@@ -332,20 +332,20 @@
                           <div class="form-group text-right">
 
                             <div class="col-md-6 col-sm-6">
-                              <label>First Name *</label>
+                              <label>نام *</label>
                               <label class="input margin-bottom-10">
                                 <i class="ico-append fa fa-user"></i>
                                 <input required="" type="text" v-model="name">
-                                <b class="tooltip tooltip-bottom-right">Your First Name</b>
+                                <!--<b class="tooltip tooltip-bottom-right">Your First Name</b>-->
                               </label>
                             </div>
 
                             <div class="col-md-6 col-sm-6">
-                              <label>Last Name *</label>
+                              <label>نام خانوادگی *</label>
                               <label class="input margin-bottom-10">
                                 <i class="ico-append fa fa-user"></i>
                                 <input required="" type="text" v-model="lastName">
-                                <b class="tooltip tooltip-bottom-right">Your Last Name</b>
+                                <!--<b class="tooltip tooltip-bottom-right">Your Last Name</b>-->
                               </label>
                             </div>
 
@@ -356,20 +356,20 @@
                           <div class="form-group">
 
                             <div class="col-md-6 col-sm-6">
-                              <label>Email *</label>
+                              <label>ایمیل *</label>
                               <label class="input margin-bottom-10">
                                 <i class="ico-append fa fa-envelope"></i>
                                 <input required="" type="text" v-model="email">
-                                <b class="tooltip tooltip-bottom-right">Your Email</b>
+                                <!--<b class="tooltip tooltip-bottom-right">Your Email</b>-->
                               </label>
                             </div>
 
                             <div class="col-md-6 col-sm-6">
-                              <label>Phone</label>
+                              <label>تلفن همراه *</label>
                               <label class="input margin-bottom-10">
                                 <i class="ico-append fa fa-phone"></i>
-                                <input type="text" v-model="phone">
-                                <b class="tooltip tooltip-bottom-right">Your Phone (optional)</b>
+                                <input required="" type="text" v-model="phone">
+                                <!--<b class="tooltip tooltip-bottom-right">Your Phone (optional)</b>-->
                               </label>
                             </div>
 
@@ -380,22 +380,22 @@
                           <div class="form-group">
 
                             <div class="col-md-6 col-sm-6">
-                              <label>Password *</label>
+                              <label>رمزعبور *</label>
                               <label class="input margin-bottom-10">
                                 <i class="ico-append fa fa-lock"></i>
-                                <input required="" type="password" class="err"
+                                <input required="" type="password"
                                        v-model="pass">
-                                <b class="tooltip tooltip-bottom-right">Min. 6 characters</b>
+                                <!--<b class="tooltip tooltip-bottom-right">Min. 6 characters</b>-->
                               </label>
                             </div>
 
                             <div class="col-md-6 col-sm-6">
-                              <label>Password Again *</label>
+                              <label>تکرار رمزعبور</label>
                               <label class="input margin-bottom-10">
                                 <i class="ico-append fa fa-lock"></i>
-                                <input required="" type="password" class="err"
+                                <input required="" type="password"
                                        v-model="newPass">
-                                <b class="tooltip tooltip-bottom-right">Type the password again</b>
+                                <!--<b class="tooltip tooltip-bottom-right">Type the password again</b>-->
                               </label>
                             </div>
 
@@ -404,13 +404,13 @@
 
                         <hr/>
 
-                        <label class="checkbox nomargin"><input class="checked-agree"
-                                                                type="checkbox" name="checkbox"><i></i>I agree to
-                          the <a
-                            href="#" data-toggle="modal" data-target="#termsModal">Terms of Service</a></label>
-                        <label class="checkbox nomargin"><input type="checkbox" name="checkbox"><i></i>I want to
-                          receive
-                          news and special offers</label>
+                        <label class="nomargin text-right">
+                          <input class="" type="checkbox" name="checkbox">
+                          <i></i>با <a v-on:click="terms">قوانین و مقررات</a> موافقم
+                        </label>
+                        <!--<label class="checkbox nomargin"><input type="checkbox" name="checkbox"><i></i>I want to-->
+                        <!--receive-->
+                        <!--news and special offers</label>-->
 
                       </fieldset>
 
@@ -418,7 +418,7 @@
                         <div class="col-md-12">
                           <button type="submit" class="btn btn-primary"><i class="fa fa-check"
                                                                            v-on:click="sgnUp"></i>
-                            REGISTER
+                            ثبت نام
                           </button>
                         </div>
                       </div>
@@ -433,14 +433,14 @@
               <div class="toggle toggle-transparent toggle-accordion toggle-noicon" v-else>
                 <div class="toggle active ">
                   <label class="size-20"><i class="fa fa-leaf"></i> &nbsp;
-                    Reset Password</label>
+                    بازیابی رمز عبور</label>
                   <div class="toggle-content">
                     <div class="sky-form">
                       <div class="clearfix">
 
                         <!-- Email -->
                         <div class="form-group text-right">
-                          <label>Phone</label>
+                          <label>تلفن همراه</label>
                           <label class="input margin-bottom-10 ">
                             <input required="" type="text" v-model="password_reset">
                             <i class="ico-append fa fa-phone"></i>
@@ -448,30 +448,17 @@
                           </label>
 
                         </div>
-                        <div class="form-group text-right">
-                          <span>&nbsp;</span>
-
-                          <label>Send By</label>
-                          <!--<label for="email_reset">Email</label>-->
-                          <input type="radio" name="choice" id="email_reset" value="email" v-model="reset_sms"/>
-                          SMS
-                          <!--<label for="sms_reset">SMS</label>-->
-                          <input type="radio" name="choice" id="sms_reset" value="sms" v-model="reset_sms"/>
-                          <span>&nbsp;</span>
-                          <span>&nbsp;</span>
-                          Email
-                        </div>
 
                         <div class="col-md-6 col-sm-6 col-xs-6 text-left">
                           <!-- Inform Tip -->
                           <button class="btn btn-default" v-on:click="passreset = false">
-                            Cancel
+                            لغو
                           </button>
                         </div>
 
                         <div class="col-md-6 col-sm-6 col-xs-6 text-right">
                           <button class="btn btn-primary" v-on:click="resetPass"><i
-                            class="fa fa-check"></i> Reset
+                            class="fa fa-check"></i> بازیابی
                           </button>
                         </div>
 
@@ -489,33 +476,6 @@
         </div>
       </section>
       <!-- / -->
-
-
-      <!-- MODAL -->
-      <div class="modal fade" id="termsModal" tabindex="-1" role="dialog" aria-labelledby="myModal"
-           aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                &times;
-              </button>
-              <h4 class="modal-title" id="myModal">Server Response</h4>
-            </div>
-
-            <div class="modal-body modal-short">
-              {{title}}
-
-            </div>
-
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-
-          </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-      </div>
-      <!-- /MODAL -->
 
 
       <!-- FOOTER -->
@@ -673,11 +633,11 @@
 
 
     <!-- PRELOADER -->
-    <!--<div id="preloader">-->
-    <!--<div class="inner">-->
-    <!--<span class="loader"></span>-->
-    <!--</div>-->
-    <!--</div>&lt;!&ndash; /PRELOADER &ndash;&gt;-->
+    <div id="preloader" v-if="loading">
+      <div class="inner">
+        <span class="loader"></span>
+      </div>
+    </div><!-- /PRELOADER -->
 
   </div>
 
@@ -695,8 +655,8 @@
     data() {
       return {
         title: "title",
-        username: '09218013508',
-        password: 'Topol1376',
+        username: '',
+        password: '',
         name: '',
         lastName: '',
         email: '',
@@ -705,7 +665,8 @@
         phone: '',
         passreset: false,
         password_reset: '',
-        reset_sms: 'email'
+        reset_sms: 'email',
+        loading: false
       }
     },
     computed: {
@@ -727,6 +688,7 @@
         resetGUser: 'resetGUser'
       }),
       login() {
+        this.loading = true;
         axios.post("http://api.shahbandegan.ir/v1/login", {
           username: this.username,
           password: this.password
@@ -742,15 +704,17 @@
             else {
               this.setError(response.data['message']);
             }
-
+            this.loading = false;
           })
           .catch(e => {
               this.setError(e);
-              alert(this.getErrors)
+              this.loading = false;
+
             }
           )
       },
       sgnUp() {
+        this.loading = true;
         axios.post("http://api.shahbandegan.ir/v1/register", {
           given_name: this.name,
           last_name: this.lastName,
@@ -763,23 +727,23 @@
             if (response.status < 300) {
               this.setLogin(response.data['access_token']);
               this.resetError();
-              this.userSetup();
-              alert(this.getToken)
+              this.setUser();
+              this.$router.go(-1);
             }
             else {
               this.setError(response.data['message']);
-              alert(this.getErrors)
             }
+            this.loading = false;
           })
           .catch(e => {
-            this.setError(e);
-            alert(this.getErrors)
+            this.loading = false
           })
       },
       gSignIn() {
         // Just add in this line
         Vue.googleAuth().directAccess();
         var data;
+        this.loading = true;
         Vue.googleAuth().signIn(this.gs, function (error) {
           this.setError(error);
         });
@@ -803,23 +767,30 @@
                 this.setError(response.data['message']);
               }
 
+              this.loading = false;
             })
             .catch(e => {
                 this.setError(e);
-                alert(this.getErrors)
+                this.loading = false;
               }
             )
         }
       },
-      resetPass(){
-        if(this.reset_sms === 'sms'){
-          axios.post('http://api.shahbandegan.ir/v1/password/sms',{
+      resetPass() {
+        if (this.reset_sms === 'sms') {
+          axios.post('http://api.shahbandegan.ir/v1/password/sms', {
             mobile: this.password_reset
           }).then(response => {
             alert(response.data['message']);
             this.passreset = false;
-          }).catch(e => {console.log(e)})
+          }).catch(e => {
+            console.log(e)
+          })
         }
+      },
+      terms() {
+        let route = this.$router.resolve({path: '/home'});
+        window.open(route.href, '_blank');
       }
     },
 
