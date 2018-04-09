@@ -182,7 +182,8 @@
     },
     methods: {
       ...mapActions({
-        verifyUser: 'verifyUser'
+        verifyUser: 'verifyUser',
+        setUser: 'setUser'
       }),
       verify() {
         let dat = {
@@ -238,6 +239,9 @@
           title: title
         })
       }
+    },
+    created() {
+      this.setUser()
     }
   }
 </script>
