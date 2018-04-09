@@ -4,7 +4,7 @@
 
       <!-- right -->
       <ul class="top-links list-inline pull-right">
-        <li class="text-welcome hidden-xs" v-if="$store.state.isLoggedin" >به آسان اسپرت خوش آمدی , <strong>{{state.user.fname}}</strong></li>
+        <li class="text-welcome hidden-xs" v-if="$store.state.isLoggedin" >به آسان اسپرت خوش آمدی , <strong>{{$store.state.user.fname}}</strong></li>
         <li>
           <a class="dropdown-toggle no-text-underline" data-toggle="dropdown" href="#"><i
             class="fa fa-user hidden-xs"></i>

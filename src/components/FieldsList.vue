@@ -3,7 +3,7 @@
   <div class="smoothscroll enable-animation">
 
     <!-- SLIDE TOP -->
-<slide-top></slide-top>    <!-- /SLIDE TOP -->
+    <slide-top></slide-top>    <!-- /SLIDE TOP -->
 
 
     <!-- wrapper -->
@@ -376,7 +376,7 @@
 
 
                         <!-- details -->
-												<router-link class="ico-rounded" v-bind:to="'/fields/' + field.id">
+												<router-link class="ico-rounded" v-bind:to="'/fields/' + field.id + '/' + field.name">
 													<span class="glyphicon glyphicon-option-horizontal fs-20"></span>
 												</router-link>
 
@@ -420,13 +420,13 @@
     <a href="#" id="toTop"></a>
 
 
-     <!--//PRELOADER -->
+    <!--//PRELOADER -->
     <!--<div id="preloader">-->
     <!--<div class="inner">-->
     <!--<span class="loader"></span>-->
     <!--</div>-->
     <!--</div>-->
-     <!--//PRELOADER -->
+    <!--//PRELOADER -->
 
   </div>
 
@@ -444,7 +444,7 @@
       return {
         name: 'FieldsList',
         fields: [],
-        meta:''
+        meta: ''
       }
     },
     watch: {
@@ -464,7 +464,6 @@
           .then(response => {
             console.log(response.data.data);
             this.fields = response.data.data;
-            this.fields=response.data.meta;
           })
 
       }
