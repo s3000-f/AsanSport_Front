@@ -4,11 +4,11 @@
 
       <!-- right -->
       <ul class="top-links list-inline pull-right">
-        <li class="text-welcome hidden-xs" v-if="$store.state.isLoggedin" >به آسان اسپرت خوش آمدی , <strong>{{state.user.fname}}</strong></li>
+        <li class="text-welcome hidden-xs" v-if="$store.state.isLoggedin" ><strong>{{$store.state.user.fname}}</strong> ، به آسان اسپرت خوش آمدی </li>
         <li>
-          <a class="dropdown-toggle no-text-underline" data-toggle="dropdown" href="#"><i
+          <a class="dropdown-toggle no-text-underline" data-toggle="dropdown" v-if="$store.state.isLoggedin"><i
             class="fa fa-user hidden-xs"></i>
-            <router-link v-if="$store.state.isLoggedin" to="/profile">Your Account</router-link>
+            <router-link to="/profile">حساب شما</router-link>
           </a>
         <li class="divider"></li>
         <li>
@@ -91,6 +91,9 @@
               <li class="dropdown"><!-- BLOG -->
                 <router-link to="/about">بلاگ</router-link>
               </li>
+              <li class="dropdown"><!-- BLOG -->
+                <a href="https://www.instagram.com/asansport.official/"><i class="fa fa-instagram size-20"></i></a>
+              </li>
             </ul>
 
           </nav>
@@ -105,8 +108,23 @@
 </template>
 
 <script>
+  import {mapActions} from 'vuex';
     export default {
-        name: "header"
+        name: "header",
+      methods:{
+        ...mapActions({
+          logout: 'logout',
+        }),
+      },
+      created(){
+          if(this.$store.state.reload){
+            this.$store.dispatch('reload',false);
+            location.reload();
+          }else{
+            this.$store.dispatch('reload',true);
+          }
+
+      }
     }
 </script>
 

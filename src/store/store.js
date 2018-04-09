@@ -22,6 +22,7 @@ export const store = new Vuex.Store({
       sheba: '',
       verified: false
     },
+    reload: true,
     googleUser: {},
     isGoogle: false
   },
@@ -100,6 +101,9 @@ export const store = new Vuex.Store({
     },
     verifyUser: state => {
       state.user.verified = true;
+    },
+    reload: (state, dat) => {
+      state.reload = dat;
     }
   },
   actions: {
@@ -132,7 +136,7 @@ export const store = new Vuex.Store({
         console.log(e)
       })
     },
-    logout: ({commit,state}) => {
+    logout: ({commit, state}) => {
       commit('logout');
       commit('resetUser');
       commit('resetGUser');
@@ -164,6 +168,9 @@ export const store = new Vuex.Store({
     },
     verifyUser: context => {
       context.commit('verifyUser');
+    },
+    reload: (context, dat) => {
+      context.commit('reload', dat)
     }
   }
 });

@@ -9,18 +9,13 @@
 
     <router-view></router-view>
     <script2 type="text/javascript">var plugin_path = '/static/assets/plugins/';</script2>
-    <!--<script2 type="text/javascript">-->
-    <!--import '/static/assets/plugins/jquery/jquery-2.1.4.min.js'-->
-    <!--</script2>-->
     <script2 type="text/javascript" src="/static/assets/plugins/jquery/jquery-2.1.4.min.js"></script2>
     <script2 type="text/javascript" src="/static/assets/js/scripts.js"></script2>
-    <!-- REVOLUTION SLIDER -->
     <script2 type="text/javascript"
              src="/static/assets/plugins/slider.revolution/js/jquery.themepunch.tools.min.js"></script2>
     <script2 type="text/javascript"
              src="/static/assets/plugins/slider.revolution/js/jquery.themepunch.revolution.min.js"></script2>
     <script2 type="text/javascript" src="/static/assets/js/view/demo.revolution_slider.js"></script2>
-    <!-- PAGE LEVEL script2S -->
     <script2 type="text/javascript" src="/static/assets/js/view/demo.shop.js"></script2>
     <notifications position="bottom right"/>
   </div>

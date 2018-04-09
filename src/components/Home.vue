@@ -118,22 +118,35 @@
 
             <div class="row">
 
-              <div class="col-sm-4">
-                <i class="glyphicon glyphicon-globe"></i>
-                <h3>FREE SHIPPING &amp; RETURN</h3>
-                <p>Free shipping on all orders over $99.</p>
+              <div class="col-sm-4 text-center">
+                <router-link to="/">
+                <i class="glyphicon glyphicon-briefcase"></i>
+                <h3>همکاری با ما</h3>
+                <p>مالک باشگاه یا اماکن ورزشی هستید؟<br>در صورتی که مایل به همکاری با آسان اسپرت هستید اینجا را کلیک
+                  کنید</p>
+                </router-link>
               </div>
 
-              <div class="col-sm-4">
-                <i class="glyphicon glyphicon-usd"></i>
-                <h3>MONEY BACK GUARANTEE</h3>
-                <p>100% money back guarantee.</p>
+              <div class="col-sm-4 text-center" v-if="$store.state.isLoggedin">
+                <router-link to="/profile">
+                <i class="glyphicon glyphicon-user"></i>
+                <h3>حساب کاربری</h3>
+                <p>{{$store.state.user.fname + " " + $store.state.user.lname}}</p>
+                </router-link>
+              </div>
+              <div class="col-sm-4 text-center" v-else>
+                <router-link to="/login-register">
+                <i class="glyphicon glyphicon-user"></i>
+                <h3>ورود / ثبت نام</h3>
+                <p>برای بهره گیری هرچه بهتر از خدمات آسان اسپرت</p>
+                </router-link>
               </div>
 
-              <div class="col-sm-4">
-                <i class="glyphicon glyphicon-flag"></i>
-                <h3>ONLINE SUPPORT 24/7</h3>
-                <p>Lorem ipsum dolor sit amet.</p>
+
+              <div class="col-sm-4 text-center">
+                <i class="glyphicon glyphicon-list-alt"></i>
+                <h3>ثبت سفارشات</h3>
+                <p>ثبت سفارشات کلیه افراد، ادارات ، ارگان ها و سازمان ها جهت اجاره اماکن...</p>
               </div>
 
             </div>
@@ -146,7 +159,7 @@
         <section>
           <div class="container">
 
-            <h2 class="owl-featured noborder"><strong>FEATURED</strong> PRODUCTS</h2>
+            <h2 class="owl-featured noborder"><strong>پیشنهادات ویژه</strong></h2>
             <div class="owl-carousel featured nomargin owl-padding-10"
                  data-plugin-options='{"loop":true,"singleItem": false, "items": "4", "stopOnHover":false, "autoPlay":4000, "autoHeight": false, "navigation": true, "pagination": false}'>
 
@@ -155,11 +168,11 @@
 
                 <div class="thumbnail">
                   <!-- product image(s) -->
-                  <div class="owl-carousel owl-padding-0 nomargin"
-                       data-plugin-options='{"singleItem": true, "autoPlay": 3000, "navigation": false, "pagination": false, "transitionStyle":"fadeUp"}'>
+                  <!--<div class="owl-carousel owl-padding-0 nomargin"-->
+                       <!--data-plugin-options='{"singleItem": true, "autoPlay": 3000, "navigation": false, "pagination": false, "transitionStyle":"fadeUp"}'>-->
                     <img class="img-responsive" v-for="src in feature.srcs" v-bind:src="src"
                          alt="">
-                  </div>
+                  <!--</div>-->
                   <!-- /product image(s) -->
 
                 </div>
@@ -174,9 +187,9 @@
                   <!-- /rating -->
 
                   <!-- price -->
-                  <div class="shop-item-price">
-                    <span class="line-through">${{feature.price}}</span>
-                    ${{Math.trunc(feature.price * 0.8)}}
+                  <div class="shop-item-info">
+                    <!--<span class="line-through">${{feature.price}}</span>-->
+                    {{feature.state}}
                   </div>
                   <!-- /price -->
                 </div>
@@ -184,7 +197,7 @@
                 <!-- buttons -->
                 <div class="shop-item-buttons text-center">
                   <router-link class="btn btn-default" v-bind:to="'/fields/'+feature.id"><i class="fa fa-cart-plus"></i>
-                    Reserve
+                    رزرو
                   </router-link>
                 </div>
                 <!-- /buttons -->
@@ -207,18 +220,16 @@
 
 
             <div class="owl-carousel text-center owl-testimonial nomargin"
-                 data-plugin-options='{"singleItem": true, "autoPlay": 3000, "navigation": false, "pagination": true}'>
+                 data-plugin-options='{"singleItem": true, "autoPlay": 5000, "navigation": false, "pagination": true}'>
 
               <div class="text-center">
-                <h3 class="nomargin">Popular Products</h3>
-                <p class="font-lato weight-300 lead nomargin-top">Incidunt deleniti blanditiis quas aperiam
-                  recusandae consequatur ullam.</p>
+                <h3 class="nomargin">اطمینان از انتخاب</h3>
+                <p class="font-lato weight-300 lead nomargin-top">تمامی خدمات ارائه شده در آسان اسپرت توسط کارشناسان متخصص مورد بررسی قرار گرفته شده است</p>
               </div>
 
               <div class="text-center">
-                <h3 class="nomargin">New Products</h3>
-                <p class="font-lato weight-300 lead nomargin-top">Incidunt deleniti blanditiis quas aperiam
-                  recusandae consequatur ullam.</p>
+                <h3 class="nomargin">تنوع خدمات</h3>
+                <p class="font-lato weight-300 lead nomargin-top">با آسان اسپرت تمامی نیاز های ورزشی خود را به راحتی رفع کنید</p>
               </div>
 
             </div>
@@ -234,7 +245,7 @@
           <div class="container">
 
             <div class="heading-title heading-dotted">
-              <h2 class="size-20">WOMEN DRESSES</h2>
+              <h2 class="size-20">برترین ها</h2>
             </div>
 
             <ul class="shop-item-list row list-inline nomargin">
@@ -263,9 +274,9 @@
                     <!-- /rating -->
 
                     <!-- price -->
-                    <div class="shop-item-price">
-                      <!--<span class="line-through">${{top.price}}</span>-->
-                      ${{top.price}}
+                    <div class="shop-item-info">
+                    <!--<span class="line-through">${{top.price}}</span>-->
+                    {{top.state}}
                     </div>
                     <!-- /price -->
                   </div>
@@ -282,11 +293,11 @@
         </section>
         <!-- NEW PRODUCTS -->
 
-        <!-- NEW PRODUCTS -->
+        <!-- Blog -->
         <section>
           <div class="container">
             <div class="heading-title heading-dotted">
-              <h2 class="size-20">WHAT CUSTOMERS SAY?</h2>
+              <h2 class="size-20">تازه های بلاگ</h2>
             </div>
             <!--
                 Note: remove class="rounded" from the img for squared image!
@@ -386,7 +397,7 @@
 
           </div>
         </section>
-        <!-- NEW PRODUCTS -->
+        <!-- Blog -->
 
         <!-- BRANDS -->
         <section class="padding-xxs">
@@ -438,11 +449,11 @@
       <a href="#" id="toTop"></a>
 
 
-      <!--<div id="preloader">-->
-      <!--<div class="inner">-->
-      <!--<span class="loader"></span>-->
-      <!--</div>-->
-      <!--</div>&lt;!&ndash; /PRELOADER &ndash;&gt;-->
+      <div id="preloader" v-if="(slideLoading || featuredLoading || topLoading)">
+        <div class="inner">
+          <span class="loader"></span>
+        </div>
+      </div><!-- /PRELOADER -->
 
     </div>
 
@@ -455,8 +466,6 @@
   import Header from './header'
   import SlideTop from './slideTop'
   import Footer from './Footer'
-  import {mapActions} from 'vuex';
-
 
   export default {
     name: "home",
@@ -490,7 +499,6 @@
             ],
             title: 'featured1',
             rating: 'rating-4',
-            price: 224,
             id: 'asdf'
           },
           {
@@ -500,7 +508,6 @@
             ],
             title: 'featured2',
             rating: 'rating-3',
-            price: 104,
             id: 'asdf'
           },
           {
@@ -510,7 +517,6 @@
             ],
             title: 'featured3',
             rating: 'rating-5',
-            price: 321,
             id: 'asdf'
           },
           {
@@ -520,7 +526,6 @@
             ],
             title: 'featured4',
             rating: 'rating-2',
-            price: 232,
             id: 'asdf'
           },
           {
@@ -530,96 +535,86 @@
             ],
             title: 'featured5',
             rating: 'rating-1',
-            price: 444,
             id: 'asdf'
           }
         ],
-        tops: {
-          t1: {
+        tops: [
+          {
             src: 'https://cdn.shopify.com/s/files/1/0954/5630/products/HTB1jVfMOXXXXXcxXFXXq6xXFXXXQ_600x@2x.png?v=1505883150',
             title: 'Title1',
-            price: 15,
             rating: 'rating-3',
             id: 'asdf1'
           },
-          t2: {
+          {
             src: 'https://cdn.shopify.com/s/files/1/0954/5630/products/HTB19HzGOXXXXXayXVXXq6xXFXXXa_600x@2x.png?v=1505883150',
             title: 'Title2',
-            price: 12,
             rating: 'rating-5',
             id: 'asdf2'
           },
-          t3: {
+          {
             src: 'https://cdn.shopify.com/s/files/1/0954/5630/products/HTB1mdfIOXXXXXasXVXXq6xXFXXXb_600x@2x.png?v=1505883150',
             title: 'Title3',
-            price: 43,
             rating: 'rating-3',
             id: 'asdf3'
           },
-          t4: {
+          {
             src: 'https://ae01.alicdn.com/kf/HTB1wJhPMXXXXXaPXFXXq6xXFXXXd/2016-Hot-Sexy-Cross-Halter-Neck-Women-1-2-cup-Deep-U-Bra-One-Piece-Seamless.jpg',
             title: 'Title4',
-            price: 19,
             rating: 'rating-3',
             id: 'asdf4'
           },
-          t5: {
+          {
             src: 'https://ae01.alicdn.com/kf/HTB1Xmt0MXXXXXcMXXXXq6xXFXXXl/2016-Hot-Sexy-Cross-Halter-Neck-Women-1-2-cup-Deep-U-Bra-One-Piece-Seamless.jpg',
             title: 'Title5',
-            price: 57,
             rating: 'rating-4',
             id: 'asdf5'
           },
-          t6: {
+          {
             src: 'https://img2.momoshop.com.tw/goodsimg/0004/494/950/4494950_R.jpg?t=1519346881',
             title: 'Title6',
-            price: 93,
             rating: 'rating-1',
             id: 'asdf6'
           },
-          t7: {
+          {
             src: 'https://cdn.shopify.com/s/files/1/0954/5630/products/HTB1jVfMOXXXXXcxXFXXq6xXFXXXQ_600x@2x.png?v=1505883150',
             title: 'Title7',
-            price: 15,
             rating: 'rating-3',
             id: 'asdf7'
           },
-          t8: {
+          {
             src: 'https://cdn.shopify.com/s/files/1/0954/5630/products/HTB19HzGOXXXXXayXVXXq6xXFXXXa_600x@2x.png?v=1505883150',
             title: 'Title8',
-            price: 12,
             rating: 'rating-5',
             id: 'asdf8'
           },
-          t9: {
+          {
             src: 'https://cdn.shopify.com/s/files/1/0954/5630/products/HTB1mdfIOXXXXXasXVXXq6xXFXXXb_600x@2x.png?v=1505883150',
             title: 'Title9',
-            price: 43,
             rating: 'rating-3',
             id: 'asdf9'
           },
-          t10: {
+          {
             src: 'https://ae01.alicdn.com/kf/HTB1wJhPMXXXXXaPXFXXq6xXFXXXd/2016-Hot-Sexy-Cross-Halter-Neck-Women-1-2-cup-Deep-U-Bra-One-Piece-Seamless.jpg',
             title: 'Title10',
-            price: 19,
             rating: 'rating-3',
             id: 'asdf10'
           },
-          t11: {
+          {
             src: 'https://ae01.alicdn.com/kf/HTB1Xmt0MXXXXXcMXXXXq6xXFXXXl/2016-Hot-Sexy-Cross-Halter-Neck-Women-1-2-cup-Deep-U-Bra-One-Piece-Seamless.jpg',
             title: 'Title11',
-            price: 57,
             rating: 'rating-4',
             id: 'asdf11'
           },
-          t12: {
+          {
             src: 'https://img2.momoshop.com.tw/goodsimg/0004/494/950/4494950_R.jpg?t=1519346881',
             title: 'Title12',
-            price: 93,
             rating: 'rating-1',
             id: 'asdf12'
           }
-        },
+        ],
+        slideLoading: false,
+        featuredLoading: false,
+        topLoading: false
       }
     },
     components: {
@@ -629,22 +624,73 @@
     },
     methods: {
       getSlides() {
+        this.slideLoading = true;
         axios.get('http://api.shahbandegan.ir/v1/slides')
           .then(response => {
             this.slides = response.data['data'];
             console.log(this.slides);
+            this.slideLoading = false;
           })
           .catch(e => {
             console.log(e);
+            this.slideLoading = false;
           })
 
       },
-      ...mapActions({
-        logout: 'logout',
-      }),
+      getTops() {
+        this.topLoading = true;
+        axios.get('http://api.shahbandegan.ir/v1/fields')
+          .then(response => {
+            let dat = response.data['data'].slice(0, 12);
+            let ret = [];
+            dat.forEach(value => {
+              let t1 = {
+                src: value.image,
+                title: value.name,
+                rating: 'rating-' + value.rating,
+                state: value.state,
+                id: value.id + '/' + value.name
+              };
+              ret.push(t1);
+            });
+            this.tops = ret;
+            this.topLoading = false;
+          })
+          .catch(e => {
+            console.log(e);
+            this.topLoading = false;
+          })
+      },
+      getFeatured(){
+        this.featuredLoading = true;
+        axios.get('http://api.shahbandegan.ir/v1/fields?featured')
+          .then(response => {
+            let dat = response.data['data'];
+            let ret = [];
+            dat.forEach(value => {
+              let t1 = {
+                srcs: [value.image],
+                title: value.name,
+                rating: 'rating-' + value.rating,
+                state: value.state,
+                id: value.id + '/' + value.name
+              };
+              ret.push(t1);
+            });
+            this.featured = ret;
+            this.featuredLoading = false;
+          })
+          .catch(e => {
+            console.log(e);
+            this.featuredLoading = false;
+          })
+      }
     },
     created() {
       this.getSlides();
+      this.getTops();
+      this.getFeatured();
+      // this.loading = false;
       // ('#preloader').hide();
     }
   }
