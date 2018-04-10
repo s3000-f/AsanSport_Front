@@ -30,11 +30,6 @@ export default new Router({
       component: About
     },
     {
-      path: '/home',
-      name: 'Home',
-      component: Home
-    },
-    {
       path: '/login-register',
       name: 'LoginRegister',
       component: Login

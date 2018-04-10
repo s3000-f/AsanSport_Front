@@ -68,7 +68,7 @@
           <nav class="nav-main">
             <ul id="topMain" class="nav nav-pills nav-main">
               <li class="active"><!-- HOME -->
-                <router-link to="/home">خانه</router-link>
+                <router-link to="/">خانه</router-link>
               </li>
               <li class="dropdown">
                 <a class="dropdown-toggle" href="#">سالن های ورزشی</a>
