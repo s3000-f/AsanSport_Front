@@ -17,6 +17,7 @@
              src="/static/assets/plugins/slider.revolution/js/jquery.themepunch.revolution.min.js"></script2>
     <script2 type="text/javascript" src="/static/assets/js/view/demo.revolution_slider.js"></script2>
     <script2 type="text/javascript" src="/static/assets/js/view/demo.shop.js"></script2>
+    <script2 type="text/javascript" src="/static/assets/js/view/calendar.js"></script2>
     <notifications position="bottom right"/>
   </div>
 </template>
