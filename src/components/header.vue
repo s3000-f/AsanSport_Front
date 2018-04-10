@@ -146,6 +146,6 @@
   }
   body {
     font-family: iransans !important;
-    line-height: 1.5;
+    line-height: 2;
   }
 </style>

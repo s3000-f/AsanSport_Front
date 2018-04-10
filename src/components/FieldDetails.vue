@@ -11,24 +11,6 @@
 
       <!-- Top Bar -->
       <header1></header1>
-
-      <!--
-                PAGE HEADER
-
-                CLASSES:
-                    .page-header-xs	= 20px margins
-                    .page-header-md	= 50px margins
-                    .page-header-lg	= 80px margins
-                    .page-header-xlg= 130px margins
-                    .dark			= dark page header
-
-                    .shadow-before-1 	= shadow 1 header top
-                    .shadow-after-1 	= shadow 1 header bottom
-                    .shadow-before-2 	= shadow 2 header top
-                    .shadow-after-2 	= shadow 2 header bottom
-                    .shadow-before-3 	= shadow 3 header top
-                    .shadow-after-3 	= shadow 3 header bottom
-            -->
       <section class="page-header page-header-xs">
         <div class="container">
 
@@ -36,9 +18,9 @@
 
           <!-- breadcrumbs -->
           <ol class="breadcrumb">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Shop</a></li>
-            <li class="active">Single</li>
+            <li><a href="#">خانه</a></li>
+            <li><a href="#">سالن های ورزشی</a></li>
+            <li class="active">{{fieldData.name}}</li>
           </ol><!-- /breadcrumbs -->
 
         </div>
@@ -53,7 +35,7 @@
           <div class="row">
 
             <!-- IMAGE -->
-            <div class="col-lg-6 col-sm-4">
+            <div class="col-md-7">
 
               <div class="thumbnail relative margin-bottom-3">
 
@@ -72,7 +54,7 @@
                                             .top-right
                                             .top-left
                                     -->
-                  <a class="lightbox bottom-right" href="/static/assets/images/demo/shop/products/1000x1500/p5.jpg"
+                  <a class="lightbox bottom-right" :href="fieldData.images[0]"
                      data-plugin-options='{"type":"image"}'><i class="glyphicon glyphicon-search"></i></a>
 
                   <!--
@@ -80,7 +62,7 @@
 
                                         Extra: add .image-bw class to force black and white!
                                     -->
-                  <img class="img-responsive" src="/static/assets/images/demo/1200x800/3-min.jpg"
+                  <img class="img-responsive" :src="fieldData.images[0]"
                        width="1200" height="1500" alt="This is the product title"/>
                 </figure>
 
@@ -89,26 +71,8 @@
               <!-- Thumbnails (required height:100px) -->
               <div data-for="zoom-primary" class="zoom-more owl-carousel owl-padding-3 featured"
                    data-plugin-options='{"singleItem": false, "autoPlay": false, "navigation": true, "pagination": false}'>
-                <a class="thumbnail active" href="/static/assets/images/demo/shop/products/1000x1500/p5.jpg">
-                  <img src="/static/assets/images/demo/shop/products/100x100/p5.jpg" height="100" alt=""/>
-                </a>
-                <a class="thumbnail" href="/static/assets/images/demo/shop/products/1000x1500/p6.jpg">
-                  <img src="/static/assets/images/demo/shop/products/100x100/p6.jpg" height="100" alt=""/>
-                </a>
-                <a class="thumbnail" href="/static/assets/images/demo/shop/products/1000x1500/p7.jpg">
-                  <img src="/static/assets/images/demo/shop/products/100x100/p7.jpg" height="100" alt=""/>
-                </a>
-                <a class="thumbnail" href="/static/assets/images/demo/shop/products/1000x1500/p8.jpg">
-                  <img src="/static/assets/images/demo/shop/products/100x100/p8.jpg" height="100" alt=""/>
-                </a>
-                <a class="thumbnail" href="/static/assets/images/demo/shop/products/1000x1500/p9.jpg">
-                  <img src="/static/assets/images/demo/shop/products/100x100/p9.jpg" height="100" alt=""/>
-                </a>
-                <a class="thumbnail" href="/static/assets/images/demo/shop/products/1000x1500/p10.jpg">
-                  <img src="/static/assets/images/demo/shop/products/100x100/p10.jpg" height="100" alt=""/>
-                </a>
-                <a class="thumbnail" href="/static/assets/images/demo/shop/products/1000x1500/p11.jpg">
-                  <img src="/static/assets/images/demo/shop/products/100x100/p11.jpg" height="100" alt=""/>
+                <a v-for="image in fieldData.images" class="thumbnail active" :href="image">
+                  <img :src="image" height="100" alt=""/>
                 </a>
               </div>
               <!-- /Thumbnails -->
@@ -117,7 +81,7 @@
             <!-- /IMAGE -->
 
             <!-- ITEM DESC -->
-            <div class="col-lg-5 col-sm-8">
+            <div class="col-md-5">
 
               <!-- buttons -->
               <div class="pull-right">
@@ -129,103 +93,55 @@
               </div>
               <!-- /buttons -->
 
-              <!-- price -->
-              <div class="shop-item-price">{{fieldData.price}}
-                قیمت هر سانس:
-              </div>
-              <!-- /price -->
+              <div class="shop-item-price"><div class="rating rating-4 size-20 margin-top-10 width-200"></div></div>
 
-              <hr/>
-
-              <div class="clearfix margin-bottom-30">
-                <span class="pull-right text-success"><i class="fa fa-check"></i> In Stock</span>
-                <!--
-                                <span class="pull-right text-danger"><i class="glyphicon glyphicon-remove"></i> Out of Stock</span>
-                                -->
-
-              </div>
-
-
-              <!-- short description -->
-              <p>{{fieldData.address}}</p>
-              <!-- /short description -->
-
-
-              <hr/>
-                <button class="btn btn-primary pull-left product-add-cart noradius">ADD TO CART</button>
-              <hr/>
-              <!-- Share -->
-              <div class="pull-right">
-
-                <a href="#" class="social-icon social-icon-sm social-icon-transparent social-facebook pull-left"
-                   data-toggle="tooltip" data-placement="top" title="Facebook">
-                  <i class="icon-facebook"></i>
-                  <i class="icon-facebook"></i>
-                </a>
-
-                <a href="#" class="social-icon social-icon-sm social-icon-transparent social-twitter pull-left"
-                   data-toggle="tooltip" data-placement="top" title="Twitter">
-                  <i class="icon-twitter"></i>
-                  <i class="icon-twitter"></i>
-                </a>
-
-                <a href="#" class="social-icon social-icon-sm social-icon-transparent social-gplus pull-left"
-                   data-toggle="tooltip" data-placement="top" title="Google plus">
-                  <i class="icon-gplus"></i>
-                  <i class="icon-gplus"></i>
-                </a>
-
-                <a href="#" class="social-icon social-icon-sm social-icon-transparent social-linkedin pull-left"
-                   data-toggle="tooltip" data-placement="top" title="Linkedin">
-                  <i class="icon-linkedin"></i>
-                  <i class="icon-linkedin"></i>
-                </a>
-
-              </div>
-              <!-- /Share -->
-
-
-              <!-- rating -->
-              <div class="rating rating-4 size-13 margin-top-10 width-100"><!-- rating-0 ... rating-5 --></div>
-              <!-- /rating -->
-
+              <table class="table margin-top-30">
+                <tbody>
+                <tr>
+                  <td>قیمت هر سانس</td>
+                  <td>{{fieldData.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}} تومان</td>
+                </tr>
+                <tr>
+                  <td>زمان هر سانس</td>
+                  <td>{{fieldData.duration}} دقیقه</td>
+                </tr>
+                <tr>
+                  <td>آدرس</td>
+                  <td>{{fieldData.address}}</td>
+                </tr>
+                <tr>
+                  <td>تلفن</td>
+                  <td>{{fieldData.phone}}</td>
+                </tr>
+                <tr>
+                  <td>مساحت</td>
+                  <td style="direction: ltr; text-align: right">{{fieldData.size}}</td>
+                </tr>
+                </tbody>
+              </table>
             </div>
             <!-- /ITEM DESC -->
-
-            <!-- INFO -->
-            <div class="col-sm-4 col-md-3">
-
-                <!--<h5  v-if="fieldData.facilities.parking" >parking : yes</h5><h5 v-else >parking : no</h5>-->
-                <!--<h5  v-if="fieldData.facilities.buffet" >buffet : yes</h5><h5 v-else >buffet : no</h5>-->
-                <!--<h5  v-if="fieldData.facilities.wc" >wc : yes</h5><h5 v-else >wc : no</h5>-->
-                <!--<h5  v-if="fieldData.facilities.changing-room" >parking : yes</h5><h5 v-else >parking : no</h5>-->
-                <!--<h5  v-if="fieldData.facilities.spectator" >parking : yes</h5><h5 v-else >parking : no</h5>-->
-                <!--<h5  v-if="fieldData.facilities.shop" >parking : yes</h5><h5 v-else >parking : no</h5>-->
-                <!--<h5  v-if="fieldData.facilities.ball_rent" >parking : yes</h5><h5 v-else >parking : no</h5>-->
-                <!--<h5  v-if="fieldData.facilities.shower" >parking : yes</h5><h5 v-else >parking : no</h5>-->
-                <!--<h5  v-if="fieldData.facilities.air_conditioning" >parking : yes</h5><h5 v-else >parking : no</h5>-->
-                <!--<h5  v-if="fieldData.facilities.garden" >parking : yes</h5><h5 v-else >parking : no</h5>-->
-                <!--<h5  v-if="fieldData.facilities.locker" >parking : yes</h5><h5 v-else >parking : no</h5>-->
-                <!--<h5  v-if="fieldData.facilities.massage" >parking : yes</h5><h5 v-else >parking : no</h5>-->
-                <!--<h5  v-if="fieldData.facilities.trainer" >parking : yes</h5><h5 v-else >parking : no</h5>-->
-            </div>
-            <!-- /INFO -->
 
           </div>
 
 
           <ul id="myTab" class="nav nav-tabs nav-top-border margin-top-80" role="tablist">
-            <li role="presentation" class="active"><a href="#description" role="tab" data-toggle="tab">Description</a>
-            </li>
-            <li role="presentation"><a href="#specs" role="tab" data-toggle="tab">Specifications</a></li>
-            <li role="presentation"><a href="#reviews" role="tab" data-toggle="tab">Reviews (2)</a></li>
+            <li role="presentation" class="active"><a href="#calendar" role="tab" data-toggle="tab">تقویم</a></li>
+            <li role="presentation"><a href="#description" role="tab" data-toggle="tab">معرفی</a></li>
+            <li role="presentation"><a href="#specs" role="tab" data-toggle="tab">امکانات</a></li>
+            <li role="presentation"><a href="#reviews" role="tab" data-toggle="tab">نظرات</a></li>
           </ul>
 
 
           <div class="tab-content padding-top-20">
 
+            <!-- CALENDAR -->
+            <div role="tabpanel" class="tab-pane fade in active" id="calendar">
+              <field-calendar></field-calendar>
+            </div>
+
             <!-- DESCRIPTION -->
-            <div role="tabpanel" class="tab-pane fade in active" id="description">
+            <div role="tabpanel" class="tab-pane fade in" id="description">
               {{fieldData.description}}
             </div>
 
@@ -233,36 +149,97 @@
             <div role="tabpanel" class="tab-pane fade" id="specs">
               <div class="table-responsive">
                 <table class="table table-hover">
-                  <thead>
-                  <tr>
-                    <th>Column name</th>
-                    <th>Column name</th>
-                  </tr>
-                  </thead>
                   <tbody>
                   <tr>
-                    <td>Size</td>
-                    <td>2XL</td>
+                    <td>پارکینگ</td>
+                    <td>
+                      <span v-if="fieldData.facilities.parking"><i class="fa fa-check text-success"> </i> دارد</span>
+                      <span v-if="!fieldData.facilities.parking"><i class="fa fa-remove text-danger"></i> ندارد</span>
+                    </td>
                   </tr>
                   <tr>
-                    <td>Color</td>
-                    <td>Red</td>
+                    <td>بوفه</td>
+                    <td>
+                      <span v-if="fieldData.facilities.buffet"><i class="fa fa-check text-success"> </i> دارد</span>
+                      <span v-if="!fieldData.facilities.buffet"><i class="fa fa-remove text-danger"></i> ندارد</span>
+                    </td>
                   </tr>
                   <tr>
-                    <td>Weight</td>
-                    <td>132lbs</td>
+                    <td>سرویس بهداشتی</td>
+                    <td>
+                      <span v-if="fieldData.facilities.wc"><i class="fa fa-check text-success"> </i> دارد</span>
+                      <span v-if="!fieldData.facilities.wc"><i class="fa fa-remove text-danger"></i> ندارد</span>
+                    </td>
                   </tr>
                   <tr>
-                    <td>Height</td>
-                    <td>74cm</td>
+                    <td>رختکن</td>
+                    <td>
+                      <span v-if="fieldData.facilities.changing_room"><i class="fa fa-check text-success"> </i> دارد</span>
+                      <span v-if="!fieldData.facilities.changing_room"><i class="fa fa-remove text-danger"></i> ندارد</span>
+                    </td>
                   </tr>
                   <tr>
-                    <td>Bluetooth</td>
-                    <td><i class="fa fa-check text-success"></i> YES</td>
+                    <td>داور</td>
+                    <td>
+                      <span v-if="fieldData.facilities.spectator"><i class="fa fa-check text-success"> </i> دارد</span>
+                      <span v-if="!fieldData.facilities.spectator"><i class="fa fa-remove text-danger"></i> ندارد</span>
+                    </td>
                   </tr>
                   <tr>
-                    <td>Wi-Fi</td>
-                    <td><i class="glyphicon glyphicon-remove text-danger"></i> NO</td>
+                    <td>فروشگاه</td>
+                    <td>
+                      <span v-if="fieldData.facilities.shop"><i class="fa fa-check text-success"> </i> دارد</span>
+                      <span v-if="!fieldData.facilities.shop"><i class="fa fa-remove text-danger"></i> ندارد</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>اجاره توپ</td>
+                    <td>
+                      <span v-if="fieldData.facilities.ball_rent"><i class="fa fa-check text-success"> </i> دارد</span>
+                      <span v-if="!fieldData.facilities.ball_rent"><i class="fa fa-remove text-danger"></i> ندارد</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>تهویه هوا</td>
+                    <td>
+                      <span v-if="fieldData.facilities.air_conditioning"><i class="fa fa-check text-success"> </i> دارد</span>
+                      <span v-if="!fieldData.facilities.air_conditioning"><i class="fa fa-remove text-danger"></i> ندارد</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>فضای سبز</td>
+                    <td>
+                      <span v-if="fieldData.facilities.garden"><i class="fa fa-check text-success"> </i> دارد</span>
+                      <span v-if="!fieldData.facilities.garden"><i class="fa fa-remove text-danger"></i> ندارد</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>دوش حمام</td>
+                    <td>
+                      <span v-if="fieldData.facilities.shower"><i class="fa fa-check text-success"> </i> دارد</span>
+                      <span v-if="!fieldData.facilities.shower"><i class="fa fa-remove text-danger"></i> ندارد</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>کمد</td>
+                    <td>
+                      <span v-if="fieldData.facilities.locker"><i class="fa fa-check text-success"> </i> دارد</span>
+                      <span v-if="!fieldData.facilities.locker"><i class="fa fa-remove text-danger"></i> ندارد</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>ماساژ</td>
+                    <td>
+                      <span v-if="fieldData.facilities.massage"><i class="fa fa-check text-success"> </i> دارد</span>
+                      <span v-if="!fieldData.facilities.massage"><i class="fa fa-remove text-danger"></i> ندارد</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>مربی</td>
+                    <td>
+                      <span v-if="fieldData.facilities.trainer"><i class="fa fa-check text-success"> </i> دارد</span>
+                      <span v-if="!fieldData.facilities.trainer"><i class="fa fa-remove text-danger"></i> ندارد</span>
+                    </td>
                   </tr>
                   </tbody>
                 </table>
@@ -404,64 +381,64 @@
           </div>
 
 
-          <hr class="margin-top-80 margin-bottom-80"/>
+          <!--<hr class="margin-top-80 margin-bottom-80"/>-->
 
 
-          <!-- RELATED -->
-          <h2 class="owl-featured"><strong>Related</strong> products:</h2>
+           <!--RELATED -->
+<!--          <h2 class="owl-featured"><strong>Related</strong> products:</h2>
           <div class="owl-carousel featured nomargin owl-padding-10"
                data-plugin-options='{"singleItem": false, "items": "5", "stopOnHover":false, "autoPlay":4500, "autoHeight": false, "navigation": true, "pagination": false}'>
 
-            <!-- item -->
+             item
             <div class="shop-item nomargin">
 
               <div class="thumbnail">
-                <!-- product image(s) -->
+                 product image(s)
                 <a class="shop-item-image" href="shop-single-left.html">
                   <img class="img-responsive" src="/static/assets/images/demo/shop/products/300x450/p13.jpg"
                        alt="shop first image"/>
                   <img class="img-responsive" src="/static/assets/images/demo/shop/products/300x450/p14.jpg"
                        alt="shop hover image"/>
                 </a>
-                <!-- /product image(s) -->
+                 /product image(s)
 
-                <!-- product more info -->
+                 product more info
                 <div class="shop-item-info">
                   <span class="label label-success">NEW</span>
                   <span class="label label-danger">SALE</span>
                 </div>
-                <!-- /product more info -->
+                 /product more info
               </div>
 
               <div class="shop-item-summary text-center">
                 <h2>Cotton 100% - Pink Shirt</h2>
 
-                <!-- rating -->
+                 rating
                 <div class="shop-item-rating-line">
-                  <div class="rating rating-4 size-13"><!-- rating-0 ... rating-5 --></div>
+                  <div class="rating rating-4 size-13"> rating-0 ... rating-5 </div>
                 </div>
-                <!-- /rating -->
+                 /rating
 
-                <!-- price -->
+                 price
                 <div class="shop-item-price">
                   <span class="line-through">$98.00</span>
                   $78.00
                 </div>
-                <!-- /price -->
+                 /price
               </div>
 
-              <!-- buttons -->
+               buttons
               <div class="shop-item-buttons text-center">
                 <a class="btn btn-default" href="shop-cart.html"><i class="fa fa-cart-plus"></i> Add to Cart</a>
               </div>
-              <!-- /buttons -->
+               /buttons
             </div>
-            <!-- /item -->
+             /item
 
-            <!-- /item -->
+             /item
 
-          </div>
-          <!-- /RELATED -->
+          </div>-->
+           <!--/RELATED -->
 
         </div>
       </section>
@@ -469,7 +446,7 @@
 
 
       <!-- FOOTER -->
-<footers></footers>
+      <footers></footers>
       <!-- /FOOTER -->
 
     </div>
@@ -509,6 +486,8 @@
   import Header from './header'
   import SlideTop from './slideTop'
   import Footer from './Footer'
+  import FieldCalendar from './FieldCalendar'
+
   export default {
     name: "Field",
     data() {
@@ -523,6 +502,7 @@
       '$route': 'fetchData'
     },
     components: {
+      FieldCalendar,
       SlideTop,
       'header1': Header,
       'footers': Footer,

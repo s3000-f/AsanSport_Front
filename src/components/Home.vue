@@ -213,7 +213,7 @@
 
         <!-- PARALLAX -->
         <section class="parallax parallax-2"
-                 style="background-image: url('/static/assets/images/demo/particles_bg.jpg');">
+                 style="background-image: url('../assets/images/demo/particles_bg.jpg');">
           <div class="overlay dark-1"><!-- dark overlay [0 to 9 opacity] --></div>
 
           <div class="container">
