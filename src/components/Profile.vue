@@ -62,10 +62,31 @@
           <!-- LEFT -->
           <div class="col-lg-3 col-md-3 col-sm-4">
 
-            <div class="thumbnail text-center">
+            <div class="thumbnail text-center margin-bottom-0">
               <h2 class="size-18 margin-top-10 margin-bottom-0">{{user.fname + ' ' + user.lname}}</h2>
               <h3 class="size-11 margin-top-0 margin-bottom-6 text-muted">{{user.email}}</h3>
+              <h3 class="size-11 margin-top-0 margin-bottom-6 text-muted">اعتبار: {{user.credit}} تومان</h3>
             </div>
+
+            <ul class="side-nav list-group margin-bottom-30" id="sidebar-nav">
+
+              <li class="list-group-item padding-3" v-on:click="selected = false">
+                <i class="fa fa-tasks"></i>سالن های رزرو شده
+              </li>
+              <li class="list-group-item padding-3" v-on:click="selected = true">
+                <i class="fa fa-comments"></i> نظرات من
+              </li>
+              <li class="list-group-item padding-3" v-on:click="selected = true">
+                <i class="fa fa-credit-card"></i> اعتبار من
+              </li>
+              <li class="list-group-item padding-3" v-on:click="selected = true">
+                <i class="fa fa-gears"></i> تنظیمات
+              </li>
+              <li class="list-group-item padding-3" v-on:click="selected = true">
+                <i class="fa fa-power-off"></i> خروج
+              </li>
+            </ul>
+
             <div class="margin-bottom-30 text-center" v-if="!user.verified">
               <div class="sky-form clearfix" v-if="verification">
                 <div class="form-group text-right">
@@ -84,17 +105,6 @@
                   تایید حساب <span></span></button>
               </div>
             </div>
-
-
-            <!-- SIDE NAV -->
-            <ul class="side-nav-head list-group-item-success margin-bottom-60" id="sidebar-nav">
-
-              <li class="list-group-item padding-3" v-on:click="selected = false"><i class="fa fa-tasks"></i>رزرو ها
-              </li>
-              <li class="list-group-item padding-3" v-on:click="selected = true"><i class="fa fa-gears"></i> تنظیمات
-              </li>
-            </ul>
-            <!-- /SIDE NAV -->
 
 
             <!-- info -->

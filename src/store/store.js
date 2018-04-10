@@ -20,6 +20,7 @@ export const store = new Vuex.Store({
       email: '',
       mobile: '',
       sheba: '',
+      credit: 0,
       verified: false
     },
     reload: true,
@@ -75,6 +76,7 @@ export const store = new Vuex.Store({
       state.user.mobile = dat['mobile'];
       state.user.sheba = dat['sheba'];
       state.user.verified = dat['is_verified'];
+      state.user.credit = dat['credit'];
     },
     resetUser: (state) => {
       state.user = {
@@ -84,7 +86,8 @@ export const store = new Vuex.Store({
         email: '',
         mobile: '',
         sheba: '',
-        verified: false
+        verified: false,
+        credit: 0,
       }
     },
     logout: state => {

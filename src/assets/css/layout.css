@@ -7576,3 +7576,15 @@ ul.search-history {
 		font-size: 12px;
 	}
 }
+
+
+.side-nav {
+	line-height: 32px;
+}
+.side-nav > .list-group-item {
+	cursor: pointer;
+}
+.side-nav > .list-group-item > i {
+	font-size: 20px;
+	line-height: 32px;
+}
