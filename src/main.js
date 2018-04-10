@@ -17,9 +17,12 @@ import './assets/css/color_scheme/green.css'
 import './assets/css/layout-RTL.css'
 import './assets/plugins/bootstrap/RTL/bootstrap-flipped.min.css'
 import './assets/plugins/bootstrap/RTL/bootstrap-rtl.min.css'
+// import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 import {store} from "./store/store";
 import GoogleAuth from 'vue-google-auth'
 import Notifications from 'vue-notification'
+import BootstrapVue from 'bootstrap-vue'
 
 
 // Vue.use(require('cors'));
@@ -27,6 +30,7 @@ Vue.use(GoogleAuth, { client_id: '879091685695-57n6m7vs45lgnvb0rgsofv95i3844e7v.
 Vue.googleAuth().load();
 Vue.config.productionTip = false;
 Vue.use(require('vue-script2'));
+Vue.use(BootstrapVue);
 Vue.use(Notifications);
 /* eslint-disable no-new */
 new Vue({

@@ -3,7 +3,7 @@
   <div class="smoothscroll enable-animation">
 
     <!-- SLIDE TOP -->
-    <slide-top></slide-top>    <!-- /SLIDE TOP -->
+<slide-top></slide-top>    <!-- /SLIDE TOP -->
 
 
     <!-- wrapper -->
@@ -152,7 +152,7 @@
 
 
               <hr/>
-              <button class="btn btn-primary pull-left product-add-cart noradius">ADD TO CART</button>
+                <button class="btn btn-primary pull-left product-add-cart noradius">ADD TO CART</button>
               <hr/>
               <!-- Share -->
               <div class="pull-right">
@@ -195,19 +195,19 @@
             <!-- INFO -->
             <div class="col-sm-4 col-md-3">
 
-              <!--<h5  v-if="fieldData.facilities.parking" >parking : yes</h5><h5 v-else >parking : no</h5>-->
-              <!--<h5  v-if="fieldData.facilities.buffet" >buffet : yes</h5><h5 v-else >buffet : no</h5>-->
-              <!--<h5  v-if="fieldData.facilities.wc" >wc : yes</h5><h5 v-else >wc : no</h5>-->
-              <!--<h5  v-if="fieldData.facilities.changing-room" >parking : yes</h5><h5 v-else >parking : no</h5>-->
-              <!--<h5  v-if="fieldData.facilities.spectator" >parking : yes</h5><h5 v-else >parking : no</h5>-->
-              <!--<h5  v-if="fieldData.facilities.shop" >parking : yes</h5><h5 v-else >parking : no</h5>-->
-              <!--<h5  v-if="fieldData.facilities.ball_rent" >parking : yes</h5><h5 v-else >parking : no</h5>-->
-              <!--<h5  v-if="fieldData.facilities.shower" >parking : yes</h5><h5 v-else >parking : no</h5>-->
-              <!--<h5  v-if="fieldData.facilities.air_conditioning" >parking : yes</h5><h5 v-else >parking : no</h5>-->
-              <!--<h5  v-if="fieldData.facilities.garden" >parking : yes</h5><h5 v-else >parking : no</h5>-->
-              <!--<h5  v-if="fieldData.facilities.locker" >parking : yes</h5><h5 v-else >parking : no</h5>-->
-              <!--<h5  v-if="fieldData.facilities.massage" >parking : yes</h5><h5 v-else >parking : no</h5>-->
-              <!--<h5  v-if="fieldData.facilities.trainer" >parking : yes</h5><h5 v-else >parking : no</h5>-->
+                <!--<h5  v-if="fieldData.facilities.parking" >parking : yes</h5><h5 v-else >parking : no</h5>-->
+                <!--<h5  v-if="fieldData.facilities.buffet" >buffet : yes</h5><h5 v-else >buffet : no</h5>-->
+                <!--<h5  v-if="fieldData.facilities.wc" >wc : yes</h5><h5 v-else >wc : no</h5>-->
+                <!--<h5  v-if="fieldData.facilities.changing-room" >parking : yes</h5><h5 v-else >parking : no</h5>-->
+                <!--<h5  v-if="fieldData.facilities.spectator" >parking : yes</h5><h5 v-else >parking : no</h5>-->
+                <!--<h5  v-if="fieldData.facilities.shop" >parking : yes</h5><h5 v-else >parking : no</h5>-->
+                <!--<h5  v-if="fieldData.facilities.ball_rent" >parking : yes</h5><h5 v-else >parking : no</h5>-->
+                <!--<h5  v-if="fieldData.facilities.shower" >parking : yes</h5><h5 v-else >parking : no</h5>-->
+                <!--<h5  v-if="fieldData.facilities.air_conditioning" >parking : yes</h5><h5 v-else >parking : no</h5>-->
+                <!--<h5  v-if="fieldData.facilities.garden" >parking : yes</h5><h5 v-else >parking : no</h5>-->
+                <!--<h5  v-if="fieldData.facilities.locker" >parking : yes</h5><h5 v-else >parking : no</h5>-->
+                <!--<h5  v-if="fieldData.facilities.massage" >parking : yes</h5><h5 v-else >parking : no</h5>-->
+                <!--<h5  v-if="fieldData.facilities.trainer" >parking : yes</h5><h5 v-else >parking : no</h5>-->
             </div>
             <!-- /INFO -->
 
@@ -469,7 +469,7 @@
 
 
       <!-- FOOTER -->
-      <footers></footers>
+<footers></footers>
       <!-- /FOOTER -->
 
     </div>
@@ -482,9 +482,9 @@
 
     <!--&lt;!&ndash; PRELOADER &ndash;&gt;-->
     <!--<div id="preloader">-->
-    <!--<div class="inner">-->
-    <!--<span class="loader"></span>-->
-    <!--</div>-->
+      <!--<div class="inner">-->
+        <!--<span class="loader"></span>-->
+      <!--</div>-->
     <!--</div>&lt;!&ndash; /PRELOADER &ndash;&gt;-->
 
 
@@ -509,7 +509,6 @@
   import Header from './header'
   import SlideTop from './slideTop'
   import Footer from './Footer'
-
   export default {
     name: "Field",
     data() {
@@ -532,7 +531,7 @@
 
     methods: {
       fetchData() {
-        axios.get('http://api.shahbandegan.ir/v1/fields/' + this.$route.params.id + '/')
+        axios.get('http://api.shahbandegan.ir/v1/fields/' + this.$route.params.id )
           .then((resp) => {
             this.fieldData = resp.data.data;
 

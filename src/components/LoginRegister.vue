@@ -474,6 +474,8 @@
   </div>
 
 </template>
+<script2 type="text/javascript" src="/static/assets/plugins/jquery/jquery-2.1.4.min.js"></script2>
+<script2 type="text/javascript" src="/static/assets/js/scripts.js"></script2>
 
 <script>
   import axios from 'axios'
