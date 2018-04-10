@@ -64,35 +64,35 @@
         <router-link class="logo pull-left" to="/">
           <img src="http://new.asansport.com/img/logo.png" alt=""/>
         </router-link>
-
-        <!--
-            Top Nav
-
-            AVAILABLE CLASSES:
-            submenu-dark = dark sub menu
-        -->
         <div class="navbar-collapse pull-right nav-main-collapse collapse">
           <nav class="nav-main">
-
-            <!--
-                NOTE
-
-                For a regular link, remove "dropdown" class from LI tag and "dropdown-toggle" class from the href.
-                Direct Link Example:
-
-                <li>
-                    <a href="#">HOME</a>
-                </li>
-            -->
             <ul id="topMain" class="nav nav-pills nav-main">
-              <li class="dropdown active"><!-- HOME -->
+              <li class="active"><!-- HOME -->
                 <router-link to="/home">خانه</router-link>
               </li>
-              <li class="dropdown"><!-- BLOG -->
+              <li class="dropdown">
+                <a class="dropdown-toggle" href="#">سالن های ورزشی</a>
+                <ul class="dropdown-menu has-topBar">
+                  <li><router-link to="/fields/category-name">سالن چند منظوره</router-link></li>
+                  <li><router-link to="/fields/category-name">سالن فوتسال</router-link></li>
+                  <li><router-link to="/fields/category-name">سالن بسکتبال</router-link></li>
+                  <li><router-link to="/fields/category-name">سالن والیبال</router-link></li>
+                  <li><router-link to="/fields/category-name">سالن رزمی</router-link></li>
+                  <li><router-link to="/fields/category-name">سالن کشتی</router-link></li>
+                  <li><router-link to="/fields/category-name">سالن ویژه</router-link></li>
+                </ul>
+              </li>
+              <li>
+                <router-link to="/about">درباره ما</router-link>
+              </li>
+              <li>
                 <router-link to="/about">بلاگ</router-link>
               </li>
-              <li class="dropdown"><!-- BLOG -->
+              <li>
                 <a href="https://www.instagram.com/asansport.official/"><i class="fa fa-instagram size-20"></i></a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/asansport.official/"><i class="fa fa-paper-plane size-20"></i></a>
               </li>
             </ul>
 
@@ -129,5 +129,23 @@
 </script>
 
 <style scoped>
-
+  @font-face {
+    font-family:iransans;
+    font-weight:200;
+    src:url(../assets/fonts/iransans/iransans_ultralight.woff) format("woff")
+  }
+  @font-face {
+    font-family:iransans;
+    font-weight:500;
+    src:url(../assets/fonts/iransans/iransans_medium.woff) format("woff")
+  }
+  @font-face {
+    font-family:iransans;
+    font-weight:700;
+    src:url(../assets/fonts/iransans/iransans_bold.woff) format("woff")
+  }
+  body {
+    font-family: iransans !important;
+    line-height: 1.5;
+  }
 </style>
