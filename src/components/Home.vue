@@ -224,12 +224,12 @@
 
               <div class="text-center">
                 <h3 class="nomargin">اطمینان از انتخاب</h3>
-                <p class="font-lato weight-300 lead nomargin-top">تمامی خدمات ارائه شده در آسان اسپرت توسط کارشناسان متخصص مورد بررسی قرار گرفته شده است</p>
+                <p class="weight-300 lead nomargin-top">تمامی خدمات ارائه شده در آسان اسپرت توسط کارشناسان متخصص مورد بررسی قرار گرفته شده است</p>
               </div>
 
               <div class="text-center">
                 <h3 class="nomargin">تنوع خدمات</h3>
-                <p class="font-lato weight-300 lead nomargin-top">با آسان اسپرت تمامی نیاز های ورزشی خود را به راحتی رفع کنید</p>
+                <p class="weight-300 lead nomargin-top">با آسان اسپرت تمامی نیاز های ورزشی خود را به راحتی رفع کنید</p>
               </div>
 
             </div>
