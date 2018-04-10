@@ -26,62 +26,21 @@
 
               <div class="side-nav-head">
                 <button class="fa fa-bars"></button>
-                <h4>CATEGORIES</h4>
+                <h4>دسته بندی</h4>
               </div>
 
               <ul class="list-group list-group-bordered list-group-noicon uppercase">
                 <li class="list-group-item active">
-                  <a class="dropdown-toggle" href="#">WOMEN</a>
+                  <a class="dropdown-toggle" href="#">زمین های ورزشی</a>
                   <ul>
-                    <li><a href="#"><span class="fs-11 text-muted float-right">(123)</span> Shoes &amp; Boots</a></li>
-                    <li class="active"><a href="#"><span class="fs-11 text-muted float-right">(331)</span> Top &amp;
-                      Blouses</a></li>
-                    <li><a href="#"><span class="fs-11 text-muted float-right">(234)</span> Dresses &amp; Skirts</a>
+                    <li><a href="#"><span class="fs-11 text-muted float-right"></span> سالن چند منظوره(فوتسال و والیبال
+                      و ...) </a></li>
+                    <li><a href="#"><span class="fs-11 text-muted float-right"></span> زمین تنیس </a></li>
+                    <li><a href="#"><span class="fs-11 text-muted float-right"></span> زمین چمن </a>
                     </li>
-                    <li class="list-group-item active">
-                      <a class="dropdown-toggle" href="#">DEEP LEVEL NAV</a>
-                      <ul>
-                        <li><a href="#"><span class="fs-11 text-muted float-right">(88)</span> Accessories</a></li>
-                        <li><a href="#"><span class="fs-11 text-muted float-right">(67)</span> Shoes &amp; Boots</a>
-                        </li>
-                      </ul>
-                    </li>
+                    <li><a href="#"><span class="fs-11 text-muted float-right"></span> زمین پینت بال </a></li>
                   </ul>
                 </li>
-                <li class="list-group-item">
-                  <a class="dropdown-toggle" href="#">MEN</a>
-                  <ul>
-                    <li><a href="#"><span class="fs-11 text-muted float-right">(88)</span> Accessories</a></li>
-                    <li><a href="#"><span class="fs-11 text-muted float-right">(67)</span> Shoes &amp; Boots</a></li>
-                    <li><a href="#"><span class="fs-11 text-muted float-right">(32)</span> Dresses &amp; Skirts</a></li>
-                    <li class="active"><a href="#"><span class="fs-11 text-muted float-right">(78)</span> Top &amp;
-                      Blouses</a></li>
-                  </ul>
-                </li>
-                <li class="list-group-item">
-                  <a class="dropdown-toggle" href="#">JEWELLERY</a>
-                  <ul>
-                    <li><a href="#"><span class="fs-11 text-muted float-right">(23)</span> Dresses &amp; Skirts</a></li>
-                    <li><a href="#"><span class="fs-11 text-muted float-right">(34)</span> Shoes &amp; Boots</a></li>
-                    <li class="active"><a href="#"><span class="fs-11 text-muted float-right">(21)</span> Top &amp;
-                      Blouses</a></li>
-                    <li><a href="#"><span class="fs-11 text-muted float-right">(88)</span> Accessories</a></li>
-                  </ul>
-                </li>
-                <li class="list-group-item">
-                  <a class="dropdown-toggle" href="#">KIDS</a>
-                  <ul>
-                    <li><a href="#"><span class="fs-11 text-muted float-right">(88)</span> Shoes &amp; Boots</a></li>
-                    <li><a href="#"><span class="fs-11 text-muted float-right">(22)</span> Dresses &amp; Skirts</a></li>
-                    <li><a href="#"><span class="fs-11 text-muted float-right">(31)</span> Accessories</a></li>
-                    <li class="active"><a href="#"><span class="fs-11 text-muted float-right">(18)</span> Top &amp;
-                      Blouses</a></li>
-                  </ul>
-                </li>
-                <li class="list-group-item"><a href="#"><span class="fs-11 text-muted float-right">(189)</span>
-                  ACCESSORIES</a></li>
-                <li class="list-group-item"><a href="#"><span class="fs-11 text-muted float-right">(61)</span>
-                  GLASSES</a></li>
 
               </ul>
 
@@ -90,66 +49,35 @@
 
             <!-- SIZE -->
             <div class="mb-60">
-              <h4>SIZE</h4>
+              <h4>قیمت</h4>
 
-              <a class="tag" href="#">
-                <span class="txt">S</span>
-              </a>
-              <a class="tag" href="#">
-                <span class="txt bold">M</span>
-              </a>
-              <a class="tag" href="#">
-                <span class="txt">L</span>
-              </a>
-              <a class="tag" href="#">
-                <span class="txt">XL</span>
-              </a>
-              <a class="tag" href="#">
-                <span class="txt">2XL</span>
-              </a>
-              <a class="tag" href="#">
-                <span class="txt">3XL</span>
-              </a>
-
+              <input type="range" min="0" max="500000" step="10000">
               <hr>
-
-              <div class="clearfix fs-12">
-                <a class="float-right fa fa-remove" href="#"></a>
-                SELECTED SIZE: <strong>M</strong>
-              </div>
             </div>
             <!-- /SIZE -->
 
 
             <!-- COLOR -->
             <div class="mb-60">
-              <h4>COLOR</h4>
+              <h4>انتخاب شهر</h4>
+              <v-cascade
+                filterable
+                remote
+                :data="remoteData"
+                :remote-method="remoteMethod"
+                :loading="remoteLoading"
+                :autoFocus="false"
+                v-model="remoteModal"
+                :title="['远程搜索']"
+                addClass="cascade-remote"
+                @success="RemoteSuccess"
+                @cancel="cancel"
+              >
 
-              <a class="tag shop-color" href="#" style="background-color:#000000"></a>
-              <a class="tag shop-color" href="#" style="background-color:#FFFFFF"></a>
-              <a class="tag shop-color" href="#" style="background-color:#C0C0C0"></a>
-              <a class="tag shop-color" href="#" style="background-color:#0000E0"></a>
-              <a class="tag shop-color" href="#" style="background-color:#800080"></a>
-              <a class="tag shop-color" href="#" style="background-color:#FF0000"></a>
-              <a class="tag shop-color" href="#" style="background-color:#FF0080"></a>
-              <a class="tag shop-color" href="#" style="background-color:#FF6600"></a>
-              <a class="tag shop-color" href="#" style="background-color:#E0DCC8"></a>
-              <a class="tag shop-color" href="#" style="background-color:#F0E68C"></a>
-              <a class="tag shop-color" href="#" style="background-color:#FFFFD0"></a>
-              <a class="tag shop-color" href="#" style="background-color:#4B0082"></a>
-              <a class="tag shop-color" href="#" style="background-color:#666666"></a>
-              <a class="tag shop-color" href="#" style="background-color:#00FF00"></a>
-              <a class="tag shop-color" href="#" style="background-color:#36454F"></a>
-              <a class="tag shop-color" href="#" style="background-color:#F4A460"></a>
-              <a class="tag shop-color" href="#" style="background-color:#0088CC"></a>
-              <a class="tag shop-color" href="#" style="background-color:#B38B6D"></a>
+              </v-cascade>
 
               <hr>
 
-              <div class="clearfix fs-12">
-                <a class="float-right fa fa-remove" href="#"></a>
-                SELECTED COLOR: <strong>Red</strong>
-              </div>
             </div>
             <!-- /COLOR -->
 
@@ -162,23 +90,24 @@
                 <h4>BRANDS</h4>
               </div>
 
-              <ul class="list-group list-unstyled">
-                <li class="list-group-item"><a href="#"><span class="fs-11 text-muted float-right">(21)</span>
-                  Armani</a></li>
-                <li class="list-group-item"><a href="#"><span class="fs-11 text-muted float-right">(44)</span> Nike</a>
-                </li>
-                <li class="list-group-item"><a href="#"><span class="fs-11 text-muted float-right">(2)</span>
-                  Jolidon</a></li>
-                <li class="list-group-item"><a href="#"><span class="fs-11 text-muted float-right">(18)</span> Ralph
-                  Lauren</a></li>
-                <li class="list-group-item"><a href="#"><span class="fs-11 text-muted float-right">(87)</span> Lotto</a>
-                </li>
-                <li class="list-group-item"><a href="#"><span class="fs-11 text-muted float-right">(32)</span> Fila</a>
-                </li>
-                <li class="list-group-item"><a href="#"><span class="fs-11 text-muted float-right">(69)</span> Boss</a>
-                </li>
-              </ul>
 
+              <div>
+                <b-form-group label="Using <code>options</code> array:">
+                  <b-form-checkbox-group id="checkboxes1" name="flavour1" v-model="selected" :options="options">
+                  </b-form-checkbox-group>
+                </b-form-group>
+
+                <b-form-group label="Using sub-components:">
+                  <b-form-checkbox-group id="checkboxes2" name="flavour2" v-model="selected">
+                    <b-form-checkbox value="orange">Orange</b-form-checkbox>
+                    <b-form-checkbox value="apple">Apple</b-form-checkbox>
+                    <b-form-checkbox value="pineapple">Pineapple</b-form-checkbox>
+                    <b-form-checkbox value="grape">Grape</b-form-checkbox>
+                  </b-form-checkbox-group>
+                </b-form-group>
+                <hr>
+                <div>Selected: <strong>{{ selected }}</strong></div>
+              </div>
             </div>
             <!-- BRANDS -->
 
@@ -209,125 +138,6 @@
               </div>
             </div>
             <!-- /BANNER ROTATOR -->
-
-
-            <!-- FEATURED -->
-            <div class="mb-60">
-
-              <h2 class="owl-featured">FEATURED</h2>
-              <div class="owl-carousel featured owl-theme owl-carousel-init"
-                   data-plugin-options="{&quot;singleItem&quot;: true, &quot;stopOnHover&quot;:false, &quot;autoPlay&quot;:false, &quot;autoHeight&quot;: false, &quot;navigation&quot;: true, &quot;pagination&quot;: false}"
-                   style="opacity: 1; display: block;">
-
-                <div class="owl-wrapper-outer">
-                  <div class="owl-wrapper" style="width: 1052px; left: 0px; display: block;">
-                    <div class="owl-item" style="width: 263px;">
-                      <div><!-- SLIDE 1 -->
-                        <ul class="list-unstyled m-0 p-0 text-left">
-
-                          <li class="clearfix"><!-- item -->
-                            <div class="thumbnail featured clearfix float-left">
-                              <a href="#">
-                                <img src="demo_files/images/shop/products/100x100/p10.jpg" width="80" height="80"
-                                     alt="featured item">
-                              </a>
-                            </div>
-
-                            <a class="block fs-12" href="#">Long Grey Dress - Special</a>
-                            <div class="rating rating-4 fs-13 fw-100 text-left"><!-- rating-0 ... rating-5 --></div>
-                            <div class="fs-18 text-left">$132.00</div>
-                          </li><!-- /item -->
-
-                          <li class="clearfix"><!-- item -->
-                            <div class="thumbnail featured clearfix float-left">
-                              <a href="#">
-                                <img src="demo_files/images/shop/products/100x100/p2.jpg" width="80" height="80"
-                                     alt="featured item">
-                              </a>
-                            </div>
-
-                            <a class="block fs-1" href="#">Black Fashion Hat</a>
-                            <div class="rating rating-4 fs-13 fw-100 text-left"><!-- rating-0 ... rating-5 --></div>
-                            <div class="fs-18 text-left">$65.00</div>
-                          </li><!-- /item -->
-
-                          <li class="clearfix"><!-- item -->
-                            <div class="thumbnail featured clearfix float-left">
-                              <a href="#">
-                                <img src="demo_files/images/shop/products/100x100/p13.jpg" width="80" height="80"
-                                     alt="featured item">
-                              </a>
-                            </div>
-
-                            <a class="block fs-1" href="#">Cotton 100% - Pink Dress</a>
-                            <div class="rating rating-4 fs-13 fw-100 text-left"><!-- rating-0 ... rating-5 --></div>
-                            <div class="fs-18 text-left">$77.00</div>
-                          </li><!-- /item -->
-
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="owl-item" style="width: 263px;">
-                      <div><!-- SLIDE 2 -->
-                        <ul class="list-unstyled m-0 p-0 text-left">
-
-                          <li class="clearfix"><!-- item -->
-                            <div class="thumbnail featured clearfix float-left">
-                              <a href="#">
-                                <img src="demo_files/images/shop/products/100x100/p12.jpg" width="80" height="80"
-                                     alt="featured item">
-                              </a>
-                            </div>
-
-                            <a class="block fs-12" href="#">Long Grey Dress - Special</a>
-                            <div class="rating rating-4 fs-13 fw-100 text-left"><!-- rating-0 ... rating-5 --></div>
-                            <div class="fs-18 text-left">$132.00</div>
-                          </li><!-- /item -->
-
-                          <li class="clearfix"><!-- item -->
-                            <div class="thumbnail featured clearfix float-left">
-                              <a href="#">
-                                <img src="demo_files/images/shop/products/100x100/p6.jpg" width="80" height="80"
-                                     alt="featured item">
-                              </a>
-                            </div>
-
-                            <a class="block fs-1" href="#">Black Fashion Hat</a>
-                            <div class="rating rating-4 fs-13 fw-100 text-left"><!-- rating-0 ... rating-5 --></div>
-                            <div class="fs-18 text-left">$65.00</div>
-                          </li><!-- /item -->
-
-                          <li class="clearfix"><!-- item -->
-                            <div class="thumbnail featured clearfix float-left">
-                              <a href="#">
-                                <img src="demo_files/images/shop/products/100x100/p14.jpg" width="80" height="80"
-                                     alt="featured item">
-                              </a>
-                            </div>
-
-                            <a class="block fs-1" href="#">Cotton 100% - Pink Dress</a>
-                            <div class="rating rating-4 fs-13 fw-100 text-left"><!-- rating-0 ... rating-5 --></div>
-                            <div class="fs-18 text-left">$77.00</div>
-                          </li><!-- /item -->
-
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div><!-- /SLIDE 1 -->
-
-                <!-- /SLIDE 2 -->
-
-                <div class="owl-controls clickable">
-                  <div class="owl-buttons">
-                    <div class="owl-prev"><i class="fa fa-angle-left"></i></div>
-                    <div class="owl-next"><i class="fa fa-angle-right"></i></div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-            <!-- /FEATURED -->
 
 
             <!-- HTML BLOCK -->
@@ -385,14 +195,13 @@
 
                     <!-- overlay title -->
                     <div class="item-box-overlay-title">
-                      <h3>Street Photography</h3>
+                      <h3>{{field.name}}</h3>
                       <ul class="list-inline categories m-0">
-                        <li><a href="#">Photography</a></li>
-                        <li><a href="#">Design</a></li>
+                        <li>{{field.price}}</li>
                       </ul>
                     </div><!-- /overlay title -->
 
-                    <img class="img-fluid" src="/static/assets/images/demo/mockups/600x399/20-min.jpg" width="600"
+                    <img class="img-fluid" v-bind:src="field.image" width="600"
                          height="399" alt="">
                   </figure>
                 </div>
@@ -444,7 +253,49 @@
       return {
         name: 'FieldsList',
         fields: [],
-        meta: ''
+        meta: '',
+        attr: {
+          state_id: '',
+          district_id: '',
+          sort_bye: '',
+          query: '',
+          lat: '',
+          long: '',
+          min_price: '',
+          max_price: '',
+          featured: '',
+          category: '',
+          facilities: '',
+          remoteModal: false, //
+          remoteLoading: false, //
+          remoteData: [
+            {
+              'key': 'default_data_1',
+              'label': 'default_data_1'
+            },
+            {
+              'key': 'default_data_2',
+              'label': 'default_data_2'
+            },
+            {
+              'key': 'default_data_3',
+              'label': 'default_data_3'
+            },
+            {
+              'key': 'default_data_4',
+              'label': 'default_data_4'
+            },
+            {
+              'key': 'default_data_5',
+              'label': 'default_data_5'
+            },
+            {
+              'key': 'tip',
+              'label': 'search U.S. states with input'
+            }
+          ]
+        },
+        search: ''
       }
     },
     watch: {
@@ -460,14 +311,45 @@
     },
     methods: {
       getFields() {
-        axios.get("http://api.shahbandegan.ir/v1/fields")
+        axios.get("http://api.shahbandegan.ir/v1/fields/" + this.search)
           .then(response => {
             console.log(response.data.data);
             this.fields = response.data.data;
           })
 
       }
+      ,
+
+      RemoteSuccess(data) {
+        console.log(data)
+        // data: {
+        //  path: ['Hawaii'],
+        //  pathName: ['Hawaii']
+        // }
+      },
+      cancel() {
+        console.log('cancel')
+      },
+      remoteMethod(query) {
+        let self = this;
+        self.remoteLoading = true;
+        // simulate api call
+        setTimeout(function () {
+          const remoteMockData = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia'];
+          let remoteFormatData;
+          self.remoteLoading = false;
+          remoteFormatData = remoteMockData.map(item => {
+            // format the data structure
+            return {
+              'key': item,
+              'label': item
+            }
+          })
+          self.remoteData = remoteFormatData.filter(item => item.label.toLowerCase().indexOf(query.toLowerCase()) > -1)
+        }, 500)
+      }
     }
 
   }
 </script>
+
