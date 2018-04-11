@@ -263,7 +263,7 @@
                 <div class="media-body">
                   <h4 class="media-heading size-14">
                     {{comment.user_name}} &ndash;
-                    <span class="text-muted">{{comment.created_at.date}}</span> &ndash;
+                    <span class="text-muted">{{comment.created_at}}</span> &ndash;
                     <!-- stars -->
                       <span class="size-14 text-muted" v-if="comment.rating == 5">
                         <i class="fa fa-star"></i>
