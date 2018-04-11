@@ -253,12 +253,12 @@
             <!-- REVIEWS -->
             <div role="tabpanel" class="tab-pane fade" id="reviews">
               <!-- REVIEW ITEM -->
-              <div class="block margin-bottom-60" v-for="comment in comments">
+              <div class="block margin-top-30" v-for="comment in comments" style="border-bottom: solid 1px #333333">
 
-								<span class="user-avatar"><!-- user-avatar -->
-									<img class="pull-left media-object" src="/static/assets/images/avatar2.jpg" width="64" height="64"
-                       alt="">
-								</span>
+								<!--<span class="user-avatar">&lt;!&ndash; user-avatar &ndash;&gt;-->
+									<!--<img class="pull-left media-object" src="/static/assets/images/avatar2.jpg" width="64" height="64"-->
+                       <!--alt="">-->
+								<!--</span>-->
 
                 <div class="media-body">
                   <h4 class="media-heading size-14">
@@ -314,7 +314,7 @@
                       </span>
                   </h4>
 
-                  <p>
+                  <p class="margin-top-10">
                     {{comment.comment}}
                   </p>
 
