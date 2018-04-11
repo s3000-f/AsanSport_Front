@@ -40,17 +40,9 @@
                   $('#loading').toggle(bool);
               },
               editable: false,
-              droppable: true, // this allows things to be dropped onto the calendar
-              //drop: eventMoved,
-              eventReceive: function(event) {
-                  droppedEvent = event;
-                  var loggedIn = true;
-                  if(!loggedIn)
-                      $('#calendar').fullCalendar('removeEvents', droppedEvent._id);
-              },
 //            eventDrop: eventMoved,
               events: {
-                  url: `./schedule`,
+                  url: `http://api.shahbandegan.ir/v1/fields/y6NZ6Q/schedule`,
                   method: "post",
                   error: function () {
                       $('#loadingError').show();

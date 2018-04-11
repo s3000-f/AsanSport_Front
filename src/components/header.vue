@@ -92,7 +92,7 @@
                 <a href="https://www.instagram.com/asansport.official/"><i class="fa fa-instagram size-20"></i></a>
               </li>
               <li>
-                <a href="https://www.instagram.com/asansport.official/"><i class="fa fa-paper-plane size-20"></i></a>
+                <a href="https://tlgrm.me/asansportchannel"><i class="fa fa-paper-plane size-20"></i></a>
               </li>
             </ul>
 
