@@ -398,8 +398,7 @@
               this.setLogin(response.data['access_token']);
               this.resetError();
               this.setUser();
-              settimeout(()=>{},3000);
-              this.$router.go(-1);
+              this.$router.go('/');
 
             }
             else {

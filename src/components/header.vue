@@ -117,12 +117,12 @@
         }),
       },
       created(){
-          if(this.$store.state.reload){
-            this.$store.dispatch('reload',false);
-            location.reload();
-          }else{
-            this.$store.dispatch('reload',true);
-          }
+          // if(this.$store.state.reload){
+          //   this.$store.dispatch('reload',false);
+          //   location.reload();
+          // }else{
+          //   this.$store.dispatch('reload',true);
+          // }
 
       }
     }
