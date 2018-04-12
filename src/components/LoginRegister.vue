@@ -156,8 +156,7 @@
                     <!--<strong>Oh snap!</strong> Password do not match!-->
                     <!--</div>&lt;!&ndash; /ALERT &ndash;&gt;-->
 
-                    <form class="nomargin sky-form" action="#" method="post"
-                          enctype="multipart/form-data">
+                    <div class="nomargin sky-form">
                       <fieldset>
 
                         <div class="row">
@@ -248,14 +247,13 @@
 
                       <div class="row">
                         <div class="col-md-12">
-                          <button type="submit" class="btn btn-primary"><i class="fa fa-check"
-                                                                           v-on:click="sgnUp"></i>
+                          <button class="btn btn-primary" v-on:click="sgnUp"><i class="fa fa-check"></i>
                             ثبت نام
                           </button>
                         </div>
                       </div>
 
-                    </form>
+                    </div>
 
 
                   </div>
@@ -400,8 +398,7 @@
               this.setLogin(response.data['access_token']);
               this.resetError();
               this.setUser();
-              settimeout(()=>{},3000);
-              this.$router.go(-1);
+              this.$router.go('/');
 
             }
             else {
@@ -418,29 +415,38 @@
       },
       sgnUp() {
         this.loading = true;
-        axios.post("http://api.shahbandegan.ir/v1/register", {
+        const config = {
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          }
+        };
+        const dat = {
           given_name: this.name,
           last_name: this.lastName,
           email: this.email,
           mobile: this.phone,
           password: this.pass
+        };
+        axios.post('http://api.shahbandegan.ir/v1/register' , dat, config).then(response => {
+          if (response.status < 300) {
+            this.setLogin(response.data['access_token']);
+            this.resetError();
+            this.setUser();
+            this.$router.go('/');
+          }
+          else {
+            alert(response.data['message']);
+            this.notif('خطا', 'خطا در برقراری ارتباط', 'error')
+
+          }
+          this.loading = false;
+        }).catch(e => {
+          this.notif('خطا', 'خطا در برقراری ارتباط', 'error');
+          alert(e)
+          console.log(e);
+          this.loading = false;
         })
-          .then(response => {
-            this.title = response.status;
-            if (response.status < 300) {
-              this.setLogin(response.data['access_token']);
-              this.resetError();
-              this.setUser();
-              this.$router.go(-1);
-            }
-            else {
-              this.setError(response.data['message']);
-            }
-            this.loading = false;
-          })
-          .catch(e => {
-            this.loading = false
-          })
       },
       gSignIn() {
         // Just add in this line

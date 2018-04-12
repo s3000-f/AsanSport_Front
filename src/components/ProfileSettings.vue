@@ -82,7 +82,6 @@
     name: "ProfileSettings",
     data() {
       return {
-        host: 'http://api.shahbandegan.ir/v1/profile',
         userfinal: {
           given_name: '',
           last_name: '',
@@ -125,8 +124,6 @@
           'email': (this.userfinal.email ? this.userfinal.email : this.user.email),
           'sheba': (this.userfinal.sheba ? this.userfinal.sheba : this.user.sheba)
         };
-        let tok = this.getToken;
-        // axios.defaults.headers.common['Authorization'] = `Bearer ${tok}`;
         const config = {
           headers: {
             Authorization: 'Bearer ' + this.getToken,
@@ -134,7 +131,7 @@
             'Accept': 'application/json'
           }
         };
-        axios.put(this.host, dat, config).then(response => {
+        axios.put('http://api.shahbandegan.ir/v1/profile', dat, config).then(response => {
           console.log(response);
           if (response.status < 300){
             this.notif('نتیجه', 'اطلاعات با موفقیت ثبت شد', 'success');
@@ -171,6 +168,13 @@
         };
         this.isCancel = false;
         event.target.reset();
+      },
+      notif(title, text, type) {
+        this.$notify({
+          text: text,
+          type: type,
+          title: title
+        })
       }
     }
   }

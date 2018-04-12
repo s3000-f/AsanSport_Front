@@ -6,7 +6,6 @@ import Login from '@/components/LoginRegister'
 import SearchResults from '@/components/SearchResults'
 import Field from '@/components/FieldDetails'
 import FieldsList from '@/components/FieldsList'
-import CheckOut from '@/components/CheckOut'
 import Profile from '@/components/Profile'
 
 Vue.use(Router);
@@ -48,11 +47,6 @@ export default new Router({
       path: '/search-results',
       name: 'SearchResults',
       component: SearchResults
-    },
-    {
-      path: '/check-out',
-      name: 'CheckOut',
-      component: CheckOut
     }
   ]
 })
