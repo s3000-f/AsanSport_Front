@@ -23,7 +23,8 @@ export const store = new Vuex.Store({
       mobile: '',
       sheba: '',
       credit: 0,
-      verified: false
+      verified: false,
+      isAdmin: false
     },
     reload: true,
     googleUser: {},
