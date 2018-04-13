@@ -303,92 +303,16 @@
                 Note: remove class="rounded" from the img for squared image!
             -->
             <ul class="row clearfix testimonial-dotted list-unstyled nomargin">
-              <li class="col-md-4">
+              <li class="col-md-4" v-for="blog in blogs">
                 <div class="testimonial">
                   <figure class="pull-left">
-                    <img class="rounded" src="/static/assets/images/demo/people/300x300/2-min.jpg" alt=""/>
+                    <img class="rounded" v-bind:src="blog.author_full.avatar_urls['96']" alt=""/>
                   </figure>
                   <div class="testimonial-content">
-                    <p>Incidunt deleniti blanditiis quas aperiam recusandae consequatur ullam quibusdam cum
-                      libero illo rerum!</p>
+                    {{blog.excerpt.rendered}}
                     <cite>
-                      Joana Doe
-                      <span>Company Ltd.</span>
-                    </cite>
-                  </div>
-                </div>
-              </li>
-              <li class="col-md-4">
-                <div class="testimonial">
-                  <figure class="pull-left">
-                    <img class="rounded" src="/static/assets/images/demo/people/300x300/6-min.jpg" alt=""/>
-                  </figure>
-                  <div class="testimonial-content">
-                    <p>Incidunt deleniti blanditiis quas aperiam recusandae consequatur ullam quibusdam cum
-                      libero illo rerum!</p>
-                    <cite>
-                      Melissa Doe
-                      <span>Company Ltd.</span>
-                    </cite>
-                  </div>
-                </div>
-              </li>
-              <li class="col-md-4">
-                <div class="testimonial">
-                  <figure class="pull-left">
-                    <img class="rounded" src="/static/assets/images/demo/people/300x300/7-min.jpg" alt=""/>
-                  </figure>
-                  <div class="testimonial-content">
-                    <p>Incidunt deleniti blanditiis quas aperiam recusandae consequatur ullam quibusdam cum
-                      libero illo rerum!</p>
-                    <cite>
-                      Stephany Doe
-                      <span>Company Ltd.</span>
-                    </cite>
-                  </div>
-                </div>
-              </li>
-              <li class="col-md-4">
-                <div class="testimonial">
-                  <figure class="pull-left">
-                    <img class="rounded" src="/static/assets/images/demo/people/300x300/8-min.jpg" alt=""/>
-                  </figure>
-                  <div class="testimonial-content">
-                    <p>Incidunt deleniti blanditiis quas aperiam recusandae consequatur ullam quibusdam cum
-                      libero illo rerum!</p>
-                    <cite>
-                      Pamela Doe
-                      <span>Company Ltd.</span>
-                    </cite>
-                  </div>
-                </div>
-              </li>
-              <li class="col-md-4">
-                <div class="testimonial">
-                  <figure class="pull-left">
-                    <img class="rounded" src="/static/assets/images/demo/people/300x300/11-min.jpg" alt=""/>
-                  </figure>
-                  <div class="testimonial-content">
-                    <p>Incidunt deleniti blanditiis quas aperiam recusandae consequatur ullam quibusdam cum
-                      libero illo rerum!</p>
-                    <cite>
-                      Simina Doe
-                      <span>Company Ltd.</span>
-                    </cite>
-                  </div>
-                </div>
-              </li>
-              <li class="col-md-4">
-                <div class="testimonial">
-                  <figure class="pull-left">
-                    <img class="rounded" src="/static/assets/images/demo/people/300x300/12-min.jpg" alt=""/>
-                  </figure>
-                  <div class="testimonial-content">
-                    <p>Incidunt deleniti blanditiis quas aperiam recusandae consequatur ullam quibusdam cum
-                      libero illo rerum!</p>
-                    <cite>
-                      Mihaela Doe
-                      <span>Company Ltd.</span>
+                      {{blog.author_full.name}}
+                      <span>{{blog.date}}</span>
                     </cite>
                   </div>
                 </div>
@@ -479,6 +403,8 @@
         tops: [
 
         ],
+        blogs:[],
+        blog_authors:[],
         slideLoading: false,
         featuredLoading: false,
         topLoading: false
@@ -490,9 +416,9 @@
       'slide-top': SlideTop
     },
     methods: {
-      getSlides() {
+      async getSlides() {
         this.slideLoading = true;
-        axios.get('http://api.shahbandegan.ir/v1/slides')
+        await(axios.get('http://api.shahbandegan.ir/v1/slides')
           .then(response => {
             this.slides = response.data['data'];
             console.log(this.slides);
@@ -501,12 +427,12 @@
           .catch(e => {
             console.log(e);
             this.slideLoading = false;
-          })
+          }))
 
       },
-      getTops() {
+      async getTops() {
         this.topLoading = true;
-        axios.get('http://api.shahbandegan.ir/v1/fields')
+        await(axios.get('http://api.shahbandegan.ir/v1/fields')
           .then(response => {
             let dat = response.data['data'].slice(0, 12);
             let ret = [];
@@ -526,11 +452,11 @@
           .catch(e => {
             console.log(e);
             this.topLoading = false;
-          })
+          }))
       },
-      getFeatured(){
+      async getFeatured() {
         this.featuredLoading = true;
-        axios.get('http://api.shahbandegan.ir/v1/fields?featured')
+        await(axios.get('http://api.shahbandegan.ir/v1/fields?featured')
           .then(response => {
             let dat = response.data['data'];
             let ret = [];
@@ -550,10 +476,48 @@
           .catch(e => {
             console.log(e);
             this.featuredLoading = false;
+          }))
+      },
+      async getBlogs() {
+        await(axios.get('http://beta.asansport.com/blog/wp-json/wp/v2/posts')
+          .then(response => {
+            if (response.status < 300) {
+              this.blogs = response.data;
+              this.blogs.forEach(blg => {
+                blg.date = moment(blg.date).format('jDD-jMM-jYYYY HH:mm');
+                this.getAuthor(blg);
+              })
+            }
+            else {
+              alert(response.status);
+            }
+          })
+          .catch(e => {
+            alert(e);
+          }))
+        console.log(this.blogs);
+      },
+      getAuthor(blog){
+        let host = (blog['_links']).author[0].href;
+        axios.get(host)
+          .then(response => {
+            if (response.status < 300){
+              this.blog_authors.push(response.data);
+              blog.author_full = response.data;
+            }
+            else {
+              alert( response.status );
+              return "";
+            }
+          })
+          .catch(e => {
+            alert(e);
+            return "";
           })
       }
     },
-    created() {
+    async created() {
+      this.getBlogs();
       this.getSlides();
       this.getTops();
       this.getFeatured();
