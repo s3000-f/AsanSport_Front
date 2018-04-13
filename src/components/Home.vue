@@ -213,7 +213,7 @@
 
         <!-- PARALLAX -->
         <section class="parallax parallax-2"
-                 style="background-image: url('../assets/images/demo/particles_bg.jpg');">
+                 style="background-image: url('/static/assets/img/particles_bg.jpg');">
           <div class="overlay dark-1"><!-- dark overlay [0 to 9 opacity] --></div>
 
           <div class="container">
@@ -221,6 +221,12 @@
 
             <div class="owl-carousel text-center owl-testimonial nomargin"
                  data-plugin-options='{"singleItem": true, "autoPlay": 5000, "navigation": false, "pagination": true}'>
+
+              <div class="text-center">
+                <h3 class="nomargin">کانال تلگرام آسان اسپورت</h3>
+                <p class="weight-300 lead nomargin-top">به کانال تلگرام ما بپیوندید تا از آخرین کدهای تخفیف و اخبار مطلع شوید</p>
+                <p dir="rtl"><a href="https://tlgrm.me/asansportchannel" target="_blank" class="btn btn-info btn-lg"><i class="fa fa-paper-plane"></i> کانال تلگرام آسان اسپورت</a></p>
+              </div>
 
               <div class="text-center">
                 <h3 class="nomargin">اطمینان از انتخاب</h3>
