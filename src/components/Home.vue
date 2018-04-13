@@ -223,6 +223,12 @@
                  data-plugin-options='{"singleItem": true, "autoPlay": 5000, "navigation": false, "pagination": true}'>
 
               <div class="text-center">
+                <h3 class="nomargin">کانال تلگرام آسان اسپورت</h3>
+                <p class="weight-300 lead nomargin-top">به کانال تلگرام ما بپیوندید تا از آخرین کدهای تخفیف و اخبار مطلع شوید</p>
+                <p dir="rtl"><a href="https://tlgrm.me/asansportchannel" target="_blank" class="btn btn-info btn-lg"><i class="fa fa-paper-plane"></i> کانال تلگرام آسان اسپورت</a></p>
+              </div>
+
+              <div class="text-center">
                 <h3 class="nomargin">اطمینان از انتخاب</h3>
                 <p class="weight-300 lead nomargin-top">تمامی خدمات ارائه شده در آسان اسپرت توسط کارشناسان متخصص مورد بررسی قرار گرفته شده است</p>
               </div>
