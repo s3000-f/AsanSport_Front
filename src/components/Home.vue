@@ -120,25 +120,25 @@
 
               <div class="col-sm-4 text-center">
                 <router-link to="/">
-                <i class="glyphicon glyphicon-briefcase"></i>
-                <h3>همکاری با ما</h3>
-                <p>مالک باشگاه یا اماکن ورزشی هستید؟<br>در صورتی که مایل به همکاری با آسان اسپرت هستید اینجا را کلیک
-                  کنید</p>
+                  <i class="glyphicon glyphicon-briefcase"></i>
+                  <h3>همکاری با ما</h3>
+                  <p>مالک باشگاه یا اماکن ورزشی هستید؟<br>در صورتی که مایل به همکاری با آسان اسپرت هستید اینجا را کلیک
+                    کنید</p>
                 </router-link>
               </div>
 
               <div class="col-sm-4 text-center" v-if="$store.state.isLoggedin">
                 <router-link to="/profile">
-                <i class="glyphicon glyphicon-user"></i>
-                <h3>حساب کاربری</h3>
-                <p>{{$store.state.user.fname + " " + $store.state.user.lname}}</p>
+                  <i class="glyphicon glyphicon-user"></i>
+                  <h3>حساب کاربری</h3>
+                  <p>{{$store.state.user.fname + " " + $store.state.user.lname}}</p>
                 </router-link>
               </div>
               <div class="col-sm-4 text-center" v-else>
                 <router-link to="/login-register">
-                <i class="glyphicon glyphicon-user"></i>
-                <h3>ورود / ثبت نام</h3>
-                <p>برای بهره گیری هرچه بهتر از خدمات آسان اسپرت</p>
+                  <i class="glyphicon glyphicon-user"></i>
+                  <h3>ورود / ثبت نام</h3>
+                  <p>برای بهره گیری هرچه بهتر از خدمات آسان اسپرت</p>
                 </router-link>
               </div>
 
@@ -169,9 +169,9 @@
                 <div class="thumbnail">
                   <!-- product image(s) -->
                   <!--<div class="owl-carousel owl-padding-0 nomargin"-->
-                       <!--data-plugin-options='{"singleItem": true, "autoPlay": 3000, "navigation": false, "pagination": false, "transitionStyle":"fadeUp"}'>-->
-                    <img class="img-responsive" v-for="src in feature.srcs" v-bind:src="src"
-                         alt="">
+                  <!--data-plugin-options='{"singleItem": true, "autoPlay": 3000, "navigation": false, "pagination": false, "transitionStyle":"fadeUp"}'>-->
+                  <img class="img-responsive" v-for="src in feature.srcs" v-bind:src="src"
+                       alt="">
                   <!--</div>-->
                   <!-- /product image(s) -->
 
@@ -224,13 +224,16 @@
 
               <div class="text-center">
                 <h3 class="nomargin">کانال تلگرام آسان اسپورت</h3>
-                <p class="weight-300 lead nomargin-top">به کانال تلگرام ما بپیوندید تا از آخرین کدهای تخفیف و اخبار مطلع شوید</p>
-                <p dir="rtl"><a href="https://tlgrm.me/asansportchannel" target="_blank" class="btn btn-info btn-lg"><i class="fa fa-paper-plane"></i> کانال تلگرام آسان اسپورت</a></p>
+                <p class="weight-300 lead nomargin-top">به کانال تلگرام ما بپیوندید تا از آخرین کدهای تخفیف و اخبار مطلع
+                  شوید</p>
+                <p dir="rtl"><a href="https://tlgrm.me/asansportchannel" target="_blank" class="btn btn-info btn-lg"><i
+                  class="fa fa-paper-plane"></i> کانال تلگرام آسان اسپورت</a></p>
               </div>
 
               <div class="text-center">
                 <h3 class="nomargin">اطمینان از انتخاب</h3>
-                <p class="weight-300 lead nomargin-top">تمامی خدمات ارائه شده در آسان اسپرت توسط کارشناسان متخصص مورد بررسی قرار گرفته شده است</p>
+                <p class="weight-300 lead nomargin-top">تمامی خدمات ارائه شده در آسان اسپرت توسط کارشناسان متخصص مورد
+                  بررسی قرار گرفته شده است</p>
               </div>
 
               <div class="text-center">
@@ -281,8 +284,8 @@
 
                     <!-- price -->
                     <div class="shop-item-info">
-                    <!--<span class="line-through">${{top.price}}</span>-->
-                    {{top.state}}
+                      <!--<span class="line-through">${{top.price}}</span>-->
+                      {{top.state}}
                     </div>
                     <!-- /price -->
                   </div>
@@ -312,12 +315,12 @@
               <li class="col-md-4" v-for="blog in blogs">
                 <div class="testimonial">
                   <figure class="pull-left">
-                    <img class="rounded" v-bind:src="blog.author_full.avatar_urls['96']" alt=""/>
+                    <img class="rounded" v-bind:src="blog_authors[blogs.indexOf(blog)].avatar_urls['96']" alt=""/>
                   </figure>
                   <div class="testimonial-content">
-                    {{blog.excerpt.rendered}}
+                    <span v-html="blog.excerpt.rendered"></span>
                     <cite>
-                      {{blog.author_full.name}}
+                      {{blog_authors[blogs.indexOf(blog)].name}}
                       <span>{{blog.date}}</span>
                     </cite>
                   </div>
@@ -401,16 +404,11 @@
     name: "home",
     data() {
       return {
-        slides: [
-        ],
-        featured: [
-
-        ],
-        tops: [
-
-        ],
-        blogs:[],
-        blog_authors:[],
+        slides: [],
+        featured: [],
+        tops: [],
+        blogs: [],
+        blog_authors: [],
         slideLoading: false,
         featuredLoading: false,
         topLoading: false
@@ -491,8 +489,11 @@
               this.blogs = response.data;
               this.blogs.forEach(blg => {
                 blg.date = moment(blg.date).format('jDD-jMM-jYYYY HH:mm');
+                let txt = blg.excerpt.rendered;
+                blg.excerpt.rendered = txt.slice(0, txt.indexOf("<p>") + 2) + ' style="height: 150px" ' + txt.slice(txt.indexOf("<p>") + 2);
                 this.getAuthor(blg);
-              })
+              });
+
             }
             else {
               alert(response.status);
@@ -503,23 +504,22 @@
           }))
         console.log(this.blogs);
       },
-      getAuthor(blog){
+      async getAuthor(blog) {
         let host = (blog['_links']).author[0].href;
-        axios.get(host)
+        await(axios.get(host)
           .then(response => {
-            if (response.status < 300){
+            if (response.status < 300) {
               this.blog_authors.push(response.data);
-              blog.author_full = response.data;
             }
             else {
-              alert( response.status );
+              alert(response.status);
               return "";
             }
           })
           .catch(e => {
             alert(e);
             return "";
-          })
+          }))
       }
     },
     async created() {

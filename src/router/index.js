@@ -8,6 +8,7 @@ import Field from '@/components/FieldDetails'
 import FieldsList from '@/components/FieldsList'
 import Profile from '@/components/Profile'
 import e404 from '@/components/404'
+import ManagerLogin from '@/components/ManagerLogin'
 Vue.use(Router);
 
 export default new Router({
@@ -47,6 +48,11 @@ export default new Router({
       path: '/search-results',
       name: 'SearchResults',
       component: SearchResults
+    },
+    {
+      path:'/manager-login',
+      name: 'ManagerLogin',
+      component: ManagerLogin
     },
     {
       path: '*',

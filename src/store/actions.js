@@ -1,5 +1,4 @@
 import axios from "axios";
-import qs from 'qs';
 
 export default {
   setLogin: (context, p1) => {
@@ -41,10 +40,8 @@ export default {
     };
     axios.post('http://api.shahbandegan.ir/v1/logout', {}, config).then(response => {
       console.log(response)
-      alert(response);
     }).catch(e => {
       console.log(e)
-      alert(e)
     })
     axios.post('http://api.shahbandegan.ir/v1/logout', {
       data: ''
