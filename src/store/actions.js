@@ -30,6 +30,9 @@ export default {
       console.log(e)
     })
   },
+  setManager: (context) => {
+    context.commit('setManager');
+  },
   logout: ({commit, state}) => {
     let config = {
       headers: {

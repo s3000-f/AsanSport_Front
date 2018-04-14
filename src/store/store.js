@@ -24,7 +24,7 @@ export const store = new Vuex.Store({
       sheba: '',
       credit: 0,
       verified: false,
-      isOwner: false
+      isManager: false
     },
     reload: true,
     googleUser: {},

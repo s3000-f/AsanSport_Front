@@ -11,7 +11,8 @@
           <li>
             <a class="dropdown-toggle no-text-underline" data-toggle="dropdown" v-if="$store.state.isLoggedin"><i
               class="fa fa-user hidden-xs"></i>
-              <router-link to="/profile">حساب شما</router-link>
+              <router-link to="/Manager" v-if="$store.state.user.isManager">حساب شما</router-link>
+              <router-link to="/profile" v-else>حساب شما</router-link>
             </a>
           <li class="divider"></li>
           <li>

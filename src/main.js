@@ -26,7 +26,6 @@ import GoogleAuth from 'vue-google-auth'
 import Notifications from 'vue-notification'
 import BootstrapVue from 'bootstrap-vue'
 import FullCalendar from 'vue-full-calendar'
-
 // import $ from 'jquery'
 // import 'expose-loader?$!expose-loader?jQuery!jquery'
 // import "expose-loader?$!jquery"

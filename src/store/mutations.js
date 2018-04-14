@@ -24,6 +24,9 @@ export default{
   state.user.verified = dat['is_verified'];
   state.user.credit = dat['credit'];
 },
+  setManager: (state) => {
+    state.user.isManager = true;
+  },
   resetUser: (state) => {
   state.user = {
     id: '',
@@ -34,6 +37,7 @@ export default{
     sheba: '',
     verified: false,
     credit: 0,
+    isManager: false
   }
 },
   logout: state => {

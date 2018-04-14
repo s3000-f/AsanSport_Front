@@ -3,7 +3,7 @@
   <div class="smoothscroll enable-animation">
 
     <!-- SLIDE TOP -->
-<slide-top></slide-top>    <!-- /SLIDE TOP -->
+    <slide-top></slide-top>    <!-- /SLIDE TOP -->
 
 
     <!-- wrapper -->
@@ -305,7 +305,7 @@
 
         </div>
       </section>
-      <!-- / -->
+      <!-- / -->d
 
 
       <!-- FOOTER -->
@@ -327,14 +327,42 @@
         <span class="loader"></span>
       </div>
     </div><!-- /PRELOADER -->
+    <sweet-modal ref="modal" title="بازیابی رمز عبور">
+      <div class="clearfix">
+        <!-- Email -->
+        <div class="form-group">
+          <label class="text-right">کد تایید</label>
+          <input type="text" name="email" class="form-control" placeholder="کد تایید" required=""
+                 v-model="reset_code">
+        </div>
+        <div class="form-group">
+          <label class="text-right">تلفن همراه</label>
+          <input type="text" name="email" class="form-control" placeholder="تلفن همراه" required=""
+                 v-model="password_reset">
+        </div>
+        <!-- Password -->
+        <div class="form-group">
+          <label class="text-right">رمز عبور</label>
+          <input type="password" name="password" class="form-control" placeholder="رمز عبور" required=""
+                 v-model="password">
+        </div>
+        <div class="form-group">
+          <label class="text-right">تکرار رمز عبور</label>
+          <input type="password" name="password" class="form-control" placeholder="تکرار رمز عبور" required=""
+                 v-model="newPass">
+        </div>
+
+      </div>
+      <button class="btn btn-success" slot="button" v-on:click="checkPassReset">تایید</button>
+
+    </sweet-modal>
 
   </div>
 
 </template>
-<script2 type="text/javascript" src="/static/assets/plugins/jquery/jquery-2.1.4.min.js"></script2>
-<script2 type="text/javascript" src="/static/assets/js/scripts.js"></script2>
 
 <script>
+  import {SweetModal, SweetModalTab} from 'sweet-modal-vue'
   import axios from 'axios'
   import Vue from 'vue'
   import {mapActions} from 'vuex';
@@ -359,7 +387,8 @@
         passreset: false,
         password_reset: '',
         reset_sms: 'email',
-        loading: false
+        loading: false,
+        reset_code: ''
       }
     },
     computed: {
@@ -375,7 +404,9 @@
       SlideTop,
       'header1': Header,
       'footers': Footer,
-      'slide-top': SlideTop
+      'slide-top': SlideTop,
+      SweetModal,
+      SweetModalTab
     },
     methods: {
       ...mapActions({
@@ -398,7 +429,7 @@
               this.setLogin(response.data['access_token']);
               this.resetError();
               this.setUser();
-              this.$router.go('/');
+              this.$router.push('/');
 
             }
             else {
@@ -428,12 +459,12 @@
           mobile: this.phone,
           password: this.pass
         };
-        axios.post('http://api.shahbandegan.ir/v1/register' , dat, config).then(response => {
+        axios.post('http://api.shahbandegan.ir/v1/register', dat, config).then(response => {
           if (response.status < 300) {
             this.setLogin(response.data['access_token']);
             this.resetError();
             this.setUser();
-            this.$router.go('/');
+            this.$router.push('/');
           }
           else {
             alert(response.data['message']);
@@ -451,12 +482,11 @@
       gSignIn() {
         // Just add in this line
         Vue.googleAuth().directAccess();
-        var data;
+        // var data;
         this.loading = true;
         Vue.googleAuth().signIn(this.gs, function (error) {
           this.setError(error);
         });
-
       },
       gs(googleUser) {
         this.setGUser(googleUser['Zi']);
@@ -470,7 +500,7 @@
                 this.setLogin(response.data['access_token']);
                 this.resetError();
                 this.setUser();
-                this.$router.go(-1);
+                this.$router.push('');
               }
               else {
                 this.setError(response.data['message']);
@@ -486,22 +516,67 @@
         }
       },
       resetPass() {
-        if (this.reset_sms === 'sms') {
-          axios.post('http://api.shahbandegan.ir/v1/password/sms', {
-            mobile: this.password_reset
-          }).then(response => {
-            alert(response.data['message']);
-            this.passreset = false;
-          }).catch(e => {
-            console.log(e)
-          })
-        }
+        axios.post('http://api.shahbandegan.ir/v1/password/sms', {
+          mobile: this.password_reset
+        }).then(response => {
+          this.$notify({
+            text: response.data['message'],
+            type: 'success',
+            title: 'توجه'
+          });
+          setTimeout(() => {
+            this.$refs.modal.open()
+          }, 2000);
+          this.passreset = false;
+        }).catch(e => {
+          console.log(e)
+        })
+
       },
       terms() {
         let route = this.$router.resolve({path: '/'});
         window.open(route.href, '_blank');
-      }
+      },
+      checkPassReset() {
+        axios.post('http://api.shahbandegan.ir/v1/password/reset',{
+          mobile: this.password_reset,
+          token: this.reset_code,
+          password: this.password
+        })
+          .then(response => {
+            if (response.status < 300){
+              this.$refs.modal.close();
+              this.$notify({
+                text: 'رمزعبور با موفقیت تغییر یافت',
+                type: 'success',
+                title: 'توجه'
+              });
+            }else {
+              this.$notify({
+                text: 'اطلاعات خود را بررسی کنید',
+                type: 'error',
+                title: 'خطا'
+              });
+            }
+          })
+          .catch(e => {
+            this.$notify({
+              text: 'خطا در برقراری ارتباط',
+              type: 'error',
+              title: 'خطا'
+            });
+            console.log(e)
+          });
+
+      },
     },
+    created() {
+      if (this.isLoggedin) {
+        this.$router.replace('');
+      }
+      console.log(this.$refs)
+    },
+
 
   };
 </script>

@@ -324,48 +324,25 @@
               <!-- /REVIEW ITEM -->
 
               <!-- REVIEW FORM -->
-              <h4 class="page-header margin-bottom-40">ارسال نظر جدید</h4>
-              <form method="post" action="#" id="form">
+              <h4 class="page-header margin-bottom-40" >ارسال نظر جدید</h4>
+              <div id="form" v-if="$store.state.isLoggedin">
                 <!-- Comment -->
                 <div class="margin-bottom-30">
-                  <textarea name="text" id="text" class="form-control" rows="6" placeholder="Comment"
-                            maxlength="1000"></textarea>
+                  <label>نظر شما</label>
+                  <textarea name="text" id="text" class="form-control margin-bottom-10" rows="6" placeholder="نظر"
+                            maxlength="1000" v-model="comment" ></textarea>
+                  <label>امتیاز شما</label>
+                  <star-rating :star-size="20" :show-rating="false" active-color="#8ab933" v-model="rating"></star-rating>
+
                 </div>
 
-                <!-- Stars -->
-                <!--<div class="product-star-vote clearfix">-->
-
-                <!--<label class="radio pull-left">-->
-                <!--<input type="radio" name="product-review-vote" value="1"/>-->
-                <!--<i></i> ۱ ستاره-->
-                <!--</label>-->
-
-                <!--<label class="radio pull-left">-->
-                <!--<input type="radio" name="product-review-vote" value="2"/>-->
-                <!--<i></i> ۲ ستاره-->
-                <!--</label>-->
-
-                <!--<label class="radio pull-left">-->
-                <!--<input type="radio" name="product-review-vote" value="3"/>-->
-                <!--<i></i> ۳ ستاره-->
-                <!--</label>-->
-
-                <!--<label class="radio pull-left">-->
-                <!--<input type="radio" name="product-review-vote" value="4"/>-->
-                <!--<i></i> ۴ ستاره-->
-                <!--</label>-->
-
-                <!--<label class="radio pull-left">-->
-                <!--<input type="radio" name="product-review-vote" value="5"/>-->
-                <!--<i></i> ۵ ستاره-->
-                <!--</label>-->
-
-                <!--</div>-->
-
                 <!-- Send Button -->
-                <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> ارسال نظر</button>
+                <button class="btn btn-primary" @click="sendComment"><i class="fa fa-check"></i> ارسال نظر</button>
 
-              </form>
+              </div>
+              <div v-else>
+                <h5> برای ارسال نظر جدید باید وارد شوید. (<router-link to="/login-register" class="text-warning">ورود / ثبت نام</router-link>) </h5>
+              </div>
               <!-- /REVIEW FORM -->
 
             </div>
@@ -474,6 +451,8 @@
 
 <script>
   import axios from 'axios'
+  import StarRating from 'vue-star-rating'
+
   import Header from './header'
   import SlideTop from './slideTop'
   import Footer from './Footer'
@@ -484,7 +463,9 @@
     data() {
       return {
         fieldData: {},
-        comments: {}
+        comments: {},
+        rating: -1,
+        comment: ''
       }
     },
     created() {
@@ -497,6 +478,7 @@
     components: {
       FieldCalendar,
       SlideTop,
+      StarRating,
       'header1': Header,
       'footers': Footer,
       'slide-top': SlideTop
@@ -533,6 +515,39 @@
           this.notif('خطا', 'خطا در برقراری ارتباط', 'error');
           console.log(e)
         })
+      },
+      sendComment(){
+        if (this.rating === -1){
+          this.notif('توجه','امتیاز نمیتواند ۰ باشد','warn');
+
+          return;
+        }
+        this.notif('توجه','لطفا صبر کنید','');
+        let dat = (this.comment !== '')?{
+          rating: this.rating,
+          comment: this.comment
+        }: {rating:this.rating};
+        let config = {
+          headers: {
+            Authorization: 'Bearer ' + this.$store.state.token,
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          }
+        };
+        axios.post('http://api.shahbandegan.ir/v1/fields/'+ this.$route.params.id +'/comments', dat, config)
+          .then(response => {
+            if (response.status < 300){
+              this.notif('توجه','نظر شما با موفقیت ثبت شد','success')
+            }else {
+              this.notif('خطا','خطای داخلی، لطفا بعدا تلاش کنید','error');
+            }
+          })
+          .catch(e => {
+            console.log(e);
+            this.notif('خطا','خطا در برقراری ارتباط','error');
+          })
+        this.rating = -1;
+        this.comment = '';
       },
       notif(title, text, type) {
         this.$notify({
