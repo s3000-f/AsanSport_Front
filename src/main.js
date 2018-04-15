@@ -26,6 +26,8 @@ import GoogleAuth from 'vue-google-auth'
 import Notifications from 'vue-notification'
 import BootstrapVue from 'bootstrap-vue'
 import FullCalendar from 'vue-full-calendar'
+import CheckboxRadio from 'vue-checkbox-radio';
+
 // import $ from 'jquery'
 // import 'expose-loader?$!expose-loader?jQuery!jquery'
 // import "expose-loader?$!jquery"
@@ -34,6 +36,7 @@ import FullCalendar from 'vue-full-calendar'
 // import './assets/js/view/calendar'
 
 // Vue.use(require('cors'));
+Vue.use(CheckboxRadio);
 Vue.use(FullCalendar);
 Vue.use(GoogleAuth, { client_id: '879091685695-57n6m7vs45lgnvb0rgsofv95i3844e7v.apps.googleusercontent.com' });
 Vue.googleAuth().load();

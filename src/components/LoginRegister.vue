@@ -101,7 +101,7 @@
                           <label>تلفن همراه</label>
                           <label class="input margin-bottom-10">
                             <i class="ico-append fa fa-phone"></i>
-                            <input required="" type="text" v-model="username">
+                            <input required="" type="tel" v-model="username">
                             <!--<b class="tooltip tooltip-bottom-right">Needed to verify your account</b>-->
                           </label>
                         </div>
@@ -199,7 +199,7 @@
                               <label>تلفن همراه *</label>
                               <label class="input margin-bottom-10">
                                 <i class="ico-append fa fa-phone"></i>
-                                <input required="" type="text" v-model="phone">
+                                <input required="" type="tel" v-model="phone">
                                 <!--<b class="tooltip tooltip-bottom-right">Your Phone (optional)</b>-->
                               </label>
                             </div>
@@ -272,7 +272,7 @@
                         <div class="form-group text-right">
                           <label>تلفن همراه</label>
                           <label class="input margin-bottom-10 ">
-                            <input required="" type="text" v-model="password_reset">
+                            <input required="" type="tel" v-model="password_reset">
                             <i class="ico-append fa fa-phone"></i>
 
                           </label>
@@ -337,7 +337,7 @@
         </div>
         <div class="form-group">
           <label class="text-right">تلفن همراه</label>
-          <input type="text" name="email" class="form-control" placeholder="تلفن همراه" required=""
+          <input type="tel" class="form-control" placeholder="تلفن همراه" required=""
                  v-model="password_reset">
         </div>
         <!-- Password -->

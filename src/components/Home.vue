@@ -119,7 +119,7 @@
             <div class="row">
 
               <div class="col-sm-4 text-center">
-                <router-link to="/">
+                <router-link to="/collaboration">
                   <i class="glyphicon glyphicon-briefcase"></i>
                   <h3>همکاری با ما</h3>
                   <p>مالک باشگاه یا اماکن ورزشی هستید؟<br>در صورتی که مایل به همکاری با آسان اسپرت هستید اینجا را کلیک
@@ -128,7 +128,12 @@
               </div>
 
               <div class="col-sm-4 text-center" v-if="$store.state.isLoggedin">
-                <router-link to="/profile">
+                <router-link to="/profile" v-if="!($store.state.user.isManager)">
+                  <i class="glyphicon glyphicon-user"></i>
+                  <h3>حساب کاربری</h3>
+                  <p>{{$store.state.user.fname + " " + $store.state.user.lname}}</p>
+                </router-link>
+                <router-link to="/manager" v-else>
                   <i class="glyphicon glyphicon-user"></i>
                   <h3>حساب کاربری</h3>
                   <p>{{$store.state.user.fname + " " + $store.state.user.lname}}</p>
@@ -144,9 +149,11 @@
 
 
               <div class="col-sm-4 text-center">
-                <i class="glyphicon glyphicon-list-alt"></i>
-                <h3>ثبت سفارشات</h3>
-                <p>ثبت سفارشات کلیه افراد، ادارات ، ارگان ها و سازمان ها جهت اجاره اماکن...</p>
+                <router-link to="/order">
+                  <i class="glyphicon glyphicon-list-alt"></i>
+                  <h3>ثبت سفارشات</h3>
+                  <p>ثبت سفارشات کلیه افراد، ادارات ، ارگان ها و سازمان ها جهت اجاره اماکن...</p>
+                </router-link>
               </div>
 
             </div>

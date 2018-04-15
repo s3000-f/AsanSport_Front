@@ -52,7 +52,7 @@
 
                 <!-- Email -->
                 <div class="form-group">
-                  <input type="text" name="email" class="form-control" placeholder="تلفن همراه" required=""
+                  <input type="tel" name="email" class="form-control" placeholder="تلفن همراه" required=""
                          v-model="username">
                 </div>
 

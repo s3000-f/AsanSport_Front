@@ -9,6 +9,8 @@ import FieldsList from '@/components/FieldsList'
 import Profile from '@/components/Profile'
 import e404 from '@/components/404'
 import ManagerLogin from '@/components/ManagerLogin'
+import Collaboration from '@/components/Collaboration'
+import Order from '@/components/Order'
 Vue.use(Router);
 
 export default new Router({
@@ -53,6 +55,16 @@ export default new Router({
       path:'/manager-login',
       name: 'ManagerLogin',
       component: ManagerLogin
+    },
+    {
+      path:'/collaboration',
+      name: 'Collaboration',
+      component: Collaboration
+    },
+    {
+      path: '/order',
+      name: 'Order',
+      component: Order
     },
     {
       path: '*',
