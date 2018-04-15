@@ -47,6 +47,11 @@ export default new Router({
       component: Field
     },
     {
+      path: '/fields/:category',
+      name: 'Categories',
+      component: Field
+    },
+    {
       path: '/search-results',
       name: 'SearchResults',
       component: SearchResults

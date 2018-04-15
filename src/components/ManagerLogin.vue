@@ -163,6 +163,14 @@
         setManager: 'setManager'
       }),
       login() {
+        if (this.username.length !== 11 || this.password.length < 8) {
+          this.$notify({
+            text: 'اطلاعات ورودی اشتباه است',
+            type: 'error',
+            title: 'خطا'
+          });
+          return;
+        }
         this.loading = true;
         axios.post("http://api.shahbandegan.ir/v1/login", {
           username: this.username,
@@ -180,10 +188,20 @@
             }
             else {
               this.setError(response.data['message']);
+              this.$notify({
+                text: response.data['message'],
+                type: 'error',
+                title: 'خطا'
+              });
             }
             this.loading = false;
           })
           .catch(e => {
+              this.$notify({
+                text: 'خطا در برقراری ارتباط',
+                type: 'error',
+                title: 'خطا'
+              });
               this.setError(e);
               this.loading = false;
 
