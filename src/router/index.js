@@ -42,13 +42,18 @@ export default new Router({
       component: FieldsList
     },
     {
-      path: '/fields/:id/:name',
-      name: 'Field',
-      component: Field
+      path: '/fields/category-:cat',
+      name: 'FieldsList',
+      component: FieldsList
     },
     {
-      path: '/fields/:category',
-      name: 'Categories',
+      path: '/fields/q=:query',
+      name: 'FieldsList',
+      component: FieldsList
+    },
+    {
+      path: '/fields/:id/:name',
+      name: 'Field',
       component: Field
     },
     {

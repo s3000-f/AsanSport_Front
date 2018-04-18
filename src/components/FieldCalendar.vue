@@ -4,7 +4,7 @@
                    @event-created="eventCreated" :config="config"></full-calendar>
       <sweet-modal ref="book">
           <h3>رزرو سالن</h3>
-          
+
       </sweet-modal>
   </div>
 
@@ -85,7 +85,6 @@
         config: {
           eventClick: (event) => {
             this.selected = event;
-            // console.log('asdfasdfsafasdf')
           },
           dayClick: (event) => {
               console.log('asd');
