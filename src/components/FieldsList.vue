@@ -1,4 +1,4 @@
-<template>
+<template xmlns:>
 
   <div class="smoothscroll enable-animation">
 
@@ -33,131 +33,175 @@
                 <li class="list-group-item active">
                   <a class="dropdown-toggle" href="#">زمین های ورزشی</a>
                   <ul>
-                    <li><a href="#"><span class="fs-11 text-muted float-right"></span> سالن چند منظوره(فوتسال و والیبال
-                      و ...) </a></li>
-                    <li><a href="#"><span class="fs-11 text-muted float-right"></span> زمین تنیس </a></li>
-                    <li><a href="#"><span class="fs-11 text-muted float-right"></span> زمین چمن </a>
+                    <li @click="setCategory(1)"><a href="#"><span class="fs-11 text-muted float-right"></span> سالن چند
+                      منظوره(فوتسال و والیبال و
+                      بسکتبال)
+                      و ...) </a>
                     </li>
-                    <li><a href="#"><span class="fs-11 text-muted float-right"></span> زمین پینت بال </a></li>
+                    <li @click="setCategory(2)"><a href="#"><span class="fs-11 text-muted float-right"></span>
+                      زمین تنیس </a>
+                    </li>
+                    <li @click="setCategory(3)"><a href="#"><span class="fs-11 text-muted float-right"></span>
+                      زمین چمن </a>
+                    </li>
+                    <li @click="setCategory(4)"><a href="#"><span class="fs-11 text-muted float-right"></span>
+                      زمین پینت بال </a>
+                    </li>
                   </ul>
                 </li>
 
               </ul>
-
             </div>
             <!-- /CATEGORIES -->
-
-            <!-- SIZE -->
             <div class="mb-60">
-              <h4>قیمت</h4>
+              <h4 class="margin-bottom-50">حداکثر قیمت</h4>
+              <div @click="getFields">
+                <vue-slider ref="slider" v-model="attr.max_price" v-bind="options"></vue-slider>
+              </div>
 
-              <input type="range" min="0" max="500000" step="10000">
               <hr>
             </div>
+
+            <div class="side-nav mb-60">
+              <ul class="list-group list-group-bordered list-group-noicon uppercase">
+                <li class="list-group-item active">
+                  <a class="dropdown-toggle" href="#">امکانات</a>
+                  <ul>
+                    <li>
+
+                      <!--<input type="checkbox" class="size-100" id="1" value="1" v-model="attr.facilities"/>-->
+                      <label @click="getFields">
+                        <checkbox value="1" :color="'#8ab933'" v-model="attr.facilities"><span
+                          class="margin-right-8 text-muted float-right">پارکینگ</span></checkbox>
+                      </label>
+
+                    </li>
+                    <li>
+                      <label @click="getFields">
+                        <checkbox id="2" :color="'#8ab933'" value="2" v-model="attr.facilities">
+                          <span class="margin-right-8 text-muted float-right">بوفه</span>
+                        </checkbox>
+                      </label>
+                    </li>
+                    <li>
+                      <label @click="getFields">
+                        <checkbox id="3" :color="'#8ab933'" value="3" v-model="attr.facilities">
+                          <span class="margin-right-8 text-muted float-right">سرویس بهداشتی</span>
+                        </checkbox>
+                      </label>
+                    </li>
+                    <li>
+                      <label @click="getFields">
+                        <checkbox id="4" :color="'#8ab933'" value="4" v-model="attr.facilities">
+                          <span class="margin-right-8 text-muted float-right">رختکن</span>
+                        </checkbox>
+                      </label>
+                    </li>
+                    <li>
+                      <label @click="getFields">
+                        <checkbox id="5" :color="'#8ab933'" value="5" v-model="attr.facilities">
+                          <span class="margin-right-8 text-muted float-right">جایگاه تماشاچیان</span>
+                        </checkbox>
+                      </label>
+                    </li>
+                    <li>
+                      <label @click="getFields">
+                        <checkbox id="6" :color="'#8ab933'" value="6" v-model="attr.facilities">
+                          <span class="margin-right-8 text-muted float-right">فروشگاه</span>
+                        </checkbox>
+                      </label>
+                    </li>
+                    <li>
+                      <label @click="getFields">
+                        <checkbox id="7" :color="'#8ab933'" value="7" v-model="attr.facilities">
+                          <span class="margin-right-8 text-muted float-right">اجاره توپ</span>
+                        </checkbox>
+                      </label>
+                    </li>
+                    <li>
+                      <label @click="getFields">
+                        <checkbox id="8" :color="'#8ab933'" value="8" v-model="attr.facilities">
+                          <span class="margin-right-8 text-muted float-right">تهویه هوا</span>
+                        </checkbox>
+                      </label>
+                    </li>
+                    <li>
+                      <label @click="getFields">
+                        <checkbox id="9" :color="'#8ab933'" value="9" v-model="attr.facilities">
+                          <span class="margin-right-8 text-muted float-right">فضای سبز</span>
+                        </checkbox>
+                      </label>
+                    </li>
+                    <li>
+                      <label @click="getFields">
+                        <checkbox id="10" :color="'#8ab933'" value="10" v-model="attr.facilities">
+                          <span class="margin-right-8 text-muted float-right">دوش</span>
+                        </checkbox>
+                      </label>
+                    </li>
+                    <li>
+                      <label @click="getFields">
+                        <checkbox id="11" :color="'#8ab933'" value="11" v-model="attr.facilities">
+                          <span class="margin-right-8 text-muted float-right">کمد</span>
+                        </checkbox>
+                      </label>
+                    </li>
+                    <li>
+                      <label @click="getFields">
+                        <checkbox id="12" :color="'#8ab933'" value="12" v-model="attr.facilities">
+                          <span class="margin-right-8 text-muted float-right">ماساژ</span>
+                        </checkbox>
+                      </label>
+                    </li>
+                    <li>
+                      <label @click="getFields">
+                        <checkbox id="13" :color="'#8ab933'" value="13" v-model="attr.facilities">
+                          <span class="margin-right-8 text-muted float-right">مربی</span>
+                        </checkbox>
+                      </label>
+                    </li>
+
+
+                  </ul>
+                </li>
+
+              </ul>
+            </div>
+
+
+            <!-- SIZE -->
+
             <!-- /SIZE -->
 
 
             <!-- COLOR -->
             <div class="mb-60">
               <h4>انتخاب شهر</h4>
-              <v-cascade
-                filterable
-                remote
-                :data="remoteData"
-                :remote-method="remoteMethod"
-                :loading="remoteLoading"
-                :autoFocus="false"
-                v-model="remoteModal"
-                :title="['远程搜索']"
-                addClass="cascade-remote"
-                @success="RemoteSuccess"
-                @cancel="cancel"
-              >
 
-              </v-cascade>
+              <!--<dropdown :options="arrayOfObjects" :selected="object" v-on:updateOption="methodToRunOnSelect"></dropdown>-->
+              <div class="fancy-form fancy-form-select" @onclick="getFields">
+                <select class="form-control" v-model="attr.state_id" @onclick="getFields">
+                  <option value="">انتخاب کنید</option>
+                  <option value="1">تهران</option>
+                  <option value="2">اصفهان</option>
+                  <option value="3">شیراز</option>
+                </select>
 
+                <!--
+                      .fancy-arrow
+                      .fancy-arrow-double
+                  -->
+                <i class="fancy-arrow"></i>
+              </div>
               <hr>
-
             </div>
             <!-- /COLOR -->
 
 
             <!-- BRANDS -->
-            <div class="side-nav mb-60">
-
-              <div class="side-nav-head">
-                <button class="fa fa-bars"></button>
-                <h4>BRANDS</h4>
-              </div>
-
-
-              <div>
-                <b-form-group label="Using <code>options</code> array:">
-                  <b-form-checkbox-group id="checkboxes1" name="flavour1" v-model="selected" :options="options">
-                  </b-form-checkbox-group>
-                </b-form-group>
-
-                <b-form-group label="Using sub-components:">
-                  <b-form-checkbox-group id="checkboxes2" name="flavour2" v-model="selected">
-                    <b-form-checkbox value="orange">Orange</b-form-checkbox>
-                    <b-form-checkbox value="apple">Apple</b-form-checkbox>
-                    <b-form-checkbox value="pineapple">Pineapple</b-form-checkbox>
-                    <b-form-checkbox value="grape">Grape</b-form-checkbox>
-                  </b-form-checkbox-group>
-                </b-form-group>
-                <hr>
-                <div>Selected: <strong>{{ selected }}</strong></div>
-              </div>
-            </div>
             <!-- BRANDS -->
 
-
-            <!-- BANNER ROTATOR -->
-            <div class="owl-carousel buttons-autohide controlls-over mb-60 text-center owl-theme owl-carousel-init"
-                 data-plugin-options="{&quot;singleItem&quot;: true, &quot;autoPlay&quot;: 4000, &quot;navigation&quot;: true, &quot;pagination&quot;: false, &quot;transitionStyle&quot;:&quot;goDown&quot;}"
-                 style="opacity: 1; display: block;">
-              <div class="owl-wrapper-outer">
-                <div class="owl-wrapper"
-                     style="width: 1052px; left: 0px; display: block; transition: all 0ms ease; transform: translate3d(0px, 0px, 0px); transform-origin: 131.5px center 0px; perspective-origin: 131.5px center;">
-                  <div class="owl-item" style="width: 263px;"><a href="#">
-                    <img class="img-fluid" src="demo_files/images/shop/banners/off_1.png" width="270" height="350"
-                         alt="">
-                  </a></div>
-                  <div class="owl-item" style="width: 263px;"><a href="#">
-                    <img class="img-fluid" src="demo_files/images/shop/banners/off_2.png" width="270" height="350"
-                         alt="">
-                  </a></div>
-                </div>
-              </div>
-
-              <div class="owl-controls clickable">
-                <div class="owl-buttons">
-                  <div class="owl-prev"><i class="fa fa-angle-left"></i></div>
-                  <div class="owl-next"><i class="fa fa-angle-right"></i></div>
-                </div>
-              </div>
-            </div>
-            <!-- /BANNER ROTATOR -->
-
-
             <!-- HTML BLOCK -->
-            <div class="mb-60">
-              <h4>HTML BLOCK</h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non placerat mi. Etiam non tellus
-                eunit.</p>
-
-              <form action="#" method="post">
-                <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                  <input type="email" id="kiremail" name="email" class="form-control required"
-                         placeholder="Enter your Email">
-                  <span class="input-group-btn">
-											<button class="btn btn-success" type="submit"><i class="glyphicon glyphicon-send"></i></button>
-										</span>
-                </div>
-              </form>
-
-            </div>
             <!-- /HTML BLOCK -->
 
           </div>
@@ -165,10 +209,11 @@
           <div id="portfolio" class="portfolio-gutter portfolio-title-over col-md-9">
 
             <ul class="nav nav-pills mix-filter mb-60">
-              <li data-filter="all" class="filter active"><a href="#">All</a></li>
-              <li data-filter="development" class="filter"><a href="#">Development</a></li>
-              <li data-filter="photography" class="filter"><a href="#">Photography</a></li>
-              <li data-filter="design" class="filter"><a href="#">Design</a></li>
+              <li class="filter"><a>مرتب سازی بر اساس: </a></li>
+              <li class="filter" @click="setSortBy('rating')"><a href="#">امتیاز</a></li>
+              <li class="filter" @click="setSortBy('price_asc')"><a href="#">قیمت:صعودی</a></li>
+              <li class="filter" @click="setSortBy('price_desc')"><a href="#">قیمت:نزولی</a></li>
+              <li class="filter" @click="setSortBy('newest')"><a href="#">جدید ترین</a></li>
             </ul>
 
 
@@ -197,7 +242,7 @@
                     <div class="item-box-overlay-title">
                       <h3>{{field.name}}</h3>
                       <ul class="list-inline categories m-0">
-                        <li>{{field.price}}</li>
+                        <li> قیمت: {{toPersianNumber(field.price)}} تومان</li>
                       </ul>
                     </div><!-- /overlay title -->
 
@@ -247,107 +292,112 @@
   import Header from './header'
   import SlideTop from './slideTop'
   import Footer from './Footer'
+  import qs from 'qs'
+  import vueSlider from 'vue-slider-component';
+
 
   export default {
     data: function () {
       return {
         name: 'FieldsList',
         fields: [],
+        sliderValue: 1000000,
         meta: '',
+        options: {
+          reverse: true,
+          min: 0,
+          max: 1000000,
+          interval: 50000,
+          tooltipStyle: {
+            "backgroundColor": "#289900",
+            "borderColor": "#386629"
+          },
+          processStyle: {
+            "backgroundColor": "#8ab933"
+          }
+
+        },
+
         attr: {
           state_id: '',
           district_id: '',
-          sort_bye: '',
+          sort_by: '',
           query: '',
           lat: '',
           long: '',
-          min_price: '',
-          max_price: '',
+          min_price: 0,
+          max_price: 1000000,
           featured: '',
           category: '',
-          facilities: '',
-          remoteModal: false, //
-          remoteLoading: false, //
-          remoteData: [
-            {
-              'key': 'default_data_1',
-              'label': 'default_data_1'
-            },
-            {
-              'key': 'default_data_2',
-              'label': 'default_data_2'
-            },
-            {
-              'key': 'default_data_3',
-              'label': 'default_data_3'
-            },
-            {
-              'key': 'default_data_4',
-              'label': 'default_data_4'
-            },
-            {
-              'key': 'default_data_5',
-              'label': 'default_data_5'
-            },
-            {
-              'key': 'tip',
-              'label': 'search U.S. states with input'
-            }
-          ]
+          facilities: [],
         },
-        search: ''
+
       }
     },
     watch: {
-      '$route': 'getFields'
+      '$route': 'getFields',
+    },
+    computed: {
+      attr2: function () {
+        return {
+          state_id: this.attr.state_id ? this.attr.state_id : null,
+          district_id: this.attr.district_id ? this.attr.district_id : null,
+          sort_by: this.attr.sort_by ? this.attr.sort_by : null,
+          query: this.attr.query ? this.attr.query : null,
+          lat: this.attr.lat ? this.attr.lat : null,
+          long: this.attr.long ? this.attr.long : null,
+          min_price: this.attr.min_price ? this.attr.min_price : null,
+          max_price: this.attr.max_price ? this.attr.max_price : null,
+          featured: this.attr.featured ? this.attr.featured : null,
+          category: this.attr.category ? this.attr.category : null,
+          facilities: this.attr.facilities.length !== 0 ? String(this.toString(this.attr.facilities)) : null
+        }
+      }
     },
     components: {
+      vueSlider,
       'header1': Header,
       'footers': Footer,
-      'slide-top': SlideTop
+      'slide-top': SlideTop,
+      'dropdown': dropdown
     },
     created() {
       this.getFields()
     },
     methods: {
       getFields() {
-        axios.get("http://api.shahbandegan.ir/v1/fields/" + this.search)
+
+        console.log("    ======================     " + qs.stringify(this.attr2, {skipNulls: true, encode: false}));
+        axios.get("http://api.shahbandegan.ir/v1/fields?" + qs.stringify(this.attr2, {skipNulls: true, encode: false}))
           .then(response => {
             console.log(response.data.data);
             this.fields = response.data.data;
           })
 
+      },
+      setCategory(n) {
+        this.attr.category = n;
+        this.getFields();
+      },
+      setSortBy(type) {
+        this.attr.sort_by = type;
+        this.getFields()
       }
       ,
+      toString(array) {
+        let qqq = '';
+        for (let i = 0; i < array.length; i++) {
+          if (i === array.length - 1)
+            qqq += array[i];
+          else
+            qqq += array[i] + ',';
+        }
+        if (qqq === '')
+          return null;
+        else
+          return qqq;
 
-      RemoteSuccess(data) {
-        console.log(data)
-        // data: {
-        //  path: ['Hawaii'],
-        //  pathName: ['Hawaii']
-        // }
       },
-      cancel() {
-        console.log('cancel')
-      },
-      remoteMethod(query) {
-        let self = this;
-        self.remoteLoading = true;
-        // simulate api call
-        setTimeout(function () {
-          const remoteMockData = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia'];
-          let remoteFormatData;
-          self.remoteLoading = false;
-          remoteFormatData = remoteMockData.map(item => {
-            // format the data structure
-            return {
-              'key': item,
-              'label': item
-            }
-          })
-          self.remoteData = remoteFormatData.filter(item => item.label.toLowerCase().indexOf(query.toLowerCase()) > -1)
-        }, 500)
-      }
     }
 
   }
