@@ -117,13 +117,38 @@
           this.personalFormReset(event);
           return;
         }
-        var dat = {
-          'given_name': (this.userfinal.given_name ? this.userfinal.given_name : this.user.given_name),
-          'last_name': (this.userfinal.last_name ? this.userfinal.last_name : this.user.last_name),
+        let dat = {
+          'given_name': (this.userfinal.given_name ? this.userfinal.given_name : this.user.fname),
+          'last_name': (this.userfinal.last_name ? this.userfinal.last_name : this.user.lname),
           'mobile': (this.userfinal.mobile ? this.userfinal.mobile : this.user.mobile),
           'email': (this.userfinal.email ? this.userfinal.email : this.user.email),
           'sheba': (this.userfinal.sheba ? this.userfinal.sheba : this.user.sheba)
         };
+        console.log(dat)
+        if (dat.given_name.length < 3 || dat.last_name.length < 3 || dat.mobile.length !== 11 || dat.email.length < 3){
+          this.$notify({
+            text: 'اطلاعات ورودی اشتباه است',
+            type: 'error',
+            title: 'خطا'
+          });
+          return;
+        }
+        if (!this.validateEmail(dat.email)) {
+          this.$notify({
+            text: 'ایمیل شما اشتباه است',
+            type: 'error',
+            title: 'خطا'
+          });
+          return;
+        }
+        if(dat.sheba.length !== 26 || dat.sheba[0] !== 'i' || dat.sheba[1] !== 'r'){
+          this.$notify({
+            text: 'کد شبا اشتباه است',
+            type: 'error',
+            title: 'خطا'
+          });
+          return;
+        }
         const config = {
           headers: {
             Authorization: 'Bearer ' + this.getToken,
@@ -132,14 +157,16 @@
           }
         };
         axios.put('http://api.shahbandegan.ir/v1/profile', dat, config).then(response => {
-          console.log(response);
           if (response.status < 300){
             this.notif('نتیجه', 'اطلاعات با موفقیت ثبت شد', 'success');
+            setTimeout(()=>{console.log('wait')},2000);
+            location.reload();
+
           }else{
             this.notif('خطا', 'اطلاعات خود را بررسی کنید', 'warn');
           }
         }).catch(e => {
-          this.notif('خطا', e, 'error');
+          this.notif('خطا', 'خطا در برقراری ارتباط', 'error');
           console.log(e)
         })
       },
@@ -148,6 +175,44 @@
           this.passFormReset(event);
           return;
         }
+        if(this.password.current.length < 8 || this.password.newP.length < 8){
+          this.$notify({
+            text: 'رمزعبور باید بیشتر از ۸ حرف باشد',
+            type: 'error',
+            title: 'خطا'
+          });
+          return;
+        }
+        if (this.password.newP !== this.password.again) {
+          this.$notify({
+            text: 'رمزعبور باید یکسان باشد',
+            type: 'error',
+            title: 'خطا'
+          });
+          return;
+        }
+        const dat = {
+          old_password: this.password.current,
+          new_password: this.password.newP
+        };
+        const config = {
+          headers: {
+            Authorization: 'Bearer ' + this.getToken,
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          }
+        };
+        axios.put('http://api.shahbandegan.ir/v1/profile/password', dat, config).then(response => {
+          if (response.status < 300){
+            this.notif('نتیجه', 'اطلاعات با موفقیت ثبت شد', 'success');
+            this.passFormReset(event);
+          }else{
+            this.notif('خطا', 'اطلاعات خود را بررسی کنید', 'warn');
+          }
+        }).catch(e => {
+          this.notif('خطا', 'خطا در برقراری ارتباط', 'error');
+          console.log(e)
+        })
       },
       passFormReset(event) {
         this.password = {
@@ -175,6 +240,10 @@
           type: type,
           title: title
         })
+      },
+      validateEmail(email) {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
       }
     }
   }

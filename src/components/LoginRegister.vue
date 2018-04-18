@@ -101,7 +101,7 @@
                           <label>تلفن همراه</label>
                           <label class="input margin-bottom-10">
                             <i class="ico-append fa fa-phone"></i>
-                            <input required="" type="text" v-model="username">
+                            <input required="" type="tel" v-model="username">
                             <!--<b class="tooltip tooltip-bottom-right">Needed to verify your account</b>-->
                           </label>
                         </div>
@@ -199,7 +199,7 @@
                               <label>تلفن همراه *</label>
                               <label class="input margin-bottom-10">
                                 <i class="ico-append fa fa-phone"></i>
-                                <input required="" type="text" v-model="phone">
+                                <input required="" type="tel" v-model="phone">
                                 <!--<b class="tooltip tooltip-bottom-right">Your Phone (optional)</b>-->
                               </label>
                             </div>
@@ -236,7 +236,7 @@
                         <hr/>
 
                         <label class="nomargin text-right">
-                          <input class="" type="checkbox" name="checkbox">
+                          <input class="" type="checkbox" name="checkbox" v-model="accepted">
                           <i></i>با <a v-on:click="terms">قوانین و مقررات</a> موافقم
                         </label>
                         <!--<label class="checkbox nomargin"><input type="checkbox" name="checkbox"><i></i>I want to-->
@@ -272,7 +272,7 @@
                         <div class="form-group text-right">
                           <label>تلفن همراه</label>
                           <label class="input margin-bottom-10 ">
-                            <input required="" type="text" v-model="password_reset">
+                            <input required="" type="tel" v-model="password_reset">
                             <i class="ico-append fa fa-phone"></i>
 
                           </label>
@@ -305,7 +305,7 @@
 
         </div>
       </section>
-      <!-- / -->d
+      <!-- / -->
 
 
       <!-- FOOTER -->
@@ -327,6 +327,7 @@
         <span class="loader"></span>
       </div>
     </div><!-- /PRELOADER -->
+
     <sweet-modal ref="modal" title="بازیابی رمز عبور">
       <div class="clearfix">
         <!-- Email -->
@@ -337,7 +338,7 @@
         </div>
         <div class="form-group">
           <label class="text-right">تلفن همراه</label>
-          <input type="text" name="email" class="form-control" placeholder="تلفن همراه" required=""
+          <input type="tel" class="form-control" placeholder="تلفن همراه" required=""
                  v-model="password_reset">
         </div>
         <!-- Password -->
@@ -388,6 +389,7 @@
         password_reset: '',
         reset_sms: 'email',
         loading: false,
+        accepted: false,
         reset_code: ''
       }
     },
@@ -418,6 +420,14 @@
         resetGUser: 'resetGUser'
       }),
       login() {
+        if (this.username.length !== 11 || this.password.length < 8) {
+          this.$notify({
+            text: 'اطلاعات ورودی اشتباه است',
+            type: 'error',
+            title: 'خطا'
+          });
+          return;
+        }
         this.loading = true;
         axios.post("http://api.shahbandegan.ir/v1/login", {
           username: this.username,
@@ -434,10 +444,20 @@
             }
             else {
               this.setError(response.data['message']);
+              this.$notify({
+                text: response.data['message'],
+                type: 'error',
+                title: 'خطا'
+              });
             }
             this.loading = false;
           })
           .catch(e => {
+              this.$notify({
+                text: 'خطا در برقراری ارتباط',
+                type: 'error',
+                title: 'خطا'
+              });
               this.setError(e);
               this.loading = false;
 
@@ -445,6 +465,46 @@
           )
       },
       sgnUp() {
+        if (this.name.length < 3 || this.lastName.length < 3 || this.email.length < 3 || this.phone.length !== 11) {
+          this.$notify({
+            text: 'اطلاعات ورودی اشتباه است',
+            type: 'error',
+            title: 'خطا'
+          });
+          return;
+        }
+        if (this.pass.length < 8) {
+          this.$notify({
+            text: 'رمزعبور باید بیشتر از ۸ حرف باشد',
+            type: 'error',
+            title: 'خطا'
+          });
+          return;
+        }
+        if (this.pass !== this.newPass) {
+          this.$notify({
+            text: 'رمزعبور باید یکسان باشد',
+            type: 'error',
+            title: 'خطا'
+          });
+          return;
+        }
+        if (!this.validateEmail(this.email)) {
+          this.$notify({
+            text: 'ایمیل شما اشتباه است',
+            type: 'error',
+            title: 'خطا'
+          });
+          return;
+        }
+        if (!this.accepted) {
+          this.$notify({
+            text: 'برای ثبت نام باید با قوانین موافقت کنید',
+            type: 'error',
+            title: 'خطا'
+          });
+          return;
+        }
         this.loading = true;
         const config = {
           headers: {
@@ -464,17 +524,26 @@
             this.setLogin(response.data['access_token']);
             this.resetError();
             this.setUser();
+            setTimeout(() => {
+              console.log('wait')
+            }, 2000);
             this.$router.push('/');
           }
           else {
-            alert(response.data['message']);
-            this.notif('خطا', 'خطا در برقراری ارتباط', 'error')
+            this.$notify({
+              text: response.data['message'],
+              type: 'error',
+              title: 'خطا'
+            });
 
           }
           this.loading = false;
         }).catch(e => {
-          this.notif('خطا', 'خطا در برقراری ارتباط', 'error');
-          alert(e)
+          this.$notify({
+            text: 'خطا در برقراری ارتباط',
+            type: 'error',
+            title: 'خطا'
+          });
           console.log(e);
           this.loading = false;
         })
@@ -486,6 +555,11 @@
         this.loading = true;
         Vue.googleAuth().signIn(this.gs, function (error) {
           this.setError(error);
+          this.$notify({
+            text: 'خطا در برقراری ارتباط',
+            type: 'error',
+            title: 'خطا'
+          });
         });
       },
       gs(googleUser) {
@@ -500,15 +574,27 @@
                 this.setLogin(response.data['access_token']);
                 this.resetError();
                 this.setUser();
-                this.$router.push('');
+                setTimeout(() => {
+                  console.log('wait')
+                }, 2000);
+                this.$router.push('/');
               }
               else {
                 this.setError(response.data['message']);
+                this.$notify({
+                  text: response.data['message'],
+                  type: 'error',
+                  title: 'خطا'
+                });
               }
-
               this.loading = false;
             })
             .catch(e => {
+                this.$notify({
+                  text: 'خطا در برقراری ارتباط',
+                  type: 'error',
+                  title: 'خطا'
+                });
                 this.setError(e);
                 this.loading = false;
               }
@@ -519,39 +605,52 @@
         axios.post('http://api.shahbandegan.ir/v1/password/sms', {
           mobile: this.password_reset
         }).then(response => {
-          this.$notify({
-            text: response.data['message'],
-            type: 'success',
-            title: 'توجه'
-          });
+          if (response.status < 300) {
+            this.$notify({
+              text: response.data['message'],
+              type: 'success',
+              title: 'توجه'
+            });
+          } else {
+            this.$notify({
+              text: response.data['message'],
+              type: 'error',
+              title: 'خطا'
+            });
+          }
           setTimeout(() => {
             this.$refs.modal.open()
           }, 2000);
           this.passreset = false;
         }).catch(e => {
+          this.$notify({
+            text: 'خطا در برقراری ارتباط',
+            type: 'error',
+            title: 'خطا'
+          });
           console.log(e)
         })
 
       },
       terms() {
-        let route = this.$router.resolve({path: '/'});
+        let route = this.$router.resolve({path: '/terms'});
         window.open(route.href, '_blank');
       },
       checkPassReset() {
-        axios.post('http://api.shahbandegan.ir/v1/password/reset',{
+        axios.post('http://api.shahbandegan.ir/v1/password/reset', {
           mobile: this.password_reset,
           token: this.reset_code,
           password: this.password
         })
           .then(response => {
-            if (response.status < 300){
+            if (response.status < 300) {
               this.$refs.modal.close();
               this.$notify({
                 text: 'رمزعبور با موفقیت تغییر یافت',
                 type: 'success',
                 title: 'توجه'
               });
-            }else {
+            } else {
               this.$notify({
                 text: 'اطلاعات خود را بررسی کنید',
                 type: 'error',
@@ -569,10 +668,14 @@
           });
 
       },
+      validateEmail(email) {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
+      }
     },
     created() {
-      if (this.isLoggedin) {
-        this.$router.replace('');
+      if (this.$store.state.isLoggedin) {
+        this.$router.replace('/');
       }
       console.log(this.$refs)
     },
