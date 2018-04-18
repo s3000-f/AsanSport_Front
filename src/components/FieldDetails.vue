@@ -108,14 +108,6 @@
                   <td>{{fieldData.duration}} دقیقه</td>
                 </tr>
                 <tr>
-                  <td>آدرس</td>
-                  <td>{{fieldData.address}}</td>
-                </tr>
-                <tr>
-                  <td>تلفن</td>
-                  <td>{{fieldData.phone}}</td>
-                </tr>
-                <tr>
                   <td>مساحت</td>
                   <td style="direction: ltr; text-align: right">{{fieldData.size}}</td>
                 </tr>
@@ -132,6 +124,7 @@
             <li role="presentation"><a href="#description" role="tab" data-toggle="tab">معرفی</a></li>
             <li role="presentation"><a href="#specs" role="tab" data-toggle="tab">امکانات</a></li>
             <li role="presentation"><a href="#reviews" role="tab" data-toggle="tab">نظرات</a></li>
+            <li role="presentation"><a href="#contact" role="tab" data-toggle="tab">اطلاعات تماس</a></li>
           </ul>
 
 
@@ -346,6 +339,53 @@
               <!-- /REVIEW FORM -->
 
             </div>
+
+              <!-- CONTACT -->
+              <div role="tabpanel" class="tab-pane fade" id="contact">
+                  <div class="row">
+                      <div class="table-responsive col-md-6">
+                          <table class="table table-hover">
+                              <tbody>
+                              <tr>
+                                  <td>آدرس</td>
+                                  <td>{{fieldData.address}}</td>
+                              </tr>
+                              <tr>
+                                  <td>تلفن</td>
+                                  <td>{{fieldData.phone}}</td>
+                              </tr>
+                              <tr>
+                                  <td>شهر</td>
+                                  <td>{{fieldData.state}}</td>
+                              </tr>
+                              <tr>
+                                  <td>محله</td>
+                                  <td>{{fieldData.district}}</td>
+                              </tr>
+                              <tr v-if="fieldData.website">
+                                  <td>وبسایت</td>
+                                  <td><a :href="fieldData.website">{{fieldData.website}}</a></td>
+                              </tr>
+                              <tr v-if="fieldData.fax">
+                                  <td>فکس</td>
+                                  <td>{{fieldData.fax}}</td>
+                              </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                    <div class="col-md-6">
+                      <gmap-map
+                              :center="{lat:fieldData.latitude, lng:fieldData.longitude}"
+                              :zoom="7"
+                              style="width: 500px; height: 300px">
+
+                        <gmap-marker :position="{lat:fieldData.latitude, lng:fieldData.longitude}"></gmap-marker>
+                      </gmap-map>
+                    </div>
+                  </div>
+              </div>
+
+
           </div>
 
 
@@ -452,11 +492,13 @@
 <script>
   import axios from 'axios'
   import StarRating from 'vue-star-rating'
+  import * as VueGoogleMaps from "vue2-google-maps";
 
   import Header from './header'
   import SlideTop from './slideTop'
   import Footer from './Footer'
   import FieldCalendar from './FieldCalendar'
+
 
   export default {
     name: "Field",

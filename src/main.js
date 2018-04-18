@@ -25,6 +25,7 @@ import GoogleAuth from 'vue-google-auth'
 import Notifications from 'vue-notification'
 import FullCalendar from 'vue-full-calendar'
 import checkbox from 'vue-material-checkbox'
+import * as VueGoogleMaps from 'vue2-google-maps'
 
 Vue.use(checkbox)
 // import $ from 'jquery'
@@ -36,6 +37,11 @@ Vue.use(checkbox)
 
 
 // Vue.use(require('cors'));
+Vue.use(VueGoogleMaps, {
+    load: {
+        key: 'AIzaSyBY5ggLpYOJB1Uk8j0slBC3UHtQbVw87d8'
+    }
+});
 Vue.use(FullCalendar);
 Vue.use(GoogleAuth, {client_id: '879091685695-57n6m7vs45lgnvb0rgsofv95i3844e7v.apps.googleusercontent.com'});
 Vue.googleAuth().load();
