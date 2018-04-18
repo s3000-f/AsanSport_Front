@@ -2,6 +2,10 @@
   <div>
     <full-calendar ref="calendar" :event-sources="eventSources" @event-selected="eventSelected"
                    @event-created="eventCreated" :config="config"></full-calendar>
+      <sweet-modal ref="book">
+          <h3>رزرو سالن</h3>
+          
+      </sweet-modal>
   </div>
 
 </template>
@@ -50,6 +54,7 @@
   //   }
 
   import moment from 'moment';
+  import { SweetModal, SweetModalTab } from 'sweet-modal-vue'
 
   export default {
     name: 'FieldCalendar',
@@ -80,7 +85,26 @@
         config: {
           eventClick: (event) => {
             this.selected = event;
+            // console.log('asdfasdfsafasdf')
           },
+          dayClick: (event) => {
+              console.log('asd');
+              console.log(event.utc().format('D-M-Y H:mm'));
+              this.$refs.book.open();
+
+          },
+            header: {
+                left: 'next,prev today',
+                right: 'title',
+                center: ''
+//                    right: 'month,agendaWeek,agendaDay'
+            },
+            buttonIcons: {
+                prev: 'right-single-arrow',
+                next: 'left-single-arrow',
+                prevYear: 'left-double-arrow',
+                nextYear: 'right-double-arrow'
+            },
           locale: 'fa',
           isJalaali: true,
           isRTL: true,
@@ -91,7 +115,10 @@
           allDaySlot: false,
           eventDurationEditable: false,
           eventOverlap: false,
-          slotDuration: '00:30:00',
+          slotDuration: '00:' + this.$parent.fieldData.duration + ':00',
+          slotLabelFormat: 'hh:mm',
+            editable:false,
+
         },
 
         selected: {},
@@ -131,6 +158,10 @@
         ];
       },
     },
+      components: {
+          SweetModal,
+          SweetModalTab
+      }
   };
 </script>
 

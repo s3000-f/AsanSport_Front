@@ -20,7 +20,6 @@ import './assets/plugins/bootstrap/RTL/bootstrap-rtl.min.css'
 import '../node_modules/fullcalendar/dist/fullcalendar.css'
 
 // import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
 import {store} from "./store/store";
 import GoogleAuth from 'vue-google-auth'
 import Notifications from 'vue-notification'
