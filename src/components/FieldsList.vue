@@ -359,7 +359,6 @@
       'header1': Header,
       'footers': Footer,
       'slide-top': SlideTop,
-      'dropdown': dropdown
     },
     created() {
       this.getFields()
