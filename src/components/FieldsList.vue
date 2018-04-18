@@ -33,19 +33,13 @@
                 <li class="list-group-item active">
                   <a class="dropdown-toggle" href="#">زمین های ورزشی</a>
                   <ul>
-                    <li @click="setCategory(1)"><a href="#"><span class="fs-11 text-muted float-right"></span> سالن چند
-                      منظوره(فوتسال و والیبال و
-                      بسکتبال)
-                      و ...) </a>
+                    <li @click="setCategory(1)"><router-link to="/fields/category-sports-complex">سالن چند منظوره</router-link>
                     </li>
-                    <li @click="setCategory(2)"><a href="#"><span class="fs-11 text-muted float-right"></span>
-                      زمین تنیس </a>
+                    <li @click="setCategory(2)"><router-link to="/fields/category-footsall">سالن فوتسال</router-link>
                     </li>
-                    <li @click="setCategory(3)"><a href="#"><span class="fs-11 text-muted float-right"></span>
-                      زمین چمن </a>
+                    <li @click="setCategory(3)"><router-link to="/fields/category-basketball">سالن بسکتبال</router-link>
                     </li>
-                    <li @click="setCategory(4)"><a href="#"><span class="fs-11 text-muted float-right"></span>
-                      زمین پینت بال </a>
+                    <li @click="setCategory(4)"><router-link to="/fields/category-volleyball">سالن والیبال</router-link>
                     </li>
                   </ul>
                 </li>
@@ -367,11 +361,32 @@
       getFields() {
 
         console.log("    ======================     " + qs.stringify(this.attr2, {skipNulls: true, encode: false}));
+        console.log(this.$route.params.cat);
+        if (this.$route.query.q!== undefined)
+        {
+          this.attr.query=this.$route.query.q;
+
+        }
+        if(this.$route.params.cat===undefined)
         axios.get("http://api.shahbandegan.ir/v1/fields?" + qs.stringify(this.attr2, {skipNulls: true, encode: false}))
           .then(response => {
             console.log(response.data.data);
             this.fields = response.data.data;
-          })
+          });
+        else
+        {
+          switch (this.$route.params.cat) {
+            case 'sports-complex': this.attr.category = 1; break;
+            case 'volleyball': this.attr.category = 2; break;
+            case 'basketball': this.attr.category = 3; break;
+            case 'footsall': this.attr.category =4; break;
+            case 'martial': this.attr.category = 5; break;
+            case 'wrestling': this.attr.category = 6; break;
+          }
+          this.$route.params.cat= undefined;
+          this.getFields();
+
+        }
 
       },
       setCategory(n) {

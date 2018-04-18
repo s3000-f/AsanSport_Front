@@ -91,7 +91,7 @@
           allDaySlot: false,
           eventDurationEditable: false,
           eventOverlap: false,
-          slotDuration: '00:30:00',
+          slotDuration: '00:90:00',
         },
 
         selected: {},

@@ -40,8 +40,8 @@
       <div class="search-box over-header">
         <a id="closeSearch" href="#" class="glyphicon glyphicon-remove"></a>
 
-        <form action="page-search-result-1.html" method="get">
-          <input type="text" class="form-control" placeholder="SEARCH"/>
+        <form :action="this.$router.resolve({path: '/fields'}).href" method="get">
+          <input type="text" name="q" class="form-control" placeholder="جست و جو"/>
         </form>
       </div>
       <!-- /SEARCH HEADER -->
@@ -84,25 +84,25 @@
                   <a class="dropdown-toggle" href="#">سالن های ورزشی</a>
                   <ul class="dropdown-menu has-topBar">
                     <li>
-                      <router-link to="/fields/category-name">سالن چند منظوره</router-link>
+                      <router-link to="/fields/category-sports-complex">سالن چند منظوره</router-link>
                     </li>
                     <li>
-                      <router-link to="/fields/category-name">سالن فوتسال</router-link>
+                      <router-link to="/fields/category-footsall">سالن فوتسال</router-link>
                     </li>
                     <li>
-                      <router-link to="/fields/category-name">سالن بسکتبال</router-link>
+                      <router-link to="/fields/category-basketball">سالن بسکتبال</router-link>
                     </li>
                     <li>
-                      <router-link to="/fields/category-name">سالن والیبال</router-link>
+                      <router-link to="/fields/category-volleyball">سالن والیبال</router-link>
                     </li>
                     <li>
-                      <router-link to="/fields/category-name">سالن رزمی</router-link>
+                      <router-link to="/fields/category-martial">سالن رزمی</router-link>
                     </li>
                     <li>
-                      <router-link to="/fields/category-name">سالن کشتی</router-link>
+                      <router-link to="/fields/category-wrestling">سالن کشتی</router-link>
                     </li>
                     <li>
-                      <router-link to="/fields/category-name">سالن ویژه</router-link>
+                      <router-link to="/fields/category-special">سالن ویژه</router-link>
                     </li>
                   </ul>
                 </li>
