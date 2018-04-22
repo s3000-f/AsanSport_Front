@@ -377,7 +377,7 @@
                       <gmap-map
                               :center="{lat:fieldData.latitude, lng:fieldData.longitude}"
                               :zoom="7"
-                              style="width: 500px; height: 300px">
+                              style="width: 100%; height: 300px">
 
                         <gmap-marker :position="{lat:fieldData.latitude, lng:fieldData.longitude}"></gmap-marker>
                       </gmap-map>
