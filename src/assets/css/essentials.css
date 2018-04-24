@@ -172,8 +172,10 @@ a, a:focus, a:hover, a:active {
 }
 
 p, pre, ul, ol, dl, dd, blockquote,
-address, table, fieldset, form { 
-	margin-bottom: 30px; 
+address,
+/*table, */
+fieldset, form {
+	margin-bottom: 30px;
 }
 
 canvas {

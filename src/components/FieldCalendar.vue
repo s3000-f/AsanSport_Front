@@ -4,6 +4,66 @@
                    @event-created="eventCreated" :config="config"></full-calendar>
       <sweet-modal ref="book">
           <h3>رزرو سالن</h3>
+        <div class="row">
+          <div class="col-md-6 col-sm-6">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="fancy-form fancy-form-select">
+                  <select class="form-control">
+                    <option value="1">1 جلسه</option>
+                    <option value="4">4 جلسه</option>
+                    <option value="8">8 جلسه</option>
+                    <option value="12">12 جلسه</option>
+                    <option value="16">16 جلسه</option>
+                    <option value="20">20 جلسه</option>
+                    <option value="24">24 جلسه</option>
+                    <option value="28">28 جلسه</option>
+                    <option value="32">32 جلسه</option>
+                    <option value="36">36 جلسه</option>
+                    <option value="40">40 جلسه</option>
+                    <option value="44">44 جلسه</option>
+                    <option value="48">48 جلسه</option>
+                    <option value="52">52 جلسه</option>
+                  </select>
+                  <i class="fancy-arrow"></i>
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="input-group">
+                <input type="text" id="discount_code" name="discount_code" class="form-control required" placeholder="کد تخفیف">
+                <span class="input-group-btn">
+                    <button class="btn btn-info" type="submit">بررسی</button>
+                </span>
+              </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-6">
+            <div class="fancy-form">
+              <textarea rows="5" class="form-control" placeholder="اگر پیشنهاد یا توضیحاتی دارید در اینجا بنویسید."></textarea>
+              <i class="fa fa-sticky-note"></i>
+            </div>
+          </div>
+        </div>
+          <div class="divider"></div>
+          <div class="row">
+            <div class="col-md-12 text-right">
+              <span><strong>تاریخ و ساعت: </strong></span><span id="time"></span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 text-right">
+              <span><strong>قابل پرداخت: </strong></span><span id="price">0</span><span> تومان</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+              <button class="btn btn-block btn-success">ثبت سفارش</button>
+            </div>
+          </div>
 
       </sweet-modal>
   </div>
@@ -93,7 +153,7 @@
 
           },
             header: {
-                left: 'next,prev today',
+                left: '',//'next,prev today',
                 right: 'title',
                 center: ''
 //                    right: 'month,agendaWeek,agendaDay'
