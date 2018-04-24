@@ -54,7 +54,7 @@
                                             .top-right
                                             .top-left
                                     -->
-                  <a class="lightbox bottom-right" :href="fieldData.images[0]"
+                  <a v-if="fieldData.images[0]" class="lightbox bottom-right" :href="fieldData.images[0]"
                      data-plugin-options='{"type":"image"}'><i class="glyphicon glyphicon-search"></i></a>
 
                   <!--
@@ -62,8 +62,8 @@
 
                                         Extra: add .image-bw class to force black and white!
                                     -->
-                  <img class="img-responsive" :src="fieldData.images[0]"
-                       width="1200" height="1500" alt="This is the product title"/>
+                  <img class="img-responsive" :src="fieldData.images[0] ? fieldData.images[0] : 'https://api.asansport.com/storage/fields/default.jpg'"
+                       width="1200" height="1500" alt="alt" style="max-height: 400px;"/>
                 </figure>
 
               </div>
@@ -376,7 +376,7 @@
                     <div class="col-md-6">
                       <gmap-map
                               :center="{lat:fieldData.latitude, lng:fieldData.longitude}"
-                              :zoom="7"
+                              :zoom="12"
                               style="width: 100%; height: 300px">
 
                         <gmap-marker :position="{lat:fieldData.latitude, lng:fieldData.longitude}"></gmap-marker>
