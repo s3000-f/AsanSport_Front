@@ -77,7 +77,7 @@
           <div class="navbar-collapse pull-right nav-main-collapse collapse">
             <nav class="nav-main">
               <ul id="topMain" class="nav nav-pills nav-main">
-                <li class="active"><!-- HOME -->
+                <li class=""><!-- HOME -->
                   <router-link to="/">خانه</router-link>
                 </li>
                 <li class="dropdown">
@@ -110,7 +110,7 @@
                   <router-link to="/about">درباره ما</router-link>
                 </li>
                 <li>
-                  <router-link to="/about">بلاگ</router-link>
+                  <router-link to="/blog">بلاگ</router-link>
                 </li>
                 <li>
                   <a href="https://www.instagram.com/asansport.official/" target="_blank"><i

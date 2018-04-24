@@ -84,13 +84,13 @@
             <div class="col-md-5">
 
               <!-- buttons -->
-              <div class="pull-right">
-                <!-- replace data-item-id width the real item ID - used by js/view/demo.shop.js -->
+<!--              <div class="pull-right">
+                &lt;!&ndash; replace data-item-id width the real item ID - used by js/view/demo.shop.js &ndash;&gt;
                 <a class="btn btn-default add-wishlist" href="#" data-item-id="1" data-toggle="tooltip"
                    title="Add To Wishlist"><i class="fa fa-heart nopadding"></i></a>
                 <a class="btn btn-default add-compare" href="#" data-item-id="1" data-toggle="tooltip"
                    title="Add To Compare"><i class="fa fa-bar-chart-o nopadding" data-toggle="tooltip"></i></a>
-              </div>
+              </div>-->
               <!-- /buttons -->
 
               <div class="shop-item-price">

@@ -170,12 +170,12 @@
           lang: 'fa',
           eventLimit: false, // allow "more" link when too many events
           defaultView: 'agendaWeek',
-          height: 550,
+          height: 500,
           allDaySlot: false,
           eventDurationEditable: false,
           eventOverlap: false,
           slotDuration: '00:' + this.$parent.fieldData.duration + ':00',
-          slotLabelFormat: 'hh:mm',
+          slotLabelFormat: 'HH:mm',
             editable:false,
 
         },
@@ -206,13 +206,18 @@
     computed: {
       eventSources() {
         const self = this;
+        const http = this.$http;
         return [
           {
             events(start, end, timezone, callback) {
               setTimeout(() => {
+                  console.log("================" + http)
                 callback(self.events.filter(() => Math.random() > 0.5));
               }, 1000);
             },
+              overlap: "false",
+              rendering: "background",
+              color: "#ff9f89"
           },
         ];
       },
