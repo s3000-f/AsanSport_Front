@@ -20,7 +20,21 @@
         <div class="container">
 
           <div class="col-lg-3 col-md-3 order-md-1 order-lg-1">
+            <div class="mb-60">
+              <h4>انتخاب شهر</h4>
 
+              <!--<dropdown :options="arrayOfObjects" :selected="object" v-on:updateOption="methodToRunOnSelect"></dropdown>-->
+              <div class="fancy-form fancy-form-select" @onclick="getFields">
+                <select class="form-control" v-model="attr.state_id" @onclick="getFields">
+                  <option value="">انتخاب کنید</option>
+                  <option value="1">تهران</option>
+                  <option value="2">اصفهان</option>
+                  <option value="3">شیراز</option>
+                </select>
+                <i class="fancy-arrow"></i>
+              </div>
+              <hr>
+            </div>
             <!-- CATEGORIES -->
             <div class="side-nav mb-60">
 
@@ -33,14 +47,15 @@
                 <li class="list-group-item active">
                   <a class="dropdown-toggle" href="#">زمین های ورزشی</a>
                   <ul>
-                    <li @click="setCategory(1)"><router-link to="/fields/category-sports-complex">سالن چند منظوره</router-link>
-                    </li>
-                    <li @click="setCategory(2)"><router-link to="/fields/category-footsall">سالن فوتسال</router-link>
-                    </li>
-                    <li @click="setCategory(3)"><router-link to="/fields/category-basketball">سالن بسکتبال</router-link>
-                    </li>
-                    <li @click="setCategory(4)"><router-link to="/fields/category-volleyball">سالن والیبال</router-link>
-                    </li>
+                    <li @click="setCategory(1)" :class="this.attr.category==1 ? 'active':''"><router-link to="/fields/category-sports-complex">سالن چند منظوره</router-link></li>
+                    <li @click="setCategory(2)" :class="this.attr.category==2 ? 'active':''"><router-link to="/fields/category-small-stadium">چمن مصنوعی سایز کوچک</router-link></li>
+                    <li @click="setCategory(3)" :class="this.attr.category==3 ? 'active':''"><router-link to="/fields/category-large-stadium">چمن مصنوعی سایز بزرگ</router-link></li>
+                    <li @click="setCategory(4)" :class="this.attr.category==4 ? 'active':''"><router-link to="/fields/category-stadium">چمن طبیعی</router-link></li>
+                    <li @click="setCategory(5)" :class="this.attr.category==5 ? 'active':''"><router-link to="/fields/category-tennis">زمین تنیس</router-link></li>
+                    <li @click="setCategory(6)" :class="this.attr.category==6 ? 'active':''"><router-link to="/fields/category-aerobic-martial">سالن ایروبیک و رزمی</router-link></li>
+                    <li @click="setCategory(7)" :class="this.attr.category==7 ? 'active':''"><router-link to="/fields/category-pool">استخر</router-link></li>
+                    <li @click="setCategory(8)" :class="this.attr.category==8 ? 'active':''"><router-link to="/fields/category-paintball">زمین پینت بال</router-link></li>
+                    <li @click="setCategory(9)" :class="this.attr.category==9 ? 'active':''"><router-link to="/fields/category-etc">سایر مجموعه ها</router-link></li>
                   </ul>
                 </li>
 
@@ -169,26 +184,7 @@
 
 
             <!-- COLOR -->
-            <div class="mb-60">
-              <h4>انتخاب شهر</h4>
 
-              <!--<dropdown :options="arrayOfObjects" :selected="object" v-on:updateOption="methodToRunOnSelect"></dropdown>-->
-              <div class="fancy-form fancy-form-select" @onclick="getFields">
-                <select class="form-control" v-model="attr.state_id" @onclick="getFields">
-                  <option value="">انتخاب کنید</option>
-                  <option value="1">تهران</option>
-                  <option value="2">اصفهان</option>
-                  <option value="3">شیراز</option>
-                </select>
-
-                <!--
-                      .fancy-arrow
-                      .fancy-arrow-double
-                  -->
-                <i class="fancy-arrow"></i>
-              </div>
-              <hr>
-            </div>
             <!-- /COLOR -->
 
 
@@ -203,7 +199,7 @@
           <div id="portfolio" class="portfolio-gutter portfolio-title-over col-md-9">
 
             <ul class="nav nav-pills mix-filter mb-60">
-              <li class="filter"><a>مرتب سازی بر اساس: </a></li>
+              <li class="filter"><span>مرتب سازی بر اساس: </span></li>
               <li class="filter" @click="setSortBy('rating')"><a href="#">امتیاز</a></li>
               <li class="filter" @click="setSortBy('price_asc')"><a href="#">قیمت:صعودی</a></li>
               <li class="filter" @click="setSortBy('price_desc')"><a href="#">قیمت:نزولی</a></li>
@@ -211,8 +207,7 @@
             </ul>
 
 
-            <div class="row mix-grid">
-
+            <div class="row mix-grid" v-if="fields.length > 0">
 
               <div class="col-md-6 col-sm-6 mix development mix_all " v-for="field in fields"
                    style="display: block;  opacity: 1;"><!-- item -->
@@ -248,6 +243,7 @@
               </div><!-- /item -->
 
             </div>
+            <div class="alert alert-info" v-else>نتیجه ای با شرایط مورد نظر یافت نشد.</div>
 
           </div>
 
@@ -377,11 +373,14 @@
         {
           switch (this.$route.params.cat) {
             case 'sports-complex': this.attr.category = 1; break;
-            case 'volleyball': this.attr.category = 2; break;
-            case 'basketball': this.attr.category = 3; break;
-            case 'footsall': this.attr.category =4; break;
-            case 'martial': this.attr.category = 5; break;
-            case 'wrestling': this.attr.category = 6; break;
+            case 'small-stadium': this.attr.category = 2; break;
+            case 'large-stadium': this.attr.category = 3; break;
+            case 'stadium': this.attr.category =4; break;
+            case 'tennis': this.attr.category = 5; break;
+            case 'aerobic-martial': this.attr.category = 6; break;
+            case 'pool': this.attr.category = 7; break;
+            case 'paintball': this.attr.category = 8; break;
+            case 'etc': this.attr.category = 9; break;
           }
           this.$route.params.cat= undefined;
           this.getFields();

@@ -83,27 +83,15 @@
                 <li class="dropdown">
                   <a class="dropdown-toggle" href="#">سالن های ورزشی</a>
                   <ul class="dropdown-menu has-topBar">
-                    <li>
-                      <router-link to="/fields/category-sports-complex">سالن چند منظوره</router-link>
-                    </li>
-                    <li>
-                      <router-link to="/fields/category-footsall">سالن فوتسال</router-link>
-                    </li>
-                    <li>
-                      <router-link to="/fields/category-basketball">سالن بسکتبال</router-link>
-                    </li>
-                    <li>
-                      <router-link to="/fields/category-volleyball">سالن والیبال</router-link>
-                    </li>
-                    <li>
-                      <router-link to="/fields/category-martial">سالن رزمی</router-link>
-                    </li>
-                    <li>
-                      <router-link to="/fields/category-wrestling">سالن کشتی</router-link>
-                    </li>
-                    <li>
-                      <router-link to="/fields/category-special">سالن ویژه</router-link>
-                    </li>
+                    <li><router-link to="/fields/category-sports-complex">سالن چند منظوره</router-link></li>
+                    <li><router-link to="/fields/category-small-stadium">چمن مصنوعی سایز کوچک</router-link></li>
+                    <li><router-link to="/fields/category-large-stadium">چمن مصنوعی سایز بزرگ</router-link></li>
+                    <li><router-link to="/fields/category-stadium">چمن طبیعی</router-link></li>
+                    <li><router-link to="/fields/category-tennis">زمین تنیس</router-link></li>
+                    <li><router-link to="/fields/category-aerobic-martial">سالن ایروبیک و رزمی</router-link></li>
+                    <li><router-link to="/fields/category-pool">استخر</router-link></li>
+                    <li><router-link to="/fields/category-paintball">زمین پینت بال</router-link></li>
+                    <li><router-link to="/fields/category-etc">سایر مجموعه ها</router-link></li>
                   </ul>
                 </li>
                 <li>
