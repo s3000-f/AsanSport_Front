@@ -154,6 +154,7 @@
 <script>
   import ProfileSettings from './ProfileSettings'
   import ProfileReservations from './ProfileReservations'
+  import ProfileUserCredit from './ProfileUserCredit'
   import {mapGetters} from 'vuex';
   import {mapActions} from 'vuex';
   import axios from 'axios';
@@ -180,7 +181,8 @@
       'reservations': ProfileReservations,
       'header1': Header,
       'footers': Footer,
-      'slide-top': SlideTop
+      'slide-top': SlideTop,
+      'credit': ProfileUserCredit
     },
     computed: {
       ...mapGetters({
