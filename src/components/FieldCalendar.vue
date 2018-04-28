@@ -4,12 +4,13 @@
                    @event-created="eventCreated" :config="config"></full-calendar>
       <sweet-modal ref="book">
           <h3>رزرو سالن</h3>
+        <div v-if="slotAvailable()">
         <div class="row">
           <div class="col-md-6 col-sm-6">
             <div class="row">
               <div class="col-md-12">
                 <div class="fancy-form fancy-form-select">
-                  <select class="form-control">
+                  <select v-model="repeats" class="form-control">
                     <option value="1">1 جلسه</option>
                     <option value="4">4 جلسه</option>
                     <option value="8">8 جلسه</option>
@@ -33,9 +34,9 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="input-group">
-                <input type="text" id="discount_code" name="discount_code" class="form-control required" placeholder="کد تخفیف">
+                <input v-model="discount_code" type="text" id="discount_code" name="discount_code" class="form-control required" placeholder="کد تخفیف">
                 <span class="input-group-btn">
-                    <button class="btn btn-info" type="submit">بررسی</button>
+                    <button class="btn btn-info" type="submit" @click="discount">بررسی</button>
                 </span>
               </div>
               </div>
@@ -43,7 +44,7 @@
           </div>
           <div class="col-md-6 col-sm-6">
             <div class="fancy-form">
-              <textarea rows="5" class="form-control" placeholder="اگر پیشنهاد یا توضیحاتی دارید در اینجا بنویسید."></textarea>
+              <textarea v-model="notes" rows="5" class="form-control" placeholder="اگر پیشنهاد یا توضیحاتی دارید در اینجا بنویسید."></textarea>
               <i class="fa fa-sticky-note"></i>
             </div>
           </div>
@@ -51,20 +52,32 @@
           <div class="divider"></div>
           <div class="row">
             <div class="col-md-12 text-right">
-              <span><strong>تاریخ و ساعت: </strong></span><span id="time"></span>
+              <span><strong>تاریخ: </strong></span><span>{{`${this.start.jYear()}/${this.start.jMonth()+1}/${this.start.jDate()}`}}</span>
             </div>
-          </div>
-          <div class="row">
             <div class="col-md-12 text-right">
-              <span><strong>قابل پرداخت: </strong></span><span id="price">0</span><span> تومان</span>
+              <span><strong>ساعت: </strong></span>
+              <span>{{this.start.format('HH:mm')}}</span> الی
+              <span>{{this.start.add(this.$parent.fieldData.duration, 'minutes').format('HH:mm')}}</span>
+            </div>
+            <div class="col-md-12 text-right">
+              <span><strong>قابل پرداخت: </strong></span><span>{{this.price}}</span><span> تومان</span>
             </div>
           </div>
           <div class="row">
+
+            <div v-if="$store.state.user.credit > this.price" class="alert alert-success">مبلغ از اعتبار شما کم می شود.</div>
+            <div v-else class="alert alert-danger">اعتبار شما برای رزرو این سالن کافی نیست
+            <a class="btn btn-info" :href="`http://api.shahbandegan.ir/profile/credit/add/`">افزایش اعتبار</a>
+            </div>
+
             <div class="col-md-10 col-md-offset-1">
-              <button class="btn btn-block btn-success">ثبت سفارش</button>
+              <button class="btn btn-block btn-success margin-top-20" @click="book">ثبت سفارش</button>
             </div>
           </div>
+        </div>
+        <div v-else>
 
+        </div>
       </sweet-modal>
   </div>
 
@@ -72,6 +85,7 @@
 
 
 <script>
+  //TODO: WTF jMonth()+1 _|\O_O/|_
   //   export default {
   //     mounted() {
   //       var calendar = $('#calendar').fullCalendar({
@@ -115,11 +129,19 @@
 
   import moment from 'moment';
   import { SweetModal, SweetModalTab } from 'sweet-modal-vue'
+  import axios from 'axios'
+  import jMoment from 'moment-jalaali'
 
   export default {
     name: 'FieldCalendar',
     data() {
       return {
+          repeats: 1,
+          discount_code: null,
+          notes: null,
+          start: jMoment(),
+          price: this.$parent.fieldData.price,
+
         events: [
           {
             id: 1,
@@ -146,9 +168,9 @@
           eventClick: (event) => {
             this.selected = event;
           },
-          dayClick: (event) => {
-              console.log('asd');
-              console.log(event.utc().format('D-M-Y H:mm'));
+          select: (start, end) => {
+              // console.log(jMoment(start));
+              this.start = jMoment(start.utc()); // (start.utc().format('D-M-Y H:mm'));
               this.$refs.book.open();
 
           },
@@ -176,7 +198,9 @@
           eventOverlap: false,
           slotDuration: '00:' + this.$parent.fieldData.duration + ':00',
           slotLabelFormat: 'HH:mm',
-            editable:false,
+          editable:false,
+            overlap: false,
+            selectOverlap: false,
 
         },
 
@@ -201,23 +225,117 @@
       eventCreated(...test) {
         console.log(test);
       },
+
+      book() {
+
+            console.log(this.repeats);
+            console.log(this.notes);
+            console.log(this.discount_code);
+            console.log(this.start);
+
+            let dat = {
+                start: this.toEnglishNumber(this.start.format('D-M-Y H:mm')),
+                repeats: this.repeats
+            };
+            if(this.notes != null && this.notes !== undefined)
+                dat.notes = this.notes;
+            if(this.discount_code != null && this.discount_code !== undefined)
+                dat.discount_code = this.discount_code;
+
+            let config = {
+                headers: {
+                    Authorization: 'Bearer ' + this.$store.state.token,
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                }
+            };
+
+            axios.post('http://api.shahbandegan.ir/v1/fields/'+ this.$route.params.id +'/book', dat, config)
+                .then(response => {
+                    if (response.status == 201){
+                        this.notif('توجه','رزرو سالن شما با موفقیت ثبت شد','success')
+                        this.$refs.book.close();
+                    }else {
+                        this.notif('خطا', response.data.message,'error');
+                    }
+                })
+                .catch(e => {
+                    console.log(e);
+                    this.notif('خطا','خطا در برقراری ارتباط','error');
+                });
+            this.repeats = 1;
+            this.notes = null;
+            this.discount_code = null;
+            this.price = this.$parent.fieldData.price;
+            this.refreshEvents();
+        },
+
+      discount() {
+          let config = {
+              headers: {
+                  Authorization: 'Bearer ' + this.$store.state.token,
+                  'Content-Type': 'application/json',
+                  'Accept': 'application/json'
+              }
+          };
+          axios.get('http://api.shahbandegan.ir/v1/discounts/' + this.discount_code, config)
+              .then(response => {
+                  if (response.status == 200){
+                      if(response.data.available) {
+                          this.notif('توجه', response.data.percent * 100 + ' درصد از فاکتور شما کم شد.', 'success')
+                          this.price -= response.data.percent * this.price;
+                      }
+                      else
+                          this.notif('توجه', response.data.message, 'error')
+                  }else {
+                      this.notif('خطا','خطای داخلی، لطفا بعدا تلاش کنید','error');
+                  }
+              })
+              .catch(e => {
+                  console.log(e);
+                  this.notif('خطا','خطا در برقراری ارتباط','error');
+              });
+      },
+
+      slotAvailable() {
+          return true;
+      },
+
+      notif(title, text, type) {
+            this.$notify({
+                text: text,
+                type: type,
+                title: title
+            })
+        }
     },
 
     computed: {
       eventSources() {
         const self = this;
-        const http = this.$http;
         return [
           {
             events(start, end, timezone, callback) {
               setTimeout(() => {
-                  console.log("================" + http)
-                callback(self.events.filter(() => Math.random() > 0.5));
+                  axios.get('http://api.shahbandegan.ir/v1/fields/'+ self.$route.params.id +'/schedule')
+                      .then(response => {
+                          if (response.status < 300){
+                              console.log(response.data)
+                              callback(response.data)
+                          }else {
+                              this.notif('خطا','خطای داخلی، لطفا بعدا تلاش کنید','error');
+                          }
+                      })
+                      .catch(e => {
+                          console.log(e);
+                          this.notif('خطا','خطا در برقراری ارتباط','error');
+                      });
               }, 1000);
             },
               overlap: "false",
               rendering: "background",
-              color: "#ff9f89"
+              color: "#ff9f89",
+              selectable: false
           },
         ];
       },

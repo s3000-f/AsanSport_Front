@@ -209,7 +209,7 @@
 
             <div class="row mix-grid" v-if="fields.length > 0">
 
-              <div class="col-md-6 col-sm-6 mix development mix_all " v-for="field in fields"
+              <div class="col-md-4 col-sm-4 mix development mix_all " v-for="field in fields"
                    style="display: block;  opacity: 1;"><!-- item -->
 
                 <div class="item-box">
@@ -230,20 +230,36 @@
                     <!-- overlay title -->
                     <div class="item-box-overlay-title">
                       <h3>{{field.name}}</h3>
-                      <ul class="list-inline categories m-0">
+                      <ul class="list-inline categories margin-bottom-0">
                         <li> قیمت: {{toPersianNumber(field.price)}} تومان</li>
                       </ul>
                     </div><!-- /overlay title -->
 
                     <img class="img-fluid" v-bind:src="field.image" width="600"
-                         height="399" alt="">
+                         height="250" alt="">
                   </figure>
                 </div>
 
               </div><!-- /item -->
 
+
+
+
             </div>
             <div class="alert alert-info" v-else>نتیجه ای با شرایط مورد نظر یافت نشد.</div>
+
+            <div class="row" v-if="fields.length">
+              <div class="text-left pull-left margin-top-10 margin-right-10">
+                <ul class="pagination">
+                  <li><a href="#"> صفحه قبل </a></li>
+                </ul>
+              </div>
+              <div class="text-right pull-right margin-top-10">
+                <ul class="pagination">
+                  <li><a href="#"> صفحه بعد </a></li>
+                </ul>
+              </div>
+            </div>
 
           </div>
 
