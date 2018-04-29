@@ -33,13 +33,12 @@
       <div class="row">
 
         <!-- item -->
-        <div class="col-md-6 col-sm-6" v-if="!prevs.length>0" v-for="prev in prevs">
-          {{alert("SHIT")}}
+        <div class="col-md-6 col-sm-6" v-if="prevs.length>0" v-for="prev in prevs">
           <div class="box-inner margin-top-30" v-on:click="">
 
-            <h3 class="text-right margin-top-20 bold size-16 elipsis"><a href="#">{{prev.booker_name}}</a>
+            <h3 class="text-right margin-top-20 bold size-16 elipsis"><a href="#">{{prev.field_name}}</a>
             </h3>
-            <p class="text-right">{{prev_id}}</p>
+            <p class="text-right">کد پیگیری: {{prev.id}}</p>
             <ul class="text-right size-12 list-inline list-separator nomargin">
               <li>
                 <i class="fa fa-calendar"></i>
@@ -93,7 +92,7 @@ import axios from 'axios'
           .then(response => {
 
           this.prevs = (response.data.data);
-          console.log(this.prevs.length);
+          console.log(this.prevs);
 
         })
           .catch(e => {
