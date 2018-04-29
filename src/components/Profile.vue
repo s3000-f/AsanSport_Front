@@ -70,20 +70,22 @@
 
             <ul class="side-nav list-group margin-bottom-30" id="sidebar-nav">
 
-              <li class="list-group-item padding-3" v-on:click="selected = false">
+              <li class="list-group-item padding-3"
+                  v-on:click="selected1 = true; selected2 = false; selected3 = false">
                 <i class="fa fa-tasks"></i>سالن های رزرو شده
               </li>
-              <li class="list-group-item padding-3" v-on:click="selected = true">
-                <i class="fa fa-comments"></i> نظرات من
-              </li>
-              <li class="list-group-item padding-3" v-on:click="selected = true">
+              <!--<li class="list-group-item padding-3" v-on:click="selected = true">-->
+              <!--<i class="fa fa-comments"></i> نظرات من-->
+              <!--</li>-->
+              <li class="list-group-item padding-3" v-on:click="selected1 = false; selected2 = false; selected3 = true; ">
                 <i class="fa fa-credit-card"></i> اعتبار من
               </li>
-              <li class="list-group-item padding-3" v-on:click="selected = true">
+              <li class="list-group-item padding-3" v-on:click="selected1 = false; selected2 = true; selected3 = false;">
                 <i class="fa fa-gears"></i> تنظیمات
               </li>
-              <li class="list-group-item padding-3" v-on:click="selected = true">
-                <i class="fa fa-power-off"></i> خروج
+              <li class="list-group-item padding-3">
+                <router-link to="/"><i class="fa fa-power-off"></i> خروج</router-link>
+
               </li>
             </ul>
 
@@ -108,28 +110,29 @@
 
 
             <!-- info -->
-            <div class="box-dark  margin-bottom-30"><!-- .box-light OR .box-light -->
-              <div class="text-muted text-center"><h4> آمار رزرو ها </h4></div>
-              <div class="row margin-bottom-20">
-                <div class="col-md-6 col-sm-6 col-xs-6 text-center bold">
-                  <h2 class="size-30 margin-top-10 margin-bottom-0 font-raleway">{{previous_count}}</h2>
-                  <h3 class="size-13 margin-top-0 margin-bottom-10 text-info">گذشته</h3>
-                </div>
+            <!--<div class="box-dark  margin-bottom-30">&lt;!&ndash; .box-light OR .box-light &ndash;&gt;-->
+              <!--<div class="text-muted text-center"><h4> آمار رزرو ها </h4></div>-->
+              <!--<div class="row margin-bottom-20">-->
+                <!--&lt;!&ndash;<div class="col-md-6 col-sm-6 col-xs-6 text-center bold">&ndash;&gt;-->
+                  <!--&lt;!&ndash;<h2 class="size-30 margin-top-10 margin-bottom-0 font-raleway">{{previous_count}}</h2>&ndash;&gt;-->
+                  <!--&lt;!&ndash;<h3 class="size-13 margin-top-0 margin-bottom-10 text-info">گذشته</h3>&ndash;&gt;-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
 
-                <div class="col-md-6 col-sm-6 col-xs-6 text-center bold">
-                  <h2 class="size-30 margin-top-10 margin-bottom-0 font-raleway">{{upcoming_count}}</h2>
-                  <h3 class="size-13 margin-top-0 margin-bottom-10 text-info">پیش رو</h3>
-                </div>
-              </div>
+                <!--<div class=" text-center bold">-->
+                  <!--<h2 class="size-30 margin-top-10 margin-bottom-3 font-raleway">9</h2>-->
+                  <!--<h3 class="size-13 margin-top-0 margin-bottom-10 text-info">جلسه</h3>-->
+                <!--</div>-->
+              <!--</div>-->
 
-            </div>
+            <!--</div>-->
 
           </div>
 
           <!-- RIGHT -->
           <transition name="fade">
-            <settings v-if="selected"></settings>
-            <reservations v-else></reservations>
+            <reservations v-if="selected1"></reservations>
+            <settings v-if="selected2"></settings>
+            <credit v-if="selected3"></credit>
           </transition>
 
 
@@ -154,6 +157,7 @@
 <script>
   import ProfileSettings from './ProfileSettings'
   import ProfileReservations from './ProfileReservations'
+  import ProfileUserCredit from './ProfileUserCredit'
   import {mapGetters} from 'vuex';
   import {mapActions} from 'vuex';
   import axios from 'axios';
@@ -167,7 +171,9 @@
     name: "Profile",
     data() {
       return {
-        selected: false,
+        selected1:true,
+        selected2:false,
+        selected3:false,
         upcoming_count: 12,
         previous_count: 34,
         verification: false,
@@ -180,7 +186,8 @@
       'reservations': ProfileReservations,
       'header1': Header,
       'footers': Footer,
-      'slide-top': SlideTop
+      'slide-top': SlideTop,
+      'credit': ProfileUserCredit
     },
     computed: {
       ...mapGetters({

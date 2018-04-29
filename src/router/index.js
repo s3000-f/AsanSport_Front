@@ -11,6 +11,7 @@ import e404 from '@/components/404'
 import ManagerLogin from '@/components/ManagerLogin'
 import Collaboration from '@/components/Collaboration'
 import Order from '@/components/Order'
+import Faq from '@/components/Faq'
 Vue.use(Router);
 
 export default new Router({
@@ -75,6 +76,11 @@ export default new Router({
       path: '/order',
       name: 'Order',
       component: Order
+    },
+    {
+      path: '/faq',
+      name: 'Faq',
+      component: Faq
     },
     {
       path: '*',
