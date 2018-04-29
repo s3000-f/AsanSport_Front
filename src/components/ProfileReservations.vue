@@ -33,7 +33,7 @@
       <div class="row">
 
         <!-- item -->
-        <div class="col-md-6 col-sm-6" v-if="prevs.length()!=0" v-for="prev in prevs">
+        <div class="col-md-6 col-sm-6" v-if="" v-for="prev in prevs">
           <div class="box-inner margin-top-30">
 
             <h3 class="text-right margin-top-20 bold size-16 elipsis"><a href="#">{{prev.booker_name}}</a>
@@ -49,6 +49,7 @@
           </div>
         </div>
         <div  class="col-md-6 col-sm-6" v-else>
+          {{console.log("AAAAAAAAAAAAAAAAAAAAA")}}
           <h1>هنوز هیچ رزروی انجام نشده است</h1>
         </div>
         <!-- /item -->
@@ -108,7 +109,7 @@ import axios from 'axios'
 
           .then(response => {
 
-          this.prevs = response.data.data;
+          this.prevs = (response.data.data);
           console.log(this.prevs);
 
         })

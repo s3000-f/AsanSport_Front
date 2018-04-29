@@ -70,20 +70,22 @@
 
             <ul class="side-nav list-group margin-bottom-30" id="sidebar-nav">
 
-              <li class="list-group-item padding-3" v-on:click="selected = false">
+              <li class="list-group-item padding-3"
+                  v-on:click="selected1 = true; selected2 = false; selected3 = false">
                 <i class="fa fa-tasks"></i>سالن های رزرو شده
               </li>
-              <li class="list-group-item padding-3" v-on:click="selected = true">
-                <i class="fa fa-comments"></i> نظرات من
-              </li>
-              <li class="list-group-item padding-3" v-on:click="selected = true">
+              <!--<li class="list-group-item padding-3" v-on:click="selected = true">-->
+              <!--<i class="fa fa-comments"></i> نظرات من-->
+              <!--</li>-->
+              <li class="list-group-item padding-3" v-on:click="selected1 = false; selected2 = false; selected3 = true; ">
                 <i class="fa fa-credit-card"></i> اعتبار من
               </li>
-              <li class="list-group-item padding-3" v-on:click="selected = true">
+              <li class="list-group-item padding-3" v-on:click="selected1 = false; selected2 = true; selected3 = false;">
                 <i class="fa fa-gears"></i> تنظیمات
               </li>
-              <li class="list-group-item padding-3" v-on:click="selected = true">
-                <i class="fa fa-power-off"></i> خروج
+              <li class="list-group-item padding-3">
+                <router-link to="/"><i class="fa fa-power-off"></i> خروج</router-link>
+
               </li>
             </ul>
 
@@ -128,8 +130,9 @@
 
           <!-- RIGHT -->
           <transition name="fade">
-            <settings v-if="selected"></settings>
-            <reservations v-else></reservations>
+            <reservations v-if="selected1"></reservations>
+            <settings v-if="selected2"></settings>
+            <credit v-if="selected3"></credit>
           </transition>
 
 
@@ -168,7 +171,9 @@
     name: "Profile",
     data() {
       return {
-        selected: false,
+        selected1:true,
+        selected2:false,
+        selected3:false,
         upcoming_count: 12,
         previous_count: 34,
         verification: false,

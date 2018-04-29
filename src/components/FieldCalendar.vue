@@ -52,15 +52,15 @@
           <div class="divider"></div>
           <div class="row">
             <div class="col-md-12 text-right">
-              <span><strong>تاریخ: </strong></span><span>{{`${this.start.jYear()}/${this.start.jMonth()+1}/${this.start.jDate()}`}}</span>
+              <span><strong>تاریخ: </strong></span><span>{{`${toPersianNumber(this.start.jYear())}/${toPersianNumber(this.start.jMonth()+1)}/${toPersianNumber(this.start.jDate())}`}}</span>
             </div>
             <div class="col-md-12 text-right">
               <span><strong>ساعت: </strong></span>
-              <span>{{this.start.format('HH:mm')}}</span> الی
-              <span>{{this.start.add(this.$parent.fieldData.duration, 'minutes').format('HH:mm')}}</span>
+              <span>{{toPersianNumber(this.start.format('HH:mm'))}}</span> الی
+              <span>{{toPersianNumber(this.start.add(this.$parent.fieldData.duration, 'minutes').format('HH:mm'))}}</span>
             </div>
             <div class="col-md-12 text-right">
-              <span><strong>قابل پرداخت: </strong></span><span>{{this.price}}</span><span> تومان</span>
+              <span><strong>قابل پرداخت: </strong></span><span>{{toPersianNumber(this.price)}}</span><span> تومان</span>
             </div>
           </div>
           <div class="row">
@@ -334,7 +334,7 @@
             },
               overlap: "false",
               rendering: "background",
-              color: "#ff9f89",
+              color: "#ff1b00",
               selectable: false
           },
         ];

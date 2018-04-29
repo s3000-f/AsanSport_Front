@@ -10,25 +10,7 @@
 
     data() {
       return {
-        upcomings: [
-          {
-            title: 'Upcoming 1',
-            description: 'some long fucking description for this shit 1',
-            date: '12th Dec 1992',
-          },
-          {
-            title: 'Upcoming 2',
-            description: 'some long fucking description for this shit 2',
-            date: '12th Dec 1993',
-          },
-          {
-            title: 'Upcoming 1',
-            description: 'some long fucking description for this shit 3',
-            date: '12th Dec 1994',
-          }
 
-        ],
-        prevs: ''
       }
 
     }
