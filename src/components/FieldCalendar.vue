@@ -168,7 +168,7 @@
           eventClick: (event) => {
             this.selected = event;
           },
-          select: (start, end) => {
+          dayClick: (start, end) => {
               // console.log(jMoment(start));
               this.start = jMoment(start.utc()); // (start.utc().format('D-M-Y H:mm'));
               this.$refs.book.open();
