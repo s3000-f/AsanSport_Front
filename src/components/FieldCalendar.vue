@@ -57,7 +57,7 @@
             <div class="col-md-12 text-right">
               <span><strong>ساعت: </strong></span>
               <span>{{toPersianNumber(this.start.format('HH:mm'))}}</span> الی
-              <span>{{toPersianNumber(this.start.add(this.$parent.fieldData.duration, 'minutes').format('HH:mm'))}}</span>
+              <span>{{toPersianNumber(this.start.clone().add(this.$parent.fieldData.duration, 'minutes').format('HH:mm'))}}</span>
             </div>
             <div class="col-md-12 text-right">
               <span><strong>قابل پرداخت: </strong></span><span>{{toPersianNumber(this.price)}}</span><span> تومان</span>
@@ -140,7 +140,7 @@
           discount_code: null,
           notes: null,
           start: jMoment(),
-          price: this.$parent.fieldData.price,
+          discount_percent: 0,
 
         events: [
           {
@@ -168,7 +168,7 @@
           eventClick: (event) => {
             this.selected = event;
           },
-          dayClick: (start, end) => {
+          select: (start, end) => {
               // console.log(jMoment(start));
               this.start = jMoment(start.utc()); // (start.utc().format('D-M-Y H:mm'));
               this.$refs.book.open();
@@ -192,7 +192,7 @@
           lang: 'fa',
           eventLimit: false, // allow "more" link when too many events
           defaultView: 'agendaWeek',
-          height: 500,
+          height: 'auto',
           allDaySlot: false,
           eventDurationEditable: false,
           eventOverlap: false,
@@ -201,6 +201,9 @@
           editable:false,
             overlap: false,
             selectOverlap: false,
+            // displayEventEnd: true,
+            // viewSubSlotLabel : true, //essential , default : false
+            // slotLabelInterval : '00:30:00', // essential
 
         },
 
@@ -266,7 +269,7 @@
             this.repeats = 1;
             this.notes = null;
             this.discount_code = null;
-            this.price = this.$parent.fieldData.price;
+            // this.price = this.$parent.fieldData.price;
             this.refreshEvents();
         },
 
@@ -283,7 +286,7 @@
                   if (response.status == 200){
                       if(response.data.available) {
                           this.notif('توجه', response.data.percent * 100 + ' درصد از فاکتور شما کم شد.', 'success')
-                          this.price -= response.data.percent * this.price;
+                          this.discount_percent = response.data.percent;
                       }
                       else
                           this.notif('توجه', response.data.message, 'error')
@@ -339,6 +342,9 @@
           },
         ];
       },
+        price() {
+          return this.$parent.fieldData.price * this.repeats * (1-this.discount_percent);
+        }
     },
       components: {
           SweetModal,

@@ -37,7 +37,7 @@
             <!-- IMAGE -->
             <div class="col-md-7">
 
-              <div class="thumbnail relative margin-bottom-3">
+              <div class="thumbnail relative margin-bottom-3 hidden-xs">
 
                 <!--
                                     IMAGE ZOOM
@@ -72,7 +72,7 @@
               <div data-for="zoom-primary" class="zoom-more owl-carousel owl-padding-3 featured"
                    data-plugin-options='{"singleItem": false, "autoPlay": false, "navigation": true, "pagination": false}'>
                 <a v-for="image in fieldData.images" class="thumbnail active" :href="image">
-                  <img :src="image" height="100" alt=""/>
+                  <img :src="image" height="100" :alt="fieldData.name"/>
                 </a>
               </div>
               <!-- /Thumbnails -->
