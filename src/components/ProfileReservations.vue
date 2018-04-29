@@ -33,8 +33,9 @@
       <div class="row">
 
         <!-- item -->
-        <div class="col-md-6 col-sm-6" v-if="" v-for="prev in prevs">
-          <div class="box-inner margin-top-30">
+        <div class="col-md-6 col-sm-6" v-if="!prevs.length>0" v-for="prev in prevs">
+          {{alert("SHIT")}}
+          <div class="box-inner margin-top-30" v-on:click="">
 
             <h3 class="text-right margin-top-20 bold size-16 elipsis"><a href="#">{{prev.booker_name}}</a>
             </h3>
@@ -48,9 +49,8 @@
 
           </div>
         </div>
-        <div  class="col-md-6 col-sm-6" v-else>
-          {{console.log("AAAAAAAAAAAAAAAAAAAAA")}}
-          <h1>هنوز هیچ رزروی انجام نشده است</h1>
+        <div  class="col-md-6 col-sm-6" v-if="prevs.length===0">
+          هنوز هیچ رزروی انجام نشده است
         </div>
         <!-- /item -->
 
@@ -70,24 +70,7 @@ import axios from 'axios'
     name: "ProfileReservations",
     data() {
       return {
-        upcomings: [
-          {
-            title: 'Upcoming 1',
-            description: 'some long fucking description for this shit 1',
-            date: '12th Dec 1992',
-          },
-          {
-            title: 'Upcoming 2',
-            description: 'some long fucking description for this shit 2',
-            date: '12th Dec 1993',
-          },
-          {
-            title: 'Upcoming 1',
-            description: 'some long fucking description for this shit 3',
-            date: '12th Dec 1994',
-          }
-
-        ],
+        upcomings:'',
         prevs:''
       }
 
@@ -110,7 +93,7 @@ import axios from 'axios'
           .then(response => {
 
           this.prevs = (response.data.data);
-          console.log(this.prevs);
+          console.log(this.prevs.length);
 
         })
           .catch(e => {

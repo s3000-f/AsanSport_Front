@@ -1,4 +1,4 @@
-<template xmlns:>
+<template xmlns="http://www.w3.org/1999/html">
 
   <div class="smoothscroll enable-animation">
 

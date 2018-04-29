@@ -110,21 +110,21 @@
 
 
             <!-- info -->
-            <div class="box-dark  margin-bottom-30"><!-- .box-light OR .box-light -->
-              <div class="text-muted text-center"><h4> آمار رزرو ها </h4></div>
-              <div class="row margin-bottom-20">
-                <div class="col-md-6 col-sm-6 col-xs-6 text-center bold">
-                  <h2 class="size-30 margin-top-10 margin-bottom-0 font-raleway">{{previous_count}}</h2>
-                  <h3 class="size-13 margin-top-0 margin-bottom-10 text-info">گذشته</h3>
-                </div>
+            <!--<div class="box-dark  margin-bottom-30">&lt;!&ndash; .box-light OR .box-light &ndash;&gt;-->
+              <!--<div class="text-muted text-center"><h4> آمار رزرو ها </h4></div>-->
+              <!--<div class="row margin-bottom-20">-->
+                <!--&lt;!&ndash;<div class="col-md-6 col-sm-6 col-xs-6 text-center bold">&ndash;&gt;-->
+                  <!--&lt;!&ndash;<h2 class="size-30 margin-top-10 margin-bottom-0 font-raleway">{{previous_count}}</h2>&ndash;&gt;-->
+                  <!--&lt;!&ndash;<h3 class="size-13 margin-top-0 margin-bottom-10 text-info">گذشته</h3>&ndash;&gt;-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
 
-                <div class="col-md-6 col-sm-6 col-xs-6 text-center bold">
-                  <h2 class="size-30 margin-top-10 margin-bottom-0 font-raleway">{{upcoming_count}}</h2>
-                  <h3 class="size-13 margin-top-0 margin-bottom-10 text-info">پیش رو</h3>
-                </div>
-              </div>
+                <!--<div class=" text-center bold">-->
+                  <!--<h2 class="size-30 margin-top-10 margin-bottom-3 font-raleway">9</h2>-->
+                  <!--<h3 class="size-13 margin-top-0 margin-bottom-10 text-info">جلسه</h3>-->
+                <!--</div>-->
+              <!--</div>-->
 
-            </div>
+            <!--</div>-->
 
           </div>
 
