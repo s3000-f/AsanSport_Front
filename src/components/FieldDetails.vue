@@ -18,8 +18,8 @@
 
           <!-- breadcrumbs -->
           <ol class="breadcrumb">
-            <li><a href="#">خانه</a></li>
-            <li><a href="#">سالن های ورزشی</a></li>
+            <li><router-link to="/">خانه</router-link></li>
+            <li><router-link to="/fields">سالن های ورزشی</router-link></li>
             <li class="active">{{fieldData.name}}</li>
           </ol><!-- /breadcrumbs -->
 
@@ -94,11 +94,15 @@
               <!-- /buttons -->
 
               <div class="shop-item-price">
-                <div class="rating rating-4 size-20 margin-top-10 width-200"></div>
+
               </div>
 
               <table class="table margin-top-30">
                 <tbody>
+                <tr>
+                  <td>امتیاز</td>
+                  <td><div :class="['rating', `rating-${Math.round(this.fieldData.rating)}`, 'size-17', 'width-200']"></div></td>
+                </tr>
                 <tr>
                   <td>قیمت هر سانس</td>
                   <td>{{fieldData.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}} تومان</td>
@@ -113,6 +117,7 @@
                 </tr>
                 </tbody>
               </table>
+              {{fieldData.description}}
             </div>
             <!-- /ITEM DESC -->
 
@@ -121,7 +126,7 @@
 
           <ul id="myTab" class="nav nav-tabs nav-top-border margin-top-80" role="tablist">
             <li role="presentation" class="active"><a href="#calendar" role="tab" data-toggle="tab">تقویم</a></li>
-            <li role="presentation"><a href="#description" role="tab" data-toggle="tab">معرفی</a></li>
+            <!--<li role="presentation"><a href="#description" role="tab" data-toggle="tab">معرفی</a></li>-->
             <li role="presentation"><a href="#specs" role="tab" data-toggle="tab">امکانات</a></li>
             <li role="presentation"><a href="#reviews" role="tab" data-toggle="tab">نظرات</a></li>
             <li role="presentation"><a href="#contact" role="tab" data-toggle="tab">اطلاعات تماس</a></li>
@@ -133,11 +138,6 @@
             <!-- CALENDAR -->
             <div role="tabpanel" class="tab-pane fade in active" id="calendar">
               <field-calendar></field-calendar>
-            </div>
-
-            <!-- DESCRIPTION -->
-            <div role="tabpanel" class="tab-pane fade in" id="description">
-              {{fieldData.description}}
             </div>
 
             <!-- SPECIFICATIONS -->
