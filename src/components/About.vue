@@ -55,13 +55,12 @@
 
         <div class="container">
 
-          <h1>ABOUT US</h1>
+          <h1>درباره آسان اسپورت</h1>
 
           <!-- breadcrumbs -->
           <ol class="breadcrumb">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Pages</a></li>
-            <li class="active">About Us</li>
+            <li><router-link to="/">خانه</router-link></li>
+            <li class="active">درباره ما</li>
           </ol><!-- /breadcrumbs -->
 
         </div>
@@ -70,42 +69,42 @@
 
       <!-- 3 Cols -->
       <section>
-        <div class="container">
-          <div class="row">
+        <!--<div class="container">-->
+          <!--<div class="row">-->
 
-            <div class="col-md-4">
+            <!--<div class="col-md-4">-->
 
-              <div class="heading-title heading-border-bottom heading-color">
-                <h3>Passion</h3>
-              </div>
+              <!--<div class="heading-title heading-border-bottom heading-color">-->
+                <!--<h3>Passion</h3>-->
+              <!--</div>-->
 
-              <p>Fabulas definitiones ei pri per recteque hendrerit scriptorem in errem scribentur mel fastidii propriae
-                philosophia cu mea. Utinam ipsum everti necessitatibus at fuisset splendide.</p>
+              <!--<p>Fabulas definitiones ei pri per recteque hendrerit scriptorem in errem scribentur mel fastidii propriae-->
+                <!--philosophia cu mea. Utinam ipsum everti necessitatibus at fuisset splendide.</p>-->
 
-            </div>
+            <!--</div>-->
 
-            <div class="col-md-4">
-              <div class="heading-title heading-border-bottom heading-color">
-                <h3>Precision</h3>
-              </div>
-              <p>Fabulas definitiones ei pri per recteque hendrerit scriptorem in errem scribentur mel fastidii propriae
-                philosophia cu mea. Utinam ipsum everti necessitatibus at fuisset splendide.</p>
+            <!--<div class="col-md-4">-->
+              <!--<div class="heading-title heading-border-bottom heading-color">-->
+                <!--<h3>Precision</h3>-->
+              <!--</div>-->
+              <!--<p>Fabulas definitiones ei pri per recteque hendrerit scriptorem in errem scribentur mel fastidii propriae-->
+                <!--philosophia cu mea. Utinam ipsum everti necessitatibus at fuisset splendide.</p>-->
 
-            </div>
+            <!--</div>-->
 
-            <div class="col-md-4">
-              <div class="heading-title heading-border-bottom heading-color">
-                <h3>Simplicity</h3>
-              </div>
-              <p>Fabulas definitiones ei pri per recteque hendrerit scriptorem in errem scribentur mel fastidii propriae
-                philosophia cu mea. Utinam ipsum everti necessitatibus at fuisset splendide.</p>
+            <!--<div class="col-md-4">-->
+              <!--<div class="heading-title heading-border-bottom heading-color">-->
+                <!--<h3>Simplicity</h3>-->
+              <!--</div>-->
+              <!--<p>Fabulas definitiones ei pri per recteque hendrerit scriptorem in errem scribentur mel fastidii propriae-->
+                <!--philosophia cu mea. Utinam ipsum everti necessitatibus at fuisset splendide.</p>-->
 
-            </div>
+            <!--</div>-->
 
-          </div>
+          <!--</div>-->
 
-        </div>
-        <div class="container">گروه تخصصی "آسان اسپرت" در سال 1393 با هدف فعاليت در زمينه ارائه کلیه خدمات و محصولات ورزشی از طریق فضای مجازی شروع به فعالیت نمود. ما نیز همانند بسیاری از شما مراجعه کنندگان به فضای مجازی و مشتریان سنتی که به دنبال سریعترین، ساده ترین و ارزانترین راه دریافت خدمات و محصولات ورزشی بودید، همواره دچار سختی ها و پیچیدگی های مراحل خرید یا فروش در شکل سنتی و مجازی بوده ایم و به خوبی می دانیم که یافتن بهترین گزینه ی ممکن برای خرید و فروش خدمات و محصولات ورزشی در بازار شلوغ کنونی، کاری بس پر دغدغه، زمان بر، و گیج کننده است.
+        <!--</div>-->
+        <div class="container" style="text-align: justify">گروه تخصصی "آسان اسپرت" در سال 1393 با هدف فعاليت در زمينه ارائه کلیه خدمات و محصولات ورزشی از طریق فضای مجازی شروع به فعالیت نمود. ما نیز همانند بسیاری از شما مراجعه کنندگان به فضای مجازی و مشتریان سنتی که به دنبال سریعترین، ساده ترین و ارزانترین راه دریافت خدمات و محصولات ورزشی بودید، همواره دچار سختی ها و پیچیدگی های مراحل خرید یا فروش در شکل سنتی و مجازی بوده ایم و به خوبی می دانیم که یافتن بهترین گزینه ی ممکن برای خرید و فروش خدمات و محصولات ورزشی در بازار شلوغ کنونی، کاری بس پر دغدغه، زمان بر، و گیج کننده است.
           از این رو گروه آسان اسپرت به عنوان جامعه متخصصین ورزش کشور و مسلط به مقوله ورزش و تحولات گوناگون این صنعت بر آن شد که ضمن بررسی علمی و دقیق نیاز ها، محدودیت ها، فرصت ها و تهدیدهای موجود بازار فعلی ورزش کشور ، به ایجاد و راه اندازی پایگاهی مجازی بپردازد.
           اگرچه نهایت سعی خود را نموده ایم که حداکثر سادگی را در فرآیند ارائه خدمات و محصولات داشته باشیم، لیکن همواره مشتاق دریافت نظرات و پیشنهادات سازنده شما برای هرچه بهتر و کارآمدتر کردن این فرآیند هستیم. در صورتی که علاقمند به در میان گذاشتن نظرات خود با ما هستید، آنها را به آدرسinfo@asansport.com ارسال نمائید.
           آسان اسپرت با ساده سازی و روشن¬ سازی فرآیند خرید و فروش انواع خدمات و محصولات ورزشی، شما را یاری می کند تا با کمترین دردسر و در کمترین زمان "بیابید" یا "بسپارید".

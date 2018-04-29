@@ -12,6 +12,8 @@ import ManagerLogin from '@/components/ManagerLogin'
 import Collaboration from '@/components/Collaboration'
 import Order from '@/components/Order'
 import Faq from '@/components/Faq'
+import Terms from '@/components/Terms'
+import Privacy from '@/components/Privacy'
 Vue.use(Router);
 
 export default new Router({
@@ -81,6 +83,16 @@ export default new Router({
       path: '/faq',
       name: 'Faq',
       component: Faq
+    },
+    {
+      path: '/terms',
+      name: 'Terms',
+      component: Terms
+    },
+    {
+      path: '/privacy-policy',
+      name: 'Privacy',
+      component: Privacy
     },
     {
       path: '*',

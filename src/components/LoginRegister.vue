@@ -93,6 +93,7 @@
                       <i class="fa fa-google"></i>
                     </a>
                     <i class="break"></i>
+                    <form @submit="login">
                     <div class="sky-form">
                       <div class="clearfix">
 
@@ -120,7 +121,7 @@
 
                       <div class="row">
 
-                        <div class="col-md-6 col-sm-6 col-xs-6">
+                        <div class="col-md-6 col-sm-6 col-xs-6 text-right">
 
                           <!-- Inform Tip -->
                           <div class="form-tip pt-20">
@@ -130,7 +131,7 @@
 
                         </div>
 
-                        <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                        <div class="col-md-6 col-sm-6 col-xs-6 text-left">
 
                           <button class="btn btn-primary" v-on:click="login"><i
                             class="fa fa-check"></i> ورود
@@ -141,7 +142,7 @@
                       </div>
 
                     </div>
-
+                    </form>
 
                   </div>
                 </div>
@@ -155,9 +156,9 @@
                     <!--<div class="alert alert-mini alert-danger margin-bottom-30">-->
                     <!--<strong>Oh snap!</strong> Password do not match!-->
                     <!--</div>&lt;!&ndash; /ALERT &ndash;&gt;-->
-
+<form @submit="sgnUp">
                     <div class="nomargin sky-form">
-                      <fieldset>
+                      <fieldset class="margin-bottom-0">
 
                         <div class="row">
                           <div class="form-group text-right">
@@ -184,7 +185,7 @@
                         </div>
 
                         <div class="row">
-                          <div class="form-group">
+                          <div class="form-group text-right">
 
                             <div class="col-md-6 col-sm-6">
                               <label>ایمیل *</label>
@@ -208,7 +209,7 @@
                         </div>
 
                         <div class="row">
-                          <div class="form-group">
+                          <div class="form-group text-right">
 
                             <div class="col-md-6 col-sm-6">
                               <label>رمزعبور *</label>
@@ -236,8 +237,7 @@
                         <hr/>
 
                         <label class="nomargin text-right">
-                          <input class="" type="checkbox" name="checkbox" v-model="accepted">
-                          <i></i>با <a v-on:click="terms">قوانین و مقررات</a> موافقم
+                          با کلیک بر روی ثبت نام موافقت خود را با قوانین آسان اسپورت تایید می کنید.
                         </label>
                         <!--<label class="checkbox nomargin"><input type="checkbox" name="checkbox"><i></i>I want to-->
                         <!--receive-->
@@ -254,7 +254,7 @@
                       </div>
 
                     </div>
-
+</form>
 
                   </div>
                 </div>

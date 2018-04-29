@@ -77,6 +77,10 @@ Vue.mixin({
       result = result.replace(new RegExp('۹', 'g'), '9');
       result = result.replace(new RegExp('۰', 'g'), '0');
       return result;
+    },
+    s2d: (str) => {
+      let result = String(str);
+      return result.replace(new RegExp(' ', 'g'), '-');
     }
   }
 })

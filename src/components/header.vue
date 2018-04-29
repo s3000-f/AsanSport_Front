@@ -5,27 +5,26 @@
 
         <!-- right -->
         <ul class="top-links list-inline pull-right">
-          <li class="text-welcome hidden-xs" v-if="$store.state.isLoggedin"><strong>{{$store.state.user.fname}}</strong>
+          <li v-if="$store.state.isLoggedin" class="text-welcome hidden-xs"><strong>{{$store.state.user.fname}}</strong>
             ، به آسان اسپرت خوش آمدی
           </li>
-          <li>
-            <a class="dropdown-toggle no-text-underline" data-toggle="dropdown" v-if="$store.state.isLoggedin"><i
+          <li v-if="$store.state.isLoggedin">
+            <a class="dropdown-toggle no-text-underline" data-toggle="dropdown"><i
               class="fa fa-user hidden-xs"></i>
-              <router-link to="/Manager" v-if="$store.state.user.isManager">حساب شما</router-link>
-              <router-link to="/profile" v-else>حساب شما</router-link>
+              <!--<router-link to="/Manager" v-if="$store.state.user.isManager">حساب شما</router-link>-->
+              <router-link to="/profile">حساب شما</router-link>
             </a>
           <li class="divider"></li>
-          <li>
-            <a v-if="$store.state.isLoggedin" href="#" v-on:click="logout()"><i class="glyphicon glyphicon-off"></i>
+          <li v-if="$store.state.isLoggedin">
+            <a href="#" v-on:click="logout()"><i class="glyphicon glyphicon-off"></i>
               خروج
             </a>
-            <router-link v-else to="/manager-login"><i class="glyphicon glyphicon-off"></i> ورود مدیران
-            </router-link>
           </li>
-          <li v-if="!($store.state.isLoggedin)">
-
-            <router-link to="/login-register"><i class="glyphicon glyphicon-off"></i> ورود/ثبت نام
-            </router-link>
+          <li v-if="!$store.state.isLoggedin">
+            <a href="https://manager.asansport.com/"><i class="glyphicon glyphicon-off"></i> ورود مدیر سالن</a>
+          </li>
+          <li v-if="!$store.state.isLoggedin">
+            <router-link to="/login-register"><i class="glyphicon glyphicon-off"></i> ورود/ثبت نام</router-link>
           </li>
         </ul>
         <!-- left -->

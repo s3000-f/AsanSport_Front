@@ -26,7 +26,7 @@
               <!--<dropdown :options="arrayOfObjects" :selected="object" v-on:updateOption="methodToRunOnSelect"></dropdown>-->
               <div class="fancy-form fancy-form-select" @onclick="getFields">
                 <select class="form-control" v-model="attr.state_id" @onclick="getFields">
-                  <option value="">انتخاب کنید</option>
+                  <option value="" selected>همه شهر ها</option>
                   <option value="1">تهران</option>
                   <option value="2">اصفهان</option>
                   <option value="3">شیراز</option>
@@ -220,7 +220,7 @@
 
 
                         <!-- details -->
-												<router-link class="ico-rounded" v-bind:to="'/fields/' + field.id + '/' + field.name">
+												<router-link class="ico-rounded" v-bind:to="'/fields/' + field.id + '/' + s2d(field.name)">
 													<span class="glyphicon glyphicon-option-horizontal fs-20"></span>
 												</router-link>
 
@@ -229,7 +229,7 @@
 
                     <!-- overlay title -->
                     <div class="item-box-overlay-title">
-                      <h3>{{field.name}}</h3>
+                        <h3><router-link :to="'/fields/' + field.id + '/' + s2d(field.name)">{{field.name}}</router-link></h3>
                       <ul class="list-inline categories margin-bottom-0">
                         <li> قیمت: {{toPersianNumber(field.price)}} تومان</li>
                       </ul>
@@ -249,14 +249,14 @@
             <div class="alert alert-info" v-else>نتیجه ای با شرایط مورد نظر یافت نشد.</div>
 
             <div class="row" v-if="fields.length">
-              <div class="text-left pull-left margin-top-10 margin-right-10">
+              <div class="text-left pull-left margin-top-10 margin-right-10" v-if="links.prev">
                 <ul class="pagination">
-                  <li><a href="#"> صفحه قبل </a></li>
+                  <li><a @click="attr2.page--;getFields();"> صفحه قبل </a></li>
                 </ul>
               </div>
-              <div class="text-right pull-right margin-top-10">
+              <div class="text-right pull-right margin-top-10" v-if="links.next">
                 <ul class="pagination">
-                  <li><a href="#"> صفحه بعد </a></li>
+                  <li><a @click="attr2.page++;getFields();"> صفحه بعد </a></li>
                 </ul>
               </div>
             </div>
@@ -356,7 +356,8 @@
           max_price: this.attr.max_price ? this.attr.max_price : null,
           featured: this.attr.featured ? this.attr.featured : null,
           category: this.attr.category ? this.attr.category : null,
-          facilities: this.attr.facilities.length !== 0 ? String(this.toString(this.attr.facilities)) : null
+          facilities: this.attr.facilities.length !== 0 ? String(this.toString(this.attr.facilities)) : null,
+          page: (this.$route.query.page) ? this.$route.query.page : 1
         }
       }
     },
@@ -384,6 +385,7 @@
           .then(response => {
             console.log(response.data.data);
             this.fields = response.data.data;
+            this.links = response.data.links;
           });
         else
         {

@@ -17,10 +17,9 @@
           <h4>آسان اسپرت</h4>
           <ul class="list-unstyled footer-list half-paddings noborder">
             <li><router-link class="block" to="/about"><i class="fa fa-angle-left"> </i> درباره ما</router-link></li>
-            <li><router-link class="block" to="/how-it-works"><i class="fa fa-angle-left"> </i> چگونه کار می کند؟</router-link></li>
-            <li><router-link class="block" to="lottery"><i class="fa fa-angle-left"> </i> قرعه کشی</router-link></li>
-            <li><router-link class="block" to="/terms"><i class="fa fa-angle-left"> </i> قوانین و مقررات </router-link></li>
             <li><router-link class="block" to="/faq"><i class="fa fa-angle-left"> </i> سوالات متداول </router-link></li>
+            <li><router-link class="block" to="/terms"><i class="fa fa-angle-left"> </i> قوانین و مقررات </router-link></li>
+            <li><router-link class="block" to="/privacy-policy"><i class="fa fa-angle-left"> </i> حریم خصوصی</router-link></li>
           </ul>
         </div>
         <div class="col-md-4">
