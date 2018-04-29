@@ -87,7 +87,7 @@ import axios from 'axios'
             'Accept': 'application/json'
           }
         };
-        axios.get('http://api.shahbandegan.ir/v1/profile/bookings', config)
+        axios.get('https://api.asansport.com/v1/profile/bookings', config)
 
           .then(response => {
 

@@ -4,7 +4,7 @@
                    @event-created="eventCreated" :config="config"></full-calendar>
       <sweet-modal ref="book">
           <h3>رزرو سالن</h3>
-        <div v-if="slotAvailable()">
+        <div v-if="$store.state.isLoggedin">
         <div class="row">
           <div class="col-md-6 col-sm-6">
             <div class="row">
@@ -67,7 +67,7 @@
 
             <div v-if="$store.state.user.credit > this.price" class="alert alert-success">مبلغ از اعتبار شما کم می شود.</div>
             <div v-else class="alert alert-danger">اعتبار شما برای رزرو این سالن کافی نیست
-            <a class="btn btn-info" :href="`http://api.shahbandegan.ir/profile/credit/add/`">افزایش اعتبار</a>
+            <a class="btn btn-info" :href="`https://api.asansport.com/profile/credit/add/`">افزایش اعتبار</a>
             </div>
 
             <div class="col-md-10 col-md-offset-1">
@@ -76,7 +76,7 @@
           </div>
         </div>
         <div v-else>
-
+                <div class="alert alert-warning"> برای رزرو سالن باید وارد شوید. (<router-link to="/login-register" class="text-warning">ورود / ثبت نام</router-link>) </div>
         </div>
       </sweet-modal>
   </div>
@@ -117,7 +117,7 @@
   //         editable: false,
   // //            eventDrop: eventMoved,
   //         events: {
-  //           url: `http://api.shahbandegan.ir/v1/fields/y6NZ6Q/schedule`,
+  //           url: `https://api.asansport.com/v1/fields/y6NZ6Q/schedule`,
   //           method: "post",
   //           error: function () {
   //             $('#loadingError').show();
@@ -253,7 +253,7 @@
                 }
             };
 
-            axios.post('http://api.shahbandegan.ir/v1/fields/'+ this.$route.params.id +'/book', dat, config)
+            axios.post('https://api.asansport.com/v1/fields/'+ this.$route.params.id +'/book', dat, config)
                 .then(response => {
                     if (response.status == 201){
                         this.notif('توجه','رزرو سالن شما با موفقیت ثبت شد','success')
@@ -281,7 +281,7 @@
                   'Accept': 'application/json'
               }
           };
-          axios.get('http://api.shahbandegan.ir/v1/discounts/' + this.discount_code, config)
+          axios.get('https://api.asansport.com/v1/discounts/' + this.discount_code, config)
               .then(response => {
                   if (response.status == 200){
                       if(response.data.available) {
@@ -320,7 +320,7 @@
           {
             events(start, end, timezone, callback) {
               setTimeout(() => {
-                  axios.get('http://api.shahbandegan.ir/v1/fields/'+ self.$route.params.id +'/schedule')
+                  axios.get('https://api.asansport.com/v1/fields/'+ self.$route.params.id +'/schedule')
                       .then(response => {
                           if (response.status < 300){
                               console.log(response.data)

@@ -528,7 +528,7 @@
 
     methods: {
       fetchData() {
-        axios.get('http://api.shahbandegan.ir/v1/fields/' + this.$route.params.id)
+        axios.get('https://api.asansport.com/v1/fields/' + this.$route.params.id)
           .then((resp) => {
             this.fieldData = resp.data.data;
 
@@ -545,7 +545,7 @@
             'Accept': 'application/json'
           }
         };
-        axios.get('http://api.shahbandegan.ir/v1/fields/' + this.$route.params.id + '/comments', config).then(response => {
+        axios.get('https://api.asansport.com/v1/fields/' + this.$route.params.id + '/comments', config).then(response => {
           if (response.status < 300) {
             this.comments = response.data['data'];
           }
@@ -576,7 +576,7 @@
             'Accept': 'application/json'
           }
         };
-        axios.post('http://api.shahbandegan.ir/v1/fields/'+ this.$route.params.id +'/comments', dat, config)
+        axios.post('https://api.asansport.com/v1/fields/'+ this.$route.params.id +'/comments', dat, config)
           .then(response => {
             if (response.status < 300){
               this.notif('توجه','نظر شما با موفقیت ثبت شد','success')

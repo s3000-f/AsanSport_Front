@@ -429,7 +429,7 @@
     methods: {
       async getSlides() {
         this.slideLoading = true;
-        await(axios.get('http://api.shahbandegan.ir/v1/slides')
+        await(axios.get('https://api.asansport.com/v1/slides')
           .then(response => {
             this.slides = response.data['data'];
             console.log(this.slides);
@@ -443,7 +443,7 @@
       },
       async getTops() {
         this.topLoading = true;
-        await(axios.get('http://api.shahbandegan.ir/v1/fields')
+        await(axios.get('https://api.asansport.com/v1/fields')
           .then(response => {
             let dat = response.data['data'].slice(0, 12);
             let ret = [];
@@ -467,7 +467,7 @@
       },
       async getFeatured() {
         this.featuredLoading = true;
-        await(axios.get('http://api.shahbandegan.ir/v1/fields?featured')
+        await(axios.get('https://api.asansport.com/v1/fields?featured')
           .then(response => {
             let dat = response.data['data'];
             let ret = [];

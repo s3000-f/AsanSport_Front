@@ -380,7 +380,7 @@
 
         }
         if(this.$route.params.cat===undefined)
-        axios.get("http://api.shahbandegan.ir/v1/fields?" + qs.stringify(this.attr2, {skipNulls: true, encode: false}))
+        axios.get("https://api.asansport.com/v1/fields?" + qs.stringify(this.attr2, {skipNulls: true, encode: false}))
           .then(response => {
             console.log(response.data.data);
             this.fields = response.data.data;

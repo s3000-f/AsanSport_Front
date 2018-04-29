@@ -156,7 +156,7 @@
             'Accept': 'application/json'
           }
         };
-        axios.put('http://api.shahbandegan.ir/v1/profile', dat, config).then(response => {
+        axios.put('https://api.asansport.com/v1/profile', dat, config).then(response => {
           if (response.status < 300){
             this.notif('نتیجه', 'اطلاعات با موفقیت ثبت شد', 'success');
             setTimeout(()=>{console.log('wait')},2000);
@@ -202,7 +202,7 @@
             'Accept': 'application/json'
           }
         };
-        axios.put('http://api.shahbandegan.ir/v1/profile/password', dat, config).then(response => {
+        axios.put('https://api.asansport.com/v1/profile/password', dat, config).then(response => {
           if (response.status < 300){
             this.notif('نتیجه', 'اطلاعات با موفقیت ثبت شد', 'success');
             this.passFormReset(event);

@@ -429,7 +429,7 @@
           return;
         }
         this.loading = true;
-        axios.post("http://api.shahbandegan.ir/v1/login", {
+        axios.post("https://api.asansport.com/v1/login", {
           username: this.username,
           password: this.password
         })
@@ -519,7 +519,7 @@
           mobile: this.phone,
           password: this.pass
         };
-        axios.post('http://api.shahbandegan.ir/v1/register', dat, config).then(response => {
+        axios.post('https://api.asansport.com/v1/register', dat, config).then(response => {
           if (response.status < 300) {
             this.setLogin(response.data['access_token']);
             this.resetError();
@@ -565,7 +565,7 @@
       gs(googleUser) {
         this.setGUser(googleUser['Zi']);
         if (this.isGoogle) {
-          axios.post("http://api.shahbandegan.ir/v1/login/google", {
+          axios.post("https://api.asansport.com/v1/login/google", {
             id_token: this.googleUser['id_token'],
           })
             .then(response => {
@@ -602,7 +602,7 @@
         }
       },
       resetPass() {
-        axios.post('http://api.shahbandegan.ir/v1/password/sms', {
+        axios.post('https://api.asansport.com/v1/password/sms', {
           mobile: this.password_reset
         }).then(response => {
           if (response.status < 300) {
@@ -637,7 +637,7 @@
         window.open(route.href, '_blank');
       },
       checkPassReset() {
-        axios.post('http://api.shahbandegan.ir/v1/password/reset', {
+        axios.post('https://api.asansport.com/v1/password/reset', {
           mobile: this.password_reset,
           token: this.reset_code,
           password: this.password

@@ -213,7 +213,7 @@
             'Accept': 'application/json'
           }
         };
-        axios.post('http://api.shahbandegan.ir/v1/verify', dat, config).then(response => {
+        axios.post('https://api.asansport.com/v1/verify', dat, config).then(response => {
           if (response.status < 300) {
             this.verifyUser();
             this.notif('نتیجه', 'حساب شما با موفقیت تایید شد', 'success')
@@ -235,7 +235,7 @@
             'Accept': 'application/json'
           }
         };
-        axios.post('http://api.shahbandegan.ir/v1/verify/resend', dat, config).then(response => {
+        axios.post('https://api.asansport.com/v1/verify/resend', dat, config).then(response => {
           if (response.status < 300) {
             this.verification = true;
             this.notif('نتیجه', 'کد تایید برای شما ارسال شد', 'success');
