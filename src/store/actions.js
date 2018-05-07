@@ -1,4 +1,5 @@
 import axios from "axios";
+import router from '../router/index'
 
 export default {
   setLogin: (context, p1) => {
@@ -56,6 +57,7 @@ export default {
     commit('logout');
     commit('resetUser');
     commit('resetGUser');
+    router.push('/');
   },
   setGUser: (context, user) => {
     context.commit('setGUser', user)

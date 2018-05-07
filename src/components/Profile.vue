@@ -83,8 +83,8 @@
               <li class="list-group-item padding-3" v-on:click="selected1 = false; selected2 = true; selected3 = false;">
                 <i class="fa fa-gears"></i> تنظیمات
               </li>
-              <li class="list-group-item padding-3">
-                <router-link to="/"><i class="fa fa-power-off"></i> خروج</router-link>
+              <li class="list-group-item padding-3" v-on:click="logout()">
+                <i class="fa fa-power-off"></i> خروج
 
               </li>
             </ul>
@@ -200,7 +200,8 @@
     methods: {
       ...mapActions({
         verifyUser: 'verifyUser',
-        setUser: 'setUser'
+        setUser: 'setUser',
+        logout: 'logout',
       }),
       verify() {
         let dat = {

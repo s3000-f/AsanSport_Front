@@ -27,7 +27,8 @@ export default new Router({
     {
       path: '/profile',
       name: 'Profile',
-      component: Profile
+      component: Profile,
+      meta: { requiresAuth: true }
     },
     {
       path: '/about',
@@ -37,7 +38,8 @@ export default new Router({
     {
       path: '/login-register',
       name: 'LoginRegister',
-      component: Login
+      component: Login,
+        meta: { requiresGuest: true }
     },
     {
       path: '/fields',
