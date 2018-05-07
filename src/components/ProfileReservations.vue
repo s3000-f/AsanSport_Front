@@ -1,4 +1,49 @@
 <template>
+  <div>
+    <sweet-modal ref="userBookingModal">
+      <h3>جزییات سالن رزرو شده</h3>
+      <div class="table-responsive">
+        <table class="table table-hover text-right">
+          <tbody>
+          <tr>
+            <td>کد پیگیری</td>
+            <td>{{selectedBooking.id}}</td>
+          </tr>
+          <tr>
+            <td>نام سالن</td>
+            <td>{{selectedBooking.field.name}}</td>
+          </tr>
+          <tr>
+            <td>وضعیت پرداخت</td>
+            <td v-if="selectedBooking.transaction.status == 1">پرداخت شده به مبلغ: {{selectedBooking.transaction.amount}}</td>
+            <td v-else>پرداخت نشده</td>
+          </tr>
+          <tr>
+            <td>تاریخ و ساعت شروع سانس</td>
+            <td>{{selectedBooking.start}}</td>
+          </tr>
+          <tr>
+            <td>تاریخ و ساعت پایان سانس</td>
+            <td>{{selectedBooking.end}}</td>
+          </tr>
+          <tr>
+            <td>وضعیت</td>
+            <td v-if="selectedBooking.status == 0">تایید نشده</td>
+            <td v-if="selectedBooking.status == 1">تایید شده</td>
+            <td v-if="selectedBooking.status == 2">لغو شده</td>
+          </tr>
+          <tr v-if="selectedBooking.notes">
+            <td>توضیحات</td>
+            <td>{{selectedBooking.notes}}</td>
+          </tr>
+          <tr>
+            <td>تاریخ ثبت</td>
+            <td>{{selectedBooking.created_at}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </sweet-modal>
   <div class="col-lg-9 col-md-9 col-sm-8">
 
 
@@ -34,7 +79,7 @@
 
         <!-- item -->
         <div class="col-md-6 col-sm-6" v-if="prevs.length>0" v-for="prev in prevs">
-          <div class="box-inner margin-top-30" v-on:click="">
+          <div class="box-inner margin-top-30" v-on:click="showBooking(prev.id)">
 
             <h3 class="text-right margin-top-20 bold size-16 elipsis"><a href="#">{{prev.field_name}}</a>
             </h3>
@@ -59,18 +104,38 @@
     </div>
 
   </div>
+</div>
 
 </template>
 
 <script>
 import axios from 'axios'
+import { SweetModal, SweetModalTab } from 'sweet-modal-vue'
+
 
   export default {
     name: "ProfileReservations",
     data() {
       return {
         upcomings:'',
-        prevs:''
+        prevs:'',
+        selectedBooking: {
+            "id": "YxA7rw",
+            "field": {
+                "id": "yjJKxX",
+                "name": "quidem-blanditiis-magni-a-sit-doloremque-dignissimos"
+            },
+            "transaction": {
+                "method": 0,
+                "status": 1,
+                "amount": 210000
+            },
+            "start": "پنجشنبه، 23 فروردین 1397 12:00",
+            "end": "پنجشنبه، 23 فروردین 1397 13:00",
+            "status": 1,
+            "notes": "",
+            "created_at": "شنبه، 25 فروردین 1397 19:52"
+        }
       }
 
     }
@@ -100,8 +165,34 @@ import axios from 'axios'
             console.log(e)
           })
 
+      },
+      showBooking(id){
+        let config = {
+          headers: {
+            Authorization: 'Bearer ' + this.$store.state.token,
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          }
+        };
+        axios.get('https://api.asansport.com/v1/bookings/' + id, config)
+
+          .then(response => {
+
+          this.selectedBooking = response.data.data;
+          this.$refs.userBookingModal.open();
+
+        })
+          .catch(e => {
+            // this.notif('خطا', e, 'error');
+            console.log(e)
+          })
+
       }
-    }
+    },
+      components: {
+          SweetModal,
+          SweetModalTab
+      }
 
   }
 </script>
