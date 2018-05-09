@@ -1,0 +1,7 @@
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+    <ShortName>AsanSport</ShortName>
+    <LongName>AsanSport Search Suggestions</LongName>
+    <Description>Search AsanSport</Description>
+    <InputEncoding>UTF-8</InputEncoding>
+    <Url type="text/html" method="get" template="http://beta.asansport.com/fields?q={searchTerms}"/>
+</OpenSearchDescription>
