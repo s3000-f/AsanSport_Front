@@ -85,7 +85,6 @@
 
 
 <script>
-  //TODO: WTF jMonth()+1 _|\O_O/|_
   //   export default {
   //     mounted() {
   //       var calendar = $('#calendar').fullCalendar({
@@ -141,6 +140,7 @@
           notes: null,
           start: jMoment(),
           discount_percent: 0,
+          duration: this.$parent.fieldData.duration,
 
         events: [
           {
@@ -174,6 +174,10 @@
               this.$refs.book.open();
 
           },
+            selectAllow: (selectInfo) => {
+                var duration = moment.duration(selectInfo.end.diff(selectInfo.start));
+                return duration.asMinutes() == this.duration;
+            },
             header: {
                 left: '',//'next,prev today',
                 right: 'title',
@@ -196,11 +200,16 @@
           allDaySlot: false,
           eventDurationEditable: false,
           eventOverlap: false,
-          slotDuration: '00:' + this.$parent.fieldData.duration + ':00',
+          slotDuration: { minutes: this.$parent.fieldData.duration },
           slotLabelFormat: 'HH:mm',
           editable:false,
             overlap: false,
             selectOverlap: false,
+            // minTime: "06:00:00",
+            // maxTime: "24:00:00",
+            // slotDuration: "00:60:00"
+            minTime: '7:30',
+            // maxTime: '28:30',
             // displayEventEnd: true,
             // viewSubSlotLabel : true, //essential , default : false
             // slotLabelInterval : '00:30:00', // essential

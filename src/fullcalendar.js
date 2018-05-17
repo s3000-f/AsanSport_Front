@@ -6830,7 +6830,7 @@ var TimeGrid = FC.TimeGrid = Grid.extend(DayTableMixin, {
 				'<td class="fc-axis fc-time ' + view.widgetContentClass + '" ' + view.axisStyleAttr() + '>' +
 					(isLabeled ?
 						'<span>' + // for matchCellWidths
-							htmlEscape(slotDate.format(this.labelFormat)) +
+							htmlEscape(slotDate.format(this.labelFormat)) + ' - ' + htmlEscape(slotDate.clone().add(this.slotDuration).format(this.labelFormat)) +
 						'</span>' :
 						''
 						) +
