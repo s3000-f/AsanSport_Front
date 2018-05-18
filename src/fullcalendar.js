@@ -6824,7 +6824,7 @@ var TimeGrid = FC.TimeGrid = Grid.extend(DayTableMixin, {
 		// Calculate the time for each slot
 		while (slotTime < this.maxTime) {
 			slotDate = this.start.clone().time(slotTime);
-			isLabeled = isInt(divideDurationByDuration(slotTime, this.labelInterval));
+			isLabeled = true; //isInt(divideDurationByDuration(slotTime, this.labelInterval));
 
 			axisHtml =
 				'<td class="fc-axis fc-time ' + view.widgetContentClass + '" ' + view.axisStyleAttr() + '>' +

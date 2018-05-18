@@ -206,10 +206,10 @@
             overlap: false,
             selectOverlap: false,
             displayEventTime: false,
-            // minTime: "06:00:00",
-            // maxTime: "24:00:00",
+            minTime: "08:00:00",
+            maxTime: "24:30:00",
             // slotDuration: "00:60:00"
-            minTime: '7:30',
+            //minTime: '7:30',
             // maxTime: '28:30',
             // displayEventEnd: true,
             // viewSubSlotLabel : true, //essential , default : false
