@@ -205,6 +205,7 @@
           editable:false,
             overlap: false,
             selectOverlap: false,
+            displayEventTime: false,
             // minTime: "06:00:00",
             // maxTime: "24:00:00",
             // slotDuration: "00:60:00"
@@ -329,7 +330,8 @@
           {
             events(start, end, timezone, callback) {
               setTimeout(() => {
-                  axios.get('https://api.asansport.com/v1/fields/'+ self.$route.params.id +'/schedule')
+                  axios.get('https://api.asansport.com/v1/fields/'+ self.$route.params.id
+                      + `/schedule?start=${start}&end=${end}`)
                       .then(response => {
                           if (response.status < 300){
                               console.log(response.data)
@@ -345,8 +347,8 @@
               }, 1000);
             },
               overlap: "false",
-              rendering: "background",
-              color: "#ff1b00",
+              // rendering: "background",
+              color: "#F01515",
               selectable: false
           },
         ];
