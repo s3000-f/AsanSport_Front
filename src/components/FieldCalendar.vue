@@ -206,8 +206,8 @@
             overlap: false,
             selectOverlap: false,
             displayEventTime: false,
-            minTime: "08:00:00",
-            maxTime: "24:30:00",
+            minTime: this.$parent.fieldData.day_start,
+            maxTime: this.$parent.fieldData.day_end,
             // slotDuration: "00:60:00"
             //minTime: '7:30',
             // maxTime: '28:30',
